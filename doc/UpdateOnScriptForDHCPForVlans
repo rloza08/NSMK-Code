@@ -1,0 +1,57 @@
+
+Currently there is no API for enabling or disabling DHCP on a Vlan so creation of new store process is changed as outlined below
+
+Base Template used for bulk creation will have all the Vlan's not needing DHCP.
+Dummy IP address will be assigned to these VLAN's
+The DHCP feature will be disabled for these VLAN's
+
+
+Meraki API Automation will be tweaked to do following functions
+
+
+1-Update Vlan's 
+- NO DHCP needed for these Vlan's
+- These Vlan's are created using bulk creation
+- These Vlan's DO NOT NEED DHCP scope
+- The subnets will be UNIQUE for every store
+---------------------------------------------------------------------
+VLAN 4
+VLAN 6
+VLAN 7
+VLAN 8
+VLAN 14
+VLAN 16
+VLAN 24
+VLAN 40
+VLAN 60
+VLAN 70
+VLAN 80
+VLAN 85
+VLAN 95
+
+
+2-Create New Store Specific VLAN's 
+- These Vlan's need DHCP Scope
+- The subnets will be UNIQUE for every store
+---------------------------------------------
+
+VLAN 35
+VLAN 45
+VLAN 75
+VLAN 79
+VLAN 81
+VLAN 82
+
+
+3-Create New Store Specific VLAN's 
+- These Vlan's need DHCP Scope
+- The subnets will be SAME for every store
+-------------------------------------------
+
+VLAN 992 (192.168.192.0/24 )
+
+VLAN 995 (192.168.1.0/24 )
+
+VLAN 996 (192.168.100.0/24 )
+
+VLAN 997 (192.168.101.0/24 )

@@ -1,0 +1,2 @@
+#!/bin/bash
+./cli.py get $1 $2

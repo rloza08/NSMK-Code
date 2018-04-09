@@ -1,0 +1,2 @@
+#!/bin/bash
+./cli.py convert $1 $2

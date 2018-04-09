@@ -1,0 +1,284 @@
+(reply){
+   header = 
+      (ArrayOfColumn){
+         col[] = 
+            "vlan",
+            "description",
+            "network",
+      }
+   rows = 
+      (ArrayOfRow){
+         row[] = 
+            (ArrayOfColumn){
+               col[] = 
+                  "1st Store Summary Address Range",
+                  "10.x.a.0/22",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Router 1 Loopback0",
+                  "10.x.a.1/32",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.a.16/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.a.160/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Router 2 Loopback0",
+                  "10.x.a.2/32",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "VG310 #1 Loopback0",
+                  "10.x.a.200/32",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "VG310 #2 Loopback0",
+                  "10.x.a.201/32",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.a.202/31",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.a.204/30",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.a.208/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "VSAT Link Connectivity",
+                  "10.x.a.240/30",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Router 2 Loopback1",
+                  "10.x.a.3/32",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Router 1 to Router 2 Link",
+                  "10.x.a.4/30",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Alaska GCI/Verizon MPLS",
+                  "10.x.a.8/30",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "2nd Store Summary Address Range",
+                  "10.x.e.0/22",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "Linux Virtual Server Replication Subnet- NonRouted",
+                  "10.x.h.160/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "FUTURE USE",
+                  "10.x.h.64/26",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "2",
+                  "Vzn Backend EarthStation To Store Satellite Router",
+                  "10.x.a.12/30",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "4",
+                  "Network Management",
+                  "10.x.a.32/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "6",
+                  "Extranet Vendors",
+                  "10.x.a.64/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "7",
+                  "Pharmacy",
+                  "10.x.a.96/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "8",
+                  "Backstage Users",
+                  "10.x.a.128/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "10",
+                  "CANADA DPIN VPN NON-ROUTED SUBNET",
+                  "100.64.0.0/10",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "11",
+                  "Cluster Mgmt (reserved for testing in 9710)",
+                  "10.x.a.224/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "13",
+                  "External L3 ASA / Router",
+                  "10.x.a.192/29",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "14",
+                  "Store Content Engine",
+                  "10.x.a.248/29",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "16",
+                  "Store Wireless",
+                  "10.x.b.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "19",
+                  "General Store LAN",
+                  "10.x.c.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "24",
+                  "POS LAN",
+                  "10.x.d.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "25",
+                  "Alaska DSL Link / LAB uplink",
+                  "10.x.250.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "26",
+                  "Special Point to Point",
+                  "10.x.240.16/29",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "27",
+                  "SLC WAN",
+                  "10.x.251.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "27",
+                  "PHX WAN",
+                  "10.x.252.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "27",
+                  "Loopback1 network range",
+                  "10.x.254.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "35",
+                  "Digital Signage",
+                  "10.x.e.0/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "40",
+                  "Thin Wireless Mgmt",
+                  "10.x.e.32/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "45",
+                  "Cisco Wireless Management",
+                  "10.x.h.192/26",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "60",
+                  "Vendor VLAN II (2nd Subnet)",
+                  "10.x.h.128/27",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "65",
+                  "Expanded Rx",
+                  "10.x.h.176/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "70",
+                  "New Pharmacy",
+                  "10.x.e.64/26",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "75",
+                  "Macauthenticated Wireless Clients",
+                  "10.x.e.128/25",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "79",
+                  "VOIP Clients",
+                  "10.x.g.192/26",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "80",
+                  "Secure Wireless",
+                  "10.x.f.0/24",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "81",
+                  "Field Service Wireless",
+                  "10.x.g.160/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "82",
+                  "iPad quarantine vlan",
+                  "10.x.g.176/28",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "85",
+                  "Retail Cluster Management VLAN",
+                  "10.x.h.0/26",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "90",
+                  "(non-routed) Loss Prevention Security Camera",
+                  "10.x.g.0/25",
+            },
+            (ArrayOfColumn){
+               col[] = 
+                  "95",
+                  "Printer VLAN",
+                  "10.x.g.128/27",
+            },
+      }
+ }
