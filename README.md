@@ -1,1 +1,0 @@
-# nsmk-qa-code

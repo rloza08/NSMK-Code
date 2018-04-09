@@ -4,7 +4,7 @@
 *.csv
 /tmp
 /data
-/config
+/runtime
 /templates
 /venv*
 
