@@ -2,4 +2,5 @@
 export PATH=/appl/nms/nsmk/code:$PATH
 cd /appl/nms/nsmk/code
 alias select="./select"
-cat VERSION.txt
+sh ./VERSION.sh
+
