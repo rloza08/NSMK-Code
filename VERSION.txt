@@ -1,2 +1,2 @@
-### NSMK AUTOMATION VERSION: Q12 ##
-### for more info see release notes (cat RELEASE_Q12.txt) ##
+### NSMK AUTOMATION VERSION: Q15 ##
+### for more info see release notes (cat RELEASE_Q15.txt) ##
