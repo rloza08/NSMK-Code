@@ -1,9 +1,5 @@
 #!/bin/bash
-export PATH=$PATH:/appl/nsmk/nsmk-server
-cd /appl/nsmk/nsmk-server
-get settings
-
-echo "### NSMK AUTOMATION VERSION: P01.0 ##"
-echo "### for more info see release notes (cat RELEASE_P01.0.txt) ##"
-
-
+export PATH=/appl/nms/nsmk/code:$PATH
+cd /appl/nms/nsmk/code
+alias select="./select"
+cat VERSION.txt
