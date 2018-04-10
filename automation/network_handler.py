@@ -20,7 +20,7 @@ def bulk_deploy_networks_for_all_orgs(agent):
     org_group = auto_globals.deploy_org
     store_list = auto_globals.deploy_store_list
 
-    l.store_orchestration_logger.info("deploy networks <starting>")
+    l.runlogs_logger.info("deploy networks <starting>")
 
     org_list = json.reader(org_group,"templates")
     orglist = json.make_pretty(org_list)
@@ -31,8 +31,8 @@ def bulk_deploy_networks_for_all_orgs(agent):
     for org in org_list:
         org_name = org["org_name"]
         auto_globals.select_org(org_name)
-        l.firewall_logger.info("selected org: {}".format(org_name))
-        l.firewall_logger.info("using clone source: {}".format(auto_globals.deploy_clone_source))
+        l.runlogs_logger.info("selected org: {}".format(org_name))
+        l.runlogs_logger.info("using clone source: {}".format(auto_globals.deploy_clone_source))
 
         # Now get the netid for the clone_source
         auto_globals.select_store(auto_globals.deploy_clone_source)
@@ -40,7 +40,7 @@ def bulk_deploy_networks_for_all_orgs(agent):
         auto_globals.clone_id = auto_globals.netid
 
         bulk.perform_bulk_deploy_networks(agent, deploy, org_name, store_list)
-    l.store_orchestration_logger.info("deploy networks <finished>")
+    l.runlogs_logger.info("deploy networks <finished>")
 
 
 if __name__ == '__main__':

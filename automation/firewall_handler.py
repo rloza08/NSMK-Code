@@ -283,19 +283,19 @@ def deploy(agent, fw_rules=None):
 
     netid = auto_globals.netid
     firewall._set(netid, fw_rules)
-    l.firewall_logger.info("l3fwrules deployed netid:{}".format(netid))
+    l.runlogs_logger.info("l3fwrules deployed netid:{}".format(netid))
     l.logger.info("successfully deployed netid:{}".format(netid))
 
 def get(agent):
 
     netid = auto_globals.netid
     firewall._get(netid)
-    l.firewall_logger.info("got l3fwrules for netid:{}".format(netid))
+    l.runlogs_logger.info("got l3fwrules for netid:{}".format(netid))
     l.logger.info("got l3fwrules for  netid:{}".format(netid))
 
 
 def bulk_update(agent):
-    l.firewall_logger.info("bulk update started")
+    l.runlogs_logger.info("bulk update started")
 
     if agent is "cli-deploy-networks":
         org_group = auto_globals.deploy_l3fwrules_org
@@ -310,15 +310,15 @@ def bulk_update(agent):
 
     for org in org_list:
         org_name = org["org_name"]
-        l.firewall_logger.info("selected org: {}".format(org_name))
-        l.firewall_logger.info("using l3fwrules : {}".format(fw_rules))
+        l.runlogs_logger.info("selected org: {}".format(org_name))
+        l.runlogs_logger.info("using l3fwrules : {}".format(fw_rules))
         auto_globals.select_org(org_name)
         fw_rules = "{}".format(auto_globals.l3fwrules_version)
         bulk.perform_bulk_update_firewall(agent, deploy, org_name, fw_rules, store_list)
-    l.firewall_logger.info("bulk update finished")
+    l.runlogs_logger.info("bulk update finished")
 
 def bulk_update_get(agent):
-    l.firewall_logger.info("bulk update get started")
+    l.runlogs_logger.info("bulk update get started")
 
     org_group = auto_globals.l3fwrules_org
     store_list = auto_globals.l3fwrules_store_list
@@ -327,10 +327,10 @@ def bulk_update_get(agent):
 
     for org in org_list:
         org_name = org["org_name"]
-        l.firewall_logger.info("selected org: {}".format(org_name))
+        l.runlogs_logger.info("selected org: {}".format(org_name))
         auto_globals.select_org(org_name)
         bulk.perform_bulk_get_firewall(agent, get, org_name, store_list)
-    l.firewall_logger.info("bulk update finished")
+    l.runlogs_logger.info("bulk update finished")
 
 
 

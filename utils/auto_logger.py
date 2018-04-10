@@ -1,19 +1,20 @@
 import logging
-import os
 import datetime
-import global_vars
-import sys
+import global_vars as gv
+import os
+if not os.path.exists("../data/logs"):
+    os.makedirs("../data/logs")
 
 logger = None
-firewall_logger = None
-vpn_firewall_logger = None
-store_orchestration_logger = None
+runlogs_logger = None
+runlogs_logger = None
+runlogs_logger = None
 module_setup_done = False
 
 
 #config = json_reader("../config/safeway-utils.json")
 
-if global_vars.log_verbose:
+if gv.log_verbose:
     logging_debug_level = "debug"
 else:
     logging_debug_level = "info"
@@ -29,24 +30,31 @@ def setup_logger(name, log_file, level=logging.INFO, formatter=None):
 
 def setup():
     global module_setup_done
-    global logger, firewall_logger, vpn_firewall_logger, store_orchestration_logger
+    global logger, runlogs_logger, runlogs_logger, runlogs_logger
     if not module_setup_done:
-        now = datetime.datetime.now()
-        logfile = os.environ.get("NSMK_LOGFILE", "../data/nsmk_automation_{}.log".format(now))
-        if os.name == 'nt':
-            logfile = logfile.replace(":", "_")
+        now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        fulllog_file = "../data/logs/debug_{}.log".format(now)
+        fulllog_file = fulllog_file.replace(":", "-")
+        fulllog_file = fulllog_file.replace(" ", "-")
+        fulllog_file = fulllog_file.replace("_", "-")
+
+        runlog_file = "../data/logs/run_{}.log".format(now)
+        runlog_file = runlog_file.replace(":", "-")
+        runlog_file = runlog_file.replace(" ", "-")
+        runlog_file = runlog_file.replace("_", "-")
+
+
         debug_formatter = logging.Formatter(
-            '%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s')
+            '%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s', "%Y-%m-%d %H:%M:%S ")
 
-        light_formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s",
-                                      "%Y-%m-%d %H:%M:%S ")
-
+        light_formatter = logging.Formatter(
+            "%(asctime)s %(levelname)s %(message)s", "%Y-%m-%d %H:%M:%S ")
 
         if logging_debug_level == "debug":
             light_formatter = debug_formatter
 
         # first file logger
-        logger = setup_logger("nxmk_backend", log_file=logfile, level=logging.DEBUG, formatter=debug_formatter)
+        logger = setup_logger("nxmk", log_file=fulllog_file, level=logging.DEBUG, formatter=debug_formatter)
         consoleHandler = logging.StreamHandler()
         consoleHandler.setFormatter(light_formatter)
 
@@ -55,39 +63,24 @@ def setup():
         if logging_debug_level == "debug":
             logger.addHandler(consoleHandler)
 
-        firewall_formatter = light_formatter
-        if os.path.isfile("../firewall.log"):
-            os.unlink("../firewall.log")
-        logfile='../firewall.log'
-        firewall_logger = setup_logger('nxmk_firewall', '../firewall.log', level=logging.DEBUG,
-                                       formatter= firewall_formatter)
-        firewall_logger.addHandler(consoleHandler)
-        if os.path.isfile("../vpn_firewall.log"):
-            os.unlink("../vpn_firewall.log")
-        logfile='../s2svpnfw_rules.log'
-        vpn_firewall_logger = setup_logger('nxmk_vpn_firewall', log_file=logfile, level=logging.DEBUG,
-                            formatter = light_formatter)
-        vpn_firewall_logger.addHandler(consoleHandler)
+        runlogs_formatter = light_formatter
+        if os.path.isfile("../data/logs/runlogs.log"):
+            os.unlink("../data/logs/runlogs.log")
 
-        store_orchestration_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-        if os.path.isfile("../store_orchestration.log"):
-            os.unlink("../store_orchestration.log")
-        store_orchestration_logger = setup_logger('nxmk_store_orchestration', '../store_orchestration.log', level=logging.DEBUG,
-                                       formatter= store_orchestration_formatter)
+        runlogs_logger = setup_logger('nxmk_runlogs', log_file=runlog_file, level=logging.DEBUG,
+                                       formatter= runlogs_formatter)
+        runlogs_logger.addHandler(consoleHandler)
 
-        consoleHandler = logging.StreamHandler()
-        consoleHandler.setFormatter(light_formatter)
-        store_orchestration_logger.addHandler(consoleHandler)
 
 
 def message_user(str):
-    global firewall_logger
+    global runlogs_logger
     print (str)
     print ("_" * 72)
     #sys.stdout.flush()
 
 def __main__():
    setup()
-   firewall_logger.info('Inside method')
-   vpn_firewall_logger.info('Inside method')
+   runlogs_logger.info('Inside method')
+   runlogs_logger.info('Inside method')
    logger.info('Inside method')

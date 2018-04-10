@@ -19,7 +19,7 @@ class VpnFirewall(object):
                 count = 1100
                 start=count
                 for rule in vpn_rules[start:]:
-                    l.vpn_firewall_logger.info("deploying rule number: {} ==>  rule: {}".format(count, str))
+                    l.runlogs_logger.info("deploying rule number: {} ==>  rule: {}".format(count, str))
                     single_rule.append(rule)
                     success, str = meraki.updatemxvpnfwrules(api_key, org_id, single_rule,
                                                          syslogDefaultRule=False,
@@ -27,16 +27,16 @@ class VpnFirewall(object):
                     single_rule.pop()
                     count +=1
                     str = Json.make_pretty(rule)
-                    l.vpn_firewall_logger.info("deployed rule number: {} ==>  rule: {}".format(count, str))
+                    l.runlogs_logger.info("deployed rule number: {} ==>  rule: {}".format(count, str))
                     Json.writer("s2svpnrules_deploy", single_rule)
 
                     # import json
                     # aux = json.dumps(str)[0:160]
-                    # l.vpn_firewall_logger.info("updatemxvpnfwrules {}".format(success))
+                    # l.runlogs_logger.info("updatemxvpnfwrules {}".format(success))
                     # l.logger.debug("updatemxvpnfwrules {} {}".format(success, str))
 
                     if not success:
-                        l.vpn_firewall_logger.error("{}".format(str))
+                        l.runlogs_logger.error("{}".format(str))
                         l.logger.error("failed.")
                         l.logger.error("{}".format(str))
                         gv.fake_assert()
@@ -58,7 +58,7 @@ class VpnFirewall(object):
                 aux = _json.dumps(str)[0:160]
                 Json.writer("s2svpnrules_deploy", vpn_rules, path="ORG")
                 #Json.writer("s2svpnrules_deploy_resp", str)
-                l.vpn_firewall_logger.info("updatemxvpnfwrules {}".format(success))
+                l.runlogs_logger.info("updatemxvpnfwrules {}".format(success))
                 l.logger.debug("updatemxvpnfwrules {} {}".format(success, str))
 
                 if success:
@@ -69,7 +69,7 @@ class VpnFirewall(object):
                     l.logger.debug("success")
                     Json.writer("vpn_updatevpnfwrules_{}".format(org_id), str)
                 else:
-                    l.vpn_firewall_logger.error("{}".format(str))
+                    l.runlogs_logger.error("{}".format(str))
                     l.logger.error("failed.")
                     l.logger.error("{}".format(str))
                     gv.fake_assert()
@@ -90,14 +90,14 @@ class VpnFirewall(object):
                 #l.logger.info("getmxvpnfwrules {} {}".format(success, str))
                 ##import json as _json
                 #vpn_rules = _json.loads(vpn_rules_str)
-                #l.vpn_firewall_logger.debug("getmxvpnfwrules {} {}".format(success, aux))
+                #l.runlogs_logger.debug("getmxvpnfwrules {} {}".format(success, aux))
 
 
                 if success:
                     l.logger.debug("success")
                     Json.writer("s2svpnrules_get", vpn_rules, path="ORG")
                 else:
-                    l.vpn_firewall_logger.error("{}".format(str))
+                    l.runlogs_logger.error("{}".format(str))
                     l.logger.error("failed.")
                     l.logger.error("{}".format(str))
                     gv.fake_assert()

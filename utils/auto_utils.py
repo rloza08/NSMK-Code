@@ -34,7 +34,7 @@ def show_orglist(org_list):
     for org in org_list:
         number +=1
         str +=("\n\t\t{} - {}".format(number, org["org_name"]))
-    l.store_orchestration_logger.info("{}".format(str))
+    l.runlogs_logger.info("{}".format(str))
 
 
 def show_store_list(store_list):
@@ -43,15 +43,15 @@ def show_store_list(store_list):
     for store in store_list:
         number +=1
         str +=("\n\t\t{} - {}".format(number, store["name"]))
-    l.store_orchestration_logger.info("{}".format(str))
+    l.runlogs_logger.info("{}".format(str))
 
 def show_selected_l3fwrules(l3fwrules):
     str = "deploying using {}:".format(l3fwrules)
-    l.store_orchestration_logger.info("{}".format(str))
+    l.runlogs_logger.info("{}".format(str))
 
 def show_selected_s2svpnrules(s2svpnrules):
     str = "deploying using {}:".format(s2svpnrules)
-    l.store_orchestration_logger.info("{}".format(str))
+    l.runlogs_logger.info("{}".format(str))
 
 
 def create_store_data_dir(orchestration_agent, minimum=False):

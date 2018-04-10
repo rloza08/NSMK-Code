@@ -20,7 +20,7 @@ class Json:
                 json_data=f.write(str)
         except Exception as err:
             l.logger.error("failure")
-            l.store_orchestration_logger.error("failure")
+            l.runlogs_logger.error("failure")
             gv.fake_assert()
 
     @classmethod
@@ -39,7 +39,7 @@ class Json:
             #l.logger.debug("data: {}".format(data))
         except Exception as err:
             l.logger.error("fname:{} {}".format(fname, fnameJson))
-            l.store_orchestration_logger.error("DEPLOY ... fname:{} {}".format(fname, fnameJson))
+            l.runlogs_logger.error("DEPLOY ... fname:{} {}".format(fname, fnameJson))
             gv.fake_assert()
 
         return data

@@ -39,7 +39,7 @@ class Vlans(object):
                                  dnsnameservers) is not None
 
                 l.logger.debug("processing id:{} , name:{}".format(id, name))
-                l.store_orchestration_logger.info("processing id:{} , name:{}".format(id, name))
+                l.runlogs_logger.info("processing id:{} , name:{}".format(id, name))
 
                 """
                 Remove the True if we want to go selectively create and update

@@ -194,8 +194,8 @@ def load_store(_orchestration_agent, minimum=False):
     netid = utils.obtain_netid(store_number, store_name)
     if not netid:
         l.logger.error("store '{}' not found in org: {}".format(store_name, org_name))
-        l.firewall_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
-        l.vpn_firewall_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
+        l.runlogs_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
+        l.runlogs_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
     assert(netid)
 
 

@@ -88,11 +88,11 @@ class Networks(object):
                                                       cloneid=clone_id, suppressprint=False)
             if not success:
                 l.logger.error("failed, {} {}: {}".format(name, nettype, self.network))
-                l.store_orchestration_logger.error("failed, {} {}: {}".format(name, nettype, self.network))
+                l.runlogs_logger.error("failed, {} {}: {}".format(name, nettype, self.network))
                 gv.fake_assert()
             l.logger.debug("cloned network, {} {}: {}".format(name, nettype, self.network))
         except  Exception as err:
-            l.store_orchestration_logger.error("orgid:{} name:{} nettype:{}".format(orgid, name, nettype))
+            l.runlogs_logger.error("orgid:{} name:{} nettype:{}".format(orgid, name, nettype))
             traceback.print_tb(err.__traceback__)
             assert (0)
         return success, self.network
