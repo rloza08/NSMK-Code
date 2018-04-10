@@ -4,6 +4,7 @@ import utils.auto_json as json
 import utils.auto_logger as l
 from api.meraki_patch import meraki
 import traceback
+import global_vars as gv
 
 class Firewall(object):
     """
@@ -23,11 +24,11 @@ class Firewall(object):
                 l.logger.debug(rule["comment"])
             if not success:
                 l.logger.error("failed rule comment:{} {}".format(rule["comment"], str))
-                assert (0)
+                gv.fake_assert()
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
         return success, str
 
     """
@@ -77,7 +78,7 @@ class Firewall(object):
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
 
 
 def _get(netid):

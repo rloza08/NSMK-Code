@@ -4,17 +4,13 @@ import os
 import utils.auto_globals as auto_globals
 import datetime
 import shutil
-import json
 import pathlib
-
-
-
-# NOt really to be called from anywhere
-# to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
 import utils.auto_logger as l
 import sys
-from global_vars import log_verbose as l_verbose
-from global_vars import EOM
+import  global_vars as gv
+
+# Not really to be called from anywhere
+# to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
 
 def goahead_confirm(module):
     time.sleep(1)
@@ -25,8 +21,8 @@ def goahead_confirm(module):
 
     if resp.lower() != "yes":
         print ("\nAborted !!!")
-        EOM()
-        os._exit(-1)
+        gv.EOM()
+        gv.fake_assert()
 
     print("Proceeding with {} deploy.".format(module))
     sys.stdout.flush()
@@ -72,7 +68,7 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     if minimum is False:
         src = "../data/vlans_funnel.csv"
         shutil.copy(src, auto_globals.folder_time_stamp)
-        src = "../config/in_use_dryrun.json"
+        src = "../runtime/in_use_dryrun.json"
         shutil.copy(src, auto_globals.folder_time_stamp)
         src = "../templates"
         shutil.copytree(src, auto_globals.folder_time_stamp+"/templates_used")

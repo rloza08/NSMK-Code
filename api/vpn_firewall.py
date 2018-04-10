@@ -6,6 +6,7 @@ import utils.auto_logger as l
 import traceback
 import utils.auto_globals as auto_globals
 import utils.auto_json as Json
+import global_vars as gv
 
 class VpnFirewall(object):
         @classmethod
@@ -38,11 +39,11 @@ class VpnFirewall(object):
                         l.vpn_firewall_logger.error("{}".format(str))
                         l.logger.error("failed.")
                         l.logger.error("{}".format(str))
-                        assert(0)
+                        gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
                 traceback.print_tb(err.__traceback__)
-                assert(0)
+                gv.fake_assert()
             return success, str
 
         def update_settings(self, org_id, vpn_rules=[]):
@@ -71,11 +72,11 @@ class VpnFirewall(object):
                     l.vpn_firewall_logger.error("{}".format(str))
                     l.logger.error("failed.")
                     l.logger.error("{}".format(str))
-                    assert(0)
+                    gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
                 traceback.print_tb(err.__traceback__)
-                assert(0)
+                gv.fake_assert()
             return success, str
 
         def get_settings(self, org_id):
@@ -99,11 +100,11 @@ class VpnFirewall(object):
                     l.vpn_firewall_logger.error("{}".format(str))
                     l.logger.error("failed.")
                     l.logger.error("{}".format(str))
-                    assert(0)
+                    gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
                 traceback.print_tb(err.__traceback__)
-                assert(0)
+                gv.fake_assert()
             return success, str
 
 """

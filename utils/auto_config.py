@@ -40,7 +40,7 @@ def get_clone_id(orgid):
         if orgid == network["org_id"]:
             clone_id = network['clone_id']
             return clone_id
-    assert(0)
+    gv.fake_assert()
 
 config = json_reader("../config/safeway-config.json")
 #orgs = json_reader("../config/safeway-orgs.json")
@@ -64,7 +64,6 @@ setup_proxy()
 
 vlan=config[0]["vlan"]
 vlan_funnel_file=vlan["funnel_file"]
-vlan_update_only=vlan["update_only"]
 netx_file=vlan['netx_file']
 device_prefix = vlan["device_prefix"]
 device_postfix = vlan["device_postfix"]
@@ -74,4 +73,3 @@ vpn = config[0]["vpn"]
 hubnetworks=vpn["hubnetworks"]
 defaultroute=vpn["defaultroute"]
 
-logging_debug_level=config[0]["logging"]["debug_level"]

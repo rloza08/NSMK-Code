@@ -5,6 +5,7 @@ import fire
 import time
 import sys
 from global_vars import EOM
+import global_vars as gv
 
 def lock():
     cnt=0
@@ -315,11 +316,11 @@ class CLI(object):
 
         EOM()
         print ("# Available commands #")
+        print ("   select <parameter> <value> ")
         print ("   get settings  all")
         print ("   get settings  deploy")
         print ("   get settings  l3fwrules")
         print ("   get settings  s2svpnrules")
-        print ("   ./select <parameter> <value> ")
         print ("   deploy networks ")
         print ("   deploy stores")
         print ("   deploy l3fwrules")
@@ -407,11 +408,9 @@ class CLI(object):
         if len(_fname)>1:
             if (_fname[1] != "csv"):
                 print("Invalid file name, must end with csv and be in home directory.")
-                sys.stdout.flush()
-                os._exit(-1)
+                gv.fake_assert()
         os.chdir("{}/automation".format(self.cwd))
         from utils.auto_csv import convert_to_json_and_validate
-        from pathlib import Path
         if os.name == 'nt':
             input_path = output_path = "c:\\nms\\xfer"
         else:
@@ -428,8 +427,7 @@ class CLI(object):
         if len(_fname)>1:
             if (_fname[1] != "json"):
                 print("Invalid file name, must end with json and be in home directory.")
-                sys.stdout.flush()
-                os._exit(-1)
+                gv.fake_assert()
         os.chdir("{}/automation".format(self.cwd))
         from utils.auto_csv import convert_to_csv_and_validate
         if os.name == 'nt':

@@ -3,7 +3,7 @@ import os
 import json
 import traceback
 import utils.auto_logger as l
-
+import global_vars as gv
 
 
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
@@ -68,7 +68,7 @@ def get_orgid(org_name):
 def select_org(org_name):
     item = {}
     item["org_name"]=org_name.strip()
-    json_writer("../tmp/in_use_org.json", item)
+    json_writer("../runtime/in_use_org.json", item)
 
 
 def select_store(_store_name):
@@ -76,73 +76,73 @@ def select_store(_store_name):
     item = {}
     item["store_name"] = _store_name
     store_name = _store_name
-    json_writer("../tmp/in_use_store.json", item)
+    json_writer("../runtime/in_use_store.json", item)
 
 
 ## cli sets
 def set_run_dry(dryrun=True):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["dryrun"] = dryrun
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_deploy_org(deploy_org):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["deploy-org"] = deploy_org
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_deploy_store_list(deploy_store_list):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["deploy-store-list"] = deploy_store_list
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 
 def set_l3fwrules_org(deploy_org):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["l3fwrules-org"] = deploy_org
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_l3fwrules_store_list(store_list):
-   item = json_reader("../config/cli-selections.json")
+   item = json_reader("../runtime/cli-selections.json")
    item["l3fwrules-store-list"] = store_list
-   json_writer("../config/cli-selections.json", item)
+   json_writer("../runtime/cli-selections.json", item)
 
 def set_deploy_l3fwrules_version(version):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["deploy-l3fwrules-version"] = version
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_l3fwrules_version(version):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["l3fwrules-version"] = version
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_s2svpnrules_org(org):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["s2svpnrules-org"] = org
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_s2svpnrules_version(version):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["s2svpnrules-version"] = version
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_clone_source(source):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["deploy-clone-source"] = source
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_production(mode):
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     item["production"] = mode
-    json_writer("../config/cli-selections.json", item)
+    json_writer("../runtime/cli-selections.json", item)
 
 def get_settings():
     global dryrun, store_name, org_name, log_verbose
-    item = json_reader("../tmp/in_use_store.json")
+    item = json_reader("../runtime/in_use_store.json")
     store_name = item.get("store_name")
-    item = json_reader("../tmp/in_use_org.json")
+    item = json_reader("../runtime/in_use_org.json")
     org_name = item.get("org_name")
-    item = json_reader("../config/in_use_dryrun.json")
+    item = json_reader("../runtime/in_use_dryrun.json")
     dryrun = item.get("dryrun", True)
     return dryrun, store_name, org_name
 
@@ -153,7 +153,7 @@ def get_cli_settings():
     global s2svpnrules_org, s2svpnrules_version
     global production
 
-    item = json_reader("../config/cli-selections.json")
+    item = json_reader("../runtime/cli-selections.json")
     result = make_pretty(item)
     deploy_clone_source = item.get("deploy-clone-source")
     deploy_org = item.get("deploy-org")
@@ -191,7 +191,6 @@ def load_store(_orchestration_agent, minimum=False):
     store_name = "{}".format(store_name)
     store_number= utils.obtain_store_number(store_name)
     time_stamp = utils.create_store_data_dir(orchestration_agent, minimum)
-    folder_time_stamp = time_stamp
     netid = utils.obtain_netid(store_number, store_name)
     if not netid:
         l.logger.error("store '{}' not found in org: {}".format(store_name, org_name))

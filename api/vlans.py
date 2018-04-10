@@ -4,6 +4,7 @@ import utils.auto_json as json
 import utils.auto_logger as l
 from api.meraki_patch import meraki
 import traceback
+import global_vars as gv
 
 
 class Vlans(object):
@@ -51,7 +52,7 @@ class Vlans(object):
                     l.logger.debug("create id:{} , name:{}".format(id, name))
                     if not success:
                         l.logger.error("failed")
-                        assert(0)
+                        gv.fake_assert()
                 if success and performUpdate:
                     _err = ""
                     success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
@@ -67,12 +68,12 @@ class Vlans(object):
                 else:
                     l.logger.error("failed.")
                     l.logger.error("vlan: {} error: {}".format(vl, _err))
-                    assert(0)
+                    gv.fake_assert()
                     return False
             except Exception as err:
                 l.logger.error("exception")
                 traceback.print_tb(err.__traceback__)
-                assert(0)
+                gv.fake_assert()
         return True
 
     """
@@ -86,14 +87,14 @@ class Vlans(object):
             success, self.vlans = meraki.getvlans(config.api_key, netid)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, self.vlans))
-                assert(0)
+                gv.fake_assert()
             fname = "vlans_{}".format(netid)
             #json.writer(fname, self.vlans)
             l.logger.info("netid:{} {}".format(netid, json.make_pretty(self.vlans)))
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
 
     """
     Used to delete the vlans for the network.
@@ -108,12 +109,12 @@ class Vlans(object):
             success, self.vlans = meraki.delvlan(config.api_key, netid, vlanid)
             if not success:
                 l.logger.error("failed netid:{} vlanid:{}".format(netid, vlanid))
-                assert(0)
+                gv.fake_assert()
             l.logger.debug("netid:{} vlanid:{}".format(netid, vlanid))
         except Exception as err:
             l.logger.error("exception failure netid:{} vlanid:{}".format(netid, vlanid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
 
 
 def get(netid):

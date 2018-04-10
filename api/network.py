@@ -5,6 +5,7 @@ from api.meraki_patch import meraki
 import traceback
 import utils.auto_globals as auto_globals
 import utils.auto_json as Json
+import global_vars as gv
 
 """
     We only want to load the networks once to save time.
@@ -15,7 +16,7 @@ class Networks(object):
         success, self.stores = self.list()
         if not success:
             l.logger.error("failed. orgid:{} storeName:{}".format(auto_globals.orgid, storeName))
-            assert(0)
+            gv.fake_assert()
 
     def list(self):
         success = False
@@ -28,11 +29,11 @@ class Networks(object):
             else:
                 l.logger.error("failed.")
                 l.logger.error("networks: {}".format(self.networks))
-                assert (0)
+                gv.fake_assert()
         except Exception as err:
             l.logger.error("orgid: {}".format(auto_globals.orgid))
             traceback.print_tb(err.__traceback__)
-            assert (0)
+            gv.fake_assert()
         return success, self.networks
 
     def get_netid_for_store(self, storeName):
@@ -53,11 +54,11 @@ class Networks(object):
             l.logger.debug(Json.make_pretty(self.network))
             if not success:
                 l.logger.error("failed")
-                assert(0)
+                gv.fake_assert()
         except Exception as err:
             l.logger.error("orgid: {}".format(networkid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
         return success, self.network
 
     def update(self, networkid, name):
@@ -68,11 +69,11 @@ class Networks(object):
             l.logger.debug(Json.make_pretty(self.network))
             if not success:
                 l.logger.error("failed")
-                assert(0)
+                gv.fake_assert()
         except Exception as err:
             l.logger.error("orgid: {}".format(networkid))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
         return success, self.network
 
     @classmethod
@@ -88,7 +89,7 @@ class Networks(object):
             if not success:
                 l.logger.error("failed, {} {}: {}".format(name, nettype, self.network))
                 l.store_orchestration_logger.error("failed, {} {}: {}".format(name, nettype, self.network))
-                exit(-1)
+                gv.fake_assert()
             l.logger.debug("cloned network, {} {}: {}".format(name, nettype, self.network))
         except  Exception as err:
             l.store_orchestration_logger.error("orgid:{} name:{} nettype:{}".format(orgid, name, nettype))
@@ -104,11 +105,11 @@ class Networks(object):
             l.logger.debug("success {}".format(networkid))
             if not success:
                 l.logger.error("failed, netid: {}".format(networkid))
-                assert(0)
+                gv.fake_assert()
         except Exception as err:
             l.logger.error("networid:{} {}".format(networkid, str))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
         return success, str
 
 def getCreatedNetworkId(networkName):
@@ -116,7 +117,7 @@ def getCreatedNetworkId(networkName):
     network = Json.reader(fname)
     if network is None:
         l.logger.error("unable to load rules from firewall_template")
-        assert(0)
+        gv.fake_assert()
     return network["id"]
 
 def create(org_id, store_name):

@@ -11,6 +11,7 @@ import  utils._csv as Csv
 import utils.auto_globals as auto_globals
 import automation.bulk_update as bulk
 import api.firewall as firewall
+import global_vars as gv
 
 """
 Inputs: 

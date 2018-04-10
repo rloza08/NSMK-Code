@@ -43,7 +43,7 @@ class devices(object):
                                                serial, licensekey,
                                                licensemode, orderid)
 			if not success:
-				l.logger.error("orgid: {} serial:{} claim:{}".format(orgid, serial, self.claim))
+				l.logger.error("orgid: {} serial:{} claim:{}".format(auto_globals.orgid, serial, self.claim))
 				json.writer("claim_{}".format(serial), self.claim)
 			json.writer("claim_{}".format(serial), self.claim)
 		except Exception as err:
@@ -74,14 +74,8 @@ def bulkremove(fname):
 
 
 if __name__ == '__main__':
-	"""
-	Please change serial number and network id and remove the
-	exit(0) in order to run a :
-	- claimadd 
-	- removeddevice
-	"""
-	exit(0)
-	serial="Q2PN-KRED-QSMA"
-	networkid = "N_686798943174003816"
-	claimadd(networkid, serial)
-	removedevice(networkid, serial)
+	# serial="Q2PN-KRED-QSMA"
+	# networkid = "N_686798943174003816"
+	# claimadd(networkid, serial)
+	# removedevice(networkid, serial)
+    pass

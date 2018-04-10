@@ -6,6 +6,7 @@ from api.meraki_patch import meraki
 import traceback
 import api.network as networks
 import api.meraki as meraki
+import global_vars as gv
 
 # success, str = meraki.getmxvpnfwrules(config.api_key, utils.orgid)
 # str = json.make_pretty(str)
@@ -29,11 +30,11 @@ class Vpn(object):
 			else:
 				l.logger.error("failed.")
 				l.logger.error("{}".format(str))
-				assert(0)
+				gv.fake_assert()
 		except  Exception as err:
 			l.logger.error("networkid: {} str:{}".format(networkid, str))
 			traceback.print_tb(err.__traceback__)
-			assert(0)
+			gv.fake_assert()
 		return success, str
 
 

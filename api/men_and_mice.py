@@ -3,6 +3,7 @@ import os
 from subprocess import Popen, PIPE
 import shutil
 import sys
+import global_vars as gv
 
 cwd = os.getcwd()
 path = "{}/..".format(cwd)

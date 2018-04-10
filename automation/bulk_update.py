@@ -8,6 +8,7 @@ from utils.auto_utils import  show_store_list, show_orglist, show_selected_s2svp
 import utils.auto_utils as utils
 import os
 from global_vars import log_verbose as l_verbose
+import global_vars as gv
 
 def perform_bulk_update_firewall(agent, fn_deploy, org_name, fw_rules, store_list):
     fname=store_list
@@ -29,7 +30,7 @@ def perform_bulk_update_firewall(agent, fn_deploy, org_name, fw_rules, store_lis
             str = "fname: {} ::: name field was not found for store {}".format(fname, store)
             l.firewall_logger.error(str)
             l.logger.error(str)
-            os._exit(-1)
+            gv.fake_assert()
         auto_globals.select_store(store_name)
         auto_globals.load_store(agent)
         try:
@@ -43,9 +44,7 @@ def perform_bulk_update_firewall(agent, fn_deploy, org_name, fw_rules, store_lis
             str = "failed deployment for store : {}".format(store_name)
             l.logger.error(str)
             l.firewall_logger.error(str)
-            if l_verbose:
-                assert(0)
-            os._exit(-1)
+            gv.fake_assert()
 
 def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
     fname=store_list
@@ -57,9 +56,7 @@ def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
             str ="fname: {} ::: name field was not found for store {}".format(fname, store)
             l.firewall_logger.error(str)
             l.logger.error(str)
-            if l_verbose:
-                assert(0)
-            exit(-1)
+            gv.fake_assert()
         auto_globals.select_store(store_name)
         auto_globals.load_store(agent, minimum=True)
         try:
@@ -74,9 +71,7 @@ def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
             str = "failed getting l3fwrules for store : {}".format(store_name)
             l.logger.error(str)
             l.firewall_logger.error(str)
-            if l_verbose:
-                assert(0)
-            os._exit(-1)
+            gv.fake_assert()
 
 
 def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
@@ -91,9 +86,7 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
         if store_name is None:
             str = "fname: {} ::: store_name field was not found for store {}".format(fname, store)
             l.logger.error(str)
-            if l_verbose:
-                assert(0)
-            os._exit(-1)
+            gv.fake_assert()
         l.logger.info("deploying store : {}".format(store_name))
         auto_globals.select_store(store_name)
         auto_globals.load_store(agent)
@@ -115,9 +108,7 @@ def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
         store_name = store.get("name", None)
         if store_name is None:
             l.logger.error("fname: {} ::: name field was not found for store {}".format(store))
-            if l_verbose:
-                assert(0)
-            os._exit(-1)
+            gv.fake_assert()
         l.store_orchestration_logger.info("created network : {}".format(store_name))
 
         auto_globals.select_store(store_name)
@@ -147,9 +138,7 @@ def perform_bulk_update_vpn_firewall(agent, fname, fn_deploy, rules=None):
     if org_name is None:
         l.logger.error("failed deploying s2svpnrules to org: {}".format(org_name))
         l.vpn_firewall_logger.error("failed deploying s2svpnrules to org: {}".format(org_name))
-        if l_verbose:
-            assert(0)
-        os._exit(-1)
+        gv.fake_assert()
     try:
         l.logger.info("deploying vpns2srules to org: {}".format(vpn_rules, org_name))
         l.vpn_firewall_logger.info("deploying vpns2srules to org: {}".format(org_name))
@@ -158,9 +147,7 @@ def perform_bulk_update_vpn_firewall(agent, fname, fn_deploy, rules=None):
         str = "failed deploying s2svpnrules {} to org: {}".format(rules, org_name)
         l.logger.error(str)
         l.vpn_firewall_logger.info(str)
-        if l_verbose:
-            assert(0)
-        os._exit(-1)
+        gv.fake_assert()
     str = 'deployed s2svpnrules: "{}" to org: "{}"'.format(rules, org_name )
     l.logger.info(str)
     l.vpn_firewall_logger.info(str)
@@ -179,9 +166,7 @@ def perform_bulk_get_vpn_firewall(agent, fname, fn_get):
         str = "org {} not found".format(org_name)
         l.logger.error(str)
         l.vpn_firewall_logger.error(str)
-        if l_verbose:
-            assert(0)
-        os._exit(-1)
+        gv.fake_assert()
     utils.create_org_data_dir(agent)
     try:
         str = "downloading vpns2srules for org: {}".format(org_name)
@@ -192,9 +177,7 @@ def perform_bulk_get_vpn_firewall(agent, fname, fn_get):
         str = "failed obtaining s2svpnrules for org: {}".format(org_name)
         l.logger.error(str)
         l.vpn_firewall_logger.info(str)
-        if l_verbose:
-            assert(0)
-        os._exit(-1)
+        gv.fake_assert()
     str = 'downloaded s2svpnrules for org : "{}"'.format(org_name )
     l.logger.info(str)
     l.vpn_firewall_logger.info(str)

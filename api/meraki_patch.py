@@ -3,6 +3,7 @@
 import api.meraki as meraki
 import json
 import utils.auto_logger as l
+import global_vars as gv
 
 """
 This module contains custom returnhandler for meraki.

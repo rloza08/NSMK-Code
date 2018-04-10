@@ -8,6 +8,7 @@ from utils._json import Json
 from jsonschema import validate
 import os
 import sys
+import global_vars as gv
 
 def is_number(s):
     try:
@@ -70,9 +71,8 @@ class Csv(object):
                 Json().writer(fname, entries, path)
         except Exception as err:
             print("fname: {} not found".format(fname))
-            print("_" * 72)
-            sys.stdout.flush()
-            os._exit(-1)
+            gv.EOM()
+            gv.fake_assert()
         return entries
 
     def validate_vlan(self, it, item_count,  line_count):
@@ -218,9 +218,8 @@ class Csv(object):
             print ("No valid schema match\n"
                    "check file name follows correct pattern: {}\n"
                    "Store-List-* / Org-* / l3fwrules_template_ / s2svpnrules_".format(fname))
-            print("_" * 72)
-            sys.stdout.flush()
-            os._exit(-1)
+            gv.EOM()
+            gv.fake_assert()
 
         with open(fname_csv, newline='') as csv_file:
             entries = csv.DictReader(csv_file, skipinitialspace=True)
@@ -236,15 +235,12 @@ class Csv(object):
                     if len(result) != 0:
                         print("line #:{} - mismatch schema keys: {}".format(line_count, schema_keys))
                         print("line #:{} - mismatch item   keys: {}".format(line_count, item_keys))
-                        print("_" * 72)
-                        sys.stdout.flush()
-                        os._exit(-1)
+                        gv.EOM()
+                        gv.fake_assert()
                 except:
                     print ("invalid schema line number :{} \ {}".format(line_count, entry))
-                    print("_" * 72)
-                    sys.stdout.flush()
-                    os._exit(-1)
-
+                    gv.EOM()
+                    gv.fake_assert()
 
         is_firewall = (file_type=="l3fwrules" or file_type=="s2svpnrules")
         json_data = []
@@ -304,9 +300,6 @@ class Csv(object):
 
             Json().writer_full_path(fname_json, json_data)
 
-            # print("fname: {} not found".format(fname))
-            # traceback.print_tb(err.__traceback__)
-            #os._exit(-1)
         return entries
 
     @classmethod
@@ -358,10 +351,8 @@ class Csv(object):
                 if column not in fieldNames:
                     headerOkay=False
                     l.logger.error("header column: {} not found".format(column))
-                    print("_" * 72)
-                    import os
-                    sys.stdout.flush()
-                    os._exit(-1)
+                    gv.EOM()
+                    gv.fake_assert()
             if headerOkay is False:
                 return
             # This will make it use the order provided
@@ -378,7 +369,7 @@ class Csv(object):
         except Exception as err:
             l.logger.error("fname:{} {}".format(fname, fname_csv))
             traceback.print_tb(err.__traceback__)
-            assert(0)
+            gv.fake_assert()
 
 
     @classmethod

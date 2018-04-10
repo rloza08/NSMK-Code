@@ -5,6 +5,7 @@ import traceback
 import utils.auto_utils as utils
 import os
 from global_vars import log_verbose as l_verbose
+import global_vars as gv
 
 class Json:
     @classmethod
@@ -20,10 +21,7 @@ class Json:
         except Exception as err:
             l.logger.error("failure")
             l.store_orchestration_logger.error("failure")
-            if l_verbose:
-               traceback.print_tb(err.__traceback__)
-               assert(0)
-            exit(-1)
+            gv.fake_assert()
 
     @classmethod
     def writer(self, fname, data, path="data", absolute_path=None):
@@ -42,10 +40,7 @@ class Json:
         except Exception as err:
             l.logger.error("fname:{} {}".format(fname, fnameJson))
             l.store_orchestration_logger.error("DEPLOY ... fname:{} {}".format(fname, fnameJson))
-            if l_verbose:
-                traceback.print_tb(err.__traceback__)
-                assert(0)
+            gv.fake_assert()
 
-            os._exit(-1)
         return data
 

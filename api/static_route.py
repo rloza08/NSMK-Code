@@ -4,6 +4,7 @@ import utils.auto_logger as l
 import api.meraki as meraki
 import traceback
 import api.network as networks
+import global_vars as gv
 
 """
 This call provides a wrapper to the meraki add static route
@@ -20,7 +21,7 @@ class StaticRoute(object):
 			success, str = meraki.addstaticroute(config.api_key, netid, name, subnet, ip)
 			if not success:
 				l.logger.error("{}".format(str))
-				assert(0)
+				gv.fake_assert()
 		except Exception as err:
 			l.logger.error("exception failure netid:{}".format(netid))
 			traceback.print_tb(err.__traceback__)

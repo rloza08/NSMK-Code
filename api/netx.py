@@ -4,6 +4,7 @@ import os
 import socket, struct
 import utils.auto_json as mkjson
 import utils.auto_logger as l
+import global_vars as gv
 
 """
 Netx module provided by Mark Trout (python code ported from perl)
@@ -44,7 +45,7 @@ class Netx(object):
 			if dryrun :
 				return dryrun_netx_fake_ip
 			l.logger.error("Cannot reach store/device : {}".format(host))
-			os._exit(-1)
+			gv.fake_assert()
 
 	@classmethod
 	def get_name(self, addr):
