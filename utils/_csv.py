@@ -255,7 +255,6 @@ class Csv(object):
             else:
                 for entry in entries:
                     line_count += 1
-                    # FIX 01
                     # It is a firewall fix syslogEnabled to false
                     item = entry.get("syslogEnabled")
                     if item:
@@ -264,32 +263,26 @@ class Csv(object):
                         elif item.lower() == "true":
                             entry["syslogEnabled"] = True
 
-                    # FIX 02
                     # Eliminates \n chars from string fields
                     for field in ["srcCidr","destCidr","comment","srcPort","destPort"]:
                         entry[field] = entry[field].replace("\n", "")
 
-                    # FIX 03
                     # force Any to any in protocol fields
-                    entry["protocol"]= entry["protocol"].replace("Any", "any")
-                    entry["srcPort"] = entry["srcPort"].replace("Any", "any")
-                    entry["destPort"] = entry["destPort"].replace("Any", "any")
-                    entry["srcCidr"] = entry["srcCidr"].replace("Any", "any")
-                    entry["destCidr"] = entry["destCidr"].replace("Any", "any")
+                    for field in ["protocol","srcCidr","destCidr","comment","srcPort","destPort"]:
+                        entry[field]= entry[field].replace("Any", "any")
 
-                    # FIX 02.b
                     # validate src and dest ports
                     self.validate_port(entry, "srcPort", line_count)
                     self.validate_port(entry, "destPort", line_count)
 
-                    self.validate_ip_range(entry, "srcCidr", line_count)
-                    self.validate_ip_range(entry, "destCidr", line_count)
 
-                    # FIX/Validate 04
                     # For l3fwrules only ensure VLAN Fields are valid
                     if file_type == "l3fwrules" :
                         self.validate_vlan_and_ip(entry, "srcCidr", line_count)
                         self.validate_vlan_and_ip(entry, "destCidr", line_count)
+                    else:
+                        self.validate_ip_range(entry, "srcCidr", line_count)
+                        self.validate_ip_range(entry, "destCidr", line_count)
 
                     item = entry.get("comment")
                     if item == "Default rule":

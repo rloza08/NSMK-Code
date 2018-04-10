@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fa3e734-a70d-4f5d-a65c-c042cb823c51" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/vlans.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/vlans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/vpn_firewall.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/vpn_firewall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/bulk_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/bulk_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/firewall_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/firewall_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/network_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/network_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/store_orchestration.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/store_orchestration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config" beforeDir="false" afterPath="$PROJECT_DIR$/config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/_json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/auto_globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auto_globals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/auto_logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auto_logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/auto_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auto_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/_csv.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,8 +13,9 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/code$cli_get_l3fwrules.coverage" NAME="cli-get-l3fwrules Coverage Results" MODIFIED="1523317216913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$cli_convert_csv_to_json.coverage" NAME="cli-convert-csv-to-json Coverage Results" MODIFIED="1523316557133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$cli_csv_to_json_l3.coverage" NAME="cli-csv-to-json-l3 Coverage Results" MODIFIED="1523385306784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$cli_deploy_networks.coverage" NAME="cli-deploy-networks Coverage Results" MODIFIED="1523383666785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$cli_convert_csv_to_json.coverage" NAME="cli-convert-csv-to-json Coverage Results" MODIFIED="1523385325842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -48,15 +36,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/logging/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="1058" selection-start-line="1058" selection-end-line="1058" />
             </state>
           </provider>
         </entry>
@@ -82,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auto_logger.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="auto_logger.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/auto_logger.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-289">
@@ -90,6 +69,27 @@
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_csv.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/_csv.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="97" column="27" lean-forward="true" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+              <folding>
+                <element signature="e#24#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auto_csv.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/auto_csv.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -113,20 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cli.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv1/Lib/site-packages/jsonschema/cli.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>../config</find>
       <find>jinja</find>
       <find>cli-select</find>
       <find>config</find>
@@ -156,6 +146,7 @@
       <find>mkdir</find>
       <find>ensure_dir</find>
       <find>firewall</find>
+      <find>validate_vlan</find>
     </findStrings>
     <replaceStrings>
       <replace>runtime/cli-selections</replace>
@@ -190,12 +181,12 @@
         <option value="$PROJECT_DIR$/api/netx.py" />
         <option value="$PROJECT_DIR$/utils/_json.py" />
         <option value="$PROJECT_DIR$/utils/auto_utils.py" />
-        <option value="$PROJECT_DIR$/utils/_csv.py" />
         <option value="$PROJECT_DIR$/api/devices.py" />
         <option value="$PROJECT_DIR$/utils/auto_globals.py" />
         <option value="$PROJECT_DIR$/automation/network_handler.py" />
         <option value="$PROJECT_DIR$/global_vars.py" />
         <option value="$PROJECT_DIR$/utils/auto_logger.py" />
+        <option value="$PROJECT_DIR$/utils/_csv.py" />
       </list>
     </option>
   </component>
@@ -206,8 +197,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="132" />
-    <option name="y" value="30" />
+    <option name="x" value="95" />
+    <option name="y" value="5" />
     <option name="width" value="1723" />
     <option name="height" value="907" />
   </component>
@@ -222,11 +213,6 @@
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
@@ -268,7 +254,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.cli-deploy-networks">
+  <component name="RunManager" selected="Python.cli-convert-csv-to-json">
     <configuration name="cli-convert-csv-to-json" type="PythonConfigurationType" factoryName="Python">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -284,6 +270,25 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cli.py" />
       <option name="PARAMETERS" value="convert csv-to-json s2svpnrules_test" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="cli-csv-to-json-l3" type="PythonConfigurationType" factoryName="Python">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\linusv\work\nsmk-qa\code\venv1\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cli.py" />
+      <option name="PARAMETERS" value="convert csv-to-json l3fwrules_template_004" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -330,6 +335,7 @@
       <item itemvalue="Python.cli-convert-csv-to-json" />
       <item itemvalue="Python.cli-get-l3fwrules" />
       <item itemvalue="Python.cli-deploy-networks" />
+      <item itemvalue="Python.cli-csv-to-json-l3" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -346,23 +352,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="132" y="30" width="1723" height="907" extended-state="0" />
+    <frame x="95" y="5" width="1723" height="907" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40182054" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40182054" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26578474" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26578474" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32769832" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39921975" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26658" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -414,8 +421,13 @@
           <line>50</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/_csv.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="20" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -571,13 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/auto_csv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/auto_email.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -677,16 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/_csv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="358" column="29" selection-start-line="358" selection-start-column="29" selection-end-line="358" selection-end-column="29" />
-          <folding>
-            <element signature="e#24#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/devices.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -781,6 +776,23 @@
           <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/auto_csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/_csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="97" column="27" lean-forward="true" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
