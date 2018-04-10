@@ -10,7 +10,11 @@
 
 !/menAndMice/*.json
 !/menAndMice/*.csv
-
+!/config/cli-selections.json
+!/config/in_use_dryrun.json
+!/config/jinja_vlans_template.json
+!/config/safeway-config.json
+!/config/tui-selections.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
