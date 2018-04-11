@@ -3,7 +3,6 @@ import utils.auto_config as config
 import utils.auto_json as json
 import utils.auto_logger as l
 from api.meraki_patch import meraki
-import traceback
 import global_vars as gv
 
 class Firewall(object):
@@ -27,7 +26,6 @@ class Firewall(object):
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
-            traceback.print_tb(err.__traceback__)
             gv.fake_assert()
         return success, str
 
@@ -42,15 +40,15 @@ class Firewall(object):
         success=False
         str=None
         try:
-            fwrules = json.reader("l3fwrules_meraki_api")
+            fwrules = json.reader("_l3fwrules_deploy")
             success, str = meraki.updatemxl3fwrules(config.api_key, netid, fwrules)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, str))
-                assert (0)
+                gv.fake_assert()
         except Exception as err:
-            l.logger.error("exception failure netid:{}".format(netid))
-            traceback.print_tb(err.__traceback__)
-            assert (0)
+            l.logger.error("exception failure netid:{}\n{}".format(netid), str)
+            l.runlogs_logger.error("exception failure netid:{}\n{}".format(netid), str)
+            gv.fake_assert()
         return success, str
 
 
@@ -73,19 +71,19 @@ class Firewall(object):
             success, self.firewalls = meraki.getmxl3fwrules(config.api_key, netid)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, self.firewalls))
+                l.runlogs_logger.error("failed netid:{} {}".format(netid, self.firewalls))
+                gv.fake_assert()
             fname = "l3fwrules_get_{}".format(netid)
             json.writer(fname, self.firewalls)
         except Exception as err:
-            l.logger.error("exception failure netid:{}".format(netid))
-            traceback.print_tb(err.__traceback__)
+            l.logger.error("exception failure netid:{}\n{}".format(netid, self.firewalls))
+            l.runlogs_logger.error("exception failure netid:{}".format(netid, self.firewalls))
             gv.fake_assert()
-
 
 def _get(netid):
     """Gets firewall rules for a given netid into a json file"""
     obj = Firewall()
     obj.get(netid)
-
 
 def _set(netid, fw_rules=None):
     """Sets the firewall from a json file"""

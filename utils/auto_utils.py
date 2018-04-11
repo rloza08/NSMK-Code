@@ -20,7 +20,8 @@ def goahead_confirm(module):
                  "enter (yes/No):".format(module))
 
     if resp.lower() != "yes":
-        print ("\nAborted !!!")
+        l.runlogs_logger.error("Aborted by user !!!")
+        l.runlogs_logger.error("Aborted by user !!!")
         gv.EOM()
         gv.fake_assert()
 
@@ -62,11 +63,11 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     store_number = auto_globals.store_number
     now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
-    auto_globals.folder_time_stamp = "../data/{}/{}/{}/{}".format(orchestration_agent, org_name, store_number, now)
+    auto_globals.folder_time_stamp = "../data/{}/{}/{}/{}/runtime".format(orchestration_agent, org_name, store_number, now)
     pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
 
     if minimum is False:
-        src = "../data/vlans_funnel.csv"
+        src = "../runtime/vlans_funnel.csv"
         shutil.copy(src, auto_globals.folder_time_stamp)
         src = "../runtime/in_use_dryrun.json"
         shutil.copy(src, auto_globals.folder_time_stamp)
@@ -114,7 +115,7 @@ def get_store_path(fname, path, extension):
         now = auto_globals.time_stamp
         now = "{}".format(now)
         now = now.replace(":", "_")
-        fName = "{}/../{}/{}/{}/{}/{}/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
+        fName = "{}/../{}/{}/{}/{}/{}/runtime/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
     else:
         fName = "{}/../{}/{}.{}".format(cwd, path, fname, extension)
     return fName

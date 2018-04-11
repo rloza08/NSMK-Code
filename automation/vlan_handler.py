@@ -110,7 +110,7 @@ class VlanTable(object):
     Transforms the vlans_funnel.csv into vlans_funnels.json format
     """
     def convert_funnel_to_json(self):
-        self.funnel=Csv.transform_to_json((self.funnel_file))
+        self.funnel=Csv.transform_to_json((self.funnel_file), "runtime")
         self.funnelNetxFile = "{}_netx".format(self.funnel_file)
         self.funnel_subnet_file = "{}_subnet".format(self.funnel_file)
         self.funnelVlanFile = "{}_table".format(self.funnel_file)

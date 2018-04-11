@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import os
-#import utils.auto_globals as auto_globals
 import json
 import traceback
 import utils.auto_logger as l
+import global_vars as gv
 
 l.setup()
 
@@ -20,7 +20,8 @@ def json_reader(fpath):
         l.logger.debug("auto_utils.json_reader:\n{}".format(str))
     except Exception as err:
         l.logger.error("fpath:{} {}".format(fpath))
-        traceback.print_tb(err.__traceback__)
+        l.runlogs_logger.error("fpath:{} {}".format(fpath))
+        gv.fake_assert()
     return data
 
 def setup_proxy():
@@ -43,12 +44,6 @@ def get_clone_id(orgid):
     gv.fake_assert()
 
 config = json_reader("../config/safeway-config.json")
-#orgs = json_reader("../config/safeway-orgs.json")
-
-# import utils.auto_utils as utils
-# utils.get_key_value_in_data()
-# success, value = utils.get_key_value_in_data(json_data=config["network"], keyField="org_name", valueField="org_id",
-#                                              match=)
 
 api_key = os.environ.get("API_KEY", None)
 assert(api_key)

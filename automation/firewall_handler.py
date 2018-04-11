@@ -58,7 +58,7 @@ class FirewallHandler(object):
         self.vlanFunnelTable = vlan_handler.createVlanTable()
         # firewall_rules_template_004"
         fname = _fw_rules
-        self.firewallOutputFile = "l3fwrules_meraki_api"
+        self.firewallOutputFile = "_l3fwrules_deploy"
         self.firewallOutputFileNetx = "l3fwrules_netx"
 
         #self.header_netx_csv = ["policy", "protocol", "srcCidr", "srcPort", "destCidr", "destPort", "comment", "syslogEnabled"]

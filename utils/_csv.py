@@ -70,7 +70,8 @@ class Csv(object):
             else:
                 Json().writer(fname, entries, path)
         except Exception as err:
-            print("fname: {} not found".format(fname))
+            l.logger.error("fname: {} not found".format(fname))
+            l.runlogs_logger.error("fname: {} not found".format(fname))
             gv.EOM()
             gv.fake_assert()
         return entries
@@ -381,9 +382,9 @@ class Csv(object):
         json_data = _json.loads(f)
         self.data_to_csv(json_data, fname_csv)
 
-def transform_to_json(fname):
+def transform_to_json(fname, absolute_path=None):
     obj=Csv()
-    ref = obj.to_json(fname)
+    ref = obj.to_json(fname, absolute_path)
     return ref
 
 
