@@ -4,9 +4,11 @@
 *.csv
 /tmp
 /data
-/runtime
+/runtime/cli_selections.json
 /templates
 /venv*
+
+!/runtime/*
 
 !/menAndMice/*.json
 !/menAndMice/*.csv
