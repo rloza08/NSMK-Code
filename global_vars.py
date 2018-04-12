@@ -1,7 +1,7 @@
 import sys
 global log_verbose
 log_verbose = False  # Only if error_stop is set
-error_stop = True
+error_stop = False
 EOM = lambda : print("_"*48)
 
 def fake_assert():
@@ -13,3 +13,10 @@ def fake_assert():
             exit(-1)
     else:
         pass
+
+def fake_abort():
+    sys.stdout.flush()
+    if log_verbose:
+        assert(0)
+    else:
+        exit(-1)

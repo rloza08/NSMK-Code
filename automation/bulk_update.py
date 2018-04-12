@@ -96,7 +96,6 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
         Csv.transform_to_csv(fname, None, path="templates")
         l.runlogs_logger.info("deployed network: {}  netid: {}".format(store_name, auto_globals.netid))
 
-
 def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
     store_list = Json.reader(store_list_file, "templates")
     show_store_list(store_list)

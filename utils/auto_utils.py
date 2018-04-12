@@ -21,9 +21,8 @@ def goahead_confirm(module):
 
     if resp.lower() != "yes":
         l.runlogs_logger.error("Aborted by user !!!")
-        l.runlogs_logger.error("Aborted by user !!!")
         gv.EOM()
-        gv.fake_assert()
+        gv.fake_abort()
 
     print("Proceeding with {} deploy.".format(module))
     sys.stdout.flush()
