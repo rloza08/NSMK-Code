@@ -69,8 +69,6 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     if minimum is False:
         src = "../runtime/vlans_funnel.csv"
         shutil.copy(src, auto_globals.folder_time_stamp)
-        src = "../config/in_use_dryrun.json"
-        shutil.copy(src, auto_globals.folder_time_stamp)
         src = "../../templates"
         shutil.copytree(src, auto_globals.folder_time_stamp+"/templates_used")
     return now

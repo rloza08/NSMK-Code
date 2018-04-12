@@ -36,11 +36,11 @@ class Firewall(object):
     
     """
     @classmethod
-    def set(self, netid, fw_rules):
+    def set(self, netid, fw_rules, store_number):
         success=False
         str=None
         try:
-            fwrules = json.reader("_l3fwrules_deploy")
+            fwrules = json.reader("l3fwrules_deploy_{}".format(store_number))
             success, str = meraki.updatemxl3fwrules(config.api_key, netid, fwrules)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, str))
@@ -65,7 +65,7 @@ class Firewall(object):
     
     ps. Not in use.
     """
-    def get(self, netid):
+    def get(self, netid, store_number):
         self.firewalls = None
         try:
             success, self.firewalls = meraki.getmxl3fwrules(config.api_key, netid)
@@ -73,22 +73,22 @@ class Firewall(object):
                 l.logger.error("failed netid:{} {}".format(netid, self.firewalls))
                 l.runlogs_logger.error("failed netid:{} {}".format(netid, self.firewalls))
                 gv.fake_assert()
-            fname = "l3fwrules_get_{}".format(netid)
+            fname = "l3fwrules_get_{}".format(store_number)
             json.writer(fname, self.firewalls)
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid, self.firewalls))
             l.runlogs_logger.error("exception failure netid:{}".format(netid, self.firewalls))
             gv.fake_assert()
 
-def _get(netid):
+def _get(netid, store_number):
     """Gets firewall rules for a given netid into a json file"""
     obj = Firewall()
-    obj.get(netid)
+    obj.get(netid, store_number)
 
-def _set(netid, fw_rules=None):
+def _set(netid, fw_rules=None, store_number=None):
     """Sets the firewall from a json file"""
     obj = Firewall()
-    obj.set(netid, fw_rules)
+    obj.set(netid, fw_rules, store_number)
 
 
 def set_each(netid):

@@ -56,9 +56,8 @@ Inputs:
 class FirewallHandler(object):
     def __init__(self, _fw_rules=None):
         self.vlanFunnelTable = vlan_handler.createVlanTable()
-        # firewall_rules_template_004"
         fname = _fw_rules
-        self.firewallOutputFile = "_l3fwrules_deploy"
+        self.firewallOutputFile = "l3fwrules_deploy_{}".format(auto_globals.store_number)
         self.firewallOutputFileNetx = "l3fwrules_netx"
 
         #self.header_netx_csv = ["policy", "protocol", "srcCidr", "srcPort", "destCidr", "destPort", "comment", "syslogEnabled"]
@@ -282,14 +281,16 @@ def deploy(agent, fw_rules=None):
     # Does physical VLAN creation on meraki device
 
     netid = auto_globals.netid
-    firewall._set(netid, fw_rules)
+    store_number = auto_globals.store_number
+    firewall._set(netid, fw_rules, store_number)
     l.runlogs_logger.info("l3fwrules deployed netid:{}".format(netid))
     l.logger.info("successfully deployed netid:{}".format(netid))
 
 def get(agent):
 
     netid = auto_globals.netid
-    firewall._get(netid)
+    store_number = auto_globals.store_number
+    firewall._get(netid, store_number)
     l.runlogs_logger.info("got l3fwrules for netid:{}".format(netid))
     l.logger.info("got l3fwrules for  netid:{}".format(netid))
 
