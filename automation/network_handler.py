@@ -5,7 +5,7 @@ import utils.auto_globals as auto_globals
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from utils.auto_utils import show_orglist
-
+import utils.auto_config as config
 
 def deploy(agent):
     l.logger.debug("clone network")
@@ -37,7 +37,7 @@ def bulk_deploy_networks_for_all_orgs(agent):
         # Now get the netid for the clone_source
         auto_globals.select_store(auto_globals.deploy_clone_source)
         auto_globals.load_store(agent)
-        auto_globals.clone_id = auto_globals.netid
+        config.set_clone_id(auto_globals.netid)
 
         bulk.perform_bulk_deploy_networks(agent, deploy, org_name, store_list)
     l.runlogs_logger.info("deploy networks <finished>")

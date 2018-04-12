@@ -7,6 +7,9 @@ import global_vars as gv
 
 l.setup()
 
+global clone_id
+clone_id = None
+
 def make_pretty(my_json):
     return (json.dumps(my_json, indent=4, sort_keys=False))
 
@@ -35,13 +38,13 @@ def setup_proxy():
         url = "http://culproxyvip.safeway.com:8080"
     os.environ['HTTPS_PROXY'] = url
 
-def get_clone_id(orgid):
-    networks = config[0]["network"]
-    for network in networks:
-        if orgid == network["org_id"]:
-            clone_id = network['clone_id']
-            return clone_id
-    gv.fake_assert()
+def set_clone_id(id):
+    global clone_id
+    clone_id = id
+
+def get_clone_id():
+    global clone_id
+    return clone_id
 
 config = json_reader("../config/safeway-config.json")
 

@@ -43,7 +43,7 @@ class Networks(object):
                 netid=store["id"]
                 break
 
-        l.logger.debug(netid)
+        l.logger.debug("store: {} netid:{}".format(storeName, netid))
         return netid
 
     def getdetail(self, networkid):
@@ -81,7 +81,7 @@ class Networks(object):
         success = False
         self.network = None
         try:
-            clone_id = config.get_clone_id(orgid)
+            clone_id = config.get_clone_id()
 
             success, self.network = meraki.addnetwork(config.api_key, orgid, name, nettype,
                                                       tags=None, tz="US/Pacific",
