@@ -68,7 +68,7 @@ def get_orgid(org_name):
 def select_org(org_name):
     item = {}
     item["org_name"]=org_name.strip()
-    json_writer("../runtime/in_use_org.json", item)
+    json_writer("../config/in_use_org.json", item)
 
 
 def select_store(_store_name):
@@ -81,9 +81,9 @@ def select_store(_store_name):
 
 ## cli sets
 def set_run_dry(dryrun=True):
-    item = json_reader("../runtime/cli-selections.json")
+    item = json_reader("../config/in_use_dryrun")
     item["dryrun"] = dryrun
-    json_writer("../runtime/cli-selections.json", item)
+    json_writer("../config/in_use_dryrun", item)
 
 def set_deploy_org(deploy_org):
     item = json_reader("../runtime/cli-selections.json")
@@ -142,7 +142,7 @@ def get_settings():
     store_name = item.get("store_name")
     item = json_reader("../runtime/in_use_org.json")
     org_name = item.get("org_name")
-    item = json_reader("../runtime/in_use_dryrun.json")
+    item = json_reader("../config/in_use_dryrun.json")
     dryrun = item.get("dryrun", True)
     return dryrun, store_name, org_name
 
