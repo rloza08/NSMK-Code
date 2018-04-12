@@ -32,7 +32,8 @@
       },
       {
           "org_name": "Store_QA_Org",
-          "org_id": 686798943174000752
+          "org_id": 686798943174000752,
+          "clone_store": "0_Base_Config_v1"
       }
     ],
     "vlan":
