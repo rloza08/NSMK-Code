@@ -2,8 +2,8 @@ import logging
 import datetime
 import global_vars as gv
 import os
-if not os.path.exists("../data/logs"):
-    os.makedirs("../data/logs")
+if not os.path.exists("../../data/logs"):
+    os.makedirs("../../data/logs")
 
 logger = None
 runlogs_logger = None
@@ -33,12 +33,12 @@ def setup():
     global logger, runlogs_logger, runlogs_logger, runlogs_logger
     if not module_setup_done:
         now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        fulllog_file = "../data/logs/debug_{}.log".format(now)
+        fulllog_file = "../../data/logs/debug_{}.log".format(now)
         fulllog_file = fulllog_file.replace(":", "-")
         fulllog_file = fulllog_file.replace(" ", "-")
         fulllog_file = fulllog_file.replace("_", "-")
 
-        runlog_file = "../data/logs/run_{}.log".format(now)
+        runlog_file = "../../data/logs/run_{}.log".format(now)
         runlog_file = runlog_file.replace(":", "-")
         runlog_file = runlog_file.replace(" ", "-")
         runlog_file = runlog_file.replace("_", "-")
@@ -64,8 +64,8 @@ def setup():
             logger.addHandler(consoleHandler)
 
         runlogs_formatter = light_formatter
-        if os.path.isfile("../data/logs/runlogs.log"):
-            os.unlink("../data/logs/runlogs.log")
+        if os.path.isfile("../../data/logs/runlogs.log"):
+            os.unlink("../../data/logs/runlogs.log")
 
         runlogs_logger = setup_logger('nxmk_runlogs', log_file=runlog_file, level=logging.DEBUG,
                                        formatter= runlogs_formatter)

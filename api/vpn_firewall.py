@@ -3,7 +3,6 @@ from api.meraki_patch import meraki
 
 import utils.auto_config as config
 import utils.auto_logger as l
-import traceback
 import utils.auto_globals as auto_globals
 import utils.auto_json as Json
 import global_vars as gv
@@ -37,12 +36,11 @@ class VpnFirewall(object):
 
                     if not success:
                         l.runlogs_logger.error("{}".format(str))
-                        l.logger.error("failed.")
                         l.logger.error("{}".format(str))
                         gv.fake_assert()
             except Exception as err:
+                l.runlogs_logger.error("org_id: {} str:{}".format(org_id, str))
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
-                traceback.print_tb(err.__traceback__)
                 gv.fake_assert()
             return success, str
 
@@ -69,13 +67,11 @@ class VpnFirewall(object):
                     l.logger.debug("success")
                     Json.writer("vpn_updatevpnfwrules_{}".format(org_id), str)
                 else:
-                    l.runlogs_logger.error("{}".format(str))
-                    l.logger.error("failed.")
-                    l.logger.error("{}".format(str))
+                    l.runlogs_logger.error("failed :{}".format(str))
+                    l.logger.error("failed :{}".format(str))
                     gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
-                traceback.print_tb(err.__traceback__)
                 gv.fake_assert()
             return success, str
 
@@ -103,7 +99,6 @@ class VpnFirewall(object):
                     gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
-                traceback.print_tb(err.__traceback__)
                 gv.fake_assert()
             return success, str
 

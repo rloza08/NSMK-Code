@@ -8,7 +8,7 @@ LOGSCREEN=os.environ.get("MKLOG_SCREEN","SCREEN")
 LOGLEVEL=os.environ.get("MKLOG_LEVEL","DEBUG")
 
 now = datetime.datetime.now()
-LOGFILE=os.environ.get("MKLOG_FILE","../data/meraki_auto_{}.log".format(now))
+LOGFILE=os.environ.get("MKLOG_FILE","../../data/meraki_auto_{}.log".format(now))
 if os.name == 'nt':
 	LOGFILE=LOGFILE.replace(":","_")
 

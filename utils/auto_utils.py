@@ -63,7 +63,7 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     store_number = auto_globals.store_number
     now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
-    auto_globals.folder_time_stamp = "../data/{}/{}/{}/{}/runtime".format(orchestration_agent, org_name, store_number, now)
+    auto_globals.folder_time_stamp = "../../data/{}/{}/{}/{}/runtime".format(orchestration_agent, org_name, store_number, now)
     pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
 
     if minimum is False:
@@ -87,7 +87,7 @@ def create_org_data_dir(orchestration_agent):
         now = "{}".format(now)
         now = now.replace(":", "_")
 
-    auto_globals.folder_time_stamp = "../data/{}/{}/{}".format(orchestration_agent, org_name, now)
+    auto_globals.folder_time_stamp = "../../data/{}/{}/{}".format(orchestration_agent, org_name, now)
     pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
     return now
 
@@ -115,7 +115,9 @@ def get_store_path(fname, path, extension):
         now = auto_globals.time_stamp
         now = "{}".format(now)
         now = now.replace(":", "_")
-        fName = "{}/../{}/{}/{}/{}/{}/runtime/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
+        fName = "{}/../../{}/{}/{}/{}/{}/runtime/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
+    elif path == "templates":
+        fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
     else:
         fName = "{}/../{}/{}.{}".format(cwd, path, fname, extension)
     return fName

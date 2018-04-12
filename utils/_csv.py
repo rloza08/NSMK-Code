@@ -400,6 +400,6 @@ def transform_to_csv(fname, header=None, path="data"):
 
 if __name__ == '__main__':
     import utils.auto_globals as ag
-    ag.folder_time_stamp = '../data/cli-deploy-s2svpnrules/AutomationTestOrg_DONOTDELETE/2018_03_24_11_59_54/'
+    ag.folder_time_stamp = '../../data/cli-deploy-s2svpnrules/AutomationTestOrg_DONOTDELETE/2018_03_24_11_59_54/'
     fname = 's2svpnrules_deploy'
     transform_to_csv(fname, header=None, path="ORG")
