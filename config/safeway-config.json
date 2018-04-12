@@ -6,39 +6,13 @@
     },
     "network": [
       {
-          "org_name": "API Testing ORG",
-          "org_id": 686798943174000655,
+          "org_name": "AutomationTestOrg_DONOTDELETE",
+          "org_id" : 686798943174000795,
           "clone_store": "0_Base_Config_v1"
       },
       {
-          "org_id": 686798943174000764,
           "org_name": "Ecert_Org2",
-          "clone_store": "0_Base_Config_v1"
-      },
-      {
-          "org_id": 686798943174000764,
-          "org_name": "Ecert_Org2",
-          "clone_store": "0_Base_Config_v1"
-      },
-      {
-          "org_id": 578149602163687836,
-          "org_name": "Test Copy Org2",
-          "clone_store": "0_Base_Config_v1"
-      },
-      {
-          "org_name": "Albertsons Stores - Group 1",
-          "org_id": 650207196201616267,
-          "clone_store": "0_Base_Config_v1"
-      },
-      {
-          "org_name": "Store_QA_Org",
-          "org_id": 686798943174000752,
-          "clone_store": "0_Base_Config_v1"
-      },
-      {
-          "org_name": "New_Production_MX_Org",
-          "org_id": 686798943174000779,
-          "clone_store": "0_Base_Config_v1"
+		  "org_id": 686798943174000764
       },
       {
           "org_name": "Firewall_Testing_Org",
@@ -46,9 +20,19 @@
           "clone_store": "0_Base_Config_v1"
       },
       {
-          "org_name": "AutomationTestOrg_DONOTDELETE",
-          "org_id" : 686798943174000795,
+          "org_name": "New_Production_MX_Org",
+          "org_id": 686798943174000779,
+          "clone_store": "0_Base_Config_v1",
+          "clone_id": "N_686798943174005057"
+      },
+      {
+          "org_name": "Pilot_Org",
+		  "org_id": 686798943174000822,
           "clone_store": "0_Base_Config_v1"
+      },
+      {
+          "org_name": "Store_QA_Org",
+          "org_id": 686798943174000752
       }
     ],
     "vlan":
@@ -98,6 +82,13 @@
             "id": [
               "N_686798943174006638",
               "N_686798943174006639"
+            ]
+          },
+          {
+            "org_name": "Pilot_Org",
+            "id": [
+              "N_686798943174006976",
+              "N_686798943174006977"
             ]
           }
         ]
