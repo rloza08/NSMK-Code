@@ -68,7 +68,7 @@ def get_orgid(org_name):
 def select_org(org_name):
     item = {}
     item["org_name"]=org_name.strip()
-    json_writer("../config/in_use_org.json", item)
+    json_writer("../runtime/in_use_org.json", item)
 
 
 def select_store(_store_name):
