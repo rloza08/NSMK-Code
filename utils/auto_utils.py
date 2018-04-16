@@ -12,19 +12,19 @@ import  global_vars as gv
 # Not really to be called from anywhere
 # to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
 
-def goahead_confirm(module):
+def goahead_confirm(_module):
     time.sleep(1)
     sys.stdout.flush()
 
-    resp = input("\n# WARNING !!! #\n# Please review settings above for {} #\n\nType in 'yes' to proceed or any other character to abort."
-                 "enter (yes/No):".format(module))
+    if gv.force_yes is False:
+        resp = input("\n# WARNING !!! #\n# Please review settings above for {} #\n\nType in 'yes' to proceed or any other character to abort."
+                     "enter (yes/No):".format(_module))
 
-    if resp.lower() != "yes":
-        l.runlogs_logger.error("Aborted by user !!!")
-        gv.EOM()
-        gv.fake_abort()
-
-    print("Proceeding with {} deploy.".format(module))
+        if resp.lower() != "yes":
+            l.runlogs_logger.error("Aborted by user !!!")
+            gv.EOM()
+            gv.fake_abort()
+            print("Proceeding with {} deploy.".format(_module))
     sys.stdout.flush()
     return True
 

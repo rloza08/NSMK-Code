@@ -1,0 +1,20 @@
+#!/bin/bash
+set ORG=Org-Firewall_Testing_Org
+set STORES=Store-List-JAS1
+set FW=l3fwrules_template_MAR_MX_Org_031318-v5
+
+# SELECTING
+cli.py select deploy-org ORG
+cli.py select deploy-store-list STORES
+cli.py select deploy-l3fwrules-version FW
+cli.py get settings deploy
+
+# DEPLOY
+##cli.py deploy stores
+
+
+xxxxxxxxxxxxxx
+
+
+
+
