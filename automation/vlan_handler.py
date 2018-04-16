@@ -100,8 +100,8 @@ class VlanTable(object):
         self.netx = netx.Netx()
         self.valid_subnets = self.netx.valid_subnet_list
         self.netxFile = config.netx_file
-        storeDevice="{}{}{}".format(config.device_prefix, auto_globals.store_number, config.device_postfix)
-        self.netx, picknet = self.netx.get_all(None, storeDevice, None)
+        device="{}{}{}".format(config.device_prefix, auto_globals.store_number, config.device_postfix)
+        self.netx = self.netx.get_netx(device)
         json.writer(self.netxFile, self.netx)
         l.logger.debug("created {}".format(self.netxFile))
 

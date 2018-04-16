@@ -7,154 +7,111 @@ import utils.auto_logger as l
 import global_vars as gv
 
 """
-Netx module provided by Mark Trout (python code ported from perl)
-This code has been changed to :
-	- contained as a class
-	- 
+How to generate netx by example
+
+a) ping cc8501
+b) Pinging cc8501 [10.218.31.5] with 32 bytes of data:
+c) netx["upper"] = {1:10, 2:218, 3:28, 4:0}   (31-3 = 28 for 3rd octect)
+d) netx["lower"] = {1:10, 2:154, 3:28, 4:0}   (218-0x40=154 for 2nd octect)
+
+e) next{"a"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octects from netx["upper"]
+f) next{"b"] = {1:10. 2:218. 3:29}         (copy 1,2 octects from netx["a"] amd 3rd pctect = netx["a"][3] + 1
+g) next{"c"] = {1:10. 2:218. 3:30}         (copy 1,2 octects from netx["b"] amd 3rd pctect = netx["b"][3] + 1
+e) next{"d"] = {1:10. 2:218. 3:31}         (copy 1,2 octects from netx["c"] amd 3rd pctect = netx["c"][3] + 1
+
+e) next{"e"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octects from netx["lower"]
+f) next{"f"] = {1:10. 2:218. 3:29}         (copy 1,2 octects from netx["a"] amd 3rd pctect = netx["f"][3] + 1
+g) next{"g"] = {1:10. 2:218. 3:30}         (copy 1,2 octects from netx["b"] amd 3rd pctect = netx["g"][3] + 1
+e) next{"h"] = {1:10. 2:218. 3:31}         (copy 1,2 octects from netx["c"] amd 3rd pctect = netx["b"][3] + 1
+ 
+So for
+ip = 10.218.31.5
+netx = {
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+}
+
 """
 
-
 class Netx(object):
+    valid_subnet_list = ["a", "b", "c", "d", "e", "f", "g", "h"]
+
+    @classmethod
+    def get_addr(self, host):
+        try:
+            res = socket.gethostbyname(host)
+            return res
+        except:
+            from utils.auto_config import dryrun_netx_fake_ip, dryrun
+            if dryrun :
+                return dryrun_netx_fake_ip
+            l.logger.error("Cannot reach store/device : {}".format(host))
+            gv.fake_assert()
 
 
-	"""
-	 Modules for custom item routines for retail address space.
-	 Includes supporting IPv4 Modules
-	"""
-	def __init__(self):
-		offset=0x100
-		self.offset={}
-		self.offset['a'] = 0x000
-		self.offset['b'] = self.offset['a'] + offset
-		self.offset['c'] = self.offset['b'] + offset
-		self.offset['d'] = self.offset['c'] + offset
-		self.offset['e'] = 0x000
-		self.offset['f'] = self.offset['e'] + offset
-		self.offset['g'] = self.offset['f'] + offset
-		self.offset['h'] = self.offset['g'] + offset
-		self.valid_subnet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-		self.item={}
 
-	@classmethod
-	def get_addr(self, host):
-		try:
-			res = socket.gethostbyname(host)
-			return res
-		except:
-			from utils.auto_config import dryrun_netx_fake_ip, dryrun
-			if dryrun :
-				return dryrun_netx_fake_ip
-			l.logger.error("Cannot reach store/device : {}".format(host))
-			gv.fake_assert()
+    @classmethod
+    def get_netx(self, host):
+        netx = {
+            "upper": {}, "lower": {},
+            "a": {}, "b": {}, "c": {}, "d": {},
+            "e": {}, "f": {}, "g": {}, "h": {}
+        }
 
-	@classmethod
-	def get_name(self, addr):
-		l.logger.debug(addr)
-		return socket.gethostbyaddr(addr)[0]
+        ip_str = self.get_addr(host)
+        ip = ip_str.split(".")
 
-	@classmethod
-	def dotted_quad_to_num(self, ip):
-		"convert decimal dotted quad string to long integer"
-		return struct.unpack('!L',socket.inet_aton(ip))[0]
+        netx["upper"][1]=netx["lower"][1]=int(ip[0])
+        netx["upper"][2]=int(ip[1])
+        netx["upper"][3]=netx["lower"][3]=int(ip[2])-3
+        netx["upper"][4]=netx["lower"][4]=0
 
-	@classmethod
-	def num_to_dotted_quad(self, n):
-		"convert long int to dotted quad string"
-		return socket.inet_ntoa(struct.pack('!L',n))
+        netx["lower"][2]=int(ip[1])-0x40
 
-	@classmethod
-	def make_mask(self, n):
-		"return a mask of n bits as a long integer"
-		n = 32 - n
-		return (2<<n-1)-1
+        netx["a"][1]=netx["b"][1]=netx["c"][1]=netx["d"][1]=int(ip[0])
+        netx["a"][2]=netx["b"][2]=netx["c"][2]=netx["d"][2]=int(ip[1])
 
-	@classmethod
-	def ip_to_net_and_host(self, ip, maskbits):
-		"returns tuple (network, host) dotted-quad addresses given IP and mask size"
-		# (by Greg Jorgensen)
-		n = self.dotted_quad_to_num(ip)
-		m = self.make_mask(maskbits)
-		host = n & m
-		net = n - host
-		return self.num_to_dotted_quad(net)
+        netx["e"][1]=netx["f"][1]=netx["g"][1]=netx["h"][1]=int(ip[0])
+        netx["e"][2]=netx["f"][2]=netx["g"][2]=netx["h"][2]=int(ip[1])-0x40
 
-	def get_three_octets(self, slot):
-		if slot in ['a','b','c','d']:
-			aux = self.item['upper']
-		else:
-			aux = self.item['lower']
+        netx["a"][3]=netx["e"][3]=int(ip[2])-3
+        netx["b"][3]=netx["f"][3]=int(ip[2])-2
+        netx["c"][3]=netx["g"][3]=int(ip[2])-1
+        netx["d"][3]=netx["h"][3]=int(ip[2])
 
-		str = self.num_to_dotted_quad(self.dotted_quad_to_num(aux) + self.offset[slot])
-		octets = str.split(".")
-		str = "{}.{}.{}".format(octets[0], octets[1], octets[2])
-		return str
+        netx_str = {
+            "upper": "0.0.0.0",
+            "lower": "0.0.0.0",
+            "a": "0.0.0", "b": "0.0.0", "c": "0.0.0", "d": "0.0.0",
+            "e": "0.0.0", "f": "0.0.0", "g": "0.0.0", "h": "0.0.0"
+        }
 
-	def make_netx(self, ip):
-		"returns tuple(Upper,Lower,NetA,NetB,..NetH) for ip in 10.128.0.0/9"
-		self.item = {}
-
-		# test if address in upper or lower block
-		base = self.ip_to_net_and_host(ip, 10)
-
-		if str(base) < '10.192' :
-			ipVal = self.dotted_quad_to_num(ip)
-			ipVal += 0x400000
-			ipNew = self.num_to_dotted_quad(ipVal)
-			ip = ipNew
-
-		base = self.ip_to_net_and_host(ip, 22)
-
-		self.item['upper'] = base
-		self.item['lower'] = self.num_to_dotted_quad(self.dotted_quad_to_num(self.item['upper']) - 0x400000)
-
-		for slot in self.valid_subnet_list:
-			self.item[slot] = self.get_three_octets(slot)
-
-		return self.item
-
-	def get_all(self, _netx=None, _name=None, _addr=None):
-		if (_name is None and _addr is None):
-			l.logger.error("name and addr are empty")
-			return False
-		if _name:
-			addr = self.get_addr(_name)
-			name = _name
-		else:
-			addr = _addr
-			name = None   #FIXME self.get_name(addr)
-		l.logger.debug(name)
-		l.logger.debug(addr)
-
-		# Now build the ranges/etc
-		netX = self.make_netx(addr)
-
-		pickNet = None
-		if _netx :
-			str = "CC = %s.5" % netX[_netx]
-			l.logger.debug(str)
-			pickNet = "CC = %s.5" % netX[_netx]
-
-		l.logger.debug("item created.")
-		return netX, pickNet
+        netx_str["upper"] = "{}.{}.{}.{}".format(netx["upper"][1], netx["upper"][2], netx["upper"][3], netx["upper"][4])
+        netx_str["lower"] = "{}.{}.{}.{}".format(netx["lower"][1], netx["lower"][2], netx["lower"][3], netx["lower"][4])
 
 
-def _get(netx=None, name=None, addr=None):
-	obj = Netx()
-	obj.get_all(_netx, name, addr)
+        netx_to_str = lambda netx, idx : "{}.{}.{}".format(netx[idx][1], netx[idx][2], netx[idx][3])
 
+        for idx in self.valid_subnet_list:
+            netx_str[idx] = netx_to_str(netx, idx)
 
-def get(name):
-	obj = Netx()
-	netx, picknet = obj.get_all(None, name, None)
-	return netx, picknet
+        return netx_str
+
+def get(host):
+    obj = Netx()
+    netx  = obj.get_netx(host)
+    return netx
 
 
 if __name__ == '__main__':
-	cwd = os.getcwd()
-	_netx = None
-	_name = None
-	_addr = None
-	netx, picknet = get("mx9845a")
-	str = mkjson.make_pretty((netx))
-	l.logger.debug(str)
-	#netXPicks = _get(item=None, name=None, addr="151.101.193.67")
+    netx = get("cc8501")
+    str = mkjson.make_pretty((netx))
+    print (str)
