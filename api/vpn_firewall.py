@@ -91,7 +91,7 @@ class VpnFirewall(object):
 
                 if success:
                     l.logger.debug("success")
-                    Json.writer("s2svpnrules_get", vpn_rules, path="ORG")
+                    Json.writer("s2svpnrules_get", vpn_rules, path="ORG", header=None, logPath=True)
                 else:
                     l.runlogs_logger.error("{}".format(str))
                     l.logger.error("failed.")
