@@ -24,9 +24,11 @@ class Json:
             gv.fake_assert()
 
     @classmethod
-    def writer(self, fname, data, path="data", absolute_path=None):
+    def writer(self, fname, data, path="data", absolute_path=None, logPath=False):
         fnameJson = utils.get_path(fname, path, "json")
         self.writer_full_path(fnameJson, data)
+        if logPath:
+            l.runlogs_logger.info("created: {}".format(fnameJson))
 
     @classmethod
     def reader(self, fname, path="data"):
@@ -39,7 +41,7 @@ class Json:
             #l.logger.debug("data: {}".format(data))
         except Exception as err:
             l.logger.error("fname:{} {}".format(fname, fnameJson))
-            l.runlogs_logger.error("DEPLOY ... fname:{} {}".format(fname, fnameJson))
+            l.runlogs_logger.error("fname:{} {}".format(fname, fnameJson))
             gv.fake_assert()
 
         return data

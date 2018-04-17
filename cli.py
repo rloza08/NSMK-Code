@@ -258,9 +258,9 @@ class CLI(object):
     def	get_l3fwrules(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.firewall_handler import bulk_update_get
+        from automation.firewall_handler import bulk_get
         agent = "cli-get-l3fwrules"
-        bulk_update_get(agent=agent)
+        bulk_get(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
         EOM()

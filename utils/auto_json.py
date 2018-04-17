@@ -8,10 +8,10 @@ def reader(fname, configDir="data"):
     data = Json.reader(fname, configDir)
     return data
 
-def writer(fname, data, path="data", header=None):
+def writer(fname, data, path="data", header=None, logPath=False):
     if data is None:
         return
-    Json.writer(fname, data, path=path)
+    Json.writer(fname, data, path=path, absolute_path=None, logPath=logPath)
     transform_to_csv(fname, path=path, header=header)
 
 def make_pretty(my_json):

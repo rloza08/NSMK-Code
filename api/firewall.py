@@ -74,7 +74,8 @@ class Firewall(object):
                 l.runlogs_logger.error("failed netid:{} {}".format(netid, self.firewalls))
                 gv.fake_assert()
             fname = "l3fwrules_get_{}".format(store_number)
-            json.writer(fname, self.firewalls)
+
+            json.writer(fname, data=self.firewalls, path="data", header=None, logPath=True)
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid, self.firewalls))
             l.runlogs_logger.error("exception failure netid:{}".format(netid, self.firewalls))

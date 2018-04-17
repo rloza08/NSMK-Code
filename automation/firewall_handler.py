@@ -296,7 +296,7 @@ def get(agent):
 
 
 def bulk_update(agent):
-    l.runlogs_logger.info("bulk get started")
+    l.runlogs_logger.info("bulk update started")
 
     if agent is "cli-deploy-networks":
         org_group = auto_globals.deploy_l3fwrules_org
@@ -316,10 +316,10 @@ def bulk_update(agent):
         auto_globals.select_org(org_name)
         fw_rules = "{}".format(auto_globals.l3fwrules_version)
         bulk.perform_bulk_update_firewall(agent, deploy, org_name, fw_rules, store_list)
-    l.runlogs_logger.info("bulk get finished")
+    l.runlogs_logger.info("bulk update finished")
 
-def bulk_update_get(agent):
-    l.runlogs_logger.info("bulk update get started")
+def bulk_get(agent):
+    l.runlogs_logger.info("bulk get started")
 
     org_group = auto_globals.l3fwrules_org
     store_list = auto_globals.l3fwrules_store_list
@@ -331,7 +331,7 @@ def bulk_update_get(agent):
         l.runlogs_logger.info("selected org: {}".format(org_name))
         auto_globals.select_org(org_name)
         bulk.perform_bulk_get_firewall(agent, get, org_name, store_list)
-    l.runlogs_logger.info("bulk update finished")
+    l.runlogs_logger.info("bulk get finished")
 
 
 
