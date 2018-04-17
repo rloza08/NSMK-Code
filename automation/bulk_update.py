@@ -86,6 +86,7 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
         if store_name is None:
             str = "fname: {} ::: store_name field was not found for store {}".format(fname, store)
             l.logger.error(str)
+            l.runlogs_logger.error(str)
             gv.fake_assert()
         l.logger.info("deploying store : {}".format(store_name))
         auto_globals.select_store(store_name)
@@ -107,6 +108,7 @@ def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
         store_name = store.get("name", None)
         if store_name is None:
             l.logger.error("fname: {} ::: name field was not found for store {}".format(store))
+            l.runlogs_logger.error("fname: {} ::: name field was not found for store {}".format(store))
             gv.fake_assert()
         l.runlogs_logger.info("created network : {}".format(store_name))
 

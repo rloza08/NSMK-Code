@@ -2,11 +2,9 @@
 #!/usr/bin/env python3
 import csv
 import utils.auto_logger as l
-import traceback
 import utils.auto_utils as utils
 from utils._json import Json
 from jsonschema import validate
-import os
 import sys
 import global_vars as gv
 
@@ -362,7 +360,7 @@ class Csv(object):
 
         except Exception as err:
             l.logger.error("fname:{} {}".format(fname, fname_csv))
-            traceback.print_tb(err.__traceback__)
+            l.runlogs_logger.error("fname:{} {}".format(fname, fname_csv))
             gv.fake_assert()
 
 

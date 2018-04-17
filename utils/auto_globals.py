@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os
 import json
-import traceback
 import utils.auto_logger as l
 import global_vars as gv
 
@@ -32,8 +31,8 @@ def json_writer(fpath, data):
             f.write(str)
     except Exception as err:
         l.logger.error("failure")
-        traceback.print_tb(err.__traceback__)
-        assert (0)
+        l.runlogs_logger.error("failure")
+        gv.fake_assert()
 
 def json_reader(fpath):
     data = None
@@ -43,7 +42,9 @@ def json_reader(fpath):
         data = json.loads(json_data)
     except Exception as err:
         l.logger.error("fpath:{} {}".format(fpath))
-        traceback.print_tb(err.__traceback__)
+        l.runlogs_logger.error("fpath:{} {}".format(fpath))
+        gv.fake_assert()
+
     return data
 
 def _get_orgid(org_name):

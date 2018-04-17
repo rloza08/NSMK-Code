@@ -3,7 +3,6 @@ import os
 import utils.auto_json as Json
 import utils.auto_logger as l
 from jinja2 import Environment, FileSystemLoader
-import traceback
 import utils.auto_utils as utils
 import utils._csv as csv_json
 import json
@@ -23,7 +22,8 @@ class JinjaAutomation(object):
 			str = TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
 		except Exception as err:
 			l.logger.error("template_filename:{}".format(template_filename))
-			traceback.print_tb(err.__traceback__)
+			l.runlogs_logger.error("template_filename:{}".format(template_filename))
+
 		result = json.loads(str)
 		return result
 

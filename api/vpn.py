@@ -2,9 +2,6 @@
 import utils.auto_config as config
 import utils.auto_json as json
 import utils.auto_logger as l
-from api.meraki_patch import meraki
-import traceback
-import api.network as networks
 import api.meraki as meraki
 import global_vars as gv
 
@@ -28,12 +25,12 @@ class Vpn(object):
 				l.logger.debug("success")
 				json.writer("vpn_updatevpnsettings_{}".format(networkid), str)
 			else:
-				l.logger.error("failed.")
 				l.logger.error("{}".format(str))
+				l.runlogs_logger.error("{}".format(str))
 				gv.fake_assert()
 		except  Exception as err:
 			l.logger.error("networkid: {} str:{}".format(networkid, str))
-			traceback.print_tb(err.__traceback__)
+			l.runlogs_logger.error("networkid: {} str:{}".format(networkid, str))
 			gv.fake_assert()
 		return success, str
 

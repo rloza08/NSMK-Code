@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 import json
 import utils.auto_logger as l
-import traceback
 import utils.auto_utils as utils
-import os
-from global_vars import log_verbose as l_verbose
 import global_vars as gv
 
 class Json:

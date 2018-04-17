@@ -23,9 +23,11 @@ class Firewall(object):
                 l.logger.debug(rule["comment"])
             if not success:
                 l.logger.error("failed rule comment:{} {}".format(rule["comment"], str))
+                l.runlogs_logger.error("failed rule comment:{} {}".format(rule["comment"], str))
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
+            l.runlogs_logger.error("exception failure netid:{}".format(netid))
             gv.fake_assert()
         return success, str
 
@@ -44,6 +46,7 @@ class Firewall(object):
             success, str = meraki.updatemxl3fwrules(config.api_key, netid, fwrules)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, str))
+                l.runlogs_logger.error("failed netid:{} {}".format(netid, str))
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid), str)

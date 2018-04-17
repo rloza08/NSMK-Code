@@ -2,7 +2,6 @@
 import utils.auto_config as config
 import utils.auto_logger as l
 from api.meraki_patch import meraki
-import traceback
 import utils.auto_globals as auto_globals
 import utils.auto_json as Json
 import global_vars as gv
@@ -16,6 +15,7 @@ class Networks(object):
         success, self.stores = self.list()
         if not success:
             l.logger.error("failed. orgid:{} storeName:{}".format(auto_globals.orgid, storeName))
+            l.runlogs_logger.error("failed. orgid:{} storeName:{}".format(auto_globals.orgid, storeName))
             gv.fake_assert()
 
     def list(self):
@@ -32,7 +32,7 @@ class Networks(object):
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("orgid: {}".format(auto_globals.orgid))
-            traceback.print_tb(err.__traceback__)
+            l.runlogs_logger.error("orgid: {}".format(auto_globals.orgid))
             gv.fake_assert()
         return success, self.networks
 
@@ -53,11 +53,12 @@ class Networks(object):
             success, self.network= meraki.getnetworkdetail(config.api_key, networkid)
             l.logger.debug(Json.make_pretty(self.network))
             if not success:
-                l.logger.error("failed")
+                l.logger.error("failed: {}".format(self.network))
+                l.runlogs_logger.error("failed: {}".format(self.network))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("orgid: {}".format(networkid))
-            traceback.print_tb(err.__traceback__)
+            l.logger.error("networkid: {} {}".format(networkid, self.network))
+            l.runlogs_logger.error("networkid: {} {}".format(networkid, self.network))
             gv.fake_assert()
         return success, self.network
 
@@ -65,14 +66,16 @@ class Networks(object):
         success = False
         self.network=None
         try:
-            success, self.network = meraki.updatenetwork(config.api_key, networkid, name, tz="US/Pacific", tags=None)
+            success, str = meraki.updatenetwork(config.api_key, networkid, name, tz="US/Pacific", tags=None)
+            self.network = str
             l.logger.debug(Json.make_pretty(self.network))
             if not success:
-                l.logger.error("failed")
+                l.logger.error("{}".format(str))
+                l.runlogs_logger.error("{}".format(str))
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("orgid: {}".format(networkid))
-            traceback.print_tb(err.__traceback__)
+
             gv.fake_assert()
         return success, self.network
 
@@ -92,8 +95,9 @@ class Networks(object):
                 gv.fake_assert()
             l.logger.debug("cloned network, {} {}: {}".format(name, nettype, self.network))
         except  Exception as err:
+            l.logger.error("orgid:{} name:{} nettype:{}".format(orgid, name, nettype))
             l.runlogs_logger.error("orgid:{} name:{} nettype:{}".format(orgid, name, nettype))
-            traceback.print_tb(err.__traceback__)
+            gv.fake_assert()
             assert (0)
         return success, self.network
 
@@ -108,7 +112,7 @@ class Networks(object):
                 gv.fake_assert()
         except Exception as err:
             l.logger.error("networid:{} {}".format(networkid, str))
-            traceback.print_tb(err.__traceback__)
+            l.runlogs_logger.error("networid:{} {}".format(networkid, str))
             gv.fake_assert()
         return success, str
 
@@ -117,6 +121,7 @@ def getCreatedNetworkId(networkName):
     network = Json.reader(fname)
     if network is None:
         l.logger.error("unable to load rules from firewall_template")
+        l.runlogs_logger.error("unable to load rules from firewall_template")
         gv.fake_assert()
     return network["id"]
 

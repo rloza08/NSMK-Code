@@ -2,7 +2,6 @@
 """ Module to display all documentation, strings are kept in wiki.py"""
 import json
 import utils.auto_logger as l
-import traceback
 import utils.wiki as wiki
 from global_vars import EOM
 
@@ -15,7 +14,7 @@ def json_reader(fpath):
     # l.logger.debug("data: {}".format(data))
     except Exception as err:
         l.logger.error("fpath:{} {}".format(fpath))
-        traceback.print_tb(err.__traceback__)
+        l.runlogs_logger.error("fpath:{} {}".format(fpath))
     return data
 
 

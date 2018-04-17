@@ -12,6 +12,7 @@ runlogs_logger = None
 module_setup_done = False
 
 
+
 #config = json_reader("../config/safeway-utils.json")
 
 if gv.log_verbose:

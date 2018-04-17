@@ -11,18 +11,18 @@ How to generate netx by example
 
 a) ping cc8501
 b) Pinging cc8501 [10.218.31.5] with 32 bytes of data:
-c) netx["upper"] = {1:10, 2:218, 3:28, 4:0}   (31-3 = 28 for 3rd octect)
-d) netx["lower"] = {1:10, 2:154, 3:28, 4:0}   (218-0x40=154 for 2nd octect)
+c) netx["upper"] = {1:10, 2:218, 3:28, 4:0}   (31-3 = 28 for 3rd octet)
+d) netx["lower"] = {1:10, 2:154, 3:28, 4:0}   (218-0x40=154 for 2nd octet)
 
-e) next{"a"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octects from netx["upper"]
-f) next{"b"] = {1:10. 2:218. 3:29}         (copy 1,2 octects from netx["a"] amd 3rd pctect = netx["a"][3] + 1
-g) next{"c"] = {1:10. 2:218. 3:30}         (copy 1,2 octects from netx["b"] amd 3rd pctect = netx["b"][3] + 1
-e) next{"d"] = {1:10. 2:218. 3:31}         (copy 1,2 octects from netx["c"] amd 3rd pctect = netx["c"][3] + 1
+e) next{"a"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octets from netx["upper"]
+f) next{"b"] = {1:10. 2:218. 3:29}         (copy 1,2 octets from netx["a"] and 3rd pctect = netx["a"][3] + 1
+g) next{"c"] = {1:10. 2:218. 3:30}         (copy 1,2 octets from netx["b"] and 3rd pctect = netx["b"][3] + 1
+e) next{"d"] = {1:10. 2:218. 3:31}         (copy 1,2 octets from netx["c"] and 3rd pctect = netx["c"][3] + 1
 
-e) next{"e"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octects from netx["lower"]
-f) next{"f"] = {1:10. 2:218. 3:29}         (copy 1,2 octects from netx["a"] amd 3rd pctect = netx["f"][3] + 1
-g) next{"g"] = {1:10. 2:218. 3:30}         (copy 1,2 octects from netx["b"] amd 3rd pctect = netx["g"][3] + 1
-e) next{"h"] = {1:10. 2:218. 3:31}         (copy 1,2 octects from netx["c"] amd 3rd pctect = netx["b"][3] + 1
+e) next{"e"] = {1:10. 2:218. 3:28}         (copy 1,2,3 octets from netx["lower"]
+f) next{"f"] = {1:10. 2:218. 3:29}         (copy 1,2 octets from netx["a"] and 3rd pctect = netx["f"][3] + 1
+g) next{"g"] = {1:10. 2:218. 3:30}         (copy 1,2 octets from netx["b"] and 3rd pctect = netx["g"][3] + 1
+e) next{"h"] = {1:10. 2:218. 3:31}         (copy 1,2 octets from netx["c"] and 3rd pctect = netx["b"][3] + 1
  
 So for
 ip = 10.218.31.5
@@ -54,6 +54,7 @@ class Netx(object):
             if dryrun :
                 return dryrun_netx_fake_ip
             l.logger.error("Cannot reach store/device : {}".format(host))
+            l.runlogs_logger.error("Cannot reach store/device : {}".format(host))
             gv.fake_assert()
 
 

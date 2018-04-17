@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os
 import json
-import traceback
 import utils.auto_logger as l
 import global_vars as gv
 

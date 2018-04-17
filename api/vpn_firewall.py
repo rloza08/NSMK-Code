@@ -72,6 +72,7 @@ class VpnFirewall(object):
                     gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
+                l.runlogs_logger.error("org_id: {} str:{}".format(org_id, str))
                 gv.fake_assert()
             return success, str
 
@@ -93,12 +94,12 @@ class VpnFirewall(object):
                     l.logger.debug("success")
                     Json.writer("s2svpnrules_get", vpn_rules, path="ORG", header=None, logPath=True)
                 else:
-                    l.runlogs_logger.error("{}".format(str))
-                    l.logger.error("failed.")
-                    l.logger.error("{}".format(str))
+                    l.runlogs_logger.error("failed: {}".format(str))
+                    l.logger.error("failed: {}".format(str))
                     gv.fake_assert()
             except Exception as err:
                 l.logger.error("org_id: {} str:{}".format(org_id, str))
+                l.runlogs_logger.error("org_id: {} str:{}".format(org_id, str))
                 gv.fake_assert()
             return success, str
 

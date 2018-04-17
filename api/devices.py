@@ -32,6 +32,7 @@ class devices(object):
                 l.logger.error("{}".format(str))
         except  Exception as err:
             l.logger.error("networkid: {} serial:{}".format(networkid, serial))
+            l.runlogs_logger.error("networkid: {} serial:{}".format(networkid, serial))
             gv.fake_assert()
 
         return success, str
@@ -49,6 +50,7 @@ class devices(object):
             json.writer("claim_{}".format(serial), self.claim)
         except Exception as err:
             l.logger.error("serial:{}".format(serial))
+            l.runlogs_logger.error("serial:{}".format(serial))
             gv.fake_assert()
 
         return success, self.claim
