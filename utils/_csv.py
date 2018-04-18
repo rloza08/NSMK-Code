@@ -37,6 +37,7 @@ def show_error(str):
     l.logger.error(str)
     sys.stdout.flush()
 
+
 class Csv(object):
     def __init__(self):
         pass
@@ -129,7 +130,14 @@ class Csv(object):
         for it in items:
             item_count += 1
             if self.validate_vlan_item(it) is False:
-                if field == "destCidr":
+                if field == "srcCidr":
+                    if it == "any":
+                        continue
+                    octet = it.split(".")
+                    # Upgrade logic with three octets and mask check
+                    if octet[0] == "192" and octet[1] == "168":
+                        continue
+                elif field == "destCidr":
                     comment=entry["comment"]
                     if self.validate_ip_item(comment, line_count, it, field):
                         continue
