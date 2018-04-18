@@ -37,42 +37,9 @@ def show_error(str):
     l.logger.error(str)
     sys.stdout.flush()
 
-class Csv(object):
+class Validate(object):
     def __init__(self):
         pass
-
-    @classmethod
-    def to_json(self, fname, path="data", absolute_path=None):
-        self.item = {}
-        if absolute_path:
-            fname_csv = "{}/{}.csv".format(absolute_path, fname)
-            fname_json = "{}/{}.json".format(absolute_path, fname)
-        else:
-            fname_csv = utils.get_path(fname, path, "csv")
-        entries = []
-        try:
-            with open(fname_csv, newline='') as csv_file:
-                reader = csv.DictReader(csv_file, skipinitialspace=True)
-                for entry in reader:
-                    entries.append(entry)
-                    item = entry.get("syslogEnabled")
-                    if item:
-                        if item.lower() == "true":
-                            entry["syslogEnabled"] = True
-                        else :
-                            entry["syslogEnabled"] = False
-
-                    #self.Schema.validate(entry)
-            if absolute_path:
-                Json().writer_full_path(fname_json, entries)
-            else:
-                Json().writer(fname, entries, path)
-        except Exception as err:
-            l.logger.error("fname: {} not found".format(fname))
-            l.runlogs_logger.error("fname: {} not found".format(fname))
-            gv.EOM()
-            gv.fake_assert()
-        return entries
 
     def validate_ip_item(self, comment, line_count, it, field):
         success=False
@@ -299,16 +266,6 @@ class Csv(object):
         return entries
 
     @classmethod
-    def write_lines(self, csvfile, field_names, json_data):
-        writer = csv.DictWriter(csvfile, field_names)
-        writer.writeheader()
-        if type(json_data) is list:
-            for rowDict in json_data:
-                writer.writerow(rowDict)
-        else:
-            writer.writerow(json_data)
-
-    @classmethod
     def fix_bool_to_lower_dict(self, json_data, line):
         for field in json_data.keys():
             data = line[field]
@@ -331,77 +288,3 @@ class Csv(object):
 
         return json_data
 
-    @classmethod
-    def data_to_csv(self, json_data, fname_csv, header=None):
-        if type(json_data) == list:
-            fieldNames = [k for k in json_data[0].keys()]
-        else:
-            fieldNames = [k for k in json_data.keys()]
-
-        # Turn boolean field names into strings
-        self.fix_bool_to_lower(json_data)
-
-        if header is not None:
-            headerOkay=True
-            for column in header:
-                if column not in fieldNames:
-                    headerOkay=False
-                    l.logger.error("header column: {} not found".format(column))
-                    gv.EOM()
-                    gv.fake_assert()
-            if headerOkay is False:
-                return
-            # This will make it use the order provided
-            fieldNames=header
-        try:
-            import os
-            if os.name == 'nt' :
-                with open(fname_csv, 'w', newline='') as csvfile:
-                    self.write_lines(csvfile, fieldNames, json_data)
-            else:
-                with open(fname_csv, 'w') as csvfile:
-                    self.write_lines(csvfile, fieldNames, json_data)
-
-        except Exception as err:
-            l.logger.error("fname:{} {}".format(fname, fname_csv))
-            l.runlogs_logger.error("fname:{} {}".format(fname, fname_csv))
-            gv.fake_assert()
-
-
-    @classmethod
-    def to_csv(self, fname, header=None, path="data"):
-        fname_csv = utils.get_path(fname, path, 'csv')
-        obj = Json()
-        json_data = obj.reader(fname, path)
-        self.data_to_csv(json_data, fname_csv, header)
-
-    @classmethod
-    def to_csv_and_validate(self, fname, input_path, output_path):
-        fname_json = "{}/{}.json".format(input_path, fname)
-        fname_csv = "{}/{}.csv".format(input_path, fname)
-        import json as _json
-        f = open(fname_json).read()
-        json_data = _json.loads(f)
-        self.data_to_csv(json_data, fname_csv)
-
-def transform_to_json(fname, absolute_path=None):
-    obj=Csv()
-    ref = obj.to_json(fname, absolute_path)
-    return ref
-
-
-def transform_to_csv_and_validate(fname, input_path, output_path):
-    obj=Csv()
-    obj.to_csv_and_validate(fname, input_path, output_path)
-
-
-def transform_to_csv(fname, header=None, path="data"):
-    obj=Csv()
-    obj.to_csv(fname, header, path)
-
-
-if __name__ == '__main__':
-    import utils.auto_globals as ag
-    ag.folder_time_stamp = '../../data/cli-deploy-s2svpnrules/AutomationTestOrg_DONOTDELETE/2018_03_24_11_59_54/'
-    fname = 's2svpnrules_deploy'
-    transform_to_csv(fname, header=None, path="ORG")
