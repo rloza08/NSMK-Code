@@ -202,7 +202,7 @@ class Csv(object):
         items = field.split(",")
         success = True
         for item in items:
-            self.validate_ip_item(self, comment, line_count, item, field)
+            self.validate_ip_item(comment, line_count, item, field)
         return success
 
     def to_json_and_validate(self, fname, input_path=None, output_path=None):
