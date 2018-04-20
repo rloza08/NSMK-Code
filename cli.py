@@ -179,13 +179,6 @@ class CLI(object):
         auto_globals.set_production(real_mode)
         EOM()
 
-    def set_deploy_clone_source(self, deploy_clone_source):
-        os.chdir("{}/automation".format(self.cwd))
-        import utils.auto_globals as auto_globals
-        print("\nset deploy-clone-source:{}".format(deploy_clone_source))
-        auto_globals.set_deploy_clone_source(deploy_clone_source)
-        EOM()
-
     def set_run_dry(self):
         """This is the default and selects dry-run mode which bypaasses meraki api calls ,
         It is useful to verify valid org name, store id and that the scripts are running
