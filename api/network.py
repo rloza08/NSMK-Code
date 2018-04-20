@@ -14,8 +14,8 @@ class Networks(object):
     def __init__(self):
         success, self.stores = self.list()
         if not success:
-            l.logger.error("failed. orgid:{} storeName:{}".format(auto_globals.orgid, storeName))
-            l.runlogs_logger.error("failed. orgid:{} storeName:{}".format(auto_globals.orgid, storeName))
+            l.logger.error("failed. orgid:{}".format(auto_globals.orgid))
+            l.runlogs_logger.error("failed. orgid:{}".format(auto_globals.orgid))
             gv.fake_assert()
 
     def list(self):

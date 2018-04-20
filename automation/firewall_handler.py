@@ -231,8 +231,9 @@ class FirewallHandler(object):
             rule["srcCidr"] = self.vlans_to_subnet(rule["srcCidr"])
             """
             Syslog enabled is breaking the api so we force it to disabled.
+            2018-04-19  ["Cannot enable s yslog on rules - a syslog server must be configured"]}
             """
-            rule["syslogEnabled"] = False
+            #rule["syslogEnabled"] = False
 
         rules=[]
         """
