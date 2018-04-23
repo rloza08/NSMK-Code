@@ -2,7 +2,7 @@ import sys
 global log_verbose
 log_verbose = False  # Only if error_stop is set
 error_stop = False
-force_yes = True
+force_yes = False
 EOM = lambda : print("_"*48)
 
 def fake_assert():
