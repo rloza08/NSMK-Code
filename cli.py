@@ -205,7 +205,6 @@ class CLI(object):
 
                 deploy-org
                 deploy-store-list
-                deploy-clone-source
                 l3fwrules-org
                 l3fwrules-store-list
                 l3fwrules-version
@@ -229,8 +228,6 @@ class CLI(object):
             self.set_s2svpnrules_org(org_name=param)
         elif module.find("s2svpnrules-version") == 0:
             self.set_s2svpnrules_version(version=param)
-        elif module.find("clone-source") == 0:
-            self.set_clone_source(clone_source=param)
         elif module.find("production") == 0:
             self.set_production(mode=param)
         elif module.find("run") == 0:
