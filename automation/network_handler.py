@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import utils.auto_logger as l
-from api.network import create
+from api.network import create, network_list
 import utils.auto_globals as auto_globals
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from utils.auto_utils import show_orglist
 import utils.auto_config as config
+from utils.auto_utils import is_valid_store_name
 
 def deploy(agent):
     l.logger.debug("clone network")
@@ -14,6 +15,14 @@ def deploy(agent):
     store_name = auto_globals.store_name
     create(org_id, store_name)
     return
+
+
+def get_stores(agent):
+    l.logger.debug("get_store_list")
+    org_name = auto_globals.org_name
+    org_id = auto_globals.get_orgid(org_name)
+    store_list = network_list(org_id)
+    return store_list
 
 
 def bulk_deploy_networks_for_all_orgs(agent):
@@ -44,4 +53,9 @@ def bulk_deploy_networks_for_all_orgs(agent):
 
 
 if __name__ == '__main__':
-    bulk_deploy_networks_for_all_orgs(agent="network_handler", org_group="Org-AutomationTestOrg_DONOTDELETE", store_list="Store-List-AutomationTest")
+    #bulk_deploy_networks_for_all_orgs(agent="network_handler", org_group="Org-AutomationTestOrg_DONOTDELETE", store_list="Store-List-AutomationTest")
+    #get_stores("network_handler_main")
+    auto_globals.org_name = "AutomationTestOrg_DONOTDELETE"
+    org_id = 686798943174000779
+    store_list = get_stores("network-handler")
+    print (store_list)

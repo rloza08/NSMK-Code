@@ -11,30 +11,33 @@ import global_vars as gv
     So Networks Class is made a singleton
 """
 class Networks(object):
-    def __init__(self):
-        success, self.stores = self.list()
+    def __init__(self, org_id=None):
+        if org_id == None:
+            org_id = auto_globals.orgid
+        success, self.stores = self.list(org_id)
         if not success:
-            l.logger.error("failed. orgid:{}".format(auto_globals.orgid))
-            l.runlogs_logger.error("failed. orgid:{}".format(auto_globals.orgid))
+            l.logger.error("failed. orgid:{}".format(org_id))
+            l.runlogs_logger.error("failed. orgid:{}".format(org_id))
             gv.fake_assert()
 
-    def list(self):
+    @classmethod
+    def list(self, org_id):
         success = False
-        self.networks=None
+        networks = None
         try:
-            success, self.networks = meraki.getnetworklist(config.api_key, auto_globals.orgid)
+            success, networks = meraki.getnetworklist(config.api_key, org_id)
             if success:
                 l.logger.debug("success")
-                l.logger.debug(Json.make_pretty(self.networks))
+                l.logger.debug(Json.make_pretty(networks))
             else:
                 l.logger.error("failed.")
-                l.logger.error("networks: {}".format(self.networks))
+                l.logger.error("networks: {}".format(networks))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("orgid: {}".format(auto_globals.orgid))
-            l.runlogs_logger.error("orgid: {}".format(auto_globals.orgid))
+            l.logger.error("orgid: {}".format(org_id))
+            l.runlogs_logger.error("orgid: {}".format(org_id))
             gv.fake_assert()
-        return success, self.networks
+        return success, networks
 
     def get_netid_for_store(self, storeName):
         netid=None
@@ -130,11 +133,11 @@ def create(org_id, store_name):
     success, netid = Networks.add(org_id, store_name, nettype="appliance")
     return success, netid
 
-def list():
+def network_list(org_id):
     """List all networks"""
-    obj=Networks()
-    obj.list()
-
+    #obj=Networks(org_id)
+    success, network_list = Networks.list(org_id)
+    return success, network_list
 
 obj_networks=None
 def get_store_netid(store_name):
