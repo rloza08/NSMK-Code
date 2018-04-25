@@ -4,34 +4,11 @@ import csv
 import utils.auto_logger as l
 import utils.auto_utils as utils
 from utils._json import Json
+from utils.auto_utils import is_numeric, is_numeric_in_range, is_non_zero_number
+
 from jsonschema import validate
 import sys
 import global_vars as gv
-
-def is_number(s):
-    try:
-        int(s)
-
-        return True
-    except ValueError:
-        pass
-
-    try:
-        import unicodedata
-        unicodedata.numeric(s)
-        return True
-    except (TypeError, ValueError):
-        pass
-
-    return False
-
-
-def is_non_zero_number(s):
-    if is_number(s) == False:
-        return False
-    if int(s) == 0 :
-        return False
-    return True
 
 def show_error(str):
     l.logger.error(str)
@@ -81,7 +58,7 @@ class Csv(object):
             aux = it.split("/")
             four_octets = aux[0]
             mask = aux[1]
-            if self.is_number_in_range(mask, 1, 32) is False:
+            if is_numeric_in_range(mask, 1, 32) is False:
                 str = "ref: {}\nline #:{} - invalid mask {}\n{}".format(comment, line_count, it, field)
                 l.message_user(str)
                 return False
@@ -147,16 +124,6 @@ class Csv(object):
 
         return True
 
-    def is_number_in_range(self, number, lo, hi):
-        try:
-            if is_number(number):
-                if int(number) >= lo  and int(number) <= hi:
-                    return True
-        except:
-            str = "invalid range for {} : lo: {} hi: {}".format(number, lo, hi)
-            #l.message_user(str)
-        return False
-
     def validate_port(self, entry, field, line_count):
         item = entry.get(field)
         items = item.split(",")
@@ -171,12 +138,12 @@ class Csv(object):
                 if len(items)==1:
                     range = item.split("-")
                     if len(range) == 2:
-                        if self.is_number_in_range(range[0],1,65535) and \
-                                self.is_number_in_range(range[1], 1, 65535):
+                        if is_numeric_in_range(range[0], 1, 65535) and \
+                                is_numeric_in_range(range[1], 1, 65535):
                             return True
             else:
                 # It has to be a valid port
-                if self.is_number_in_range(item,1,65535):
+                if is_numeric_in_range(item, 1, 65535):
                     return True
             str = "line #:{} - invalid {} : {}".format(line_count, field, item)
             l.message_user(str)
@@ -190,7 +157,7 @@ class Csv(object):
             return False
         # Review if first octect has to be non-zero
         for octet in octets:
-            if self.is_number_in_range(octet, 0, 255) is False:
+            if is_numeric_in_range(octet, 0, 255) is False:
                 l.message_user(str)
                 return False
         return True

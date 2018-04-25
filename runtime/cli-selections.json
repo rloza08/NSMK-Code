@@ -3,7 +3,7 @@
     "deploy-l3fwrules-version": "l3fwrules_template_MAR_MX_Org_031318-v5",
     "deploy-org": "Org-AutomationTestOrg_DONOTDELETE",
     "deploy-store-list": "Store-List-8501",
-    "l3fwrules-org": "Org-Firewall_Testing_Org",
+    "l3fwrules-org": "Org-AutomationTestOrg_DONOTDELETE",
     "l3fwrules-store-list": "Store-List-8501",
     "l3fwrules-version": "l3fwrules_template_99x",
     "s2svpnrules-org": "Org-AutomationTestOrg_DONOTDELETE",
