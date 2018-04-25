@@ -8,9 +8,44 @@ import pathlib
 import utils.auto_logger as l
 import sys
 import  global_vars as gv
+import time
 
 # Not really to be called from anywhere
 # to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
+def is_numeric(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+
+    return False
+
+def is_non_zero_number(s):
+    if is_numeric(s) == False:
+        return False
+    if int(s) == 0 :
+        return False
+    return True
+
+
+def is_numeric_in_range(number, lo, hi):
+    try:
+        if is_numeric(number):
+            if int(number) >= lo and int(number) <= hi:
+                return True
+    except:
+        str = "invalid range for {} : lo: {} hi: {}".format(number, lo, hi)
+        # l.message_user(str)
+    return False
+
 
 def goahead_confirm(_module):
     time.sleep(1)
@@ -147,13 +182,49 @@ def get_key_value(fname, keyField, valueField, match):
     success, value = get_key_value_in_data(json_data, keyField, valueField, match)
     return success, value
 
+def char_range(c1, c2):
+    """Generates the characters from `c1` to `c2`, inclusive."""
+    for c in range(ord(c1), ord(c2)+1):
+        yield chr(c)
+
+"""
+    Store name is in the format 
+    XXX_NNNN
+    where XXX is upper-case (A-Z)
+          NNNN is numeric (0000-9999)
+"""
+def is_valid_store_name(name):
+    if len(name) != 8:
+        return False, None, None
+    aux = name.split("_")
+    group = aux[0]
+    if len(group) != 3:
+        return False, None, None
+    group_c = list(group)
+    for c in group_c:
+        if c in char_range('A', 'Z'):
+            pass
+        else:
+            return False, None, None
+
+    if len(aux) != 2 :
+        return False, None, None
+    store_number = aux[1]
+    if is_numeric_in_range(store_number, 1, 9999)==False:
+        return False, None, None
+    return True, group, store_number
+
 if __name__ == '__main__':
     # auto_globals.setStoreName(store_name = "SHAWS_9611", org_name = "API Testing ORG")
-    auto_globals.storeName = " SHAWS_  7777 "
-    auto_globals.storeNumber = int(re.sub("[^0-9]", "", auto_globals.storeName))
-    auto_globals.org_name = "   API Testing ORG2 "
+#     auto_globals.storeName = " SHAWS_  7777 "
+#     auto_globals.storeNumber = int(re.sub("[^0-9]", "", auto_globals.storeName))
+#     auto_globals.org_name = "   API Testing ORG2 "
+#
+#     create_store_data_dir()
+#
+# import time
+# str= time.strftime("%H:%M:%S")
 
-    create_store_data_dir()
-
-import time
-str= time.strftime("%H:%M:%S")
+    name = "SHA_0113"
+    valid, group, store_number = is_valid_store_name(name)
+    print ("valid: {} name: {} group :{} store_number: {}".format(valid, name, group, store_number))
