@@ -21,7 +21,14 @@ def get_stores(agent):
     l.logger.debug("get_store_list")
     org_name = auto_globals.org_name
     org_id = auto_globals.get_orgid(org_name)
-    store_list = network_list(org_id)
+    success, store_list = network_list(org_id)
+    if success is False:
+        return False
+    for item in store_list:
+        name = item["name"]
+        valid, group, store_number = is_valid_store_name(name)
+        print("valid: {} name: {} group :{} store_number: {}".format(valid, name, group, store_number))
+
     return store_list
 
 
@@ -53,9 +60,6 @@ def bulk_deploy_networks_for_all_orgs(agent):
 
 
 if __name__ == '__main__':
-    #bulk_deploy_networks_for_all_orgs(agent="network_handler", org_group="Org-AutomationTestOrg_DONOTDELETE", store_list="Store-List-AutomationTest")
-    #get_stores("network_handler_main")
     auto_globals.org_name = "AutomationTestOrg_DONOTDELETE"
-    org_id = 686798943174000779
     store_list = get_stores("network-handler")
     print (store_list)

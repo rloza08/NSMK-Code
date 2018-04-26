@@ -139,8 +139,8 @@ howto_l3_firewall = \
 
         (3) Show all available store groups:
             > ./cli.py get-store-list
-                Store-List-INT
-                Store-List-SHA
+                -INT
+                -SHA
                 Store-List-JEW
                 Store-List-SWY              
             
