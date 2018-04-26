@@ -101,7 +101,7 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
 
     if minimum is False:
-        src = "../runtime/vlans_funnel.csv"
+        src = "../config/vlans_funnel.csv"
         shutil.copy(src, auto_globals.folder_time_stamp)
         src = "../../templates"
         shutil.copytree(src, auto_globals.folder_time_stamp+"/templates_used")

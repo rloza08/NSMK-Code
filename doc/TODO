@@ -1,0 +1,13 @@
+How to update the meraku api releases.
+(add to doc)
+static_rouge
+
+Add to doc that cli-settings need to be in a nice state for production deployment
+
+=========================================================================================
+
+Add-vlan
+
+a) cli get funnel
+b) update jinja_template
+c) update vlan for store list

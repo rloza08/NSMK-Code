@@ -379,6 +379,41 @@ class CLI(object):
         EOM()
         print ("")
 
+    def update_vlan_template(self):
+        os.chdir("{}/automation".format(self.cwd))
+        from automation.vlan_handler import update_vlan_template
+        update_vlan_template()
+        EOM()
+        print ("# vlan template has been updated #")
+        os.chdir("{}".format(self.cwd))
+        EOM()
+        print ("")
+
+    def update_funnel(self):
+        os.chdir("{}/automation".format(self.cwd))
+        from automation.men_and_mice_handler import update_funnel
+        update_funnel()
+        EOM()
+        print ("# funnel file has been updated #")
+        os.chdir("{}".format(self.cwd))
+        EOM()
+        print ("")
+
+
+    def update(self, module):
+        """
+            Modules
+
+                funnel
+                vlan-settings
+        """
+        if module.find("vlan-template") >= 0:
+                self.update_vlan_template()
+                return
+
+        if module.find("funnel") >= 0:
+                self.update_funnel()
+                return
 
 
     def get(self, module, param=None):

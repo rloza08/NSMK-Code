@@ -6,7 +6,9 @@
 /data
 /runtime/cli_selections.json
 /templates
+/venv1/*
 /venv*
+
 
 !/runtime/*
 

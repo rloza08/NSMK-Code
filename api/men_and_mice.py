@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 import os
-from subprocess import Popen, PIPE
 import shutil
 import sys
-import global_vars as gv
+from utils.auto_csv import convert_to_json
+import utils.auto_logger as l
 
 cwd = os.getcwd()
 path = "{}/..".format(cwd)
 sys.path.insert(0, path)
 
-import utils.auto_logger as l
 
 """
 Calls the men and mice get funnel process, which 
@@ -28,12 +27,12 @@ def get_vlan_funnel():
         cwd = os.getcwd()
         patch = "{}/../config/vlans_funnel.patch.csv".format(cwd)
         src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../runtime/vlans_funnel.csv".format(cwd)
+        dst = "{}/../config/vlans_funnel.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         shutil.copyfileobj(open(patch, 'rb'), destination)
         destination.close()
-
+        convert_to_json("vlans_funnel", "config",None)
     except:
         l.logger.error("failed")
         assert (0)

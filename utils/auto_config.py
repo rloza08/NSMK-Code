@@ -26,6 +26,20 @@ def json_reader(fpath):
         gv.fake_assert()
     return data
 
+def json_writer(fpath):
+    data = None
+    try:
+        json_data = open(fpath).write()
+        # json_data = json_data.replace("\n","")
+        data = json.loads(json_data)
+        str = make_pretty(data)
+        l.logger.debug("auto_utils.json_reader:\n{}".format(str))
+    except Exception as err:
+        l.logger.error("fpath:{} {}".format(fpath))
+        l.runlogs_logger.error("fpath:{} {}".format(fpath))
+        gv.fake_assert()
+    return data
+
 def setup_proxy():
     user = os.environ.get("PROXY_USER", None)
     password = os.environ.get("PROXY_PWD", None)

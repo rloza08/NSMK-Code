@@ -1,0 +1,89 @@
+
+Scenario 1
+
+New vlan/subnet is added in existing two summary subnets (upper/lower) in current funnel file in Men&Mice
+
+This will use existing Netx scheme
+
+Below are the high level steps for adding new vlan
+
+
+
+Step 1: Safeway updates Men&Mice funnel with new vlan/subnet
+
+
+
+Step 2: Create a CLI to produce enhanced Men&Mice funnel
+
+We will have new CLI developed to query the new funnel file from men&mice
+
+
+
+This utility will achieve following functions
+
+Reads the following three fields from funnel file provided
+
+·        New Vlan Number
+
+·        Subnet/mask
+
+o   octet1.octet2.octe3 ( This can be 10.x.a or 10.x.b ….up to 10.x.h)
+
+o   octet4
+
+o   mask
+
+Produce new enhanced funnel file that will have necessary information for Meraki config.
+
+·        Vlan Number
+
+·        Subnet
+
+·        Appliance IP
+
+·        Description
+
+·        DNS for DHCP ( we can put either “proxy upstream” or “Safeway DNS IP”)
+
+
+
+We will also validate the new vlan has right subnet mask
+
+
+
+This CLI will also create the new files required for Meraki API
+
+
+
+Step 2: Create new vlan template for automation scripts
+
+
+
+Step 3: Update Vlan to existing production stores
+
+We will develop CLI for this function
+
+·        The code will query all networks in org and then read all the vlan’s in each network
+
+·        If new vlan is not in the network then it will create new Vlan.
+
+
+
+
+
+Scenario 2
+
+In this scenario new summary subnets is added.
+
+
+
+We will need to talk this is more details as current Men&Mice funnel does not account for summary subnets
+
+So we will need to know as how code will generate the subnet after it resolves the IP address for  “cc1234”.
+
+Then based on the above we will update the Netx logic.
+
+Once this is done then we will need to make adjustments to Scenario1 logic and we can then use same steps to update Vlan.
+
+We will also have to update code for adding new static route for new summary subnet
+

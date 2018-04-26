@@ -5,6 +5,8 @@ import utils.auto_logger as l
 import global_vars as gv
 
 
+CONFIG_DIR = "../config"
+
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
 folder_time_stamp = None
 time_stamp = None
