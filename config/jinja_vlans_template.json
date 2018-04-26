@@ -485,5 +485,45 @@
         "dnsNameservers": "upstream_dns",
         "fixedIpAssignments": {},
         "reservedIpRanges": []
+    },
+    {
+        "id": "101",
+        "networkId": "{{networkid}}",
+        "name": "New Vlan 101",
+        "applianceIp": "{vlan[101]['octets']}.161",
+        "subnet": "{vlan[101]['subnet']}",
+        "dnsNameservers": "upstream_dns",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
+    },
+    {
+        "id": "102",
+        "networkId": "{{networkid}}",
+        "name": "New Vlan 102",
+        "applianceIp": "{vlan[102]['octets']}.1",
+        "subnet": "{vlan[102]['subnet']}",
+        "dnsNameservers": "upstream_dns",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
+    },
+    {
+        "id": "103",
+        "networkId": "{{networkid}}",
+        "name": "New Vlan 103",
+        "applianceIp": "{vlan[103]['octets']}.65",
+        "subnet": "{vlan[103]['subnet']}",
+        "dnsNameservers": "upstream_dns",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
+    },
+    {
+        "id": "104",
+        "networkId": "{{networkid}}",
+        "name": "New Vlan 104",
+        "applianceIp": "{vlan[104]['octets']}.161",
+        "subnet": "{vlan[104]['subnet']}",
+        "dnsNameservers": "upstream_dns",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
     }
 ]
