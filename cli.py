@@ -350,6 +350,21 @@ class CLI(object):
         EOM()
         print ("")
 
+    def get_stores(self, group):
+        """Runs the store list"""
+        os.chdir("{}/automation".format(self.cwd))
+        from utils.auto_utils import is_valid_store_group
+        if group != "all" and is_valid_store_group(group) is False:
+            return False
+        from automation.network_handler import get_stores
+        agent = "cli-get-stores"
+        get_stores(agent=agent)
+        print("get_stores")
+        sys.stdout.flush()
+        time.sleep(1)
+        EOM()
+        return True
+
     def get_settings_s2svpnrules(self):
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
@@ -374,6 +389,10 @@ class CLI(object):
         """
         if module.find("l3fwrules") >= 0:
                 self.get_l3fwrules()
+                return
+        if module.find("stores") >= 0:
+                success = self.get_stores(param)
+                print(success)
                 return
         if module.find("s2svpnrules") >= 0:
                 self.get_s2svpnrules()

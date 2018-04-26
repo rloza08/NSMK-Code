@@ -193,19 +193,30 @@ def char_range(c1, c2):
     where XXX is upper-case (A-Z)
           NNNN is numeric (0000-9999)
 """
-def is_valid_store_name(name):
-    if len(name) != 8:
-        return False, None, None
-    aux = name.split("_")
-    group = aux[0]
+
+def is_valid_store_group(group):
+    if group is None:
+        return False
     if len(group) != 3:
-        return False, None, None
+        return False
+
     group_c = list(group)
     for c in group_c:
         if c in char_range('A', 'Z'):
             pass
         else:
-            return False, None, None
+            return False
+    return True
+
+
+def is_valid_store_name(name):
+    if len(name) != 8:
+        return False, None, None
+    aux = name.split("_")
+    group = aux[0]
+
+    if is_valid_store_group(group) is False:
+        return False, None, None
 
     if len(aux) != 2 :
         return False, None, None
