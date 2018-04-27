@@ -17,18 +17,18 @@ def deploy(agent):
     l.runlogs_logger.info("vlan setup")
     vlan_handler.deploy()
 
-    l.runlogs_logger.info("static route setup")
-    static_route_handler.add()
-
-    l.runlogs_logger.info("l3 firewall setup")
-    fw_rules = "{}".format(auto_globals.deploy_l3fwrules_version)
-    firewall_handler.deploy(agent, fw_rules)
-
-    production = auto_globals.production
-    production = True
-    if production:
-        l.runlogs_logger.info("s2s vpn setup")
-        vpn_handler.setupSiteToSiteVpn()
+    # l.runlogs_logger.info("static route setup")
+    # static_route_handler.add()
+    #
+    # l.runlogs_logger.info("l3 firewall setup")
+    # fw_rules = "{}".format(auto_globals.deploy_l3fwrules_version)
+    # firewall_handler.deploy(agent, fw_rules)
+    #
+    # production = auto_globals.production
+    # production = True
+    # if production:
+    #     l.runlogs_logger.info("s2s vpn setup")
+    #     vpn_handler.setupSiteToSiteVpn()
 
     l.logger.info("success")
 

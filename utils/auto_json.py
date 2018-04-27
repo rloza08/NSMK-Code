@@ -2,7 +2,6 @@
 from utils._json import Json
 from utils._csv import transform_to_csv
 
-
 def reader(fname, configDir="data"):
     """Reads json file"""
     data = Json.reader(fname, configDir)

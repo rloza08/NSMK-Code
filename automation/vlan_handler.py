@@ -357,7 +357,7 @@ def deploy():
 
 def add_entry_to_template(t_new, vlan):
     print ("adding vlan: {}". format(vlan))
-    vlan_id = vlan['Vlan']
+    vlan_id = int(vlan['Vlan'])
     o4 = vlan['Subnet'].split('.')
     o4 = o4[3]
     o4 = o4.split("/")
@@ -366,8 +366,8 @@ def add_entry_to_template(t_new, vlan):
     entry["id"] = vlan_id
     entry["networkId"] =  "{{networkid}}"
     entry["name"] =  vlan['Description']
-    entry["applianceIp"] =  "{{vlan[{}]['octets']}}.{}".format(vlan_id, o4+1)
-    entry["subnet"] =  "{{vlan[{}]['subnet']}}".format(vlan_id)
+    entry["applianceIp"] =  "{{{{vlan[{}]['octets']}}}}.{}".format(vlan_id, o4+1)
+    entry["subnet"] =  "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
     entry["dnsNameservers"] =  "upstream_dns"
     entry["fixedIpAssignments"] =  {}
     entry["reservedIpRanges"] =  []

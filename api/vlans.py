@@ -10,19 +10,51 @@ class Vlans(object):
 
     """
     Creates and updates VLAN.
-
-    Creates only if it is not in the
-    safeway-utils.json update only list Update if it is in'
+    Creates if it does not exist or updates if it is an existing one.
 
     """
+
 
     @classmethod
     def create_update_vlans_list(self, netid, update_flag=True):
         fname = "vlans_generated_{}".format(netid)
+        vlans_to_deploy = json.reader(fname)
+        self.get_vlans(netid)
+        vlans_deployed = []
+        for item in self.vlans:
+            id = int(item['id'])
+            vlans_deployed.append(id)
+
+        for item in vlans_to_deploy:
+            id = int(item['id'])
+            if id not in vlans_deployed:
+                print ("Creating vlan : {}".format(id))
+                apikey = config.api_key
+                networkid = netid
+                name = item['name']
+                vlanid = id
+                subnet = item['subnet']
+                mxip = item['applianceIp']
+                #apikey, networkid, vlanid, name, subnet, mxip, suppressprint = False)
+
+
+                success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet, mxip, suppressprint=True)
+
+                # l.logger.debug("create id:{} , name:{}".format(id, name))
+                # if not success:
+                #     l.logger.error("failed")
+                #     gv.fake_assert()
+
+        # If the vlan is not deployed create it
+
+        self.update_vlans_list(vlans_to_deploy, netid, update_flag)
+
+    @classmethod
+    def update_vlans_list(self, vlans, netid, update_flag=True):
         apikey = config.api_key
-        vlans = json.reader(fname)
-        for vl in vlans:
-            try:
+        _err = None
+        try:
+            for vl in vlans:
                 networkid = vl['networkId']
                 id = vl['id']
                 name = vl['name']
@@ -37,53 +69,32 @@ class Vlans(object):
                                  vpnnatsubnet or \
                                  dnsnameservers) is not None
 
-                l.logger.debug("processing id:{} , name:{}".format(id, name))
-                l.runlogs_logger.info("processing id:{} , name:{}".format(id, name))
+                if performUpdate is False:
+                    continue
 
-                """
-                Remove the True if we want to go selectively create and update
-                """
-                if True: #id in utils.vlan_update_only: ## keep this if rollback is needed
-                    performUpdate = True
-                    success = True
-                else:
-                    pass
-                    # success, str = meraki.addvlan(apikey, networkid, id, name, subnet, applianceIp)
-                    # success, str = meraki.addvlan(apikey, networkid, id, name, subnet, applianceIp)
-                    # #
-                    # # l.logger.debug("create id:{} , name:{}".format(id, name))
-                    # # if not success:
-                    # #     l.logger.error("failed")
-                    # #     gv.fake_assert()
-                if success and performUpdate:
-                    _err = ""
-                    success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
-                                    fixedipassignments,
-                                    reservedipranges,
-                                    vpnnatsubnet,
-                                    dnsnameservers)
-                    l.logger.debug("update id:{} name:{}".format(id, name))
+                success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
+                                fixedipassignments,
+                                reservedipranges,
+                                vpnnatsubnet,
+                                dnsnameservers)
 
-                if success:
-                    l.logger.debug("success")
-                    l.logger.debug("vlan: {}".format(vl))
-                else:
-                    l.logger.error("failed.")
-                    l.logger.error("vlan: {} error: {}".format(vl, _err))
-                    gv.fake_assert()
-                    return False
-            except Exception as err:
-                l.logger.error("exception")
-                l.runlogs_logger.error("exception")
-                gv.fake_assert()
+                if not success:
+                    raise Exception("meraki.updatevlan failed for vlan-id {} : {}".format(id, _err))
+
+                l.logger.debug("updatevlan :{} name:{}".format(id, name))
+                l.runlogs_logger.debug("updatevlan :{} name:{}".format(id, name))
+
+        except Exception as err:
+            l.logger.error("{}".format(err.args))
+            l.runlogs_logger.error("{}".format(err.args))
+            gv.fake_assert()
+            return False
+
+            gv.fake_assert()
         return True
 
-    """
-    Used to get the vlans for the network.
-    Not in used by the current orchestration.
-    
-    """
-    def get(self, netid):
+    @classmethod
+    def get_vlans(self, netid):
         self.vlans = None
         try:
             success, self.vlans = meraki.getvlans(config.api_key, netid)
@@ -160,3 +171,5 @@ if __name__ == '__main__':
 
 #create(networkid)
     #delete(networkid, 1)
+
+    netid = "N_686798943174008296"
