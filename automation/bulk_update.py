@@ -74,7 +74,7 @@ def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
             gv.fake_assert()
 
 
-def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
+def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_only=False):
     store_list = Json.reader(fname, "templates")
 
     if not goahead_confirm("stores"):
@@ -91,7 +91,7 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy):
         l.logger.info("deploying store : {}".format(store_name))
         auto_globals.select_store(store_name)
         auto_globals.load_store(agent)
-        fn_deploy(agent)
+        fn_deploy(agent, vlans_only)
         l.logger.info("deployed store : {}".format(store_name))
         Json.writer(fname, store_list, "templates")
         Csv.transform_to_csv(fname, None, path="templates")

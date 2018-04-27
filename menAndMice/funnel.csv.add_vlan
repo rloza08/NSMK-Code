@@ -1,0 +1,22 @@
+Vlan,Subnet,Description
+1,10.x.a.16/27,Network Management
+4,10.x.a.32/27,Network Management
+6,10.x.a.64/27,Extranet Vendors
+7,10.x.a.96/27,Pharmacy
+8,10.x.a.128/27,Backstage Users
+14,10.x.a.248/29,Store Content Engine
+16,10.x.b.0/24,Store Wireless
+19,10.x.c.0/24,General Store LAN
+24,10.x.d.0/24,POS LAN
+35,10.x.e.0/27,Digital Signage
+40,10.x.e.32/27,Thin Wireless Mgmt
+45,10.x.h.192/26,Cisco Wireless Management
+60,10.x.h.128/27,Vendor VLAN II (2nd Subnet)
+70,10.x.e.64/26,New Pharmacy
+75,10.x.e.128/25,Macauthenticated Wireless Clients
+79,10.x.g.192/26,VOIP Clients
+80,10.x.f.0/24,Secure Wireless
+81,10.x.g.160/28,Field Service Wireless
+82,10.x.g.176/28,iPad quarantine vlan
+85,10.x.h.0/26,Retail Cluster Management VLAN
+95,10.x.g.128/27,Printer VLAN

@@ -342,6 +342,20 @@ def createVlanFiles():
     upper = obj.vlan_table.netx["upper"]
     return ref, lower, upper
 
+def deploy_new():
+    obj = VlanHandler()
+    """
+        This simply creates all the intermediate files and the final
+        vlan_generated_<netid> file which is used to call
+        the meraki api and create/update vlans for this network.
+    """
+    obj.create_vlan_files()
+
+    # Does physical VLAN creation on meraki device by callin the /api/vlan module
+    netid = auto_globals.netid
+    vlans.create_update_vlans(netid)
+
+
 def deploy():
     obj = VlanHandler()
     """
@@ -353,7 +367,7 @@ def deploy():
 
     # Does physical VLAN creation on meraki device by callin the /api/vlan module
     netid = auto_globals.netid
-    vlans.create_update_vlans_list(netid)
+    vlans.update_vlans(netid)
 
 def add_entry_to_template(t_new, vlan):
     print ("adding vlan: {}". format(vlan))

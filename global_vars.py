@@ -1,6 +1,6 @@
 import sys
 global log_verbose
-log_verbose = True  # Only if error_stop is set
+log_verbose = False  # Only if error_stop is set
 error_stop = True
 force_yes = True
 EOM = lambda : print("_"*48)

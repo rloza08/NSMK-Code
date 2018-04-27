@@ -22,6 +22,9 @@ s2svpnrules_org = None
 s2svpnrules_version = None
 production = None
 
+vlans_org = None
+vlans_store_list = None
+vlans_version = None
 
 def make_pretty(my_json):
     return json.dumps(my_json, indent=4, sort_keys=True)

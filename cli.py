@@ -508,6 +508,10 @@ class CLI(object):
         """
         if module.find("stores")>=0:
             self.deploy_stores()
+        elif module.find("vlans-add") >= 0:
+                self.deploy_vlans_add()
+        elif module.find("vlans-delete") >= 0:
+                self.deploy_vlans_delete()
         elif module.find("networks")>=0:
             self.deploy_networks()
         elif module.find("l3fwrules")>=0:
@@ -531,6 +535,21 @@ class CLI(object):
         sys.stdout.flush()
         time.sleep(1)
         EOM()
+
+    # Should get config (shows all the gets)
+    def	deploy_vlans_add(self):
+        """Runs the store orchestration"""
+        os.chdir("{}/automation".format(self.cwd))
+        from automation.store_orchestration import bulk_update
+        agent = "cli-deploy-vlans-add"
+
+        #text = raw_input("deploy stores (y/N)")
+        bulk_update(agent, vlans_only=True)
+        os.chdir("{}".format(self.cwd))
+        sys.stdout.flush()
+        time.sleep(1)
+        EOM()
+
 
     def	deploy_networks(self):
         """Runs the store orchestration"""

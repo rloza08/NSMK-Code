@@ -14,7 +14,6 @@ class Vlans(object):
 
     """
 
-
     @classmethod
     def create_update_vlans_list(self, netid, update_flag=True):
         fname = "vlans_generated_{}".format(netid)
@@ -25,64 +24,76 @@ class Vlans(object):
             id = int(item['id'])
             vlans_deployed.append(id)
 
-        for item in vlans_to_deploy:
-            id = int(item['id'])
+        deploy_count = 0
+        for vlan in vlans_to_deploy:
+            id = int(vlan['id'])
             if id not in vlans_deployed:
-                print ("Creating vlan : {}".format(id))
-                apikey = config.api_key
-                networkid = netid
-                name = item['name']
-                vlanid = id
-                subnet = item['subnet']
-                mxip = item['applianceIp']
-                #apikey, networkid, vlanid, name, subnet, mxip, suppressprint = False)
+                try:
+                    apikey = config.api_key
+                    networkid = netid
+                    name = vlan['name']
+                    vlanid = id
+                    subnet = vlan['subnet']
+                    mxip = vlan['applianceIp']
+                    success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet,
+                                                  mxip, suppressprint=True)
+                    l.logger.info("created vlan {}".format(id))
+                    l.runlogs_logger.info("created vlan {}".format(id))
 
+                    self.update_single_vlan(vlan, netid, update_flag)
+                    deploy_count += 1
 
-                success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet, mxip, suppressprint=True)
+                except Exception as err:
+                    l.logger.error("{}".format(err.args))
+                    l.runlogs_logger.error("{}".format(err.args))
+                    gv.fake_assert()
 
-                # l.logger.debug("create id:{} , name:{}".format(id, name))
-                # if not success:
-                #     l.logger.error("failed")
-                #     gv.fake_assert()
+        l.logger.info("added a total of {} vlans".format(deploy_count))
+        l.runlogs_logger.info("added a total of {} vlans".format(deploy_count))
 
-        # If the vlan is not deployed create it
+    @classmethod
+    def update_single_vlan(self, vlan, netid, update_flag=True):
+        apikey = config.api_key
+        _err = None
+        vl = vlan
+        networkid = vl['networkId']
+        id = vl['id']
+        name = vl['name']
+        subnet = vl['subnet']
+        applianceIp = vl['applianceIp']
+        fixedipassignments = vl['fixedIpAssignments']
+        reservedipranges = vl['reservedIpRanges']
+        vpnnatsubnet = None
+        dnsnameservers = vl['dnsNameservers']
+        performUpdate = (fixedipassignments or \
+                         reservedipranges or \
+                         vpnnatsubnet or \
+                         dnsnameservers) is not None
 
-        self.update_vlans_list(vlans_to_deploy, netid, update_flag)
+        if performUpdate is False:
+            return True
+
+        success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
+                        fixedipassignments,
+                        reservedipranges,
+                        vpnnatsubnet,
+                        dnsnameservers)
+
+        if not success:
+            raise Exception("meraki.updatevlan failed for vlan-id {} : {}".format(id, _err))
+
+        l.logger.debug("updated vlan {} name: {}".format(id, name))
+        l.runlogs_logger.debug("updated vlan {} name: {}".format(id, name))
+        return True
+
 
     @classmethod
     def update_vlans_list(self, vlans, netid, update_flag=True):
         apikey = config.api_key
         _err = None
         try:
-            for vl in vlans:
-                networkid = vl['networkId']
-                id = vl['id']
-                name = vl['name']
-                subnet = vl['subnet']
-                applianceIp = vl['applianceIp']
-                fixedipassignments = vl['fixedIpAssignments']
-                reservedipranges = vl['reservedIpRanges']
-                vpnnatsubnet = None
-                dnsnameservers = vl['dnsNameservers']
-                performUpdate = (fixedipassignments or \
-                                 reservedipranges or \
-                                 vpnnatsubnet or \
-                                 dnsnameservers) is not None
-
-                if performUpdate is False:
-                    continue
-
-                success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
-                                fixedipassignments,
-                                reservedipranges,
-                                vpnnatsubnet,
-                                dnsnameservers)
-
-                if not success:
-                    raise Exception("meraki.updatevlan failed for vlan-id {} : {}".format(id, _err))
-
-                l.logger.debug("updatevlan :{} name:{}".format(id, name))
-                l.runlogs_logger.debug("updatevlan :{} name:{}".format(id, name))
+            for vlan in vlans:
+                self.update_single_vlan(vlan, netid, update_flag)
 
         except Exception as err:
             l.logger.error("{}".format(err.args))
@@ -90,7 +101,6 @@ class Vlans(object):
             gv.fake_assert()
             return False
 
-            gv.fake_assert()
         return True
 
     @classmethod
@@ -137,10 +147,19 @@ def get(netid):
     obj=Vlans()
     obj.get(netid)
 
-def create_update_vlans_list(netid):
+def create_update_vlans(netid):
     """Sets vlans from a json file"""
     obj=Vlans()
     obj.create_update_vlans_list(netid)
+
+def update_vlans(netid):
+    """Sets vlans from a json file"""
+    fname = "vlans_generated_{}".format(netid)
+    vlans_to_deploy = json.reader(fname)
+
+    obj=Vlans()
+    obj.update_vlans_list(vlans_to_deploy, netid)
+
 
 def delete(netid, vlanid):
     """Sets vlans from a json file"""
