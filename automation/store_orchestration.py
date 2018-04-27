@@ -11,6 +11,7 @@ import utils._csv as Json
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from  utils._json import Json
+from automation.vlan_handler import ENTER_ENV_vlan_add, LEAVE_ENV_vlan_add
 
 def deploy(agent, vlans_only=False):
 
@@ -36,8 +37,17 @@ def deploy(agent, vlans_only=False):
     l.logger.info("success")
 
 def bulk_update(agent, vlans_only=False):
-    org_group = auto_globals.deploy_org
-    store_list = auto_globals.deploy_store_list
+    if vlans_only:
+        ENTER_ENV_vlan_add()
+        org_group = auto_globals.vlans_org
+        store_list = auto_globals.vlans_store_list
+    else:
+        import api.men_and_mice as men_and_mice
+        men_and_mice.get_vlan_funnel()
+
+        org_group = auto_globals.deploy_org
+        store_list = auto_globals.deploy_store_list
+
 
     l.runlogs_logger.info("bulk update started")
     org_list = json.reader(org_group,"templates")
@@ -57,6 +67,8 @@ def bulk_update(agent, vlans_only=False):
         bulk.perform_bulk_update_store(agent, org_name, store_list, deploy,  vlans_only)
         l.runlogs_logger.info("finished for org: {}".format(org_name))
     l.runlogs_logger.info("bulk update finished")
+    if vlans_only:
+        LEAVE_ENV_vlan_add()
 
 if __name__ == '__main__':
     l.logger.info ("Please setup environment variables if needed:"

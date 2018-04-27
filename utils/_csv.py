@@ -338,8 +338,8 @@ class Csv(object):
                     self.write_lines(csvfile, fieldNames, json_data)
 
         except Exception as err:
-            l.logger.error("fname:{} {}".format(fname, fname_csv))
-            l.runlogs_logger.error("fname:{} {}".format(fname, fname_csv))
+            l.logger.error("fname:{}".format(fname_csv))
+            l.runlogs_logger.error("fname:{}".format(fname_csv))
             gv.fake_assert()
 
 

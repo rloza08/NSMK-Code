@@ -23,15 +23,8 @@ For timebeing testing will use deploy-org
 Create select vlan-org.
 
 The file is a csv that contains following fields
-create non-routable vlan
-{
-    "id": 110,
-    "name": "Test-VLAN",
-    "applianceIp": "172.16.110.1",
-    "subnet": "172.16.110.0/24",
-    "fixedIpAssignments": {},
-    "reservedIpRanges": [],
-    "dnsNameservers": "upstream_dns"
-}
+
+-------------------------------------------
+Refactor use of funnel file.
 
 

@@ -24,7 +24,7 @@ production = None
 
 vlans_org = None
 vlans_store_list = None
-vlans_version = None
+vlans_add_list = None
 
 def make_pretty(my_json):
     return json.dumps(my_json, indent=4, sort_keys=True)
@@ -91,6 +91,28 @@ def set_run_dry(dryrun=True):
     item["dryrun"] = dryrun
     json_writer("../config/in_use_dryrun", item)
 
+
+def set_vlans_org(_vlans_org):
+    global vlans_org
+    vlans_org = _vlans_org
+    item = json_reader("../runtime/cli-selections.json")
+    item["vlans-org"] = vlans_org
+    json_writer("../runtime/cli-selections.json", item)
+
+def set_vlans_store_list(_vlans_store_list):
+    global vlans_store_list
+    vlans_store_list = _vlans_store_list
+    item = json_reader("../runtime/cli-selections.json")
+    item["vlans-store-list"] = vlans_store_list
+    json_writer("../runtime/cli-selections.json", item)
+
+def set_vlans_add_list(_vlans_add_list):
+    global vlans_add_list
+    vlans_add_list = _vlans_add_list
+    item = json_reader("../runtime/cli-selections.json")
+    item["vlans-add-list"] = vlans_add_list
+    json_writer("../runtime/cli-selections.json", item)
+
 def set_deploy_org(deploy_org):
     item = json_reader("../runtime/cli-selections.json")
     item["deploy-org"] = deploy_org
@@ -155,6 +177,7 @@ def get_settings():
 def get_cli_settings():
     global deploy_clone_source, deploy_org, deploy_store_list
     global deploy_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
+    global vlans_org, vlans_store_list, vlans_add_list
     global l3fwrules_version, s2svpnrules_org
     global s2svpnrules_org, s2svpnrules_version
     global production
@@ -165,6 +188,11 @@ def get_cli_settings():
     deploy_org = item.get("deploy-org")
     deploy_store_list = item.get("deploy-store-list")
     deploy_l3fwrules_version = item.get("deploy-l3fwrules-version")
+
+    vlans_org = item.get("vlans-org")
+    vlans_store_list = item.get("vlans-store-list")
+    vlans_add_list = item.get("vlans-add-list")
+
 
     l3fwrules_org = item.get("l3fwrules-org")
     l3fwrules_store_list = item.get("l3fwrules-store-list")
@@ -190,8 +218,8 @@ def load_store(_orchestration_agent, minimum=False):
     orgid = get_orgid(org_name)   # TODO load by an API CALL
     assert(orgid)
 
-    import api.men_and_mice as men_and_mice
-    men_and_mice.get_vlan_funnel()
+    # import api.men_and_mice as men_and_mice
+    # men_and_mice.get_vlan_funnel()
     import utils.auto_utils as utils
 
     store_name = "{}".format(store_name)

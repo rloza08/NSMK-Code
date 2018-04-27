@@ -1,5 +1,4 @@
 Vlan,Subnet,Description
-1,10.x.a.16/27,Network Management
 4,10.x.a.32/27,Network Management
 6,10.x.a.64/27,Extranet Vendors
 7,10.x.a.96/27,Pharmacy
@@ -20,7 +19,3 @@ Vlan,Subnet,Description
 82,10.x.g.176/28,iPad quarantine vlan
 85,10.x.h.0/26,Retail Cluster Management VLAN
 95,10.x.g.128/27,Printer VLAN
-101,10.x.a.160/27,New Vlan 101
-102,10.x.g.0/26,New Vlan 102
-103,10.x.h.64/26,New Vlan 103
-104,10.x.h.160/27,New Vlan 104

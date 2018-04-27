@@ -7,12 +7,13 @@ import utils.auto_config as config
 import api.netx as netx
 import utils._csv as Csv
 import utils.auto_globals as auto_globals
-from utils.auto_globals import CONFIG_DIR
+from utils.auto_globals import CONFIG_DIR, vlans_add_list
 from utils.auto_config import json_reader, make_pretty
 from copy import deepcopy
 from utils._json import Json
 import shutil
 import os
+from utils.auto_csv import convert_to_json
 
 """
 This module contains two classes:
@@ -387,9 +388,78 @@ def add_entry_to_template(t_new, vlan):
     entry["reservedIpRanges"] =  []
     t_new.append(entry)
 
+
+
+def ENTER_ENV_vlan_add():
+    #import os
+    cwd = os.getcwd()
+    try:
+
+        # Backup the funnel file
+        src = "{}/../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/../config/vlans_funnel_orig.csv".format(cwd)
+        destination = open(dst, 'wb')
+        shutil.copyfileobj(open(src, 'rb'), destination)
+        destination.close()
+
+        src = "{}/../menAndMice/funnel.csv".format(cwd)
+        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        destination = open(dst, 'wb')
+        shutil.copyfileobj(open(src, 'rb'), destination)
+
+        # 99x Vlan patch that is always used
+        patch_01 = "{}/../config/vlans_funnel.patch.csv".format(cwd)
+        shutil.copyfileobj(open(patch_01, 'rb'), destination)
+
+        # Vlan patch just for this run
+        patch_02 = "{}/../../templates/{}.csv".format(cwd, vlans_add_list)
+        shutil.copyfileobj(open(patch_02, 'rb'), destination)
+        destination.close()
+        convert_to_json("vlans_funnel", "config",None)
+    except:
+        l.logger.error("failed")
+        assert (0)
+
+
+    src = "{}/../config/jinja_vlans_template.json".format(cwd)
+    dst = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
+    destination = open(dst, 'wb')
+    shutil.copyfileobj(open(src, 'rb'), destination)
+    destination.close()
+
+
+    update_vlan_template(funnel_file="vlans_funnel",
+                             vlans_template_file="jinja_vlans_template",
+                             vlans_template_file_previous="jinja_vlans_template_previous",
+                             vlans_template_file_new="jinja_vlans_template")
+
+
+def LEAVE_ENV_vlan_add():
+
+    # Now restore the men and mice file in config back to
+    # its original state
+    cwd = os.getcwd()
+    try:
+        src = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
+        dst = "{}/../config/jinja_vlans_template.json".format(cwd)
+        destination = open(dst, 'wb')
+        shutil.copyfileobj(open(src, 'rb'), destination)
+        destination.close()
+
+        src = "{}/../config/vlans_funnel_orig.csv".format(cwd)
+        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        destination = open(dst, 'wb')
+        shutil.copyfileobj(open(src, 'rb'), destination)
+        destination.close()
+    except:
+        l.logger.error("failed")
+        assert (0)
+
+
 def update_vlan_template(funnel_file="vlans_funnel",
                          vlans_template_file="jinja_vlans_template",
-                         vlans_template_file_previous="jinja_vlans_template_previous"):
+                         vlans_template_file_previous="jinja_vlans_template_previous",
+                         vlans_template_file_new = "jinja_vlans_template") :
 
     vlans_new = json_reader("{}/{}.json".format(CONFIG_DIR, funnel_file))
     vlans_template_orig = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_template_file))
@@ -419,7 +489,7 @@ def update_vlan_template(funnel_file="vlans_funnel",
     destination = open(dst, 'wb')
     shutil.copyfileobj(open(src, 'rb'), destination)
 
-    Json.writer("jinja_vlans_template", t_new, path="config")
+    Json.writer(vlans_template_file_new, t_new, path="config")
 
     tpl = make_pretty(t_new)
     print (tpl)
