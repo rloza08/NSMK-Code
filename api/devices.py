@@ -36,6 +36,8 @@ class devices(object):
                 meraki.ListError) as err:
             l.logger.error("Meraki error: {}".format(err.default))
             l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            exit(-1)
+
 
 
         except  Exception as err:
@@ -62,6 +64,8 @@ class devices(object):
                 meraki.ListError) as err:
             l.logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
             l.runlogs_logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
+            exit(-1)
+
 
         except Exception as err:
             l.logger.error("serial:{}".format(serial))
@@ -87,6 +91,7 @@ def removedevice(networkid, serial):
             meraki.ListError) as err:
         l.logger.error("Meraki error: {}".format(err.default))
         l.runlogs_logger.error("Meraki error: {}".format(err.default))
+        exit(-1)
 
 
 def bulkremove(fname):

@@ -48,6 +48,8 @@ class Vlans(object):
                         meraki.ListError) as err:
                     l.logger.error("Meraki error: {}".format(err.default))
                     l.runlogs_logger.error("Meraki error: {}".format(err.default))
+                    exit(-1)
+
 
                 except Exception as err:
                     l.logger.error("{}".format(err.args))
@@ -90,6 +92,8 @@ class Vlans(object):
                 meraki.ListError) as err:
             l.logger.error("Meraki error: {}".format(err.default))
             l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            exit(-1)
+
 
         if not success:
             raise Exception("meraki.updatevlan failed for vlan-id {} : {}".format(id, _err))
@@ -133,6 +137,8 @@ class Vlans(object):
                     meraki.ListError) as err:
             l.logger.error("Meraki error: {}".format(err.default))
             l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            exit(-1)
+
 
         except Exception as err:
             l.logger.error("exception failure netid:{}".format(netid))
@@ -158,10 +164,10 @@ class Vlans(object):
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-
             l.logger.error("Meraki error: {}".format(err.default))
-
             l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            exit(-1)
+
         except Exception as err:
             l.logger.error("exception failure netid:{} vlanid:{}".format(netid, vlanid))
             l.runlogs_logger.error("exception failure netid:{} vlanid:{}".format(netid, vlanid))

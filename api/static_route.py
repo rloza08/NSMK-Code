@@ -27,6 +27,7 @@ class StaticRoute(object):
                 meraki.ListError) as err:
             l.logger.error("Meraki error: {}".format(err.default))
             l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            exit(-1)
 
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid, str))

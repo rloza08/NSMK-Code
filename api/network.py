@@ -40,6 +40,7 @@ class Networks(object):
                 meraki.ListError) as err:
             l.logger.error("orgid: {}    Meraki error: {}".format(org_id, err.default))
             l.runlogs_logger.error("orgid: {}    Meraki error: {}".format(org_id, err.default))
+            exit(-1)
 
         except Exception as err:
             l.logger.error("orgid: {}".format(org_id))
