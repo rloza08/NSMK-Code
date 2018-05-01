@@ -371,7 +371,6 @@ def deploy():
     vlans.update_vlans(netid)
 
 def add_entry_to_template(t_new, vlan):
-    print ("adding vlan: {}". format(vlan))
     vlan_id = int(vlan['Vlan'])
     o4 = vlan['Subnet'].split('.')
     o4 = o4[3]
@@ -492,7 +491,6 @@ def update_vlan_template(funnel_file="vlans_funnel",
     Json.writer(vlans_template_file_new, t_new, path="config")
 
     tpl = make_pretty(t_new)
-    print (tpl)
     return t_new
 
 

@@ -10,12 +10,11 @@ class Firewall(object):
     This allows to test each rule , good for finding bugs in the rules
     """
     @classmethod
-    def _set_each(self, netid):
+    def set_each(self, netid, fw_rules, store_number):
         success=False
         str=None
         try:
-            fname = config.firewall_converted
-            fwrules = json.reader(fname)
+            fwrules = json.reader("l3fwrules_deploy_{}".format(store_number))
             singleRule = []
             for rule in fwrules:
                 singleRule.append(rule)
@@ -25,10 +24,17 @@ class Firewall(object):
                 l.logger.error("failed rule comment:{} {}".format(rule["comment"], str))
                 l.runlogs_logger.error("failed rule comment:{} {}".format(rule["comment"], str))
                 gv.fake_assert()
+
+        except (meraki.EmailFormatError,
+                meraki.OrgPermissionError,
+                meraki.ListError) as err:
+            l.logger.error("Meraki error: {}".format(err.default))
+            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+
         except Exception as err:
-            l.logger.error("exception failure netid:{}".format(netid))
-            l.runlogs_logger.error("exception failure netid:{}".format(netid))
-            gv.fake_assert()
+                l.logger.error("exception failure netid:{}".format(netid))
+                l.runlogs_logger.error("exception failure netid:{}".format(netid))
+                gv.fake_assert()
         return success, str
 
     """
@@ -95,10 +101,10 @@ def _set(netid, fw_rules=None, store_number=None):
     obj.set(netid, fw_rules, store_number)
 
 
-def set_each(netid):
+def _set_each(netid, fw_rules=None, store_number=None):
     """Sets the firewall from a json file"""
     obj = Firewall()
-    obj._set_each(netid)
+    obj.set_each(netid, fw_rules, store_number)
 
 if __name__ == '__main__':
     obj=Firewall()

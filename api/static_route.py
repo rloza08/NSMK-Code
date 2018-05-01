@@ -21,6 +21,13 @@ class StaticRoute(object):
                 l.logger.error("{}".format(str))
                 l.runlogs_logger.error("{}".format(str))
                 gv.fake_assert()
+
+        except (meraki.EmailFormatError,
+                meraki.OrgPermissionError,
+                meraki.ListError) as err:
+            l.logger.error("Meraki error: {}".format(err.default))
+            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid, str))
             l.runlogs_logger.error("exception failure netid:{}\n{}".format(netid, str))

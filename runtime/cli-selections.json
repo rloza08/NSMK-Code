@@ -3,12 +3,12 @@
     "deploy-l3fwrules-version": "l3fwrules_template_MAR_MX_Org_031318-v5",
     "deploy-org": "Org-AutomationTestOrg_DONOTDELETE",
     "deploy-store-list": "Store-List-8501",
-    "l3fwrules-org": "Org-AutomationTestOrg_DONOTDELETE",
+    "l3fwrules-org": "Org-New_Production_MX_Org",
     "l3fwrules-store-list": "Store-List-8501",
     "l3fwrules-version": "l3fwrules_template_99x",
     "s2svpnrules-org": "Org-AutomationTestOrg_DONOTDELETE",
     "s2svpnrules-version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09",
     "vlans-add-list": "vlans-add-list-v01",
-    "vlans-org": "Org-AutomationTestOrg_DONOTDELETE",
+    "vlans-org": "Org-New_Production_MX_Org",
     "vlans-store-list": "Store-List-8501"
 }

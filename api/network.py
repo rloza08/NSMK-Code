@@ -24,6 +24,7 @@ class Networks(object):
     def list(self, org_id):
         success = False
         networks = None
+        import api.meraki
         try:
             success, networks = meraki.getnetworklist(config.api_key, org_id)
             if success:
@@ -33,6 +34,13 @@ class Networks(object):
                 l.logger.error("failed.")
                 l.logger.error("networks: {}".format(networks))
                 gv.fake_assert()
+
+        except (meraki.EmailFormatError,
+                meraki.OrgPermissionError,
+                meraki.ListError) as err:
+            l.logger.error("orgid: {}    Meraki error: {}".format(org_id, err.default))
+            l.runlogs_logger.error("orgid: {}    Meraki error: {}".format(org_id, err.default))
+
         except Exception as err:
             l.logger.error("orgid: {}".format(org_id))
             l.runlogs_logger.error("orgid: {}".format(org_id))

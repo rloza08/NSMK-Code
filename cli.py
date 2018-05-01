@@ -398,7 +398,7 @@ class CLI(object):
         EOM()
         print ("")
 
-    def get_settings_vlans(self):
+    def get_settings_vlans_add(self):
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         settings = auto_globals.get_cli_settings()
@@ -518,8 +518,8 @@ class CLI(object):
                 self.get_settings_s2svpnrules()
             elif param == "deploy":
                 self.get_settings_deploy()
-            elif param == "vlans":
-                self.get_settings_vlans()
+            elif param == "vlans-add":
+                self.get_settings_vlans_add()
             else:
                 print("Invalid option.")
         else:

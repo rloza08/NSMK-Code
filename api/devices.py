@@ -30,6 +30,14 @@ class devices(object):
             else:
                 l.logger.error("failed.")
                 l.logger.error("{}".format(str))
+
+        except (meraki.EmailFormatError,
+                meraki.OrgPermissionError,
+                meraki.ListError) as err:
+            l.logger.error("Meraki error: {}".format(err.default))
+            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+
+
         except  Exception as err:
             l.logger.error("networkid: {} serial:{}".format(networkid, serial))
             l.runlogs_logger.error("networkid: {} serial:{}".format(networkid, serial))
@@ -48,6 +56,13 @@ class devices(object):
                 l.logger.error("orgid: {} serial:{} claim:{}".format(auto_globals.orgid, serial, self.claim))
                 json.writer("claim_{}".format(serial), self.claim)
             json.writer("claim_{}".format(serial), self.claim)
+
+        except (meraki.EmailFormatError,
+                meraki.OrgPermissionError,
+                meraki.ListError) as err:
+            l.logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
+            l.runlogs_logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
+
         except Exception as err:
             l.logger.error("serial:{}".format(serial))
             l.runlogs_logger.error("serial:{}".format(serial))
@@ -65,7 +80,14 @@ def claimadd(networkid, serial):
         obj.addtonet(networkid, serial)
 
 def removedevice(networkid, serial):
-    meraki.removedevfromnet(config.api_key, networkid, serial)
+    try:
+        meraki.removedevfromnet(config.api_key, networkid, serial)
+    except (meraki.EmailFormatError,
+            meraki.OrgPermissionError,
+            meraki.ListError) as err:
+        l.logger.error("Meraki error: {}".format(err.default))
+        l.runlogs_logger.error("Meraki error: {}".format(err.default))
+
 
 def bulkremove(fname):
     from utils._json import Json
@@ -77,8 +99,4 @@ def bulkremove(fname):
 
 
 if __name__ == '__main__':
-    # serial="Q2PN-KRED-QSMA"
-    # networkid = "N_686798943174003816"
-    # claimadd(networkid, serial)
-    # removedevice(networkid, serial)
     pass

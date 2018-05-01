@@ -1,0 +1,3 @@
+get settings vlans to get settings vlans-add
+Should read the vlans content and display.
+
