@@ -393,6 +393,10 @@ def ENTER_ENV_vlan_add():
     #import os
     cwd = os.getcwd()
     try:
+        from utils._csv import read_remove_csv_header
+        csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_add_list)
+        csv_fname_append = "{}/../../templates/{}_append.csv".format(cwd, vlans_add_list)
+        vlans_add_list_contents = read_remove_csv_header(csv_fname, csv_fname_append)
 
         # Backup the funnel file
         src = "{}/../config/vlans_funnel.csv".format(cwd)
@@ -411,14 +415,13 @@ def ENTER_ENV_vlan_add():
         shutil.copyfileobj(open(patch_01, 'rb'), destination)
 
         # Vlan patch just for this run
-        patch_02 = "{}/../../templates/{}.csv".format(cwd, vlans_add_list)
+        patch_02 = "{}/../../templates/{}_append.csv".format(cwd, vlans_add_list)
         shutil.copyfileobj(open(patch_02, 'rb'), destination)
         destination.close()
         convert_to_json("vlans_funnel", "config",None)
     except:
         l.logger.error("failed")
         assert (0)
-
 
     src = "{}/../config/jinja_vlans_template.json".format(cwd)
     dst = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
@@ -432,6 +435,7 @@ def ENTER_ENV_vlan_add():
                              vlans_template_file_previous="jinja_vlans_template_previous",
                              vlans_template_file_new="jinja_vlans_template")
 
+    return vlans_add_list_contents
 
 def LEAVE_ENV_vlan_add():
 

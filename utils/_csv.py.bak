@@ -274,14 +274,15 @@ class Csv(object):
         return entries
 
     @classmethod
-    def write_lines(self, csvfile, field_names, json_data):
-        writer = csv.DictWriter(csvfile, field_names)
-        writer.writeheader()
-        if type(json_data) is list:
-            for rowDict in json_data:
-                writer.writerow(rowDict)
-        else:
-            writer.writerow(json_data)
+    def write_lines(self, csv_fname, field_names, json_data):
+        with open(csv_fname, 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, field_names)
+            writer.writeheader()
+            if type(json_data) is list:
+                for rowDict in json_data:
+                    writer.writerow(rowDict)
+            else:
+                writer.writerow(json_data)
 
     @classmethod
     def fix_bool_to_lower_dict(self, json_data, line):

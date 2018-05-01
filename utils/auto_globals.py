@@ -212,11 +212,14 @@ def load_store(_orchestration_agent, minimum=False):
     orchestration_agent = _orchestration_agent
 
     dryrun, store_name, org_name = get_settings()
-    assert(store_name)
-    assert(org_name)
+    if store_name is None:
+        return False
+    if org_name is None:
+        return False
 
     orgid = get_orgid(org_name)   # TODO load by an API CALL
-    assert(orgid)
+    if orgid is None:
+        return False
 
     # import api.men_and_mice as men_and_mice
     # men_and_mice.get_vlan_funnel()
@@ -230,7 +233,9 @@ def load_store(_orchestration_agent, minimum=False):
         l.logger.error("store '{}' not found in org: {}".format(store_name, org_name))
         l.runlogs_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
         l.runlogs_logger.error("store '{}' not found in org: {}".format(store_name, org_name))
-    assert(netid)
+        gv.fake_assert()
+        return False
+    return True
 
 
 def load_org(_orchestration_agent):

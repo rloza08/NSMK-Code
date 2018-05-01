@@ -36,26 +36,39 @@ def deploy(agent, vlans_only=False):
 
     l.logger.info("success")
 
-def bulk_update(agent, vlans_only=False):
-    if vlans_only:
-        ENTER_ENV_vlan_add()
+def LEAVE_CONTEXT(agent):
+    if agent == "cli-deploy-vlans-add":
+        LEAVE_ENV_vlan_add()
+
+def ENTER_CONTEXT(agent):
+    vlans_add_list = []
+    if agent == "cli-deploy-vlans-add":
+        vlans_add_list_contents = ENTER_ENV_vlan_add()
         org_group = auto_globals.vlans_org
         store_list = auto_globals.vlans_store_list
+        from utils.auto_utils import show_vlans_add_list
+        show_vlans_add_list(vlans_add_list_contents)
     else:
         import api.men_and_mice as men_and_mice
         men_and_mice.get_vlan_funnel()
-
         org_group = auto_globals.deploy_org
         store_list = auto_globals.deploy_store_list
 
+    return org_group, store_list
+
+def bulk_update(agent, vlans_only=False):
+    org_group, store_list = ENTER_CONTEXT(agent)
 
     l.runlogs_logger.info("bulk update started")
     org_list = json.reader(org_group,"templates")
-    from utils.auto_utils import show_orglist, show_store_list, show_selected_l3fwrules, show_selected_s2svpnrules
+    from utils.auto_utils import show_store_list
     fname=store_list
     store_list_json = Json.reader(fname, "templates")
 
-    fw_rules = auto_globals.deploy_l3fwrules_version
+    if agent != "cli-deploy-vlans-add":
+        fw_rules = auto_globals.deploy_l3fwrules_version
+    else:
+        fw_rules = None
 
     for org in org_list:
         org_name = org["org_name"]
@@ -67,8 +80,7 @@ def bulk_update(agent, vlans_only=False):
         bulk.perform_bulk_update_store(agent, org_name, store_list, deploy,  vlans_only)
         l.runlogs_logger.info("finished for org: {}".format(org_name))
     l.runlogs_logger.info("bulk update finished")
-    if vlans_only:
-        LEAVE_ENV_vlan_add()
+    LEAVE_CONTEXT(agent)
 
 if __name__ == '__main__':
     l.logger.info ("Please setup environment variables if needed:"

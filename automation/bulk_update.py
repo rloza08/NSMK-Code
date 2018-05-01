@@ -32,8 +32,8 @@ def perform_bulk_update_firewall(agent, fn_deploy, org_name, fw_rules, store_lis
             l.logger.error(str)
             gv.fake_assert()
         auto_globals.select_store(store_name)
-        auto_globals.load_store(agent)
         try:
+            assert(auto_globals.load_store(agent))
             str = ('deploying l3fwrules to {}'.format(store_name))
             l.runlogs_logger.info(str)
             fn_deploy(agent, fw_rules)
@@ -58,8 +58,9 @@ def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
             l.logger.error(str)
             gv.fake_assert()
         auto_globals.select_store(store_name)
-        auto_globals.load_store(agent, minimum=True)
         try:
+            success = auto_globals.load_store(agent, minimum=True)
+            assert(success)
             str = ('getting l3fwrules for {}'.format(store_name))
             l.logger.info(str)
             l.runlogs_logger.info(str)
@@ -90,7 +91,11 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_only=Fals
             gv.fake_assert()
         l.logger.info("deploying store : {}".format(store_name))
         auto_globals.select_store(store_name)
-        auto_globals.load_store(agent)
+        if (auto_globals.load_store(agent)) is False:
+            l.logger.error("failed deploying network: {}".format(store_name))
+            l.runlogs_logger.error("failed deploying network: {}".format(store_name))
+            return
+
         fn_deploy(agent, vlans_only)
         l.logger.info("deployed store : {}".format(store_name))
         Json.writer(fname, store_list, "templates")
