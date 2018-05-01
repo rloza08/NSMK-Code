@@ -31,7 +31,7 @@ def draw(stdscr, str):
 _menu = {}
 
 # _menu["main"] = ["orgs", "store-list", "l3fwrules"]
-# _menu["orgs"] = ["Org-1", "Org-New", "Org-QA"]
+# _menu["orgs"] = ["org-1", "org-New", "org-QA"]
 # _menu["store-list"]=["SHA", "JEW", "INT"]
 # _menu["l3fwrules"] = ["l3fwrules_004", "l3fwrules_005", "l3fwrules_006", "l3fwrules_007"]
 

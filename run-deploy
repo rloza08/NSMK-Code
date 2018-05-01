@@ -1,6 +1,6 @@
 #!/bin/bash
-set ORG=Org-Firewall_Testing_Org
-set STORES=Store-List-JAS1
+set ORG=org-Firewall_Testing_Org
+set STORES=store-list-JAS1
 set FW=l3fwrules_template_MAR_MX_Org_031318-v5
 
 # SELECTING

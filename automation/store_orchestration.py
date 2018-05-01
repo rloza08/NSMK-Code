@@ -93,4 +93,4 @@ if __name__ == '__main__':
 
     agent = "store_orchestration_bulk"
 
-    bulk_update(agent, fname="Store-List-AutomationTest", org_name="Org-AutomationTestOrg_DONOTDELETE")
+    bulk_update(agent, fname="store-list-AutomationTest", org_name="org-AutomationTestOrg_DONOTDELETE")

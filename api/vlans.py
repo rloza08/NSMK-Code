@@ -56,8 +56,12 @@ class Vlans(object):
                     l.runlogs_logger.error("{}".format(err.args))
                     gv.fake_assert()
 
-        l.logger.info("added a total of {} vlans".format(deploy_count))
-        l.runlogs_logger.info("added a total of {} vlans".format(deploy_count))
+        if deploy_count == 0 :
+            l.logger.info("vlans already exist - no vlans added")
+            l.runlogs_logger.info("vlans already exist - no vlans added")
+        else:
+            l.logger.info("added a total of {} vlans".format(deploy_count))
+            l.runlogs_logger.info("added a total of {} vlans".format(deploy_count))
 
     @classmethod
     def update_single_vlan(self, vlan, netid, update_flag=True):

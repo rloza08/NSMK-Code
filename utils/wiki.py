@@ -133,16 +133,16 @@ howto_l3_firewall = \
     
         (2) Show all available org groups:
             > ./cli.py  get-org-list
-                Org-Store_QA_Org
-                Org-New_Production_MX_Org
-                Org-AutomationTestOrg_DONOTDELETE       
+                org-Store_QA_Org
+                org-New_Production_MX_Org
+                org-AutomationTestOrg_DONOTDELETE       
 
         (3) Show all available store groups:
             > ./cli.py get-store-list
                 -INT
                 -SHA
-                Store-List-JEW
-                Store-List-SWY              
+                store-list-JEW
+                store-list-SWY              
             
         (4) Show l3 firewall templates:
             > ./cli.py show-l3-firewall-versions
@@ -152,7 +152,7 @@ howto_l3_firewall = \
         
         (5) Deploy L3 Firewalls:
             e.g.
-            >./cli.py deploy-l3-firewall  Org-AutomationTestOrg_DONOTDELETE firewall_rules_template_004 Store-List-SHA
+            >./cli.py deploy-l3-firewall  org-AutomationTestOrg_DONOTDELETE firewall_rules_template_004 store-list-SHA
                         
     """
 howto_s2s_vpn_rules = \
@@ -168,9 +168,9 @@ howto_s2s_vpn_rules = \
             
         (2) Show all available org groups:
             > ./cli.py  get-org-list
-                Org-Store_QA_Org
-                Org-New_Production_MX_Org
-                Org-AutomationTestOrg_DONOTDELETE       
+                org-Store_QA_Org
+                org-New_Production_MX_Org
+                org-AutomationTestOrg_DONOTDELETE       
 
         (3) Show all s2s-vpn firewall templates:
             > ./cli.py show-vpn-versions
@@ -180,7 +180,7 @@ howto_s2s_vpn_rules = \
                 S2S_VPN_Rules_001b
 
         (4) Deploy S2S-VPN Rules:
-            >./cli.py deploy-s2s-vpn-rules Org-AutomationTestOrg_DONOTDELETE S2S_VPN_Rules_001
+            >./cli.py deploy-s2s-vpn-rules org-AutomationTestOrg_DONOTDELETE S2S_VPN_Rules_001
 
     """
 

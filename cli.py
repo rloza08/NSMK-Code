@@ -50,7 +50,7 @@ class CLI(object):
 
     def validate_org_list(self, org_name):
         print ("# List of valid Orgs available #")
-        orgs = find_file_pattern("Org-")
+        orgs = find_file_pattern("org-")
         if org_name not in orgs:
             if not (org_name in valid_queries):
                 print ('"{}" is not a valid org, please select of the orgs from above.'.format(org_name))
@@ -95,10 +95,10 @@ class CLI(object):
 
     def validate_store_list(self, store_list):
         print ("# List of valid Store-lists available")
-        store_lists = find_file_pattern("Store-List")
+        store_lists = find_file_pattern("store-list")
         if store_list not in store_lists:
             if not (store_list in valid_queries):
-                print ('"{}" is not a valid Store-List, please select a valid Store-List from above.'.format(store_list))
+                print ('"{}" is not a valid store-list, please select a valid store-list from above.'.format(store_list))
             EOM()
             sys.stdout.flush()
             return False
@@ -320,10 +320,10 @@ class CLI(object):
 
         EOM()
         print ("# Valid Orgs available #")
-        find_file_pattern("Org-")
+        find_file_pattern("org-")
         EOM()
         print ("# Valid Store Lists available #")
-        find_file_pattern("Store-List")
+        find_file_pattern("store-list")
 
         EOM()
         print ("# Valid Vlans Add Lists available #")

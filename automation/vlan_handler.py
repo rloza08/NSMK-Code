@@ -429,7 +429,6 @@ def ENTER_ENV_vlan_add():
     shutil.copyfileobj(open(src, 'rb'), destination)
     destination.close()
 
-
     update_vlan_template(funnel_file="vlans_funnel",
                              vlans_template_file="jinja_vlans_template",
                              vlans_template_file_previous="jinja_vlans_template_previous",

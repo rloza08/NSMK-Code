@@ -187,7 +187,7 @@ class Validate(object):
         if schema is None:
             print ("No valid schema match\n"
                    "check file name follows correct pattern: {}\n"
-                   "Store-List-* / Org-* / l3fwrules_template_ / s2svpnrules_".format(fname))
+                   "store-list-* / org-* / l3fwrules_template_ / s2svpnrules_".format(fname))
             gv.EOM()
             gv.fake_assert()
 

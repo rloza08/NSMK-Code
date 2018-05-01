@@ -6,8 +6,8 @@
       ],
       "settings": {
         "clone-source": "0_Base_Config_v1",
-        "org": "Org-AutomationTestOrg_DONOTDELETE",
-        "store-list": "Store-List-TST"
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST"
       }
     },
     "stores": {
@@ -16,8 +16,8 @@
       ],
       "settings": {
         "clone-source": "0_Base_Config_v1",
-        "org": "Org-AutomationTestOrg_DONOTDELETE",
-        "store-list": "Store-List-TST"
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST"
       }
     },
     "l3fwrules": {
@@ -25,8 +25,8 @@
         "deploy l3fwrules"
       ],
       "settings": {
-        "org": "Org-AutomationTestOrg_DONOTDELETE",
-        "store-list": "Store-List-TST",
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST",
         "version": "l3fwrules_template_MAR_MX_Org_031318-v5"
       }
     },
@@ -35,7 +35,7 @@
         ["deploy s2svpnrules", "download s2svpnrules"]
       ],
       "settings": {
-        "org": "Org-AutomationTestOrg_DONOTDELETE",
+        "org": "org-AutomationTestOrg_DONOTDELETE",
         "version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09"
       }
     },
@@ -45,7 +45,7 @@
         "del vlan"
       ],
       "settings": {
-        "org": "Org-AutomationTestOrg_DONOTDELETE",
+        "org": "org-AutomationTestOrg_DONOTDELETE",
         "version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09"
       }
     }

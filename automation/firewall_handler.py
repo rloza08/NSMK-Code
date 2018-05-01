@@ -337,6 +337,6 @@ def bulk_get(agent):
 
 
 if __name__ == '__main__':
-    store_list = "Store-List-SHA"
+    store_list = "store-list-SHA"
     org_group="New_Production_MX_Org"
     bulk_update(agent="firewall_update_bulk", org_group=org_group, fw_rules=None, store_list=store_list)
