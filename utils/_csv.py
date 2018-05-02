@@ -29,7 +29,7 @@ class Csv(object):
             fname_csv = utils.get_path(fname, path, "csv")
         entries = []
         try:
-            with open(fname_csv, newline='') as csv_file:
+            with open(fname_csv, encoding="windows-1251", newline='') as csv_file:
                 reader = csv.DictReader(csv_file, skipinitialspace=True)
                 for entry in reader:
                     entries.append(entry)
@@ -199,7 +199,7 @@ class Csv(object):
             gv.EOM()
             gv.fake_assert()
 
-        with open(fname_csv, newline='') as csv_file:
+        with open(fname_csv, encoding="windows-1251", newline='') as csv_file:
             entries = csv.DictReader(csv_file, skipinitialspace=True)
             line_count = 0
             for entry in entries:
@@ -224,7 +224,7 @@ class Csv(object):
         json_data = []
 
         line_count = 0
-        with open(fname_csv, newline='') as csv_file:
+        with open(fname_csv, encoding="windows-1251", newline='') as csv_file:
             line_count +=1
             entries = csv.DictReader(csv_file, skipinitialspace=True)
             if is_firewall is False:
@@ -380,7 +380,7 @@ def read_remove_csv_header(csv_fname, csv_fname_out):
     entries = {}
 
     line_count = 0
-    with open(csv_fname, newline='') as csv_file:
+    with open(csv_fname, encoding="windows-1251", newline='') as csv_file:
         line_count += 1
         entries = csv.DictReader(csv_file, skipinitialspace=True)
         field_names = entries.fieldnames
