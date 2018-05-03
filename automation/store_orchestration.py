@@ -12,7 +12,6 @@ from  utils._json import Json
 from automation.vlan_handler import ENTER_ENV_vlans_add, LEAVE_ENV_vlans_add
 from automation.vlan_handler import ENTER_ENV_vlans_delete, LEAVE_ENV_vlans_delete
 
-
 def deploy_vlans_delete(agent, netid, vlans_list):
     vlan_handler.vlans_delete(netid, vlans_list)
 
@@ -44,6 +43,8 @@ def LEAVE_CONTEXT(agent):
 
 def ENTER_CONTEXT(agent):
     vlans_list = None
+
+
     if agent == "cli-deploy-vlans-add":
         vlans_add_list_contents = ENTER_ENV_vlans_add()
         org_group = auto_globals.vlans_add_org
@@ -63,6 +64,13 @@ def ENTER_CONTEXT(agent):
         men_and_mice.get_vlan_funnel()
         org_group = auto_globals.deploy_org
         store_list = auto_globals.deploy_store_list
+
+    fname = store_list
+    from utils.auto_utils import show_store_list
+    store_list_json = Json.reader(fname, "templates")
+    show_store_list(store_list_json)
+
+
     return org_group, store_list, vlans_list
 
 def bulk_update(agent, vlans_only=False):
@@ -70,9 +78,6 @@ def bulk_update(agent, vlans_only=False):
 
     l.runlogs_logger.info("bulk update started")
     org_list = json.reader(org_group,"templates")
-    from utils.auto_utils import show_store_list
-    fname=store_list
-    store_list_json = Json.reader(fname, "templates")
 
     if agent == "cli-deploy-stores":
         fw_rules = auto_globals.deploy_l3fwrules_version
@@ -83,17 +88,16 @@ def bulk_update(agent, vlans_only=False):
         org_name = org["org_name"]
         auto_globals.select_org(org_name)
         l.runlogs_logger.info("selected org: {}".format(org_name))
-        l.runlogs_logger.info("selected l3fwrules : {}".format(fw_rules))
-        show_store_list(store_list_json)
 
         if agent == "cli-deploy-vlans-delete":
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy_vlans_delete, vlans_list)
         elif agent == "cli-deploy-vlans-add":
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy_vlans_add)
         else:
+            l.runlogs_logger.info("selected l3fwrules : {}".format(fw_rules))
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy)
 
-        l.runlogs_logger.info("finished for org: {}".format(org_name))
+        l.runlogs_logger.info("finished org: {}".format(org_name))
     l.runlogs_logger.info("bulk update finished")
     LEAVE_CONTEXT(agent)
 

@@ -12,6 +12,8 @@ import time
 
 # Not really to be called from anywhere
 # to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
+TABS=6*"\t"
+
 def is_numeric(s):
     try:
         int(s)
@@ -68,36 +70,36 @@ def show_orglist(org_list):
     number = 0
     for org in org_list:
         number +=1
-        str +=("\n\t\t{} - {}".format(number, org["org_name"]))
-    l.runlogs_logger.info("{}".format(str))
-
+        str +=("\n{}{} - {}".format(number, org["org_name"]))
+    l.logger.info("{}\n".format(str))
+    l.runlogs_logger.info("{}\n".format(str))
 
 def show_store_list(store_list):
     str = "deploying on the following stores:"
     number = 0
     for store in store_list:
         number +=1
-        str +=("\n\t\t{} - {}".format(number, store["name"]))
-    l.logger.info("{}".format(str))
-    l.runlogs_logger.info("{}".format(str))
+        str +=("\n{}{} - {}".format(TABS, number, store["name"]))
+    l.logger.info("{}\n".format(str))
+    l.runlogs_logger.info("{}\n".format(str))
 
 def show_vlans_add_list(vlans_add_list):
     str = "adding the following vlans:"
     number = 0
     for vlan in vlans_add_list:
         number +=1
-        str +=("\n\t\t{} - {} {} {}".format(number, vlan["Vlan"], vlan["Subnet"], vlan["Description"]))
-    l.logger.info("{}".format(str))
-    l.runlogs_logger.info("{}".format(str))
+        str +=("\n{}{} - {} {} {}".format(TABS, number, vlan["Vlan"], vlan["Subnet"], vlan["Description"]))
+    l.logger.info("{}\n".format(str))
+    l.runlogs_logger.info("{}\n".format(str))
 
 def show_vlans_delete_list(vlans_add_list):
     str = "delete the following vlans:"
     number = 0
     for vlan in vlans_add_list:
         number +=1
-        str +=("\n\t\t{} - {}".format(number, vlan))
-    l.logger.info("{}".format(str))
-    l.runlogs_logger.info("{}".format(str))
+        str +=("\n{}{} - {}".format(TABS, number, vlan))
+    l.logger.info("{}\n".format(str))
+    l.runlogs_logger.info("{}\n".format(str))
 
 def show_selected_l3fwrules(l3fwrules):
     str = "deploying using {}:".format(l3fwrules)
