@@ -173,11 +173,11 @@ class Vlans(object):
 
             success, self.vlans = meraki.delvlan(config.api_key, netid, vlanid)
             if success:
-                l.logger.info("deleted vlan {}".format(netid, vlanid))
-                l.runlogs_logger.info("deleted vlan {}".format(netid, vlanid))
+                l.logger.info("deleted vlan {}".format(vlanid))
+                l.runlogs_logger.info("deleted vlan {}".format(vlanid))
             else:
-                l.logger.error("failed netid:{} vlanid:{}".format(netid, vlanid))
-                l.runlogs_logger.error("failed netid:{} vlanid:{}".format(netid, vlanid))
+                l.logger.error("failed deleting vlan {}".format(vlanid))
+                l.runlogs_logger.error("failed deleting vlan {}".format(vlanid))
                 gv.fake_assert()
             l.logger.debug("netid:{} vlanid:{}".format(netid, vlanid))
 

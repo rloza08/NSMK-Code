@@ -12,7 +12,7 @@ import time
 
 # Not really to be called from anywhere
 # to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
-TABS=6*"\t"
+TABS=3*"\t"
 
 def is_numeric(s):
     try:
