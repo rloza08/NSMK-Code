@@ -74,9 +74,9 @@ def ENTER_CONTEXT(agent):
     return org_group, store_list, vlans_list
 
 def bulk_update(agent, vlans_only=False):
+    l.runlogs_logger.info("bulk update started")
     org_group, store_list, vlans_list = ENTER_CONTEXT(agent)
 
-    l.runlogs_logger.info("bulk update started")
     org_list = json.reader(org_group,"templates")
 
     if agent == "cli-deploy-stores":
