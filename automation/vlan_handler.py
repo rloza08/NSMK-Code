@@ -7,7 +7,7 @@ import utils.auto_config as config
 import api.netx as netx
 import utils._csv as Csv
 import utils.auto_globals as auto_globals
-from utils.auto_globals import CONFIG_DIR, vlans_add_list
+from utils.auto_globals import CONFIG_DIR, vlans_add_list, vlans_delete_list
 from utils.auto_config import json_reader, make_pretty
 from copy import deepcopy
 from utils._json import Json
@@ -388,9 +388,15 @@ def add_entry_to_template(t_new, vlan):
     t_new.append(entry)
 
 
+def ENTER_ENV_vlans_delete():
+    cwd = os.getcwd()
+    from utils._csv import read_csv
+    csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_delete_list)
+    vlans_delete_list_contents = read_csv(csv_fname)
+    return vlans_delete_list_contents
 
-def ENTER_ENV_vlan_add():
-    #import os
+
+def ENTER_ENV_vlans_add():
     cwd = os.getcwd()
     try:
         from utils._csv import read_remove_csv_header
@@ -436,7 +442,7 @@ def ENTER_ENV_vlan_add():
 
     return vlans_add_list_contents
 
-def LEAVE_ENV_vlan_add():
+def LEAVE_ENV_vlans_add():
 
     # Now restore the men and mice file in config back to
     # its original state
@@ -456,6 +462,9 @@ def LEAVE_ENV_vlan_add():
     except:
         l.logger.error("failed")
         assert (0)
+
+def LEAVE_ENV_vlans_delete():
+    pass
 
 
 def update_vlan_template(funnel_file="vlans_funnel",
@@ -495,6 +504,10 @@ def update_vlan_template(funnel_file="vlans_funnel",
 
     tpl = make_pretty(t_new)
     return t_new
+
+def vlans_delete(netid, vlans_list):
+    for vlanid in vlans_list:
+        vlans.delete(netid, vlanid)
 
 
 if __name__ == "__main__":

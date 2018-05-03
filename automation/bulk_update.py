@@ -75,7 +75,7 @@ def perform_bulk_get_firewall(agent, fn_get, org_name, store_list):
             gv.fake_assert()
 
 
-def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_only=False):
+def perform_bulk_delete_vlans(agent, org_name, fname, fn_deploy, vlans_only=False):
     store_list = Json.reader(fname, "templates")
 
     if not goahead_confirm("stores"):
@@ -101,6 +101,34 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_only=Fals
         Json.writer(fname, store_list, "templates")
         Csv.transform_to_csv(fname, None, path="templates")
         l.runlogs_logger.info("deployed network: {}  netid: {}".format(store_name, auto_globals.netid))
+
+
+def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_list=[]):
+    store_list = Json.reader(fname, "templates")
+
+    if not goahead_confirm("stores"):
+        return
+
+    for store in store_list:
+        store_name = store.get("name", None)
+        l.runlogs_logger.info("deploying: {}".format(store_name))
+        if store_name is None:
+            str = "fname: {} ::: store_name field was not found for store {}".format(fname, store)
+            l.logger.error(str)
+            l.runlogs_logger.error(str)
+            gv.fake_assert()
+        l.logger.info("deploying store : {}".format(store_name))
+        auto_globals.select_store(store_name)
+        if (auto_globals.load_store(agent)) is False:
+            l.logger.error("failed deploying: {}".format(store_name))
+            l.runlogs_logger.error("failed deploying: {}".format(store_name))
+            return
+        netid = auto_globals.netid
+        fn_deploy(agent, netid, vlans_list)
+        l.logger.info("deployed store : {}".format(store_name))
+        Json.writer(fname, store_list, "templates")
+        Csv.transform_to_csv(fname, None, path="templates")
+        l.runlogs_logger.info("deployed: {}  netid: {}".format(store_name, auto_globals.netid))
 
 def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
     store_list = Json.reader(store_list_file, "templates")

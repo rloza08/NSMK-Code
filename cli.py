@@ -92,6 +92,17 @@ class CLI(object):
             return False
         return True
 
+    def validate_vlans_delete_list(self, vlans_delete_list):
+        print ("# List of valid vlans-delete-lists available")
+        vlans_delete_lists = find_file_pattern("vlans-delete-list-", "csv")
+        if vlans_delete_list not in vlans_delete_lists:
+            if not (vlans_delete_list in valid_queries):
+                print ('"{}" is not a valid vlans-delete-list, please select a vlans-delete-list from above.'.format(vlans_delete_list))
+            EOM()
+            sys.stdout.flush()
+            return False
+        return True
+
 
     def validate_store_list(self, store_list):
         print ("# List of valid Store-lists available")
@@ -105,22 +116,22 @@ class CLI(object):
         return True
 
 
-    def set_vlans_org(self, org_name):
+    def set_vlans_add_org(self, org_name):
         if self.validate_org_list(org_name) is False:
             return
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
-        print ("\n\n# Selected vlans-org #\n{}".format(org_name))
-        auto_globals.set_vlans_org(org_name)
+        print ("\n\n# Selected vlans-add-org #\n{}".format(org_name))
+        auto_globals.set_vlans_add_org(org_name)
         EOM()
 
-    def set_vlans_store_list(self, store_list):
+    def set_vlans_add_store_list(self, store_list):
         if self.validate_store_list(store_list)  is False:
             return
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
-        print("\n\n# Selected vlans-store-list #\n{}".format(store_list))
-        auto_globals.set_vlans_store_list(store_list)
+        print("\n\n# Selected vlans-add-store-list #\n{}".format(store_list))
+        auto_globals.set_vlans_add_store_list(store_list)
         EOM()
 
     def set_vlans_add_list(self, vlans_add_list):
@@ -132,6 +143,32 @@ class CLI(object):
         auto_globals.set_vlans_add_list(vlans_add_list)
         EOM()
 
+    def set_vlans_delete_org(self, org_name):
+        if self.validate_org_list(org_name) is False:
+            return
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        print ("\n\n# Selected vlans-delete-org #\n{}".format(org_name))
+        auto_globals.set_vlans_delete_org(org_name)
+        EOM()
+
+    def set_vlans_delete_store_list(self, store_list):
+        if self.validate_store_list(store_list)  is False:
+            return
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        print("\n\n# Selected vlans-delete-store-list #\n{}".format(store_list))
+        auto_globals.set_vlans_delete_store_list(store_list)
+        EOM()
+
+    def set_vlans_delete_list(self, vlans_delete_list):
+        if self.validate_vlans_delete_list(vlans_delete_list)  is False:
+            return
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        print("\n\n# Selected vlans-delete-list #\n{}".format(vlans_delete_list))
+        auto_globals.set_vlans_delete_list(vlans_delete_list)
+        EOM()
 
     def set_deploy_org(self, org_name):
         if self.validate_org_list(org_name) is False:
@@ -246,9 +283,12 @@ class CLI(object):
 
                 deploy-org
                 deploy-store-list
-                vlans-org
-                vlans-store-list
+                vlans-add-org
+                vlans-add-store-list
                 vlans-add-list
+                vlans-delete-org
+                vlans-delete-store-list
+                vlans-delete-list
                 l3fwrules-org
                 l3fwrules-store-list
                 l3fwrules-version
@@ -262,12 +302,18 @@ class CLI(object):
             self.set_deploy_store_list(store_list=param)
         elif module.find("deploy-l3fwrules-version") == 0:
             self.set_deploy_l3fwrules_version(version=param)
-        elif module.find("vlans-org") == 0:
-            self.set_vlans_org(org_name=param)
-        elif module.find("vlans-store-list") == 0:
-            self.set_vlans_store_list(store_list=param)
+        elif module.find("vlans-add-org") == 0:
+            self.set_vlans_add_org(org_name=param)
+        elif module.find("vlans-add-store-list") == 0:
+            self.set_vlans_add_store_list(store_list=param)
         elif module.find("vlans-add-list") == 0:
             self.set_vlans_add_list(vlans_add_list=param)
+        elif module.find("vlans-delete-org") == 0:
+            self.set_vlans_delete_org(org_name=param)
+        elif module.find("vlans-delete-store-list") == 0:
+            self.set_vlans_delete_store_list(store_list=param)
+        elif module.find("vlans-delete-list") == 0:
+            self.set_vlans_delete_list(vlans_delete_list=param)
         elif module.find("l3fwrules-org") == 0:
             self.set_l3fwrules_org(org_name=param)
         elif module.find("l3fwrules-store-list") == 0:
@@ -317,6 +363,9 @@ class CLI(object):
 
     def get_settings_all(self):
         """Selects normal run mode which makes meraki api calls"""
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        settings = auto_globals.get_cli_settings()
 
         EOM()
         print ("# Valid Orgs available #")
@@ -330,6 +379,22 @@ class CLI(object):
         find_file_pattern("vlans-add-list")
 
         EOM()
+        print ("# Valid Vlans Delete Lists available #")
+        find_file_pattern("vlans-delete-list")
+
+        EOM()
+        print ("# deploy vlans-add settings #")
+        for key in settings:
+            if key.find("vlans-add")==0:
+                print ("{}:  {}".format(key, settings[key]))
+
+        EOM()
+        print ("# deploy vlans-delete settings #")
+        for key in settings:
+            if key.find("vlans-add")==0:
+                print ("{}:  {}".format(key, settings[key]))
+
+        EOM()
         print ("# Valid l3fwrules available #")
         find_file_pattern("l3fwrules_template")
 
@@ -337,22 +402,11 @@ class CLI(object):
         print ("# Valid s2svpnrules available #")
         find_file_pattern("s2svpnrules_")
 
-        os.chdir("{}/automation".format(self.cwd))
-        import utils.auto_globals as auto_globals
-        settings = auto_globals.get_cli_settings()
-
         EOM()
         print ("# deploy networks/stores settings #")
         for key in settings:
             if key.find("deploy")==0:
                 print ("{}:  {}".format(key, settings[key]))
-
-        EOM()
-        print ("# deploy vlans settings #")
-        for key in settings:
-            if key.find("vlans")==0:
-                print ("{}:  {}".format(key, settings[key]))
-
 
         EOM()
         print ("# l3fwrules settings #")
@@ -371,7 +425,8 @@ class CLI(object):
         print ("   select <parameter> <value> ")
         print ("   get settings  all")
         print ("   get settings  deploy")
-        print ("   get settings  vlans")
+        print ("   get settings  vlans-add")
+        print ("   get settings  vlans-delete")
         print ("   get settings  l3fwrules")
         print ("   get settings  s2svpnrules")
         print ("   deploy networks ")
@@ -403,9 +458,23 @@ class CLI(object):
         import utils.auto_globals as auto_globals
         settings = auto_globals.get_cli_settings()
         EOM()
-        print ("# deploy vlans settings #")
+        print ("# deploy vlans-add settings #")
         for key in settings:
-            if key.find("vlans")==0:
+            if key.find("vlans-add")==0:
+                print ("{}:  {}".format(key, settings[key]))
+
+        os.chdir("{}".format(self.cwd))
+        EOM()
+        print ("")
+
+    def get_settings_vlans_delete(self):
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        settings = auto_globals.get_cli_settings()
+        EOM()
+        print ("# deploy vlans-delete settings #")
+        for key in settings:
+            if key.find("vlans-delete")==0:
                 print ("{}:  {}".format(key, settings[key]))
 
         os.chdir("{}".format(self.cwd))
@@ -520,6 +589,8 @@ class CLI(object):
                 self.get_settings_deploy()
             elif param == "vlans-add":
                 self.get_settings_vlans_add()
+            elif param == "vlans-delete":
+                self.get_settings_vlans_delete()
             else:
                 print("Invalid option.")
         else:
@@ -617,7 +688,6 @@ class CLI(object):
         time.sleep(1)
         EOM()
 
-    # Should get config (shows all the gets)
     def	deploy_vlans_add(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
@@ -629,6 +699,16 @@ class CLI(object):
         time.sleep(1)
         EOM()
 
+    def deploy_vlans_delete(self):
+        """Runs the store orchestration"""
+        os.chdir("{}/automation".format(self.cwd))
+        from automation.store_orchestration import bulk_update
+        agent = "cli-deploy-vlans-delete"
+        bulk_update(agent, vlans_only=True)
+        os.chdir("{}".format(self.cwd))
+        sys.stdout.flush()
+        time.sleep(1)
+        EOM()
 
     def	deploy_networks(self):
         """Runs the store orchestration"""

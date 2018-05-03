@@ -90,6 +90,14 @@ def show_vlans_add_list(vlans_add_list):
     l.logger.info("{}".format(str))
     l.runlogs_logger.info("{}".format(str))
 
+def show_vlans_delete_list(vlans_add_list):
+    str = "delete the following vlans:"
+    number = 0
+    for vlan in vlans_add_list:
+        number +=1
+        str +=("\n\t\t{} - {}".format(number, vlan))
+    l.logger.info("{}".format(str))
+    l.runlogs_logger.info("{}".format(str))
 
 def show_selected_l3fwrules(l3fwrules):
     str = "deploying using {}:".format(l3fwrules)

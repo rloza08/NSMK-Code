@@ -124,6 +124,18 @@ class Vlans(object):
         return True
 
     @classmethod
+    def delete_vlans_list(self, vlans, netid):
+        try:
+            for vlanid in vlans:
+                self.delete(netid, vlanid)
+        except Exception as err:
+            l.logger.error("{}".format(err.args))
+            l.runlogs_logger.error("{}".format(err.args))
+            gv.fake_assert()
+            return False
+        return True
+
+    @classmethod
     def get_vlans(self, netid):
         self.vlans = None
         try:
@@ -154,12 +166,16 @@ class Vlans(object):
     Not in used by the current orchestration.
 
     """
+    @classmethod
     def delete(self, netid, vlanid):
         self.vlans = None
         try:
 
             success, self.vlans = meraki.delvlan(config.api_key, netid, vlanid)
-            if not success:
+            if success:
+                l.logger.info("deleted vlan {}".format(netid, vlanid))
+                l.runlogs_logger.info("deleted vlan {}".format(netid, vlanid))
+            else:
                 l.logger.error("failed netid:{} vlanid:{}".format(netid, vlanid))
                 l.runlogs_logger.error("failed netid:{} vlanid:{}".format(netid, vlanid))
                 gv.fake_assert()
@@ -196,6 +212,9 @@ def update_vlans(netid):
     obj=Vlans()
     obj.update_vlans_list(vlans_to_deploy, netid)
 
+def delete_vlans(netid, vlan_list):
+    obj=Vlans()
+    obj.delete_vlans_list(vlan_list, netid)
 
 def delete(netid, vlanid):
     """Sets vlans from a json file"""

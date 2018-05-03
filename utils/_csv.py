@@ -393,6 +393,21 @@ def read_remove_csv_header(csv_fname, csv_fname_out):
 
     return json_data
 
+def read_csv(csv_fname):
+    obj=Csv()
+    entries = {}
+
+    line_count = 0
+    with open(csv_fname, encoding="windows-1251", newline='') as csv_file:
+        line_count += 1
+        entries = csv.DictReader(csv_file, skipinitialspace=True)
+        json_data = []
+        for entry in entries:
+            json_data.append(int(entry["Vlan"]))
+
+    return json_data
+
+
 
 if __name__ == '__main__':
     # import utils.auto_globals as ag
