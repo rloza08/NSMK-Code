@@ -1,3 +1,146 @@
 get settings vlans to get settings vlans-add
 Should read the vlans content and display.
 
+a) Vlans-add
+a.1) should be refactored to use only json
+a.2) Create a convert utility for vlans-add and vlans-del
+a.3) Fixed IP and DHCP
+
+
+get settings vlans-add
+
+a) move /config/jinja_vlans_templatete to ../templates/vlans-template-<version>
+b) vlans-pacth
+c) vlans-add-list (All json)
+
+vlan-delete
+b) delete should not touch template
+
+clone the vlans-add select/ do it vlans-delete
+(tbd: Should have a safety mechanism)
+
+
+Changes to Select
+A) deploy stores
+---------------------------------------
+# deploy networks/stores settings #
+deploy-vlans-template: vlans-template-<version>
+deploy-clone-source:  0_Base_Config_v1
+deploy-l3fwrules-version:  l3fwrules_template_MAR_MX_Org_031318-v5
+deploy-org:  org-AutomationTestOrg_DONOTDELETE
+deploy-store-list:  store-list-8501
+________________________________________________
+
+B) deploy l3fwrules
+_______________________________________________
+# l3fwrules settings #
+l3fwrules-vlans-template: vlans-template-<version>
+l3fwrules-org:  org-AutomationTestOrg_DONOTDELETE
+l3fwrules-store-list:  store-list-8501
+l3fwrules-version:  l3fwrules_template_99x
+________________________________________________
+
+
+C) deploy vlans-add
+________________________________________________
+# deploy vlans settings #
+vlans-add-list:  vlans-add-list-v01     <--- fix name
+vlans-add-org:  org-AutomationTestOrg_DONOTDELETE <--- fix name
+vlans-add-store-list:  store-list-8501 <--- fix name
+________________________________________________
+
+Obs : Generates template and copies to the data/runtime dir.
+Template is generated on the flight from
+
+C) deploy vlans-add
+________________________________________________
+# deploy vlans settings #
+vlans-add-template:  vlans-add-template-v01     <--- fix name
+vlans-add-org:  org-AutomationTestOrg_DONOTDELETE <--- fix name
+vlans-add-store-list:  store-list-8501 <--- fix name
+________________________________________________
+
+C) deploy vlans-delete
+(Needs safety mechanism)
+________________________________________________
+# deploy vlans-delete settings #
+vlans-delete-list:  vlans-delete-list-v01
+vlans-delete-org:  org-AutomationTestOrg_DONOTDELETE
+vlans-delete-store-list:  store-list-8501
+________________________________________________
+
+C) update vlans-template
+________________________________________________
+# deploy vlans settings #
+vlans-add-list:  vlans-add-list-v01
+create a template with the name vlans-add-template-v01
+Stage III to be defined.
+if there is a vlan added wich is outsied the [a-h]
+then it should go and look up from a file.
+
+File called netx_new_summary.
+
+StoreNumber, Subnet
+8951, 10.<Y>.<Z>   e.g.
+8952, 10.<Y>.<Z>
+
+e.g.
+
+StoreNumber, Subnet
+8951, 10.11.11
+8952, 10.12.11
+
+
+append to existing netx.
+
+Existing netx
+{
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+}
+
+append to
+
+{
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "new-summary": "10.Y.Z.0"
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+    "i": "10.Y.Z+0"     ---. Y and Z comes from separate file
+    "j": "10.Y.Z+1"
+    "k": "10.Y.Z+2"
+    "l": "10.Y.Z+3"
+}
+
+
+________________________________________________
+
+Obs : Generates template and copies to the data/runtime dir.
+Template is generated on the flight from
+
+
+convert utilities for
+vlan-add and vlan-delete
+Refactor to not use  csv.
+
+======================================================================
+
+
+get funnel should call menAndMice (Python 2.7)
+
+Move config out of code.
