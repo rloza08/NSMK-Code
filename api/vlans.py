@@ -176,8 +176,8 @@ class Vlans(object):
                 l.logger.info("deleted vlan {}".format(vlanid))
                 l.runlogs_logger.info("deleted vlan {}".format(vlanid))
             else:
-                l.logger.error("vlan does not exist vlan {} not deleted".format(vlanid))
-                l.runlogs_logger.error("vlan does not exist vlan {} not deleted".format(vlanid))
+                l.logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
+                l.runlogs_logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
                 gv.fake_assert()
             l.logger.debug("netid:{} vlanid:{}".format(netid, vlanid))
 
