@@ -16,8 +16,8 @@ class Json:
             with open(fname, 'w') as f:
                 json_data=f.write(str)
         except Exception as err:
-            l.logger.error("failure")
-            l.runlogs_logger.error("failure")
+            l.logger.error("exception failure")
+            l.runlogs_logger.error("exception failure")
             gv.fake_assert()
 
     @classmethod
@@ -26,6 +26,7 @@ class Json:
         self.writer_full_path(fnameJson, data)
         if logPath:
             l.runlogs_logger.info("created: {}".format(fnameJson))
+            l.logger.info("created: {}".format(fnameJson))
 
     @classmethod
     def reader(self, fname, path="data"):
@@ -37,8 +38,8 @@ class Json:
             data = json.loads(json_data)
             #l.logger.debug("data: {}".format(data))
         except Exception as err:
-            l.logger.error("fname:{} {}".format(fname, fnameJson))
-            l.runlogs_logger.error("fname:{} {}".format(fname, fnameJson))
+            l.logger.error("exception failure fname:{} {}".format(fname, fnameJson))
+            l.runlogs_logger.error("exception failure fname:{} {}".format(fname, fnameJson))
             gv.fake_assert()
 
         return data

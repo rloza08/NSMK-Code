@@ -125,10 +125,10 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_list=[]):
             return
         netid = auto_globals.netid
         fn_deploy(agent, netid, vlans_list)
-        l.logger.info("deployed store : {}".format(store_name))
         Json.writer(fname, store_list, "templates")
         Csv.transform_to_csv(fname, None, path="templates")
-        l.runlogs_logger.info("deployed: {}  netid: {}".format(store_name, auto_globals.netid))
+        l.runlogs_logger.info("deployed {}".format(store_name))
+        l.logger.info("deployed: {}  netid: {}".format(store_name, auto_globals.netid))
 
 def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
     store_list = Json.reader(store_list_file, "templates")
@@ -144,6 +144,7 @@ def perform_bulk_deploy_networks(agent, fn_deploy, org_name, store_list_file):
             l.runlogs_logger.error("fname: {} ::: name field was not found for store {}".format(store))
             gv.fake_assert()
         l.runlogs_logger.info("created network : {}".format(store_name))
+        l.logger.info("created network : {}".format(store_name))
 
         auto_globals.select_store(store_name)
         fn_deploy(agent)

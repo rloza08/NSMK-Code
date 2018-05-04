@@ -41,8 +41,8 @@ class devices(object):
 
 
         except  Exception as err:
-            l.logger.error("networkid: {} serial:{}".format(networkid, serial))
-            l.runlogs_logger.error("networkid: {} serial:{}".format(networkid, serial))
+            l.runlogs_logger.error("err: {} serial:{}".format(err, serial))
+            l.logger.error("err:{} networkid: {} serial:{}".format(err, networkid, serial))
             gv.fake_assert()
 
         return success, str
@@ -62,8 +62,8 @@ class devices(object):
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-            l.logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
-            l.runlogs_logger.error("orgid: {}    Meraki error: {}".format(auto_globals.org_id, err.default))
+            l.logger.error("orgid: {} Meraki error: {}".format(auto_globals.orgid, err.default))
+            l.runlogs_logger.error("orgid: {}  Meraki error: {}".format(auto_globals.orgid, err.default))
             exit(-1)
 
 

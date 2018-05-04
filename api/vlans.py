@@ -142,7 +142,7 @@ class Vlans(object):
             success, self.vlans = meraki.getvlans(config.api_key, netid)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, self.vlans))
-                l.runlogs_logger.error("failed netid:{} {}".format(netid, self.vlans))
+                l.runlogs_logger.error("failed {}".format(self.vlans))
                 gv.fake_assert()
             fname = "vlans_{}".format(netid)
             #json.writer(fname, self.vlans)
@@ -157,8 +157,8 @@ class Vlans(object):
 
 
         except Exception as err:
-            l.logger.error("exception failure netid:{}".format(netid))
-            l.runlogs_logger.error("exception failure netid:{}".format(netid))
+            l.logger.error("exception failure netid:{}".format(netid, self.vlans))
+            l.runlogs_logger.error("exception failure \n{}".format(self.vlans))
             gv.fake_assert()
 
     """
@@ -189,8 +189,8 @@ class Vlans(object):
             exit(-1)
 
         except Exception as err:
-            l.logger.error("exception failure netid:{} vlanid:{}".format(netid, vlanid))
-            l.runlogs_logger.error("exception failure netid:{} vlanid:{}".format(netid, vlanid))
+            l.logger.error("exception failure netid:{} - vlanid:{}".format(netid, vlanid))
+            l.runlogs_logger.error("exception failure - vlanid {}".format(vlanid))
             gv.fake_assert()
 
 

@@ -33,8 +33,8 @@ class Firewall(object):
             exit(-1)
 
         except Exception as err:
-                l.logger.error("exception failure netid:{}".format(netid))
-                l.runlogs_logger.error("exception failure netid:{}".format(netid))
+                l.logger.error("exception failure netid:{} {}".format(netid, str))
+                l.runlogs_logger.error("exception failure netid:{}".format(str))
                 gv.fake_assert()
         return success, str
 
@@ -53,11 +53,11 @@ class Firewall(object):
             success, str = meraki.updatemxl3fwrules(config.api_key, netid, fwrules)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, str))
-                l.runlogs_logger.error("failed netid:{} {}".format(netid, str))
+                l.runlogs_logger.error("failed  {}".format(str))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("exception failure netid:{}\n{}".format(netid), str)
-            l.runlogs_logger.error("exception failure netid:{}\n{}".format(netid), str)
+            l.logger.error("exception failure netid:{}\n{}".format(netid, str))
+            l.runlogs_logger.error("exception failure \n{}".format(str))
             gv.fake_assert()
         return success, str
 
@@ -81,14 +81,14 @@ class Firewall(object):
             success, self.firewalls = meraki.getmxl3fwrules(config.api_key, netid)
             if not success:
                 l.logger.error("failed netid:{} {}".format(netid, self.firewalls))
-                l.runlogs_logger.error("failed netid:{} {}".format(netid, self.firewalls))
+                l.runlogs_logger.error("failed {}".format(self.firewalls))
                 gv.fake_assert()
             fname = "l3fwrules_get_{}".format(store_number)
 
             json.writer(fname, data=self.firewalls, path="data", header=None, logPath=True)
         except Exception as err:
             l.logger.error("exception failure netid:{}\n{}".format(netid, self.firewalls))
-            l.runlogs_logger.error("exception failure netid:{}".format(netid, self.firewalls))
+            l.runlogs_logger.error("exception failure \n{}".format(self.firewalls))
             gv.fake_assert()
 
 def _get(netid, store_number):

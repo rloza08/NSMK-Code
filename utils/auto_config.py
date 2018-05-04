@@ -21,8 +21,8 @@ def json_reader(fpath):
         str = make_pretty(data)
         l.logger.debug("auto_utils.json_reader:\n{}".format(str))
     except Exception as err:
-        l.logger.error("fpath:{} {}".format(fpath))
-        l.runlogs_logger.error("fpath:{} {}".format(fpath))
+        l.logger.error("exception failure fpath:{} {}".format(fpath))
+        l.runlogs_logger.error("exception failure fpath:{} {}".format(fpath))
         gv.fake_assert()
     return data
 

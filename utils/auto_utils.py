@@ -232,23 +232,23 @@ def is_valid_store_group(group):
 
 def is_valid_store_name(name):
     if len(name) != 8 and len(name) !=4:
-        return None, False, None, None
+        return False, None, None, None
 
     if len(name) == 8:
         aux = name.split("_")
         group = aux[0]
 
         if is_valid_store_group(group) is False:
-            return None, False, None, None
+            return False, None, None, None
 
         if len(aux) != 2 :
-            return None, False, None, None
+            return False, None, None, None
         store_number = aux[1]
     else:
-        store_number = int(name)
+        store_number = name
         group = "NOGROUP"
     if is_numeric_in_range(store_number, 1, 9999)==False:
-        return None, False, None, None
+        return False, None, None, None
     return True, name, group, store_number
 
 if __name__ == '__main__':

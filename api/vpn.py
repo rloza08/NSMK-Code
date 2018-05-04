@@ -29,8 +29,8 @@ class Vpn(object):
 				l.runlogs_logger.error("{}".format(str))
 				gv.fake_assert()
 		except  Exception as err:
-			l.logger.error("networkid: {} str:{}".format(networkid, str))
-			l.runlogs_logger.error("networkid: {} str:{}".format(networkid, str))
+			l.logger.error("exception failure networkid: {} str:{}".format(networkid, str))
+			l.runlogs_logger.error("exception failure str:{}".format(str))
 			gv.fake_assert()
 		return success, str
 

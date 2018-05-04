@@ -29,11 +29,6 @@ class VpnFirewall(object):
                     l.runlogs_logger.info("deployed rule number: {} ==>  rule: {}".format(count, str))
                     Json.writer("s2svpnrules_deploy", single_rule)
 
-                    # import json
-                    # aux = json.dumps(str)[0:160]
-                    # l.runlogs_logger.info("updatemxvpnfwrules {}".format(success))
-                    # l.logger.debug("updatemxvpnfwrules {} {}".format(success, str))
-
                     if not success:
                         l.runlogs_logger.error("{}".format(str))
                         l.logger.error("{}".format(str))
@@ -82,13 +77,6 @@ class VpnFirewall(object):
             success=False
             try:
                 success, vpn_rules = meraki.getmxvpnfwrules(api_key, org_id)
-                #vpn_rules_str = "{}".format(vpn_rules_bytes)
-                #vpn_rules_str = ''.join(vpn_rules_bytes)
-                #l.logger.info("getmxvpnfwrules {} {}".format(success, str))
-                ##import json as _json
-                #vpn_rules = _json.loads(vpn_rules_str)
-                #l.runlogs_logger.debug("getmxvpnfwrules {} {}".format(success, aux))
-
 
                 if success:
                     l.logger.debug("success")

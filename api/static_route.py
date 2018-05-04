@@ -30,8 +30,8 @@ class StaticRoute(object):
             exit(-1)
 
         except Exception as err:
-            l.logger.error("exception failure netid:{}\n{}".format(netid, str))
-            l.runlogs_logger.error("exception failure netid:{}\n{}".format(netid, str))
+            l.logger.error("exception failure {} for netid:{} \n{}".format(netid, err, str))
+            l.runlogs_logger.error("exception failure {} \n{}".format(err, str))
             gv.fake_assert()
 
         return success, str

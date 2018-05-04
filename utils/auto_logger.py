@@ -7,13 +7,7 @@ if not os.path.exists("../../data/logs"):
 
 logger = None
 runlogs_logger = None
-runlogs_logger = None
-runlogs_logger = None
 module_setup_done = False
-
-
-
-#config = json_reader("../config/safeway-utils.json")
 
 if gv.log_verbose:
     logging_debug_level = "debug"

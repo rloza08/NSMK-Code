@@ -69,8 +69,8 @@ class Networks(object):
                 l.runlogs_logger.error("failed: {}".format(self.network))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("networkid: {} {}".format(networkid, self.network))
-            l.runlogs_logger.error("networkid: {} {}".format(networkid, self.network))
+            l.logger.error("exception failure networkid: {} {}".format(networkid, self.network))
+            l.runlogs_logger.error("exception failure {}".format(self.network))
             gv.fake_assert()
         return success, self.network
 
@@ -86,7 +86,8 @@ class Networks(object):
                 l.runlogs_logger.error("{}".format(str))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("orgid: {}".format(networkid))
+            l.logger.error("exception failure netid: {} name: {}".format(networkid, name))
+            l.runlogs_logger.error("exception failure name: {}".format(name))
 
             gv.fake_assert()
         return success, self.network
@@ -123,8 +124,8 @@ class Networks(object):
                 l.logger.error("failed, netid: {}".format(networkid))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("networid:{} {}".format(networkid, str))
-            l.runlogs_logger.error("networid:{} {}".format(networkid, str))
+            l.logger.error("exception failure networid:{} {}".format(networkid, str))
+            l.runlogs_logger.error("exception failure {}".format(networkid, str))
             gv.fake_assert()
         return success, str
 
