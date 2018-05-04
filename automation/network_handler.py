@@ -4,9 +4,10 @@ from api.network import create, network_list
 import utils.auto_globals as auto_globals
 import automation.bulk_update as bulk
 import utils.auto_json as json
-from utils.auto_utils import show_orglist
 import utils.auto_config as config
 from utils.auto_utils import is_valid_store_name
+from utils._json import Json
+
 
 def deploy(agent):
     l.logger.debug("clone network")
@@ -24,10 +25,24 @@ def get_stores(agent):
     success, store_list = network_list(org_id)
     if success is False:
         return False
+    stores = {}
+    stores["ALL"]=[]
+    it = {}
+    from copy import deepcopy
     for item in store_list:
         name = item["name"]
-        valid, group, store_number = is_valid_store_name(name)
-        print("valid: {} name: {} group :{} store_number: {}".format(valid, name, group, store_number))
+        valid, store_name, group, store_number = is_valid_store_name(name)
+        if not valid:
+            continue
+        it["name"]= store_name
+        stores["ALL"].append(deepcopy(it))
+        if group not in stores.keys():
+            stores[group] = []
+        stores[group].append(deepcopy(it))
+    for group in stores.keys():
+        fname = "store-list-{}-{}".format(org_name, group)
+        Json.writer(fname, data=stores[group], path="../templates")
+
 
     return store_list
 

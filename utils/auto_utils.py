@@ -232,24 +232,24 @@ def is_valid_store_group(group):
 
 def is_valid_store_name(name):
     if len(name) != 8 and len(name) !=4:
-        return False, None, None
+        return None, False, None, None
 
     if len(name) == 8:
         aux = name.split("_")
         group = aux[0]
 
         if is_valid_store_group(group) is False:
-            return False, None, None
+            return None, False, None, None
 
         if len(aux) != 2 :
-            return False, None, None
+            return None, False, None, None
         store_number = aux[1]
     else:
         store_number = int(name)
-        group = ""
+        group = "NOGROUP"
     if is_numeric_in_range(store_number, 1, 9999)==False:
-        return False, None, None
-    return True, group, store_number
+        return None, False, None, None
+    return True, name, group, store_number
 
 if __name__ == '__main__':
     # auto_globals.setStoreName(store_name = "SHAWS_9611", org_name = "API Testing ORG")
