@@ -19,8 +19,10 @@ def deploy(agent):
 
 
 def get_stores(agent):
-    l.logger.debug("get_store_list")
-    org_name = auto_globals.org_name
+    auto_globals.get_settings()
+    org_name = auto_globals.deploy_org.split("org-")[1]
+    l.logger.info("creating store list for deploy-org {}".format(org_name))
+    l.runlogs_logger.info("creating store list for deploy-org {}".format(org_name))
     org_id = auto_globals.get_orgid(org_name)
     success, store_list = network_list(org_id)
     if success is False:
@@ -42,7 +44,8 @@ def get_stores(agent):
     for group in stores.keys():
         fname = "store-list-{}-{}".format(org_name, group)
         Json.writer(fname, data=stores[group], path="../templates")
-
+        l.logger.info("created {}".format(fname))
+        l.runlogs_logger.info("created {}".format(fname))
 
     return store_list
 
