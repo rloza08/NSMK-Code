@@ -18,7 +18,7 @@ def deploy(agent):
     return
 
 
-def get_stores(agent):
+def get_store_list(agent):
     auto_globals.get_settings()
     org_name = auto_globals.deploy_org.split("org-")[1]
     l.logger.info("creating store list for deploy-org {}".format(org_name))
@@ -79,5 +79,5 @@ def bulk_deploy_networks_for_all_orgs(agent):
 
 if __name__ == '__main__':
     auto_globals.org_name = "AutomationTestOrg_DONOTDELETE"
-    store_list = get_stores("network-handler")
+    store_list = get_store_list("network-handler")
     print (store_list)

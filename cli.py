@@ -439,7 +439,7 @@ class CLI(object):
         print ("")
         os.chdir("{}".format(self.cwd))
 
-    def get_settings_deploy(self):
+    def get_settings_stores(self):
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         settings = auto_globals.get_cli_settings()
@@ -496,12 +496,12 @@ class CLI(object):
         EOM()
         print ("")
 
-    def get_stores(self):
+    def get_store_list(self):
         """Runs the store list"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.network_handler import get_stores
-        agent = "cli-get-stores"
-        get_stores(agent=agent)
+        from automation.network_handler import get_store_list
+        agent = "cli-get-store_list"
+        get_store_list(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
         EOM()
@@ -568,8 +568,8 @@ class CLI(object):
         if module.find("l3fwrules") >= 0:
                 self.get_l3fwrules()
                 return
-        if module.find("stores") >= 0:
-                success = self.get_stores()
+        if module.find("store-list") >= 0:
+                success = self.get_store_list()
                 return
         if module.find("s2svpnrules") >= 0:
                 self.get_s2svpnrules()
@@ -581,8 +581,10 @@ class CLI(object):
                 self.get_settings_l3fwrules()
             elif param == "s2svpnrules":
                 self.get_settings_s2svpnrules()
-            elif param == "deploy":
-                self.get_settings_deploy()
+            elif param == "stores":
+                self.get_settings_stores()
+            elif param == "networks":
+                self.get_settings_stores()
             elif param == "vlans-add":
                 self.get_settings_vlans_add()
             elif param == "vlans-delete":
