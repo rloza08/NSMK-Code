@@ -170,22 +170,22 @@ class CLI(object):
         auto_globals.set_vlans_delete_list(vlans_delete_list)
         EOM()
 
-    def set_deploy_org(self, org_name):
+    def set_networks_org(self, org_name):
         if self.validate_org_list(org_name) is False:
             return
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
-        print ("\n\n# Selected deploy-org #\n{}".format(org_name))
-        auto_globals.set_deploy_org(org_name)
+        print ("\n\n# Selected networks/site-org #\n{}".format(org_name))
+        auto_globals.set_networks_org(org_name)
         EOM()
 
-    def set_deploy_store_list(self, store_list):
+    def set_networks_store_list(self, store_list):
         if self.validate_store_list(store_list)  is False:
             return
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
-        print("\n\n# Selected deploy-store-list #\n{}".format(store_list))
-        auto_globals.set_deploy_store_list(store_list)
+        print("\n\n# Selected networks/site-store-list #\n{}".format(store_list))
+        auto_globals.set_networks_store_list(store_list)
         EOM()
 
     def set_l3fwrules_org(self, org_name):
@@ -206,13 +206,13 @@ class CLI(object):
         auto_globals.set_l3fwrules_store_list(store_list)
         EOM()
 
-    def set_deploy_l3fwrules_version(self, version):
+    def set_site_l3fwrules_version(self, version):
         if self.validate_l3fwrules_version(version) is False:
             return
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# selected deploy-l3fwrules-version: #\n{}".format(version))
-        auto_globals.set_deploy_l3fwrules_version(version)
+        auto_globals.set_site_l3fwrules_version(version)
         EOM()
 
     def set_l3fwrules_version(self, version):
@@ -296,12 +296,16 @@ class CLI(object):
                 s2svpnrules-version
         """
 
-        if module.find("deploy-org") == 0:
-            self.set_deploy_org(org_name=param)
-        elif module.find("deploy-store-list") == 0:
-            self.set_deploy_store_list(store_list=param)
-        elif module.find("deploy-l3fwrules-version") == 0:
-            self.set_deploy_l3fwrules_version(version=param)
+        if module.find("networks-org") == 0:
+            self.set_networks_org(org_name=param)
+        elif module.find("site-org") == 0:
+            self.set_networks_org(org_name=param)
+        elif module.find("networks-store-list") == 0:
+            self.set_networks_store_list(store_list=param)
+        elif module.find("site-store-list") == 0:
+            self.set_networks_store_list(store_list=param)
+        elif module.find("site-l3fwrules-version") == 0:
+            self.set_site_l3fwrules_version(version=param)
         elif module.find("vlans-add-org") == 0:
             self.set_vlans_add_org(org_name=param)
         elif module.find("vlans-add-store-list") == 0:
@@ -439,14 +443,28 @@ class CLI(object):
         print ("")
         os.chdir("{}".format(self.cwd))
 
-    def get_settings_stores(self):
+    def get_settings_site(self):
         os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         settings = auto_globals.get_cli_settings()
         EOM()
-        print ("# deploy networks/stores settings #")
+        print ("# site settings #")
         for key in settings:
-            if key.find("deploy")==0:
+            if key.find("site")==0:
+                print ("{}:  {}".format(key, settings[key]))
+
+        os.chdir("{}".format(self.cwd))
+        EOM()
+        print ("")
+
+    def get_settings_networks(self):
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        settings = auto_globals.get_cli_settings()
+        EOM()
+        print ("# networks settings #")
+        for key in settings:
+            if key.find("networks")==0:
                 print ("{}:  {}".format(key, settings[key]))
 
         os.chdir("{}".format(self.cwd))
@@ -581,10 +599,10 @@ class CLI(object):
                 self.get_settings_l3fwrules()
             elif param == "s2svpnrules":
                 self.get_settings_s2svpnrules()
-            elif param == "stores":
-                self.get_settings_stores()
+            elif param == "site":
+                self.get_settings_site()
             elif param == "networks":
-                self.get_settings_stores()
+                self.get_settings_networks()
             elif param == "vlans-add":
                 self.get_settings_vlans_add()
             elif param == "vlans-delete":
@@ -656,8 +674,8 @@ class CLI(object):
                     vlans-add
                     vlans-delete
         """
-        if module.find("stores")>=0:
-            self.deploy_stores()
+        if module.find("site")>=0:
+            self.deploy_site()
         elif module.find("vlans-add") >= 0:
                 self.deploy_vlans_add()
         elif module.find("vlans-delete") >= 0:
@@ -673,11 +691,11 @@ class CLI(object):
 
 
     # Should get config (shows all the gets)
-    def	deploy_stores(self):
+    def	deploy_site(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.store_orchestration import bulk_update
-        agent = "cli-deploy-stores"
+        from automation.site import bulk_update
+        agent = "cli-deploy-site"
 
         #text = raw_input("deploy stores (y/N)")
         bulk_update(agent)
@@ -689,7 +707,7 @@ class CLI(object):
     def	deploy_vlans_add(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.store_orchestration import bulk_update
+        from automation.site import bulk_update
         agent = "cli-deploy-vlans-add"
         bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))
@@ -700,7 +718,7 @@ class CLI(object):
     def deploy_vlans_delete(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.store_orchestration import bulk_update
+        from automation.site import bulk_update
         agent = "cli-deploy-vlans-delete"
         bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))

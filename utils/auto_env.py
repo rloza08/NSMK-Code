@@ -86,8 +86,8 @@ def copy_and_patch_funnel():
 def ENTER_ENV_VLANS(agent):
     if agent != "cli-deploy-vlans-add":
         copy_and_patch_funnel()
-        org_group = auto_globals.deploy_org
-        store_list = auto_globals.deploy_store_list
+        org_group = auto_globals.networks_org
+        store_list = auto_globals.networks_store_list
         return org_group, store_list
 
     cwd = os.getcwd()

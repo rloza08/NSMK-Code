@@ -20,7 +20,7 @@ def deploy(agent):
 
 def get_store_list(agent):
     auto_globals.get_settings()
-    org_name = auto_globals.deploy_org.split("org-")[1]
+    org_name = auto_globals.networks_org.split("org-")[1]
     l.logger.info("creating store list for deploy-org {}".format(org_name))
     l.runlogs_logger.info("creating store list for deploy-org {}".format(org_name))
     org_id = auto_globals.get_orgid(org_name)
@@ -51,8 +51,8 @@ def get_store_list(agent):
 
 
 def bulk_deploy_networks_for_all_orgs(agent):
-    org_group = auto_globals.deploy_org
-    store_list = auto_globals.deploy_store_list
+    org_group = auto_globals.networks_org
+    store_list = auto_globals.networks_store_list
 
     l.runlogs_logger.info("deploy networks <starting>")
 
@@ -66,10 +66,10 @@ def bulk_deploy_networks_for_all_orgs(agent):
         org_name = org["org_name"]
         auto_globals.select_org(org_name)
         l.runlogs_logger.info("selected org: {}".format(org_name))
-        l.runlogs_logger.info("using clone source: {}".format(auto_globals.deploy_clone_source))
+        l.runlogs_logger.info("using clone source: {}".format(auto_globals.networks_clone_source))
 
         # Now get the netid for the clone_source
-        auto_globals.select_store(auto_globals.deploy_clone_source)
+        auto_globals.select_store(auto_globals.networks_clone_source)
         auto_globals.load_store(agent)
         config.set_clone_id(auto_globals.netid)
 

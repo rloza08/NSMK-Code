@@ -285,25 +285,5 @@
         "dnsNameservers": "google_dns",
         "fixedIpAssignments": {},
         "reservedIpRanges": []
-    },
-    {
-        "id": 1004,
-        "networkId": "{{networkid}}",
-        "name": "MX-HA",
-        "applianceIp": "{{vlan[1004]['octets']}}.1",
-        "subnet": "{{vlan[1004]['subnet']}}",
-        "dnsNameservers": "upstream_dns",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": []
-    },
-    {
-        "id": 1005,
-        "networkId": "{{networkid}}",
-        "name": "V-105",
-        "applianceIp": "{{vlan[1005]['octets']}}.1",
-        "subnet": "{{vlan[1005]['subnet']}}",
-        "dnsNameservers": "upstream_dns",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": []
     }
 ]

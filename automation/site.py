@@ -27,7 +27,7 @@ def deploy(agent, netid=None, vlans_list=None):
     static_route_handler.add()
 
     l.runlogs_logger.info("l3 firewall setup")
-    fw_rules = "{}".format(auto_globals.deploy_l3fwrules_version)
+    fw_rules = "{}".format(auto_globals.site_l3fwrules_version)
     firewall_handler.deploy(agent, fw_rules)
 
     l.runlogs_logger.info("s2s vpn setup")
@@ -62,8 +62,8 @@ def ENTER_CONTEXT(agent):
     else:
         import api.men_and_mice as men_and_mice
         men_and_mice.get_vlan_funnel()
-        org_group = auto_globals.deploy_org
-        store_list = auto_globals.deploy_store_list
+        org_group = auto_globals.networks_org
+        store_list = auto_globals.networks_store_list
 
     fname = store_list
     from utils.auto_utils import show_store_list
@@ -80,7 +80,7 @@ def bulk_update(agent, vlans_only=False):
     org_list = json.reader(org_group,"templates")
 
     if agent == "cli-deploy-stores":
-        fw_rules = auto_globals.deploy_l3fwrules_version
+        fw_rules = auto_globals.site_l3fwrules_version
     else:
         fw_rules = None
 

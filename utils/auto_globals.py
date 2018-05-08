@@ -5,15 +5,17 @@ import utils.auto_logger as l
 import global_vars as gv
 
 
-CONFIG_DIR = "../config"
+CONFIG_DIR = "../../config"
 
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
 folder_time_stamp = None
 time_stamp = None
-deploy_clone_source = None
-deploy_org = None
-deploy_store_list = None
-deploy_l3fwrules_version = None
+networks_clone_source = None
+networks_org = None
+networks_store_list = None
+site_org = None
+site_store_list = None
+site_l3fwrules_version = None
 
 l3fwrules_org = None
 l3fwrules_store_list = None
@@ -31,7 +33,7 @@ vlans_delete_store_list = None
 vlans_delete_list = None
 
 def make_pretty(my_json):
-    return json.dumps(my_json, indent=4, sort_keys=True)
+    return json.dumps(my_json, indent=4, sort_keys=False)
 
 def json_writer(fpath, data):
     str = make_pretty(data)
@@ -91,9 +93,9 @@ def select_store(_store_name):
 
 ## cli sets
 def set_run_dry(dryrun=True):
-    item = json_reader("../config/in_use_dryrun")
+    item = json_reader("../../config/in_use_dryrun")
     item["dryrun"] = dryrun
-    json_writer("../config/in_use_dryrun", item)
+    json_writer("../../config/in_use_dryrun", item)
 
 
 def set_vlans_add_org(_vlans_add_org):
@@ -140,20 +142,22 @@ def set_vlans_delete_list(_vlans_delete_list):
     json_writer("../runtime/cli-selections.json", item)
 
 
-def set_deploy_org(deploy_org):
+def set_networks_org(networks_org):
     item = json_reader("../runtime/cli-selections.json")
-    item["deploy-org"] = deploy_org
+    item["networks-org"] = networks_org
+    item["site-org"] = networks_org
     json_writer("../runtime/cli-selections.json", item)
 
-def set_deploy_store_list(deploy_store_list):
+def set_networks_store_list(networks_store_list):
     item = json_reader("../runtime/cli-selections.json")
-    item["deploy-store-list"] = deploy_store_list
+    item["networks-store-list"] = networks_store_list
+    item["site-store-list"] = networks_store_list
     json_writer("../runtime/cli-selections.json", item)
 
 
-def set_l3fwrules_org(deploy_org):
+def set_l3fwrules_org(param):
     item = json_reader("../runtime/cli-selections.json")
-    item["l3fwrules-org"] = deploy_org
+    item["l3fwrules-org"] = param
     json_writer("../runtime/cli-selections.json", item)
 
 def set_l3fwrules_store_list(store_list):
@@ -161,9 +165,9 @@ def set_l3fwrules_store_list(store_list):
    item["l3fwrules-store-list"] = store_list
    json_writer("../runtime/cli-selections.json", item)
 
-def set_deploy_l3fwrules_version(version):
+def set_site_l3fwrules_version(version):
     item = json_reader("../runtime/cli-selections.json")
-    item["deploy-l3fwrules-version"] = version
+    item["site-l3fwrules-version"] = version
     json_writer("../runtime/cli-selections.json", item)
 
 def set_l3fwrules_version(version):
@@ -183,7 +187,7 @@ def set_s2svpnrules_version(version):
 
 def set_clone_source(source):
     item = json_reader("../runtime/cli-selections.json")
-    item["deploy-clone-source"] = source
+    item["networks-clone-source"] = source
     json_writer("../runtime/cli-selections.json", item)
 
 def set_production(mode):
@@ -202,8 +206,8 @@ def get_settings():
     return dryrun, store_name, org_name
 
 def get_cli_settings():
-    global deploy_clone_source, deploy_org, deploy_store_list
-    global deploy_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
+    global networks_clone_source, networks_org, networks_store_list
+    global site_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
     global vlans_add_org, vlans_add_store_list, vlans_add_list
     global vlans_delete_org, vlans_delete_store_list, vlans_delete_list
     global l3fwrules_version, s2svpnrules_org
@@ -212,10 +216,10 @@ def get_cli_settings():
 
     item = json_reader("../runtime/cli-selections.json")
     result = make_pretty(item)
-    deploy_clone_source = item.get("deploy-clone-source")
-    deploy_org = item.get("deploy-org")
-    deploy_store_list = item.get("deploy-store-list")
-    deploy_l3fwrules_version = item.get("deploy-l3fwrules-version")
+    networks_clone_source = item.get("networks-clone-source")
+    networks_org = item.get("networks-org")
+    networks_store_list = item.get("networks-store-list")
+    site_l3fwrules_version = item.get("site-l3fwrules-version")
 
     vlans_add_org = item.get("vlans-add-org")
     vlans_add_store_list = item.get("vlans-add-store-list")
