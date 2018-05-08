@@ -5,7 +5,7 @@ import utils.auto_logger as l
 import global_vars as gv
 
 
-CONFIG_DIR = "../../config"
+CONFIG_DIR = "../config"
 
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
 folder_time_stamp = None
@@ -97,9 +97,9 @@ def select_store(_store_name):
 
 ## cli sets
 def set_run_dry(dryrun=True):
-    item = json_reader("../../config/in_use_dryrun")
+    item = json_reader("../config/in_use_dryrun")
     item["dryrun"] = dryrun
-    json_writer("../../config/in_use_dryrun", item)
+    json_writer("../config/in_use_dryrun", item)
 
 
 def set_vlans_add_org(_vlans_add_org):
