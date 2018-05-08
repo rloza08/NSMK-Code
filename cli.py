@@ -304,8 +304,7 @@ class CLI(object):
 
     def select(self, module, param):
         """
-            Modules
-
+            Modulesdepl
                 networks-org
                 networks-store-list
                 networks-clone-source

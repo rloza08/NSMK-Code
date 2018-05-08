@@ -284,7 +284,7 @@ def deploy(agent, fw_rules=None):
     netid = auto_globals.netid
     store_number = auto_globals.store_number
     firewall._set(netid, fw_rules, store_number)
-    l.runlogs_logger.info("l3fwrules deployed netid:{}".format(netid))
+    l.runlogs_logger.info("l3fwrules deployed")
     l.logger.info("successfully deployed netid:{}".format(netid))
 
 def get(agent):
@@ -292,7 +292,7 @@ def get(agent):
     netid = auto_globals.netid
     store_number = auto_globals.store_number
     firewall._get(netid, store_number)
-    l.runlogs_logger.info("got l3fwrules for netid:{}".format(netid))
+    l.runlogs_logger.info("got l3fwrules")
     l.logger.info("got l3fwrules for  netid:{}".format(netid))
 
 
@@ -300,9 +300,9 @@ def bulk_update(agent):
     l.runlogs_logger.info("bulk update started")
 
     if agent is "cli-deploy-networks":
-        org_group = auto_globals.deploy_l3fwrules_org
-        fw_rules = auto_globals.deploy_l3fwrules_version
-        store_list = auto_globals.deploy_l3fwrules_store_list
+        org_group = auto_globals.networks_org
+        fw_rules = None
+        store_list = auto_globals.networks_store_list
     else:
         org_group = auto_globals.l3fwrules_org
         fw_rules = auto_globals.l3fwrules_version
