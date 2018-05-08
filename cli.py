@@ -694,7 +694,7 @@ class CLI(object):
     def	deploy_site(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.site import bulk_update
+        from automation.site_handle import bulk_update
         agent = "cli-deploy-site"
 
         #text = raw_input("deploy stores (y/N)")
@@ -707,7 +707,7 @@ class CLI(object):
     def	deploy_vlans_add(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.site import bulk_update
+        from automation.site_handle import bulk_update
         agent = "cli-deploy-vlans-add"
         bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))
@@ -718,7 +718,7 @@ class CLI(object):
     def deploy_vlans_delete(self):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.site import bulk_update
+        from automation.site_handle import bulk_update
         agent = "cli-deploy-vlans-delete"
         bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))
