@@ -25,3 +25,5 @@ Create select vlan-org.
 The file is a csv that contains following fields
 
 
+1) nsmk-user-vlan
+

@@ -4,7 +4,7 @@
 *.csv
 /tmp
 /data
-/runtime/cli_selections.json
+!/runtime/cli_selections.json
 /templates
 /venv1/*
 /venv*
