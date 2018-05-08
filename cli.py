@@ -6,6 +6,7 @@ import time
 import sys
 from global_vars import EOM
 import global_vars as gv
+VLANS_ACTIVE=False
 
 def lock():
     cnt=0
@@ -732,9 +733,11 @@ class CLI(object):
         if module.find("sites")>=0:
             self.deploy_sites()
         elif module.find("vlans-add") >= 0:
-                self.deploy_vlans_add()
+                if VLANS_ACTIVE:
+                    self.deploy_vlans_add()
         elif module.find("vlans-delete") >= 0:
-                self.deploy_vlans_delete()
+                if VLANS_ACTIVE:
+                    self.deploy_vlans_delete()
         elif module.find("networks")>=0:
             self.deploy_networks()
         elif module.find("l3fwrules")>=0:
