@@ -10,10 +10,10 @@
     "l3fwrules-version": "l3fwrules_template_99x",
     "s2svpnrules-org": "org-AutomationTestOrg_DONOTDELETE",
     "s2svpnrules-version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09",
-    "vlans-add-list": "vlans-add-list-v01",
     "vlans-add-org": "org-AutomationTestOrg_DONOTDELETE",
     "vlans-add-store-list": "store-list-8501",
-    "vlans-delete-list": "vlans-delete-list-v01",
+    "vlans-add-list": "vlans-add-list-v01",
     "vlans-delete-org": "org-AutomationTestOrg_DONOTDELETE",
-    "vlans-delete-store-list": "store-list-8501"
+    "vlans-delete-store-list": "store-list-8501",
+    "vlans-delete-list": "vlans-delete-list-v01"
 }
