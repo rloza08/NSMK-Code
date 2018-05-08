@@ -111,7 +111,7 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_list=[]):
 
     for store in store_list:
         store_name = store.get("name", None)
-        l.runlogs_logger.info("deploying: {}".format(store_name))
+        l.runlogs_logger.info("deploying {}".format(store_name))
         if store_name is None:
             str = "fname: {} ::: store_name field was not found for store {}".format(fname, store)
             l.logger.error(str)
@@ -120,8 +120,8 @@ def perform_bulk_update_store(agent, org_name, fname, fn_deploy, vlans_list=[]):
         l.logger.info("deploying store : {}".format(store_name))
         auto_globals.select_store(store_name)
         if (auto_globals.load_store(agent)) is False:
-            l.logger.error("failed deploying: {}".format(store_name))
-            l.runlogs_logger.error("failed deploying: {}".format(store_name))
+            l.logger.error("failed deploying {}".format(store_name))
+            l.runlogs_logger.error("failed deploying {}".format(store_name))
             return
         netid = auto_globals.netid
         fn_deploy(agent, netid, vlans_list)

@@ -97,7 +97,6 @@ def bulk_update(agent, vlans_only=False):
             l.runlogs_logger.info("selected l3fwrules : {}".format(fw_rules))
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy)
 
-        l.runlogs_logger.info("finished org: {}".format(org_name))
     l.runlogs_logger.info("bulk update finished")
     LEAVE_CONTEXT(agent)
 
