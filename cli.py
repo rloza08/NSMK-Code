@@ -117,126 +117,135 @@ class CLI(object):
 
 
     def set_vlans_add_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print ("\n\n# Selected vlans-add-org #\n{}".format(org_name))
         auto_globals.set_vlans_add_org(org_name)
         EOM()
 
     def set_vlans_add_store_list(self, store_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list)  is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# Selected vlans-add-store-list #\n{}".format(store_list))
         auto_globals.set_vlans_add_store_list(store_list)
         EOM()
 
     def set_vlans_add_list(self, vlans_add_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_vlans_add_list(vlans_add_list)  is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# Selected vlans-add-list #\n{}".format(vlans_add_list))
         auto_globals.set_vlans_add_list(vlans_add_list)
         EOM()
 
     def set_vlans_delete_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print ("\n\n# Selected vlans-delete-org #\n{}".format(org_name))
         auto_globals.set_vlans_delete_org(org_name)
         EOM()
 
     def set_vlans_delete_store_list(self, store_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list)  is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# Selected vlans-delete-store-list #\n{}".format(store_list))
         auto_globals.set_vlans_delete_store_list(store_list)
         EOM()
 
     def set_vlans_delete_list(self, vlans_delete_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_vlans_delete_list(vlans_delete_list)  is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# Selected vlans-delete-list #\n{}".format(vlans_delete_list))
         auto_globals.set_vlans_delete_list(vlans_delete_list)
         EOM()
 
     def set_networks_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print ("\n\n# Selected networks/sites-org #\n{}".format(org_name))
         auto_globals.set_networks_org(org_name)
         EOM()
 
+    def set_store_lists_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
+        if self.validate_org_list(org_name) is False:
+            return
+        import utils.auto_globals as auto_globals
+        print ("\n\n# Selected store-lists-org #\n{}".format(org_name))
+        auto_globals.set_store_lists_org(org_name)
+        EOM()
+
     def set_networks_store_list(self, store_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list)  is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# Selected networks/sites-store-list #\n{}".format(store_list))
         auto_globals.set_networks_store_list(store_list)
         EOM()
 
     def set_l3fwrules_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print ("\n\n# selected l3fwrules-org: #\n{}".format(org_name))
         auto_globals.set_l3fwrules_org(org_name)
         EOM()
 
     def set_l3fwrules_store_list(self, store_list):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# selected l3fwrules-store-list: #\n{}".format(store_list))
         auto_globals.set_l3fwrules_store_list(store_list)
         EOM()
 
     def set_sites_l3fwrules_version(self, version):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_l3fwrules_version(version) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# selected deploy-l3fwrules-version: #\n{}".format(version))
         auto_globals.set_sites_l3fwrules_version(version)
         EOM()
 
     def set_l3fwrules_version(self, version):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_l3fwrules_version(version) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# selected l3fwrules-version: #\n{}".format(version))
         auto_globals.set_l3fwrules_version(version)
         EOM()
 
     def set_s2svpnrules_org(self, org_name):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print ("\n\n# selected s2svpnrules-org: #\n{}".format(org_name))
         auto_globals.set_s2svpnrules_org(org_name)
         EOM()
 
     def set_s2svpnrules_version(self, version):
+        os.chdir("{}/automation".format(self.cwd))
         if self.validate_s2svpnrules_version(version) is False:
             return
-        os.chdir("{}/automation".format(self.cwd))
         import utils.auto_globals as auto_globals
         print("\n\n# selected s2svpnrules-version: #\n{}".format(version))
         auto_globals.set_s2svpnrules_version(version)
@@ -306,6 +315,8 @@ class CLI(object):
             self.set_networks_store_list(store_list=param)
         elif module.find("sites-l3fwrules-version") == 0:
             self.set_sites_l3fwrules_version(version=param)
+        elif module.find("store-lists-org") == 0:
+            self.set_store_lists_org(org_name=param)
         elif module.find("vlans-add-org") == 0:
             self.set_vlans_add_org(org_name=param)
         elif module.find("vlans-add-store-list") == 0:
@@ -514,12 +525,12 @@ class CLI(object):
         EOM()
         print ("")
 
-    def get_store_list(self):
+    def get_store_lists(self):
         """Runs the store list"""
         os.chdir("{}/automation".format(self.cwd))
-        from automation.network_handler import get_store_list
+        from automation.network_handler import get_store_lists
         agent = "cli-get-store_list"
-        get_store_list(agent=agent)
+        get_store_lists(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
         EOM()
@@ -539,6 +550,21 @@ class CLI(object):
         os.chdir("{}".format(self.cwd))
         EOM()
         print ("")
+
+    def get_settings_store_lists(self):
+        os.chdir("{}/automation".format(self.cwd))
+        import utils.auto_globals as auto_globals
+        settings = auto_globals.get_cli_settings()
+        EOM()
+        print ("# store-lists settings #")
+        for key in settings:
+            if key.find("store-lists")==0:
+                print ("{}:  {}".format(key, settings[key]))
+
+        os.chdir("{}".format(self.cwd))
+        EOM()
+        print ("")
+
 
     def update_vlan_template(self):
         os.chdir("{}/automation".format(self.cwd))
@@ -586,8 +612,8 @@ class CLI(object):
         if module.find("l3fwrules") >= 0:
                 self.get_l3fwrules()
                 return
-        if module.find("store-list") >= 0:
-                success = self.get_store_list()
+        if module.find("store-lists") >= 0:
+                success = self.get_store_lists()
                 return
         if module.find("s2svpnrules") >= 0:
                 self.get_s2svpnrules()
@@ -597,6 +623,8 @@ class CLI(object):
                 self.get_settings_all()
             elif param == "l3fwrules":
                 self.get_settings_l3fwrules()
+            elif param == "store-lists":
+                self.get_settings_store_lists()
             elif param == "s2svpnrules":
                 self.get_settings_s2svpnrules()
             elif param == "sites":

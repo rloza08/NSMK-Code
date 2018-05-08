@@ -10,9 +10,13 @@ CONFIG_DIR = "../../config"
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
 folder_time_stamp = None
 time_stamp = None
-networks_clone_source = None
+
+
+store_lists_org = None
 networks_org = None
 networks_store_list = None
+
+networks_clone_source = None
 sites_org = None
 sites_store_list = None
 sites_l3fwrules_version = None
@@ -135,12 +139,16 @@ def set_vlans_delete_store_list(_vlans_delete_store_list):
     json_writer("../runtime/cli-selections.json", item)
 
 def set_vlans_delete_list(_vlans_delete_list):
-    global vlans_add_list
     vlans_delete_list = _vlans_delete_list
     item = json_reader("../runtime/cli-selections.json")
     item["vlans-delete-list"] = vlans_delete_list
     json_writer("../runtime/cli-selections.json", item)
 
+
+def set_store_lists_org(store_lists_org):
+    item = json_reader("../runtime/cli-selections.json")
+    item["store-lists-org"] = store_lists_org
+    json_writer("../runtime/cli-selections.json", item)
 
 def set_networks_org(networks_org):
     item = json_reader("../runtime/cli-selections.json")
@@ -207,7 +215,7 @@ def get_settings():
 
 def get_cli_settings():
     global networks_clone_source, networks_org, networks_store_list
-    global sites_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
+    global sites_l3fwrules_version, store_lists_org, l3fwrules_org, l3fwrules_store_list
     global vlans_add_org, vlans_add_store_list, vlans_add_list
     global vlans_delete_org, vlans_delete_store_list, vlans_delete_list
     global l3fwrules_version, s2svpnrules_org
@@ -219,6 +227,7 @@ def get_cli_settings():
     networks_clone_source = item.get("networks-clone-source")
     networks_org = item.get("networks-org")
     networks_store_list = item.get("networks-store-list")
+    store_lists_org = item.get("store-lists-org")
     sites_l3fwrules_version = item.get("sites-l3fwrules-version")
 
     vlans_add_org = item.get("vlans-add-org")

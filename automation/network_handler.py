@@ -18,11 +18,11 @@ def deploy(agent):
     return
 
 
-def get_store_list(agent):
+def get_store_lists(agent):
     auto_globals.get_settings()
-    org_name = auto_globals.networks_org.split("org-")[1]
-    l.logger.info("creating store list for deploy-org {}".format(org_name))
-    l.runlogs_logger.info("creating store list for deploy-org {}".format(org_name))
+    org_name = auto_globals.store_lists_org.split("org-")[1]
+    l.logger.info("creating store lists for org {}".format(org_name))
+    l.runlogs_logger.info("creating store lists for org {}".format(org_name))
     org_id = auto_globals.get_orgid(org_name)
     success, store_list = network_list(org_id)
     if success is False:
