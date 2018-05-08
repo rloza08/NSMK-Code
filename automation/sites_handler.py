@@ -27,7 +27,7 @@ def deploy(agent, netid=None, vlans_list=None):
     static_route_handler.add()
 
     l.runlogs_logger.info("l3 firewall setup")
-    fw_rules = "{}".format(auto_globals.site_l3fwrules_version)
+    fw_rules = "{}".format(auto_globals.sites_l3fwrules_version)
     firewall_handler.deploy(agent, fw_rules)
 
     l.runlogs_logger.info("s2s vpn setup")

@@ -13,9 +13,9 @@ time_stamp = None
 networks_clone_source = None
 networks_org = None
 networks_store_list = None
-site_org = None
-site_store_list = None
-site_l3fwrules_version = None
+sites_org = None
+sites_store_list = None
+sites_l3fwrules_version = None
 
 l3fwrules_org = None
 l3fwrules_store_list = None
@@ -145,13 +145,13 @@ def set_vlans_delete_list(_vlans_delete_list):
 def set_networks_org(networks_org):
     item = json_reader("../runtime/cli-selections.json")
     item["networks-org"] = networks_org
-    item["site-org"] = networks_org
+    item["sites-org"] = networks_org
     json_writer("../runtime/cli-selections.json", item)
 
 def set_networks_store_list(networks_store_list):
     item = json_reader("../runtime/cli-selections.json")
     item["networks-store-list"] = networks_store_list
-    item["site-store-list"] = networks_store_list
+    item["sites-store-list"] = networks_store_list
     json_writer("../runtime/cli-selections.json", item)
 
 
@@ -165,9 +165,9 @@ def set_l3fwrules_store_list(store_list):
    item["l3fwrules-store-list"] = store_list
    json_writer("../runtime/cli-selections.json", item)
 
-def set_site_l3fwrules_version(version):
+def set_sites_l3fwrules_version(version):
     item = json_reader("../runtime/cli-selections.json")
-    item["site-l3fwrules-version"] = version
+    item["sites-l3fwrules-version"] = version
     json_writer("../runtime/cli-selections.json", item)
 
 def set_l3fwrules_version(version):
@@ -207,7 +207,7 @@ def get_settings():
 
 def get_cli_settings():
     global networks_clone_source, networks_org, networks_store_list
-    global site_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
+    global sites_l3fwrules_version, l3fwrules_org, l3fwrules_store_list
     global vlans_add_org, vlans_add_store_list, vlans_add_list
     global vlans_delete_org, vlans_delete_store_list, vlans_delete_list
     global l3fwrules_version, s2svpnrules_org
@@ -219,7 +219,7 @@ def get_cli_settings():
     networks_clone_source = item.get("networks-clone-source")
     networks_org = item.get("networks-org")
     networks_store_list = item.get("networks-store-list")
-    site_l3fwrules_version = item.get("site-l3fwrules-version")
+    sites_l3fwrules_version = item.get("sites-l3fwrules-version")
 
     vlans_add_org = item.get("vlans-add-org")
     vlans_add_store_list = item.get("vlans-add-store-list")
