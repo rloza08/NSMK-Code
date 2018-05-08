@@ -48,6 +48,13 @@ class CLI(object):
         """
         self.cwd = os.getcwd()
 
+    def validate_clone_source(self, clone_source):
+        print ("# Valid clone source names  should be in the format 0_Base_Config_vn")
+        if str.find(clone_source,"0_Base_Config_v") != 0:
+            return False
+        return True
+
+
     def validate_org_list(self, org_name):
         print ("# List of valid Orgs available #")
         orgs = find_file_pattern("org-")
@@ -197,6 +204,15 @@ class CLI(object):
         auto_globals.set_networks_store_list(store_list)
         EOM()
 
+    def set_networks_clone_source(self, clone_source):
+        os.chdir("{}/automation".format(self.cwd))
+        if self.validate_clone_source(clone_source)  is False:
+            return
+        import utils.auto_globals as auto_globals
+        print("\n\n# Selected networks-clone-source #\n{}".format(clone_source))
+        auto_globals.set_clone_source(clone_source)
+        EOM()
+
     def set_l3fwrules_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
@@ -290,8 +306,13 @@ class CLI(object):
         """
             Modules
 
-                deploy-org
-                deploy-store-list
+                networks-org
+                networks-store-list
+                networks-clone-source
+                sites-org
+                sites-store-list
+                sites-l3fwrules-version
+                store-lists-org
                 vlans-add-org
                 vlans-add-store-list
                 vlans-add-list
@@ -311,6 +332,8 @@ class CLI(object):
             self.set_networks_org(org_name=param)
         elif module.find("networks-store-list") == 0:
             self.set_networks_store_list(store_list=param)
+        elif module.find("networks-clone-source") == 0:
+            self.set_networks_clone_source(clone_source=param)
         elif module.find("sites-store-list") == 0:
             self.set_networks_store_list(store_list=param)
         elif module.find("sites-l3fwrules-version") == 0:
@@ -439,15 +462,20 @@ class CLI(object):
         print ("# Available commands #")
         print ("   select <parameter> <value> ")
         print ("   get settings  all")
-        print ("   get settings  deploy")
+        print ("   get settings  networks")
+        print ("   get settings  sites")
+        print ("   get settings  store-lists")
         print ("   get settings  vlans-add")
         print ("   get settings  vlans-delete")
         print ("   get settings  l3fwrules")
         print ("   get settings  s2svpnrules")
         print ("   deploy networks ")
-        print ("   deploy stores")
+        print ("   deploy sites")
         print ("   deploy l3fwrules")
         print ("   deploy s2svpnrules")
+        print ("   get store-lists")
+        print ("   get l3fwrules")
+        print ("   get s2svpnrules")
         print ("   convert csv-to-json <filename in /appl/nms/xfer")
         print ("   convert json-to-csv <filename in /appl/nms/xfer")
         EOM()
@@ -695,8 +723,8 @@ class CLI(object):
     def	deploy(self, module):
         """
             Modules
-                    stores
                     networks
+                    sites
                     l3fwrules
                     s2svpnrules
                     vlans-add
