@@ -24,7 +24,7 @@ def unlock(fp):
 #used only by the cli
 def find_file_pattern(pattern, extension="json"):
     result = []
-    cwd = os.getcwd() + "/../templates"
+    cwd = os.getcwd() + "/../../templates"
     files = os.listdir(cwd)
     for file in files:
         pos = file.find(pattern)
