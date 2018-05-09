@@ -70,9 +70,9 @@ def update_vlan_template(funnel_file="vlans_funnel",
 def copy_and_patch_funnel():
     try:
         cwd = os.getcwd()
-        patch = "{}/../config/vlans_funnel.patch.csv".format(cwd)
+        patch = "{}/../../config/vlans_funnel.patch.csv".format(cwd)
         src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         shutil.copyfileobj(open(patch, 'rb'), destination)
@@ -94,19 +94,19 @@ def ENTER_ENV_VLANS(agent):
     try:
 
         # Backup the funnel file
-        src = "{}/../config/vlans_funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel_orig.csv".format(cwd)
+        src = "{}/../../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/../../config/vlans_funnel_orig.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
 
         src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
 
         # 99x Vlan patch that is always used
-        patch_01 = "{}/../config/vlans_funnel.patch.csv".format(cwd)
+        patch_01 = "{}/../../config/vlans_funnel.patch.csv".format(cwd)
         shutil.copyfileobj(open(patch_01, 'rb'), destination)
 
         # Vlan patch just for this run
@@ -119,8 +119,8 @@ def ENTER_ENV_VLANS(agent):
         assert (0)
 
 
-    src = "{}/../config/jinja_vlans_template.json".format(cwd)
-    dst = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
+    src = "{}/../../config/jinja_vlans_template.json".format(cwd)
+    dst = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
     destination = open(dst, 'wb')
     shutil.copyfileobj(open(src, 'rb'), destination)
     destination.close()
@@ -145,14 +145,14 @@ def LEAVE_ENV_VLANS(agent):
     # its original state
     cwd = os.getcwd()
     try:
-        src = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
-        dst = "{}/../config/jinja_vlans_template.json".format(cwd)
+        src = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
+        dst = "{}/../../config/jinja_vlans_template.json".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
 
-        src = "{}/../config/vlans_funnel_orig.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        src = "{}/../../config/vlans_funnel_orig.csv".format(cwd)
+        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()

@@ -25,9 +25,9 @@ where the it will be picked up by the vlan_handler module.
 def get_vlan_funnel():
     try:
         cwd = os.getcwd()
-        patch = "{}/../config/vlans_funnel.patch.csv".format(cwd)
+        patch = "{}/../../config/vlans_funnel.patch.csv".format(cwd)
         src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         shutil.copyfileobj(open(patch, 'rb'), destination)

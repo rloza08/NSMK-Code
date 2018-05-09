@@ -19,7 +19,7 @@ def json_reader(fpath):
 
 
 def list_orgs():
-    orgs = json_reader("../config/safeway-orgs.json")
+    orgs = json_reader("../../config/safeway-orgs.json")
     EOM()
     print(" "*38,"ORGS")
     for org in orgs:

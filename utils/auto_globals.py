@@ -5,7 +5,7 @@ import utils.auto_logger as l
 import global_vars as gv
 
 
-CONFIG_DIR = "../config"
+CONFIG_DIR = "../../config"
 
 orchestration_agent, dryrun, store_name, store_number, org_name, orgid, netid = None, None, None, None, None, None, None
 folder_time_stamp = None
@@ -63,7 +63,7 @@ def json_reader(fpath):
     return data
 
 def _get_orgid(org_name):
-    orgs = json_reader("../config/safeway-orgs.json")
+    orgs = json_reader("../../config/safeway-orgs.json")
     orgid=None
     for org in orgs:
         if org["name"] == org_name:
@@ -72,7 +72,7 @@ def _get_orgid(org_name):
     return orgid
 
 def get_orgid(org_name):
-    config = json_reader("../config/safeway-config.json")
+    config = json_reader("../../config/safeway-config.json")
     networks = config[0]["network"]
     orgid=None
     for network in networks:
@@ -97,9 +97,9 @@ def select_store(_store_name):
 
 ## cli sets
 def set_run_dry(dryrun=True):
-    item = json_reader("../config/in_use_dryrun")
+    item = json_reader("../../config/in_use_dryrun")
     item["dryrun"] = dryrun
-    json_writer("../config/in_use_dryrun", item)
+    json_writer("../../config/in_use_dryrun", item)
 
 
 def set_vlans_add_org(_vlans_add_org):
@@ -209,7 +209,7 @@ def get_settings():
     store_name = item.get("store_name")
     item = json_reader("../runtime/in_use_org.json")
     org_name = item.get("org_name")
-    item = json_reader("../config/in_use_dryrun.json")
+    item = json_reader("../../config/in_use_dryrun.json")
     dryrun = item.get("dryrun", True)
     return dryrun, store_name, org_name
 

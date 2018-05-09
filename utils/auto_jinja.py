@@ -3,14 +3,17 @@ import os
 import utils.auto_json as Json
 import utils.auto_logger as l
 from jinja2 import Environment, FileSystemLoader
+import jinja2
 import utils.auto_utils as utils
 import utils._csv as csv_json
 import json
+import global_vars as gv
 
-PATH = os.path.dirname(os.path.abspath(__file__))
+PATH1 = os.path.dirname(os.path.abspath(__file__))
+PATH2 = os.path.join(PATH1, "..\\..\\config")
 TEMPLATE_ENVIRONMENT = Environment(
 	autoescape=False,
-	loader=FileSystemLoader(os.path.join(PATH, '../config')),
+	loader=FileSystemLoader(PATH2),
 	trim_blocks=False)
 
 
@@ -21,8 +24,10 @@ class JinjaAutomation(object):
 		try:
 			str = TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
 		except Exception as err:
-			l.logger.error("template_filename:{}".format(template_filename))
-			l.runlogs_logger.error("template_filename:{}".format(template_filename))
+			l.logger.error("template_filename:{} {}".format(template_filename, err))
+			l.runlogs_logger.error("template_filename:{} {}".format(template_filename, err))
+			gv.fake_assert()
+			os._exit(-1)
 
 		result = json.loads(str)
 		return result

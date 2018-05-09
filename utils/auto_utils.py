@@ -122,7 +122,7 @@ def create_store_data_dir(orchestration_agent, minimum=False):
     pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
 
     if minimum is False:
-        src = "../config/vlans_funnel.csv"
+        src = "../../config/vlans_funnel.csv"
         shutil.copy(src, auto_globals.folder_time_stamp)
         src = "../../templates"
         shutil.copytree(src, auto_globals.folder_time_stamp+"/templates_used")
@@ -170,6 +170,8 @@ def get_store_path(fname, path, extension):
         now = now.replace(":", "_")
         fName = "{}/../../{}/{}/{}/{}/{}/runtime/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
     elif path == "templates":
+        fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
+    elif path == "config":
         fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
     else:
         fName = "{}/../{}/{}.{}".format(cwd, path, fname, extension)

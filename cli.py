@@ -6,6 +6,7 @@ import time
 import sys
 from global_vars import EOM
 import global_vars as gv
+VLANS_ACTIVE=True
 
 def lock():
     cnt=0
@@ -764,7 +765,8 @@ class CLI(object):
         os.chdir("{}/automation".format(self.cwd))
         from automation.sites_handler import bulk_update
         agent = "cli-deploy-vlans-add"
-        bulk_update(agent, vlans_only=True)
+        if VLANS_ACTIVE:
+            bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))
         sys.stdout.flush()
         time.sleep(1)
@@ -774,7 +776,8 @@ class CLI(object):
         """Runs the store orchestration"""
         os.chdir("{}/automation".format(self.cwd))
         from automation.sites_handler import bulk_update
-        agent = "cli-deploy-vlans-delete"
+        if VLANS_ACTIVE:
+            agent = "cli-deploy-vlans-delete"
         bulk_update(agent, vlans_only=True)
         os.chdir("{}".format(self.cwd))
         sys.stdout.flush()

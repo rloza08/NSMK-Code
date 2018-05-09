@@ -59,7 +59,7 @@ def get_clone_id():
     global clone_id
     return clone_id
 
-config = json_reader("../config/safeway-config.json")
+config = json_reader("../../config/safeway-config.json")
 
 api_key = os.environ.get("API_KEY", None)
 assert(api_key)
