@@ -1,0 +1,53 @@
+[
+  {
+    "networks": {
+      "actions": [
+        "deploy networks"
+      ],
+      "settings": {
+        "clone-source": "0_Base_Config_v1",
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST"
+      }
+    },
+    "stores": {
+      "actions": [
+        "deploy stores"
+      ],
+      "settings": {
+        "clone-source": "0_Base_Config_v1",
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST"
+      }
+    },
+    "l3fwrules": {
+      "actions": [
+        "deploy l3fwrules"
+      ],
+      "settings": {
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "store-list": "store-list-TST",
+        "version": "l3fwrules_template_MAR_MX_Org_031318-v5"
+      }
+    },
+    "s2svpnrules": {
+      "actions": [
+        ["deploy s2svpnrules", "download s2svpnrules"]
+      ],
+      "settings": {
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09"
+      }
+    },
+    "vlan": {
+      "actions": [
+        "add vlan",
+        "del vlan"
+      ],
+      "settings": {
+        "org": "org-AutomationTestOrg_DONOTDELETE",
+        "version": "s2svpnrules_002_New_Production_MX_Org_2018_03_09"
+      }
+    }
+  }
+]
