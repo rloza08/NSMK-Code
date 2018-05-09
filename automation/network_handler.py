@@ -44,8 +44,8 @@ def get_store_lists(agent):
     for group in stores.keys():
         fname = "store-list-{}-{}".format(org_name, group)
         Json.writer(fname, data=stores[group], path="../templates")
-        l.logger.info("created {}".format(fname))
-        l.runlogs_logger.info("created {}".format(fname))
+        l.logger.info("created {} with {} stores.".format(fname, len(stores[group])))
+        l.runlogs_logger.info("created {} with {} stores.".format(fname, len(stores[group])))
 
     return store_list
 
