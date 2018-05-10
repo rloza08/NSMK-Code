@@ -388,47 +388,32 @@ def add_entry_to_template(t_new, vlan):
     t_new.append(entry)
 
 
-def ENTER_ENV_vlans_delete():
-    cwd = os.getcwd()
-    from utils._csv import read_csv
-    csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_delete_list)
-    vlans_delete_list_contents = read_csv(csv_fname)
-    return vlans_delete_list_contents
+def ENTER_ENV_vlans():
+    try:
+        from automation.men_and_mice_handler import create_funnel_vlans
+        create_funnel_vlans()
+    except:
+        l.logger.error(" ENTER_ENV_vlans failed")
+        l.runlogs_logger.error(" ENTER_ENV_vlans failed")
+        assert (0)
+
+
+    return None
+
+def LEAVE_ENV_vlans():
+    pass
 
 
 def ENTER_ENV_vlans_add():
-    cwd = os.getcwd()
     try:
-        from utils._csv import read_remove_csv_header
-        csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_add_list)
-        csv_fname_append = "{}/../../templates/{}_append.csv".format(cwd, vlans_add_list)
-        vlans_add_list_contents = read_remove_csv_header(csv_fname, csv_fname_append)
-
-        # Backup the funnel file
-        src = "{}/../../config/vlans_funnel.csv".format(cwd)
-        dst = "{}/../../config/vlans_funnel_orig.csv".format(cwd)
-        destination = open(dst, 'wb')
-        shutil.copyfileobj(open(src, 'rb'), destination)
-        destination.close()
-
-        src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
-        destination = open(dst, 'wb')
-        shutil.copyfileobj(open(src, 'rb'), destination)
-
-        # 99x Vlan patch that is always used
-        patch_01 = "{}/../../config/vlans_funnel.patch.csv".format(cwd)
-        shutil.copyfileobj(open(patch_01, 'rb'), destination)
-
-        # Vlan patch just for this run
-        patch_02 = "{}/../../templates/{}_append.csv".format(cwd, vlans_add_list)
-        shutil.copyfileobj(open(patch_02, 'rb'), destination)
-        destination.close()
-        convert_to_json("vlans_funnel", "config",None)
+        from automation.men_and_mice_handler import create_funnel_vlans
+        vlans_add_list_contents = create_funnel_vlans(vlans_add_list)
     except:
-        l.logger.error("failed")
+        l.logger.error(" ENTER_ENV_vlans_add failed")
+        l.runlogs_logger.error(" ENTER_ENV_vlans_add failed")
         assert (0)
 
+    cwd = os.getcwd()
     src = "{}/../../config/jinja_vlans_template.json".format(cwd)
     dst = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
     destination = open(dst, 'wb')
@@ -443,9 +428,6 @@ def ENTER_ENV_vlans_add():
     return vlans_add_list_contents
 
 def LEAVE_ENV_vlans_add():
-
-    # Now restore the men and mice file in config back to
-    # its original state
     cwd = os.getcwd()
     try:
         src = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
@@ -453,15 +435,21 @@ def LEAVE_ENV_vlans_add():
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
-
-        src = "{}/../../config/vlans_funnel_orig.csv".format(cwd)
-        dst = "{}/../../config/vlans_funnel.csv".format(cwd)
-        destination = open(dst, 'wb')
-        shutil.copyfileobj(open(src, 'rb'), destination)
-        destination.close()
     except:
         l.logger.error("failed")
         assert (0)
+
+
+def ENTER_ENV_vlans_delete():
+    from automation.men_and_mice_handler import get_vlans_delete_list
+    vlans_delete_list_contents = get_vlans_delete_list(vlans_delete_list)
+
+    cwd = os.getcwd()
+    from utils._csv import read_csv
+    csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_delete_list)
+    vlans_delete_list_contents = read_csv(csv_fname)
+    return vlans_delete_list_contents
+
 
 def LEAVE_ENV_vlans_delete():
     pass
@@ -492,7 +480,7 @@ def update_vlan_template(funnel_file="vlans_funnel",
         if not found:
             add_entry_to_template(t_new, funnel_vlan)
 
-    #vlans_new = json_writer(funnel_new_file)
+    # vlans_new = json_writer(funnel_new_file)
     # create a backup for the existing jinja template
     cwd = os.getcwd()
     src = "{}/{}.json".format(CONFIG_DIR, vlans_template_file)
@@ -511,9 +499,6 @@ def vlans_delete(netid, vlans_list):
 
 
 if __name__ == "__main__":
-    # #auto_globals.setStoreName("SHAWS_9611")
-    # deploy()
-    # #createVlanTable()
     update_vlan_template("../menAndMice/funnel.json",
                                  "../../config/jinja_vlans_template.json",
                                  "../runtime/jinja_vlans_template_new.json")

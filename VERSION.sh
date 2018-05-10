@@ -1,4 +1,5 @@
 #!/bin/bash
-echo "### NSMK AUTOMATION VERSION: ##"
+echo "###############################"
+echo "NSMK AUTOMATION VERSION"
 git describe --tags
 echo "###############################"

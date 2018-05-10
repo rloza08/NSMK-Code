@@ -6,7 +6,7 @@ import time
 import sys
 from global_vars import EOM
 import global_vars as gv
-VLANS_ACTIVE=False
+VLANS_ACTIVE=True
 
 def lock():
     cnt=0

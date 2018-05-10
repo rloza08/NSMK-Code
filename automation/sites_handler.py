@@ -9,6 +9,7 @@ import utils._csv as Json
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from  utils._json import Json
+from automation.vlan_handler import ENTER_ENV_vlans, LEAVE_ENV_vlans
 from automation.vlan_handler import ENTER_ENV_vlans_add, LEAVE_ENV_vlans_add
 from automation.vlan_handler import ENTER_ENV_vlans_delete, LEAVE_ENV_vlans_delete
 
@@ -40,6 +41,9 @@ def LEAVE_CONTEXT(agent):
         LEAVE_ENV_vlans_add()
     elif agent == "cli-deploy-vlans-delete":
         LEAVE_ENV_vlans_delete()
+    else:
+        LEAVE_ENV_vlans()
+
 
 def ENTER_CONTEXT(agent):
     vlans_list = None
@@ -60,8 +64,10 @@ def ENTER_CONTEXT(agent):
         show_vlans_delete_list(vlans_delete_list_contents)
         vlans_list  = vlans_delete_list_contents
     else:
-        import api.men_and_mice as men_and_mice
-        men_and_mice.get_vlan_funnel()
+
+
+
+        ENTER_ENV_vlans()
         org_group = auto_globals.networks_org
         store_list = auto_globals.networks_store_list
 
