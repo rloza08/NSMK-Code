@@ -1,0 +1,191 @@
+[
+  {
+    "l3fwrules": {
+      "fname_pattern": "l3fwrules_template_",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "policy": {
+            "enum": [
+              "allow",
+              "deny"
+            ]
+          },
+          "protocol": {
+            "enum": [
+              "udp",
+              "tcp",
+              "any",
+              "icmp",
+              "Any"
+            ]
+          },
+          "srcPort": {
+            "type": "string"
+          },
+          "srcCidr": {
+            "type": "string"
+          },
+          "destPort": {
+            "type": "string"
+          },
+          "destCidr": {
+            "type": "string"
+          },
+          "syslogEnabled": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "s2svpnrules": {
+      "fname_pattern": "s2svpnrules_",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "policy": {
+            "enum": [
+              "allow",
+              "deny"
+            ]
+          },
+          "protocol": {
+            "enum": [
+              "udp",
+              "tcp",
+              "any",
+              "icmp",
+              "Any"
+            ]
+          },
+          "srcPort": {
+            "type": "string"
+          },
+          "srcCidr": {
+            "type": "string"
+          },
+          "destPort": {
+            "type": "string"
+          },
+          "destCidr": {
+            "type": "string"
+          },
+          "syslogEnabled": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "store-list": {
+      "fname_pattern": "store-list-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "orgs": {
+      "fname_pattern": "org-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "org_name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vlans-add-list": {
+      "fname_pattern": "vlans-add-list-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "Vlan": {
+            "type": "string"
+          },
+          "Subnet": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vlans-delete-list": {
+      "fname_pattern": "vlans-delete-list-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "Vlan": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vlans-template": {
+      "fname_pattern": "vlans-delete-list-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "vlan": {
+            "type": "string"
+          },
+          "subnet": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "dnsNameservers": {
+            "type": "string"
+          },
+          "reservedIpRanges1-comment": {
+            "type": "string"
+          },
+          "reservedIpRanges1-start": {
+            "type": "string"
+          },
+          "reservedIpRanges1-end": {
+            "type": "string"
+          },
+          "reservedIpRanges2-comment": {
+            "type": "string"
+          },
+          "reservedIpRanges2-start": {
+            "type": "string"
+          },
+          "reservedIpRanges2-end": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "networks-serials": {
+      "fname_pattern": "networks-serials-",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "Network name": {
+            "type": "string"
+          },
+          "Serial": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+]
