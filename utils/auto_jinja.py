@@ -75,16 +75,66 @@ def create_test_context():
 		context["vlan"][vlanId]['subnet'] = subnet
 	return context
 
+def convert_master_template_to_jinja():
+	from utils.auto_json import reader, make_pretty
+	from copy import deepcopy
+	master_tpl = reader("vlan_template_master_final", configDir="config")
+	# str = make_pretty(master_tpl)
+	# print(str)
+	jinja_tpl=[]
+	item={}
+	for vlan in master_tpl:
+		id=vlan["Vlan"]
+		item["id"]=id
+
+		item["networkId"]="{{networkid}}"
+		item["name"]=vlan["Description"]
+
+		subnet = vlan["Subnet"]
+		last_cctect = subnet.split(".")
+		last_octect = last_cctect[3]
+		last_octect = last_cctect[3].split("/")
+		last_octect = int(last_octect[0])
+		str = "{{vlan[{}]['subnet']}}.{}".format(id, last_octect+1)
+		item["applianceIp"]= str
+
+		subnet = vlan["Subnet"]
+		str = "{{vlan[{}]['subnet']}}".format(id)
+		item["subnet"]=str
+
+		item["dnsNameservers"] = vlan["dnsNameservers"]
+		item["fixedIpAssignments"]= {}
+		item["reservedIpRanges"] = []
+
+		if vlan["reservedIpRanges1-start"] is not "":
+			it = {}
+			it["comment"]=vlan["reservedIpRanges1-comment"]
+			it["end"] =vlan["reservedIpRanges1-end"]
+			it["start"]=vlan["reservedIpRanges1-start"]
+			item["reservedIpRanges"].append(deepcopy(it))
+
+		if vlan["reservedIpRanges2-start"] is not "":
+			it = {}
+			it["comment"]=vlan["reservedIpRanges2-comment"]
+			it["end"] =vlan["reservedIpRanges2-end"]
+			it["start"]=vlan["reservedIpRanges2-start"]
+			item["reservedIpRanges"].append(deepcopy(it))
+
+		jinja_tpl.append(deepcopy(item))
+
+
+	str = make_pretty(jinja_tpl)
+	print(str)
 
 if __name__ == "__main__":
-	netid=77777
-	template="vlans_set_template.json"
-	output="vlans_generated_{}".format(netid)
-	context = create_test_context()
-	l.logger.debug(context)
-	obj = JinjaAutomation()
-	obj.create_output(template, output, context)
-
+	# netid=77777
+	# template="vlans_set_template.json"
+	# output="vlans_generated_{}".format(netid)
+	# context = create_test_context()
+	# l.logger.debug(context)
+	# obj = JinjaAutomation()
+	# obj.create_output(template, output, context)
+	convert_master_template_to_jinja()
 
 """	
 ISSUES:

@@ -68,9 +68,6 @@ We will develop CLI for this function
 ·        If new vlan is not in the network then it will create new Vlan.
 
 
-
-
-
 Scenario 2
 
 In this scenario new summary subnets is added.

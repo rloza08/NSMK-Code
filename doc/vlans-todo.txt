@@ -1,16 +1,14 @@
-get settings vlans to get settings vlans-add
-Should read the vlans content and display.
 
 a) Vlans-add
 a.1) should be refactored to use only json
 a.2) Create a convert utility for vlans-add and vlans-del
 a.3) Fixed IP and DHCP
 
-
 get settings vlans-add
+Should read the vlans content and display.
 
 a) move /config/jinja_vlans_templatete to ../templates/vlans-template-<version>
-b) vlans-pacth
+b) vlans-patch
 c) vlans-add-list (All json)
 
 vlan-delete

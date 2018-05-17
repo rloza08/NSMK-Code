@@ -64,9 +64,6 @@ def ENTER_CONTEXT(agent):
         show_vlans_delete_list(vlans_delete_list_contents)
         vlans_list  = vlans_delete_list_contents
     else:
-
-
-
         ENTER_ENV_vlans()
         org_group = auto_globals.networks_org
         store_list = auto_globals.networks_store_list

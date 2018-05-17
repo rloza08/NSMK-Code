@@ -1,0 +1,86 @@
+I)-    Update vlans-template
+            a) Generates template and copies to the data/runtime dir.
+            b) Template is generated on the flight from
+            c) cli should be able to point to template
+
+                # deploy vlans-add settings #
+                vlans-add-list:  vlans-add-list-v01
+                vlans-template:  vlans-add-template-v01
+
+                # deploy sites settings #
+                sites-template:  sites-template-v01
+                updated when running update templates
+
+a) Add select vlans-template file in get settings site
+
+
+II)-   Get funnel should call menAndMice (Python 2.7)
+
+III)-  Convert utilities :
+        a) vlan-add and
+        b) vlan-delete
+        c) vlan_funnel_patch
+
+IV)-     Stage III to be defined.
+if there is a vlan added wich is outside the [a-h]
+then it should go and look up from a file.
+
+File called netx_new_summary.
+
+StoreNumber, Subnet
+8951, 10.<Y>.<Z>   e.g.
+8952, 10.<Y>.<Z>
+
+e.g.
+
+StoreNumber, Subnet
+8951, 10.11.11
+8952, 10.12.11
+
+
+append to existing netx.
+
+Existing netx
+{
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+}
+
+append to
+{
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "new-summary": "10.Y.Z.0"
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+    "i": "10.Y.Z+0"     ---. Y and Z comes from separate file
+    "j": "10.Y.Z+1"
+    "k": "10.Y.Z+2"
+    "l": "10.Y.Z+3"
+}
+
+==========================================================================
+vlan
+subnet
+comment
+dnsNameservers
+reservedIpRanges1-comment
+reservedIpRanges1-start
+reservedIpRanges1-end
+reservedIpRanges2-comment
+reservedIpRanges2-start
+reservedIpRanges2-end

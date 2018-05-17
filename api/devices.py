@@ -76,14 +76,14 @@ class devices(object):
 """
 Not in Use
 """
-def claimadd(networkid, serial):
+def claim_(networkid, serial):
     """Creates a networks and returns a network id"""
     obj=devices()
     success, str = obj.claim(serial)
     if success:
         obj.addtonet(networkid, serial)
 
-def removedevice(networkid, serial):
+def unclaim(networkid, serial):
     try:
         meraki.removedevfromnet(config.api_key, networkid, serial)
     except (meraki.EmailFormatError,
