@@ -1,8 +1,11 @@
 import sys
-global log_verbose
+
 log_verbose = False  # Only if error_stop is set
-error_stop = True
-force_yes = True
+error_stop = False
+force_yes = False
+use_serials = True
+serial_not_available_revert_clone = True
+
 EOM = lambda : print("_"*48)
 
 def fake_assert():

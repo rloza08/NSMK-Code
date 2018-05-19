@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import utils.auto_config as config
-import utils.auto_logger as l
+import utils.auto_logger as log
 import api.meraki as meraki
 import global_vars as gv
 
@@ -9,7 +9,6 @@ This call provides a wrapper to the meraki add static route
 
 """
 
-
 class StaticRoute(object):
     @classmethod
     def add(self, netid, name, subnet, ip):
@@ -17,21 +16,22 @@ class StaticRoute(object):
         str = None
         try:
             success, str = meraki.addstaticroute(config.api_key, netid, name, subnet, ip)
+            log.logger.info("success {}".format(str))
             if not success:
-                l.logger.error("{}".format(str))
-                l.runlogs_logger.error("{}".format(str))
+                log.logger.error("{}".format(str))
+                log.runlogs_logger.error("{}".format(str))
                 gv.fake_assert()
 
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-            l.logger.error("Meraki error: {}".format(err.default))
-            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            log.logger.error("Meraki error: {}".format(err.default))
+            log.runlogs_logger.error("Meraki error: {}".format(err.default))
             exit(-1)
 
         except Exception as err:
-            l.logger.error("exception failure {} for netid:{} \n{}".format(netid, err, str))
-            l.runlogs_logger.error("exception failure {} \n{}".format(err, str))
+            log.logger.error("exception failure {} for netid:{} \n{}".format(netid, err, str))
+            log.runlogs_logger.error("exception failure {} \n{}".format(err, str))
             gv.fake_assert()
 
         return success, str

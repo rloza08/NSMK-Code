@@ -22,10 +22,10 @@ class Vpn(object):
 			success, str = meraki.updatevpnsettings(config.api_key, networkid, mode,
                                                     subnets, usevpn, hubnetworks, defaultroute)
 			if success:
-				l.logger.debug("success")
+				l.logger.debug("success netid {}")
 				json.writer("vpn_updatevpnsettings_{}".format(networkid), str)
 			else:
-				l.logger.error("{}".format(str))
+				l.logger.error("failure netid {} {}".format(networkid, str))
 				l.runlogs_logger.error("{}".format(str))
 				gv.fake_assert()
 		except  Exception as err:

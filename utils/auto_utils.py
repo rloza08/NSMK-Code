@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 import re
 import os
-import utils.auto_globals as auto_globals
 import datetime
 import shutil
 import pathlib
 import utils.auto_logger as l
 import sys
+import utils.auto_pmdb as pmbd
 import  global_vars as gv
 import time
+from utils.auto_pmdb import settings, pmdb_init
 
 # Not really to be called from anywhere
 # to get the store number simply call auto_globals.storeName, storeNumber, netid, orgid, org_name
@@ -48,7 +49,6 @@ def is_numeric_in_range(number, lo, hi):
         # l.message_user(str)
     return False
 
-
 def goahead_confirm(_module):
     time.sleep(1)
     sys.stdout.flush()
@@ -70,7 +70,7 @@ def show_orglist(org_list):
     number = 0
     for org in org_list:
         number +=1
-        str +=("\n{}{} - {}".format(number, org["org_name"]))
+        str +=("\n{} - {}".format(number, org["org_name"]))
     l.logger.info("{}\n".format(str))
     l.runlogs_logger.info("{}\n".format(str))
 
@@ -109,27 +109,27 @@ def show_selected_s2svpnrules(s2svpnrules):
     str = "deploying using {}:".format(s2svpnrules)
     l.runlogs_logger.info("{}".format(str))
 
-
-def create_store_data_dir(orchestration_agent, minimum=False):
-    org_name = auto_globals.org_name
+def create_store_data_dir(orchestration_agent):
+    store_name = settings["store-name"]
+    success, _, _, _ = is_valid_store_name(store_name)
+    if not success:
+        return None
+    org_name = settings["org-name"]
     org_name = org_name.strip()
     aux = org_name.split()
     org_name = "".join(aux)
-    store_number = auto_globals.store_number
+    store_number = settings["store-number"]
     now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
-    auto_globals.folder_time_stamp = "../../data/{}/{}/{}/{}/runtime".format(orchestration_agent, org_name, store_number, now)
-    pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
-
-    if minimum is False:
-        src = "../../config/vlans_funnel.json"
-        shutil.copy(src, auto_globals.folder_time_stamp)
-        src = "../../templates"
-        shutil.copytree(src, auto_globals.folder_time_stamp+"/templates_used")
+    settings["folder-time-stamp"] = "../../data/{}/{}/{}/{}".format(orchestration_agent, org_name, store_number, now)
+    if orchestration_agent not in ["cli-deploy-s2svpnrules", "cli-get-s2svpnrules"]:
+        pathlib.Path(settings["folder-time-stamp"]).mkdir(parents=True, exist_ok=True)
     return now
 
 def create_org_data_dir(orchestration_agent):
-    org_name = auto_globals.org_name
+    org_name = settings["org-name"]
+    if org_name is None:
+        return
     org_name = org_name.strip()
     aux = org_name.split()
     org_name = "".join(aux)
@@ -140,45 +140,48 @@ def create_org_data_dir(orchestration_agent):
         now = "{}".format(now)
         now = now.replace(":", "_")
 
-    auto_globals.folder_time_stamp = "../../data/{}/{}/{}".format(orchestration_agent, org_name, now)
-    pathlib.Path(auto_globals.folder_time_stamp).mkdir(parents=True, exist_ok=True)
-    return now
-
+    org_data_dir = "../../data/{}/{}/{}".format(orchestration_agent, org_name, now)
+    if orchestration_agent in ["cli-deploy-s2svpnrules", "cli-get-s2svpnrules"]:
+            pathlib.Path(org_data_dir).mkdir(parents=True, exist_ok=True)
+    return org_data_dir
 
 def obtain_store_number(store_name):
-    auto_globals.store_name = store_name
+    if not is_valid_store_name(store_name):
+        return None
+    settings["store-name"] = store_name
     store_number = re.sub("[^0-9]", "", store_name)
     store_number = store_number.zfill(4)
-    auto_globals.store_number = store_number
+    settings["store-number"] = store_number
     return store_number
 
 def obtain_netid(storeNumber, storeName):
     import api.network as network
     netid = network.get_store_netid(storeName)
-    auto_globals.netid=netid
-    auto_globals.storeNumber = storeNumber
+    settings["netid"]=netid
+    settings["storeNumber"] = storeNumber
     return netid
 
 def get_store_path(fname, path, extension):
     cwd = os.getcwd()
-    org_name = auto_globals.org_name
-    org_name = org_name.split(" ")
-    org_name = "".join(org_name)
     if path=="data":
-        now = auto_globals.time_stamp
+        org_name = settings["org-name"]
+        org_name = org_name.split(" ")
+        org_name = "".join(org_name)
+        now = settings["time-stamp"]
         now = "{}".format(now)
         now = now.replace(":", "_")
-        fName = "{}/../../{}/{}/{}/{}/{}/runtime/{}.{}".format(cwd, path, auto_globals.orchestration_agent, org_name, auto_globals.store_number, now, fname, extension)
+        fName = "{}/../../{}/{}/{}/{}/{}/{}.{}".format(cwd, path, settings["agent"], org_name, settings["store-number"], now,
+                                                               fname, extension)
     elif path == "templates":
-        fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
-    elif path == "config":
         fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
     else:
         fName = "{}/../{}/{}.{}".format(cwd, path, fname, extension)
     return fName
 
 def get_org_path(fname, path, extension):
-    fName = "{}/{}.{}".format(auto_globals.folder_time_stamp, fname, extension)
+    cwd = os.getcwd()
+    org_data_dir = settings["org-data-dir"]
+    fName = "{}/{}/{}.{}".format(cwd, org_data_dir, fname, extension)
     return fName
 
 def get_path(fname, path, extension):
@@ -187,7 +190,6 @@ def get_path(fname, path, extension):
     else:
         fname = get_store_path(fname, path, extension)
     return fname
-
 
 def get_key_value_in_data(json_data, keyField, valueField, match):
     dictList = json_data
@@ -253,17 +255,23 @@ def is_valid_store_name(name):
         return False, None, None, None
     return True, name, group, store_number
 
-if __name__ == '__main__':
-    # auto_globals.setStoreName(store_name = "SHAWS_9611", org_name = "API Testing ORG")
-#     auto_globals.storeName = " SHAWS_  7777 "
-#     auto_globals.storeNumber = int(re.sub("[^0-9]", "", auto_globals.storeName))
-#     auto_globals.org_name = "   API Testing ORG2 "
-#
-#     create_store_data_dir()
-#
-# import time
-# str= time.strftime("%H:%M:%S")
+# Meraki serial
+# eg. "Q2PN-XXNJ-H2FA",
+def is_valid_serial_number(serial):
+    if len(serial) != 14:
+        return False
 
-    name = "SHA_0113"
-    valid, group, store_number = is_valid_store_name(name)
-    print ("valid: {} name: {} group :{} store_number: {}".format(valid, name, group, store_number))
+    blocks = serial.split("-")
+    if len(blocks) != 3:
+        return False
+
+    for block in blocks:
+        if len(block) !=4:
+            return False
+    return True
+
+if __name__ == '__main__':
+    pmdb_init()
+    print (settings)
+    pass
+

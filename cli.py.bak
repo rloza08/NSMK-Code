@@ -9,7 +9,6 @@ from global_vars import EOM
 import global_vars as gv
 from utils.auto_globals import set_cli_selections
 
-VLANS_ACTIVE=False
 def lock():
     cnt=0
     while os.path.isfile("CLI_LOCK") is True:

@@ -23,7 +23,7 @@ def setup_logger(name, log_file, level=logging.INFO, formatter=None):
     logger.addHandler(handler)
     return logger
 
-def setup():
+def init_logger():
     global module_setup_done
     global logger, runlogs_logger, runlogs_logger, runlogs_logger
     if not module_setup_done:

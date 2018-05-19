@@ -37,7 +37,7 @@ def json_reader(fpath):
     return data
 
 def get_orgid(org_name):
-    config = json_reader("../../config/safeway-config.json")
+    config = json_reader("../config/safeway-config.json")
     networks = config[0]["network"]
     org_id=None
     for network in networks:

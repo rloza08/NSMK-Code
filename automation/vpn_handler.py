@@ -4,6 +4,7 @@ import utils.auto_json as json
 import utils.auto_config as config
 import automation.vlan_handler as vlan_handler
 import utils.auto_globals as auto_globals
+from utils.auto_pmdb import settings
 
 """
 Sets up site to site VPN
@@ -33,16 +34,15 @@ Output:
 
 
 def setupSiteToSiteVpn():
-    store_number = auto_globals.store_number
-    netid = auto_globals.netid
-    config.store_number = store_number
+    netid = settings["netid"]
+    config.store_number = settings["store-number"]
 
     vlan_handler.createVlanFiles()
     netx = json.reader(config.netx_file)
 
     # Retrieves hubnetwork for the right org_name
     hubnetworksAllOrgs = config.hubnetworks
-    org_name = auto_globals.org_name
+    org_name = settings["org-name"]
 
     hubnetworks = None
     for item in hubnetworksAllOrgs:
@@ -74,7 +74,5 @@ if __name__ == '__main__':
     store_name = "8501"
     org_name = "Ecert_Org2"
     auto_globals.select_org(org_name)
-    auto_globals.select_store(store_name)
-
     setupSiteToSiteVpn()
 

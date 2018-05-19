@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# from utils.auto_pmdb import pmdb_init
+# pmdb_init()  # init db
+# from utils.auto_logger import logger, runlogs_logger, init_logger
+# init_logger()
 import utils.auto_config as config
 import utils.auto_json as json
 from api.meraki_patch import meraki
@@ -94,12 +98,20 @@ class Devices(object):
             gv.fake_assert()
 
         return success
+"""
+Not in Use USED for claiming devices
+
+"""
 
 """
 Converts the network-serials-v?.csv to json
+
 Using the cli on settings networks add networks-serials entry
+
 Deploy networks now calls deploy_claim
+
 Looks 
+
 """
 def deploy_serials():
     networkid = settings["netid"]
@@ -119,8 +131,6 @@ def deploy_serials():
     # update just to update the device name
     success = obj.update_device(networkid, serial, name=device_name)
     return success
-
-
 def removedevice(networkid, serial):
     try:
         meraki.removedevfromnet(config.api_key, networkid, serial)
@@ -139,5 +149,14 @@ def bulkremove(fname):
         serial = item["serial"]
         meraki.removedevfromnet(config.api_key, netid, serial)
 
+# Update the serial for the given netid
+#https://api.meraki.com/api_docs#devices
 if __name__ == '__main__':
-	pass
+    from utils.auto_globals import get_orgid
+    from utils.auto_utils import obtain_netid
+    settings["org-id"] = get_orgid("Firewall_Testing_Org")
+    settings["netid"] = obtain_netid(8501, "8501")
+    settings["serials"]="Q2PN-XXNJ-H2FA"
+    settings["device-name"]="MX8501A"
+    deploy_serials()
+

@@ -6,21 +6,28 @@ import automation.bulk_update as bulk
 import utils.auto_json as json
 import utils.auto_config as config
 from utils.auto_utils import is_valid_store_name
-from utils._json import Json
+from utils.low_json import Json
+from utils.auto_pmdb import settings
+from api.devices import deploy_serials
 
 
 def deploy(agent):
     l.logger.debug("clone network")
-    org_name = auto_globals.org_name
+    org_name = settings["org-name"]
     org_id = auto_globals.get_orgid(org_name)
-    store_name = auto_globals.store_name
-    create(org_id, store_name)
-    return
+    store_name = settings["store-name"]
+    success, network = create(org_id, store_name)
+    if success:
+        settings["network"] = network
+        settings["netid"] = network["id"]
+    return success
 
 
 def get_store_lists(agent):
-    auto_globals.get_settings()
-    org_name = auto_globals.store_lists_org.split("org-")[1]
+    settings["orchestration-agent"] =  agent
+    org_name = settings["CLI"]["store-lists-org"].split("org-")[1]
+    settings["org-name"] = org_name
+    auto_globals.set_settings()
     l.logger.info("creating store lists for org {}".format(org_name))
     l.runlogs_logger.info("creating store lists for org {}".format(org_name))
     org_id = auto_globals.get_orgid(org_name)
@@ -51,9 +58,9 @@ def get_store_lists(agent):
 
 
 def bulk_deploy_networks_for_all_orgs(agent):
-    org_group = auto_globals.networks_org
-    store_list = auto_globals.networks_store_list
-
+    org_group = settings["CLI"]["networks-org"]
+    store_list = settings["CLI"]["networks-store-list"]
+    serials_list = settings["CLI"]["networks-serials"]
     l.runlogs_logger.info("deploy networks <starting>")
 
     org_list = json.reader(org_group,"templates")
@@ -61,23 +68,27 @@ def bulk_deploy_networks_for_all_orgs(agent):
 
     l.logger.info("org   list: {}".format(orglist))
     l.logger.info("store list: {}".format(store_list))
+    l.logger.info("serials list: {}".format(serials_list))
 
     for org in org_list:
         org_name = org["org_name"]
         auto_globals.select_org(org_name)
         l.runlogs_logger.info("selected org: {}".format(org_name))
-        l.runlogs_logger.info("using clone source: {}".format(auto_globals.networks_clone_source))
+        l.runlogs_logger.info("using clone source: {}".format(settings["CLI"]["networks-clone-source"]))
+        l.runlogs_logger.info("using serials : {}".format(settings["CLI"]["networks-serials"]))
 
         # Now get the netid for the clone_source
-        auto_globals.select_store(auto_globals.networks_clone_source)
-        auto_globals.load_store(agent)
-        config.set_clone_id(auto_globals.netid)
+        store_name = settings["CLI"]["networks-clone-source"]
+        auto_globals.select_store(store_name)
+        auto_globals.load_store(agent, store_name)
+        config.set_clone_id(settings["netid"])
 
-        bulk.perform_bulk_deploy_networks(agent, deploy, org_name, store_list)
+        bulk.perform_bulk_deploy_networks(agent, deploy, deploy_serials,  store_list)
     l.runlogs_logger.info("deploy networks <finished>")
 
 
 if __name__ == '__main__':
-    auto_globals.org_name = "AutomationTestOrg_DONOTDELETE"
-    store_list = get_store_list("network-handler")
+    settings["org-name"] = "AutomationTestOrg_DONOTDELETE"
+    store_list = get_store_lists("network-handler")
     print (store_list)
+    pass

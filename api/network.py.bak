@@ -109,6 +109,9 @@ class Networks(object):
             data["store-name"] = settings["store-name"]
             data["netid"] = settings["netid"]
             data["clone-source"] = settings["CLI"]["networks-clone-source"]
+            # data["device-serial"] = settings.get("device-serial")
+            # data["device-name"] = settings.get("device-name")
+
             json.writer(fname, data, path="data", header=None, logPath=False)
             if success:
                 logger.info("success org-id {} {} {} {}".format(orgid, name, nettype, self.network))

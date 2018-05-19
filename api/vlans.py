@@ -38,7 +38,7 @@ class Vlans(object):
                     success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet,
                                                   mxip, suppressprint=True)
                     l.logger.info("created vlan {}".format(id))
-                    l.runlogs_logger.info("created vlan {}".format(id))
+                    l.runlogs_logger.info("created vlan {} netid {}".format(id, networkid))
 
                     self.update_single_vlan(vlan, netid, update_flag)
                     deploy_count += 1
@@ -46,7 +46,7 @@ class Vlans(object):
                 except (meraki.EmailFormatError,
                         meraki.OrgPermissionError,
                         meraki.ListError) as err:
-                    l.logger.error("Meraki error: {}".format(err.default))
+                    l.logger.error("Meraki error: {} netid {}".format(err.default, vlanid))
                     l.runlogs_logger.error("Meraki error: {}".format(err.default))
                     exit(-1)
 

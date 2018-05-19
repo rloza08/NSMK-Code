@@ -53,8 +53,8 @@ class Netx(object):
             from utils.auto_config import dryrun_netx_fake_ip, dryrun
             if dryrun :
                 return dryrun_netx_fake_ip
-            l.logger.error("Cannot reach store/device : {}".format(host))
-            l.runlogs_logger.error("Cannot reach store/device : {}".format(host))
+            log.logger.error("Cannot reach store/device : {}".format(host))
+            log.runlogs_logger.error("Cannot reach store/device : {}".format(host))
             gv.fake_assert()
 
 

@@ -231,9 +231,6 @@ The scripts are divided in the following modules:
             A time-stamp directory is created for every org, store and run in
             the format : /data/<org_name>/<store_name>/<time_stamp>/< actual files>
             
-            At the top level data also contains:
-            - in_use_org.json  : single entry json that specifies which org is selected
-            - in_use_store.json: single entry json that specifies which store is selected
             
             By default the logger will place it is log files in the base /data directory
             (It is possible to redirect log messages to another directory, see doc_utils 

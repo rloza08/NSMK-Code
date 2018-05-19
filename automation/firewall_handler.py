@@ -3,15 +3,13 @@ import utils.auto_logger as l
 import utils.auto_json as json
 import api.devices as devices
 import automation.vlan_handler as vlan_handler
-import utils.auto_config  as config
 from copy import deepcopy
 import utils.auto_utils as utils
-import  utils._csv as Csv
-# from  utils._json import Json
+import  utils.low_csv as Csv
 import utils.auto_globals as auto_globals
 import automation.bulk_update as bulk
 import api.firewall as firewall
-import global_vars as gv
+from utils.auto_pmdb import settings
 
 """
 Inputs: 
@@ -57,7 +55,7 @@ class FirewallHandler(object):
     def __init__(self, _fw_rules=None):
         self.vlanFunnelTable = vlan_handler.createVlanTable()
         fname = _fw_rules
-        self.firewallOutputFile = "l3fwrules_deploy_{}".format(auto_globals.store_number)
+        self.firewallOutputFile = "l3fwrules_deploy_{}".format(settings["store-number"])
         self.firewallOutputFileNetx = "l3fwrules_netx"
 
         #self.header_netx_csv = ["policy", "protocol", "srcCidr", "srcPort", "destCidr", "destPort", "comment", "syslogEnabled"]
@@ -281,16 +279,15 @@ def deploy(agent, fw_rules=None):
     convert(fw_rules)
     # Does physical VLAN creation on meraki device
 
-    netid = auto_globals.netid
-    store_number = auto_globals.store_number
+    netid = settings["netid"]
+    store_number = settings["store-number"]
     firewall._set(netid, fw_rules, store_number)
     l.runlogs_logger.info("l3fwrules deployed")
     l.logger.info("successfully deployed netid:{}".format(netid))
 
 def get(agent):
-
-    netid = auto_globals.netid
-    store_number = auto_globals.store_number
+    netid = settings["netid"]
+    store_number = settings["store-number"]
     firewall._get(netid, store_number)
     l.runlogs_logger.info("got l3fwrules")
     l.logger.info("got l3fwrules for  netid:{}".format(netid))
@@ -300,13 +297,13 @@ def bulk_update(agent):
     l.runlogs_logger.info("bulk update started")
 
     if agent is "cli-deploy-networks":
-        org_group = auto_globals.networks_org
+        org_group = settings["CLI"]["networks-org"]
         fw_rules = None
-        store_list = auto_globals.networks_store_list
+        store_list = settings["CLI"]["networks-store-list"]
     else:
-        org_group = auto_globals.l3fwrules_org
-        fw_rules = auto_globals.l3fwrules_version
-        store_list = auto_globals.l3fwrules_store_list
+        org_group = settings["CLI"]["l3fwrules-org"]
+        fw_rules = settings["CLI"]["l3fwrules-version"]
+        store_list =  settings["CLI"]["l3fwrules-store-list"]
 
     org_list = json.reader(org_group,"templates")
 
@@ -315,15 +312,14 @@ def bulk_update(agent):
         l.runlogs_logger.info("selected org: {}".format(org_name))
         l.runlogs_logger.info("using l3fwrules : {}".format(fw_rules))
         auto_globals.select_org(org_name)
-        fw_rules = "{}".format(auto_globals.l3fwrules_version)
+        fw_rules = "{}".format(fw_rules)
         bulk.perform_bulk_update_firewall(agent, deploy, org_name, fw_rules, store_list)
     l.runlogs_logger.info("bulk update finished")
 
 def bulk_get(agent):
     l.runlogs_logger.info("bulk get started")
-
-    org_group = auto_globals.l3fwrules_org
-    store_list = auto_globals.l3fwrules_store_list
+    org_group = settings["CLI"]["l3fwrules-org"]
+    store_list = settings["CLI"]["l3fwrules-store-list"]
 
     org_list = json.reader(org_group,"templates")
 
@@ -337,6 +333,7 @@ def bulk_get(agent):
 
 
 if __name__ == '__main__':
-    store_list = "store-list-SHA"
-    org_group="New_Production_MX_Org"
-    bulk_update(agent="firewall_update_bulk", org_group=org_group, fw_rules=None, store_list=store_list)
+    # store_list = "store-list-SHA"
+    # org_group="New_Production_MX_Org"
+    # bulk_update(agent="firewall_update_bulk", org_group=org_group, fw_rules=None, store_list=store_list)
+    pass

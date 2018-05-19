@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 from api.meraki_patch import meraki
-
 import utils.auto_config as config
 import utils.auto_logger as l
 import utils.auto_globals as auto_globals
 import utils.auto_json as Json
 import global_vars as gv
+from utils.auto_pmdb import settings
 
 class VpnFirewall(object):
         @classmethod
@@ -26,12 +26,14 @@ class VpnFirewall(object):
                     single_rule.pop()
                     count +=1
                     str = Json.make_pretty(rule)
-                    l.runlogs_logger.info("deployed rule number: {} ==>  rule: {}".format(count, str))
+                    l.logger.info("deployed org-id {} count {} rule number {}".format(org_id, count, str))
+                    l.runlogs_logger.info("deployed org-di {} rule number {}".format(org_id, count))
                     Json.writer("s2svpnrules_deploy", single_rule)
 
                     if not success:
+                        l.logger.error("failed count {} {}".format(count, str))
+                        l.runlogs_logger.error("failed count {}  {}".format(count, str))
                         l.runlogs_logger.error("{}".format(str))
-                        l.logger.error("{}".format(str))
                         gv.fake_assert()
             except Exception as err:
                 l.runlogs_logger.error("org_id: {} str:{}".format(org_id, str))
@@ -50,24 +52,25 @@ class VpnFirewall(object):
                 import json as _json
                 aux = _json.dumps(str)[0:160]
                 Json.writer("s2svpnrules_deploy", vpn_rules, path="ORG")
-                #Json.writer("s2svpnrules_deploy_resp", str)
                 l.runlogs_logger.info("updatemxvpnfwrules {}".format(success))
                 l.logger.debug("updatemxvpnfwrules {} {}".format(success, str))
 
                 if success:
                     return True, None
 
-                # FIX ME
                 if success:
-                    l.logger.debug("success")
+                    l.logger.info("success org-id {}".format(org_id))
+                    l.runlogs_logger.info("success  org-id {}".format(org_id))
                     Json.writer("vpn_updatevpnfwrules_{}".format(org_id), str)
                 else:
-                    l.runlogs_logger.error("failed :{}".format(str))
-                    l.logger.error("failed :{}".format(str))
+                    l.logger.error("failed org-id {} {}".format(org_id, str))
+                    l.runlogs_logger.error("failed  org-id {} {}".format(org_id, aux))
                     gv.fake_assert()
             except Exception as err:
-                l.logger.error("org_id: {} str:{}".format(org_id, str))
-                l.runlogs_logger.error("org_id: {} str:{}".format(org_id, str))
+                l.logger.error("{}".format(str))
+                l.logger.error("exception failure org_id: {}".format(org_id))
+                l.runlogs_logger.error("{}".format(str))
+                l.runlogs_logger.error("exception failure org_id: {}".format(org_id))
                 gv.fake_assert()
             return success, str
 
@@ -77,7 +80,6 @@ class VpnFirewall(object):
             success=False
             try:
                 success, vpn_rules = meraki.getmxvpnfwrules(api_key, org_id)
-
                 if success:
                     l.logger.debug("success")
                     Json.writer("s2svpnrules_get", vpn_rules, path="ORG", header=None, logPath=True)
@@ -95,11 +97,9 @@ class VpnFirewall(object):
 Sets the vpn firewall from a json file for a given orgid
 """
 def _set(org_name, fw_rules=None):
-    org_id = auto_globals.get_orgid(org_name)
-    if fw_rules is None:
-        fname = "vpn_firewall_rules_{}".format(config.vpn_firewall_version)
-    else:
-        fname = fw_rules
+    org_id = settings["org-id"]
+    assert(fw_rules)
+    fname = fw_rules
 
     _vpn_rules = Json.reader(fname, "templates")
     vpn_rules = []

@@ -4,7 +4,8 @@ import api.meraki as meraki
 import json
 import utils.auto_logger as l
 import global_vars as gv
-
+from utils.auto_pmdb import settings
+from utils.auto_logger import logger, runlogs_logger
 """
 This module contains custom returnhandler for meraki.
 
@@ -64,71 +65,90 @@ def __returnhandler_custom(statuscode, _returntext, objtype, suppressprint):
     except:
         pass
     if str(statuscode) == '200' and validreturn:
-        l.logger.info('{0} Operation Successful - See returned data for results\n'.format(str(objtype)))
-        l.logger.debug(_returntext)
+        logger.info('{0} Operation Successful - See returned data for results\n'.format(str(objtype)))
+        logger.debug(_returntext)
         return (True, returntext)
     elif str(statuscode) == '200':
         _str='{0} Operation Successful\n'.format(str(objtype))
-        l.logger.info(_str)
-        l.logger.debug(_returntext)
+        logger.info(_str)
+        logger.debug(_returntext)
         return (True, None)
     elif str(statuscode) == '201' and validreturn:
         _str='{0} Added Successfully - See returned data for results\n'.format(str(objtype))
-        l.logger.info(_str)
-        l.logger.debug(_returntext)
+        logger.info(_str)
+        logger.debug(_returntext)
         return (True, returntext)
     elif str(statuscode) == '201':
         _str='{0} Added Successfully\n'.format(str(objtype))
-        l.logger.info(_str)
-        l.logger.debug(_returntext)
+        logger.info(_str)
+        logger.debug(_returntext)
         return (True, returntext)
     elif str(statuscode) == '204' and validreturn:
         _str='{0} Deleted Successfully - See returned data for results\n'.format(str(objtype))
-        l.logger.info(_str)
-        l.logger.debug(_returntext)
+        logger.info(_str)
+        logger.debug(_returntext)
         return (True, returntext)
     elif str(statuscode) == '204':
         _str = '{0} Deleted Successfully\n'.format(str(objtype))
-        l.logger.info(_str)
-        l.logger.debug(_returntext)
+        logger.info(_str)
+        logger.debug(_returntext)
         return (True, None)
     elif str(statuscode) == '400' and validreturn and noerr is False:
-        l.logger.error('Bad Request - See returned data for error details\n')
-        l.logger.error(__returntext)
+        runlogs_logger.error('Bad Request - See returned data for error details\n')
+        runlogs_logger.error(__returntext)
+        logger.error('Bad Request - See returned data for error details\n')
+        logger.error(__returntext)
         return (False, __returntext)
     elif str(statuscode) == '400' and validreturn and noerr:
-        l.logger.error('Bad Request - See returned data for details\n')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('Bad Request - See returned data for details\n')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('Bad Request - See returned data for details\n')
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, __returntext)
     elif str(statuscode) == '400':
-        l.logger.error('Bad Request - No additional error data available\n')
+        runlogs_logger.error('Bad Request - No additional error data available\n')
+        logger.error('Bad Request - No additional error data available\n')
     elif str(statuscode) == '401' and validreturn and noerr is False:
-        l.logger.error('Unauthorized Access - See returned data for error details\n')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('Unauthorized Access - See returned data for error details\n')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('Unauthorized Access - See returned data for error details\n')
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, __returntext)
     elif str(statuscode) == '401' and validreturn:
-        l.logger.error('Unauthorized Access')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('Unauthorized Access')
+        logger.error('Unauthorized Access')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, __returntext)
     elif str(statuscode) == '404' and validreturn and noerr is False:
-        l.logger.error('Resource Not Found - See returned data for error details\n')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('Resource Not Found - See returned data for error details\n')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('Resource Not Found - See returned data for error details\n')
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, errmesg)
     elif str(statuscode) == '404' and validreturn:
-        l.logger.error('Resource Not Found')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('Resource Not Found')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('Resource Not Found')
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, __returntext)
     elif str(statuscode) == '500':
-        l.logger.error('HTTP 500 - Server Error')
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('HTTP 500 - Server Error')
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('HTTP 500 - Server Error')
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, __returntext)
     elif validreturn and noerr is False:
-        l.logger.error('HTTP Status Code: {0} - See returned data for error details\n'.format(str(statuscode)))
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('HTTP Status Code: {0} - See returned data for error details\n'.format(str(statuscode)))
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('HTTP Status Code: {0} - See returned data for error details\n'.format(str(statuscode)))
+        logger.error('Returned data:\n{}'.format(__returntext))
         return False, errmesg
     else:
-        l.logger.error('HTTP Status Code: {0} - No returned data\n'.format(str(statuscode)))
-        l.logger.error('Returned data:\n{}'.format(__returntext))
+        runlogs_logger.error('HTTP Status Code: {0} - No returned data (possibly BAD API_KEY)\n'.format(str(statuscode)))
+        runlogs_logger.error('Returned data:\n{}'.format(__returntext))
+        logger.error('HTTP Status Code: {0} - No returned data (possible invalid API_KEY)\n'.format(str(statuscode)))
+        logger.error('Returned data:\n{}'.format(__returntext))
         return (False, _returntext)
 
 def __returnhandler_custom_dummy_run(statuscode, returntext, objtype, suppressprint):
@@ -253,7 +273,7 @@ the auto_logger so that this can be hot-configured.
 
 """
 def init_meraki_patch():
-    if auto_globals.dryrun:
+    if settings.get("dry-run"):
         set_dry_run()
     else:
         set_run()

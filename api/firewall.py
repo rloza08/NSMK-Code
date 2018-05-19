@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import utils.auto_config as config
 import utils.auto_json as json
-import utils.auto_logger as l
+import utils.auto_logger as log
 from api.meraki_patch import meraki
 import global_vars as gv
 
@@ -19,22 +19,22 @@ class Firewall(object):
             for rule in fwrules:
                 singleRule.append(rule)
                 success, str = meraki.updatemxl3fwrules(config.api_key, netid, singleRule)
-                l.logger.debug(rule["comment"])
+                log.logger.debug(rule["comment"])
             if not success:
-                l.logger.error("failed rule comment:{} {}".format(rule["comment"], str))
-                l.runlogs_logger.error("failed rule comment:{} {}".format(rule["comment"], str))
+                log.logger.error("failed rule comment:{} {}".format(rule["comment"], str))
+                log.runlogs_logger.error("failed rule comment:{} {}".format(rule["comment"], str))
                 gv.fake_assert()
 
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-            l.logger.error("Meraki error: {}".format(err.default))
-            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            log.logger.error("Meraki error: {}".format(err.default))
+            log.runlogs_logger.error("Meraki error: {}".format(err.default))
             exit(-1)
 
         except Exception as err:
-                l.logger.error("exception failure netid:{} {}".format(netid, str))
-                l.runlogs_logger.error("exception failure netid:{}".format(str))
+                log.logger.error("exception failure netid:{} {}".format(netid, str))
+                log.runlogs_logger.error("exception failure netid:{}".format(str))
                 gv.fake_assert()
         return success, str
 
@@ -51,13 +51,14 @@ class Firewall(object):
         try:
             fwrules = json.reader("l3fwrules_deploy_{}".format(store_number))
             success, str = meraki.updatemxl3fwrules(config.api_key, netid, fwrules)
+            log.logger.info("success netid {} {}".format(netid, str))
             if not success:
-                l.logger.error("failed netid:{} {}".format(netid, str))
-                l.runlogs_logger.error("failed  {}".format(str))
+                log.logger.error("failed netid {} {}".format(netid, str))
+                log.runlogs_logger.error("failed {} {}".format(netid, str))
                 gv.fake_assert()
         except Exception as err:
-            l.logger.error("exception failure netid:{}\n{}".format(netid, str))
-            l.runlogs_logger.error("exception failure \n{}".format(str))
+            log.logger.error("exception failure netid {}\n{}".format(netid, str))
+            log.runlogs_logger.error("exception failure netid {}\n{}".format(netid, str))
             gv.fake_assert()
         return success, str
 
@@ -80,15 +81,15 @@ class Firewall(object):
         try:
             success, self.firewalls = meraki.getmxl3fwrules(config.api_key, netid)
             if not success:
-                l.logger.error("failed netid:{} {}".format(netid, self.firewalls))
-                l.runlogs_logger.error("failed {}".format(self.firewalls))
+                log.logger.error("failed netid {} {}".format(netid, self.firewalls))
+                log.runlogs_logger.error("failed netid {}".format(netid, self.firewalls))
                 gv.fake_assert()
             fname = "l3fwrules_get_{}".format(store_number)
 
             json.writer(fname, data=self.firewalls, path="data", header=None, logPath=True)
         except Exception as err:
-            l.logger.error("exception failure netid:{}\n{}".format(netid, self.firewalls))
-            l.runlogs_logger.error("exception failure \n{}".format(self.firewalls))
+            log.logger.error("exception failure {} netid {}\n{}".format(err, netid, self.firewalls))
+            log.runlogs_logger.error("exception {} failure netid \n{}".format(err, self.firewalls))
             gv.fake_assert()
 
 def _get(netid, store_number):
