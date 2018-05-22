@@ -5,6 +5,7 @@ import socket, struct
 import utils.auto_json as mkjson
 import utils.auto_logger as l
 import global_vars as gv
+from utils.auto_pmdb import settings
 
 """
 How to generate netx by example
@@ -52,7 +53,7 @@ class Netx(object):
         except:
             from utils.auto_config import dryrun_netx_fake_ip, dryrun
             if dryrun :
-                return dryrun_netx_fake_ip
+                return settings["dryrun-netx-fake-ip"]
             log.logger.error("Cannot reach store/device : {}".format(host))
             log.runlogs_logger.error("Cannot reach store/device : {}".format(host))
             gv.fake_assert()

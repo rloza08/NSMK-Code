@@ -65,8 +65,6 @@ def ENTER_CONTEXT(agent):
         show_vlans_delete_list(vlans_delete_list_contents)
         vlans_list = vlans_delete_list_contents
     else:
-        import api.men_and_mice as men_and_mice
-        men_and_mice.get_vlan_funnel()
         org_group = settings["CLI"]["networks-org"]
         store_list = settings["CLI"]["networks-store-list"]
 
@@ -78,7 +76,7 @@ def ENTER_CONTEXT(agent):
     return org_group, store_list, vlans_list
 
 
-def bulk_update(agent, vlans_only=False):
+def bulk_update_sites(agent, vlans_only=False):
     l.runlogs_logger.info("bulk update started")
     org_group, store_list, vlans_list = ENTER_CONTEXT(agent)
     org_list = json.reader(org_group, "templates")

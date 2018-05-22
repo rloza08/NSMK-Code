@@ -31,7 +31,7 @@ def add():
     ip = None
     for vlan in vlans:
         ip = None
-        if vlan['id'] == int(config.static_route_next_hop):
+        if vlan['id'] == int(settings["CONFIG"]["static-route-next-hop"]):
             ip = vlan["applianceIp"]
             break
 

@@ -273,7 +273,7 @@ the auto_logger so that this can be hot-configured.
 
 """
 def init_meraki_patch():
-    if settings.get("dry-run"):
+    if settings.get("CLI").get("dry-run"):
         set_dry_run()
     else:
         set_run()

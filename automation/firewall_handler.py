@@ -63,7 +63,7 @@ class FirewallHandler(object):
 
 
         self.fwRules = json.reader(fname, "templates")
-        self.funnelNetx = json.reader("vlans_funnel_netx")
+        self.funnelNetx = json.reader("vlans-funnel_netx")
         assert(self.funnelNetx)
 
         # Transform template to csv for external use
@@ -295,7 +295,6 @@ def get(agent):
 
 def bulk_update(agent):
     l.runlogs_logger.info("bulk update started")
-
     if agent is "cli-deploy-networks":
         org_group = settings["CLI"]["networks-org"]
         fw_rules = None
@@ -313,7 +312,7 @@ def bulk_update(agent):
         l.runlogs_logger.info("using l3fwrules : {}".format(fw_rules))
         auto_globals.select_org(org_name)
         fw_rules = "{}".format(fw_rules)
-        bulk.perform_bulk_update_firewall(agent, deploy, org_name, fw_rules, store_list)
+        bulk.perform_bulk_update_firewall(agent, deploy, fw_rules, store_list)
     l.runlogs_logger.info("bulk update finished")
 
 def bulk_get(agent):

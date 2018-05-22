@@ -7,13 +7,13 @@ import utils.auto_config as config
 import api.netx as netx
 import utils._csv as Csv
 import utils.auto_globals as auto_globals
-from utils.auto_globals import CONFIG_DIR, vlans_add_list, vlans_delete_list
 from utils.auto_config import json_reader, make_pretty
-from copy import deepcopy
 from utils._json import Json
 import shutil
 import os
-from utils.auto_csv import convert_to_json
+from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR
+from utils.auto_pmdb import settings
+from copy import deepcopy
 
 """
 This module contains two classes:
@@ -33,7 +33,6 @@ Also contains a deploy function which
 
         
 """
-
 
 """
 This class is used to obtain a 
@@ -67,9 +66,130 @@ b) vlans_netx.json (obtained by calling /api/item.py)
 
 """
 
+class VlanTemplates(object):
+
+    def load_funnel_and_patch(self):
+        vlans_funnel_base_file = "vlans-funnel-base"
+        vlans_patch_file = "vlans-patch"
+        vlans_funnel_base = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_funnel_base_file))
+        vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
+        return vlans_funnel_base, vlans_patch
+
+
+    def upgrade_funnel(self):
+        vlans_funnel_base, vlans_patch = self.load_funnel_and_patch()
+        vlans_funnel_file = "vlans-funnel"
+
+        # Throw away all vlans that don't have a subnet (used only for template generation)
+        entries = []
+        for vlan in vlans_patch:
+            entry = {}
+            if vlan["Subnet"] == "":
+                continue
+            entry["Vlan"] = vlan["Vlan"]
+            entry["Subnet"] = vlan["Subnet"]
+            entry["Description"] = vlan["Description"]  # not used but copied for clarity
+            item = deepcopy(entry)
+            entries.append(item)
+
+        vlans_funnel = vlans_funnel_base + entries
+        Json.writer(vlans_funnel_file, vlans_funnel, path=RUNTIME_DIR, absolute_path=True)
+
+
+    def add_basic_fields(self, entry, vlan):
+        vlan_id = int(vlan['Vlan'])
+        o4 = vlan['Subnet'].split('.')
+        o4 = o4[3]
+        o4 = o4.split("/")
+        o4 = int(o4[0])
+        entry["id"] = deepcopy(vlan_id)
+        entry["networkId"] = "{{networkid}}"
+        entry["name"] = vlan['Description']
+        entry["applianceIp"] = "{{{{vlan[{}]['octets']}}}}.{}".format(vlan_id, o4 + 1)
+        entry["subnet"] = "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
+        entry["fixedIpAssignments"] = {}
+        entry["reservedIpRanges"] = []
+
+
+    def add_extended_fields(self, entry, vlan_patch=None):
+        if vlan_patch == None:
+            entry["dnsNameservers"] = "upstream_dns"
+            entry["reservedIpRanges"] = []
+            return
+        entry["dnsNameservers"] = vlan_patch["dnsNameservers"]
+        entry["reservedIpRanges"] = []
+        if vlan_patch["reservedIpRanges1-comment"] != "":
+            item = dict()
+            id = vlan_patch["Vlan"]
+            item["comment"] = vlan_patch["reservedIpRanges1-comment"]
+
+            aux = vlan_patch["reservedIpRanges1-end"].split(".")
+            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            item["end"] = aux[0].replace("x", tpl_str)
+
+            aux = vlan_patch["reservedIpRanges1-start"].split(".")
+            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            item["start"] = aux[0].replace("x", tpl_str)
+
+            entry["reservedIpRanges"].append(deepcopy(item))
+        if vlan_patch["reservedIpRanges2-comment"] != "":
+            item = dict()
+            item["comment"] = vlan_patch["reservedIpRanges2-comment"]
+
+            aux = vlan_patch["reservedIpRanges2-end"].split(".")
+            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            item["end"] = aux[0].replace("x", tpl_str)
+
+            aux = vlan_patch["reservedIpRanges2-start"].split(".")
+            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            item["start"] = aux[0].replace("x", tpl_str)
+
+            entry["reservedIpRanges"].append(deepcopy(item))
+
+    def build_jinja_template(self):
+        vlans_funnel_file = "vlans-funnel"
+        vlans_patch_file = "vlans-patch"
+
+        vlans_funnel = json_reader("{}/{}.json".format(RUNTIME_DIR, vlans_funnel_file))
+        vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
+
+        # Throw add extra fields from patch where possible
+        # Create patch lookup table
+        patch_table = {}
+        for vlan in vlans_patch:
+            id = vlan["Vlan"]
+            patch_table[id] = vlan
+
+        # Merge and create jinja template
+        entries = []
+        for vlan in vlans_funnel:
+            entry = dict()
+            self.add_basic_fields(entry, vlan)
+            vlan_patch = patch_table.get(vlan["Vlan"])
+            if vlan_patch != None:
+                self.add_extended_fields(entry, vlan_patch)
+            else:
+                self.add_extended_fields(entry)
+
+            item = deepcopy(entry)
+            entries.append(item)
+
+        jinja_template = entries
+        Json.writer("jinja_vlans_template", jinja_template, path="config")
+        tpl = make_pretty(jinja_template)
+        print(tpl)
+        return jinja_template
+
+
 class VlanTable(object):
     def __init__(self):
-        self.funnel_file = config.vlan_funnel_file
+        obj = VlanTemplates()
+        # Creates a new full that has been patched
+        obj.upgrade_funnel()
+        # Creates the jinja template from the funnel and patch
+        obj.build_jinja_template()
+
+        self.funnel_file = settings["CONFIG"]["funnel-file"]
 
     """
     From vlans_funnel.csv (obtained from men and mice)
@@ -78,6 +198,7 @@ class VlanTable(object):
     
     Uses item info (from vlans_netx.json to convert to the proper store subnet)
     """
+
     def create(self):
         # Get item for the shop and saves it into the netx_file
         self.create_vlan_defs()
@@ -100,21 +221,22 @@ class VlanTable(object):
      Process :
         queries /api/item.py and saves it into /data/../vlans_netx.json
     """
+
     def create_vlan_defs(self):
         self.netx = netx.Netx()
         self.valid_subnets = self.netx.valid_subnet_list
-        self.netxFile = config.netx_file
-        device="{}{}{}".format(config.device_prefix, auto_globals.store_number, config.device_postfix)
+        self.netxFile = settings["CONFIG"]["netx-file"]
+        device = "{}{}{}".format(settings["CONFIG"]["device-prefix"], settings["store-number"], settings["CONFIG"]["device-postfix"])
         self.netx = self.netx.get_netx(device)
         json.writer(self.netxFile, self.netx)
         l.logger.debug("created {}".format(self.netxFile))
 
-
     """
     Transforms the vlans_funnel.csv into vlans_funnels.json format
     """
+
     def convert_funnel_to_json(self):
-        self.funnel=Csv.transform_to_json((self.funnel_file), "config")
+        self.funnel = Json.reader(self.funnel_file, "runtime")
         self.funnelNetxFile = "{}_netx".format(self.funnel_file)
         self.funnel_subnet_file = "{}_subnet".format(self.funnel_file)
         self.funnelVlanFile = "{}_table".format(self.funnel_file)
@@ -124,13 +246,14 @@ class VlanTable(object):
     Changes the format from 10.x.a.96/27 to a.96/27
     and creates vlan_funnel_netx.json from vlans_funnel.json
     """
+
     def transform_funnel_to_netx(self):
         for entry in self.funnel:
             subnet = entry["Subnet"].split(".")
             # if there is an x than we need to replace otherwise skip
-            if subnet[1]=='x':
-                if (subnet[2]>='a' and subnet[2]<='h'):
-                    entry["Subnet"]=subnet[2]+"."+subnet[3]
+            if subnet[1] == 'x':
+                if (subnet[2] >= 'a' and subnet[2] <= 'h'):
+                    entry["Subnet"] = subnet[2] + "." + subnet[3]
         json.writer(self.funnelNetxFile, self.funnel)
         l.logger.debug("created {}".format(self.funnelNetxFile))
 
@@ -165,14 +288,15 @@ class VlanTable(object):
         },
     
     """
+
     def transform_funnel_to_subnet(self):
         for entry in self.funnel:
             subnet = entry["Subnet"].split(".")
             netxIndex = subnet[0]
             if netxIndex in self.valid_subnets:
                 subnet[0] = self.netx[netxIndex]
-                elem=entry["Subnet"].split(".")
-                entry["Subnet"] = "{}.{}".format(subnet[0],elem[1])
+                elem = entry["Subnet"].split(".")
+                entry["Subnet"] = "{}.{}".format(subnet[0], elem[1])
                 json.writer(self.funnel_subnet_file, self.funnel)
         l.logger.debug("created {}".format(self.funnel_subnet_file))
 
@@ -193,15 +317,17 @@ class VlanTable(object):
 
     
     """
+
     # Table of Vlan to convert
     def create_funnel_vlan_table(self):
-        self.funnel_vlan_table={}
+        self.funnel_vlan_table = {}
         for entry in self.funnel:
             vlan = entry["Vlan"]
-            self.funnel_vlan_table[vlan]=entry["Subnet"]
+            self.funnel_vlan_table[vlan] = entry["Subnet"]
 
         json.writer(self.funnelVlanFile, self.funnel_vlan_table)
         l.logger.debug("created {}".format(self.funnelVlanFile))
+
 
 """
 Vlan generation using jinja
@@ -210,12 +336,12 @@ class VlanHandler(object):
     def __init__(self, template, output):
         self.template = template
         self.output = output
-        self.netid = auto_globals.netid
+        self.netid = settings["netid"]
 
     def __init__(self):
         self.template = None
         self.output = None
-        self.netid = auto_globals.netid
+        self.netid = settings["netid"]
 
     """
     Process:
@@ -232,21 +358,22 @@ class VlanHandler(object):
       
     
     """
+
     def create_context(self):
         self.context = {
             'networkid': None,
-            'vlan' : {}
+            'vlan': {}
         }
 
-        self.context['networkid']=self.netid
-        fname = "{}_table".format(config.vlan_funnel_file)
+        self.context['networkid'] = self.netid
+        fname = "{}_table".format(settings["CONFIG"]["funnel-file"])
         vlans = json.reader(fname)
 
         for key, value in vlans.items():
             vlanId = int(key)
-            subnet=value
-            octets=subnet.split(".")
-            octets="{}.{}.{}".format(octets[0], octets[1], octets[2])
+            subnet = value
+            octets = subnet.split(".")
+            octets = "{}.{}.{}".format(octets[0], octets[1], octets[2])
             """
             Sample usage inside the template.
             (note vlan is only a name to lock the reference with the template,
@@ -257,7 +384,6 @@ class VlanHandler(object):
             self.context["vlan"][vlanId]['octets'] = octets
             self.context["vlan"][vlanId]['subnet'] = subnet
         l.logger.debug(self.context)
-
 
     """
         From the context created below: 
@@ -294,6 +420,7 @@ class VlanHandler(object):
         },
     
     """
+
     def create_vlan_generated(self):
         # Obtain a jinja handler hook
         obj = auto_jinja.JinjaAutomation()
@@ -301,10 +428,9 @@ class VlanHandler(object):
         obj.create_output(self.template, self.output, self.context)
 
     def create_vlan_table(self):
-        self.vlan_table=VlanTable()
-        ref=self.vlan_table.create()
+        self.vlan_table = VlanTable()
+        ref = self.vlan_table.create()
         return ref
-
 
     """
     Creates all required files for vlan setup
@@ -319,22 +445,25 @@ class VlanHandler(object):
      
     Obs: This module uses jinja2 template to produce the final file.
     """
+
     def create_vlan_files(self):
         self.create_vlan_table()
         # Create/Update for all VLANs
-        self.netid = auto_globals.netid
-        self.template="jinja_vlans_template.json"
-        self.output="vlans_generated_{}".format(auto_globals.netid)
+        self.netid = settings["netid"]
+        self.template = "jinja_vlans_template.json"
+        self.output = "vlans_generated_{}".format(settings["netid"])
         # Creates vlan table with three octets/subnet
         self.create_context()
         # Using jinja apply the above context to the vlan_template
         self.create_vlan_generated()
         return self.output
 
+
 def createVlanTable():
     obj = VlanHandler()
     ref = obj.create_vlan_table()
     return ref
+
 
 def createVlanFiles():
     obj = VlanHandler()
@@ -343,7 +472,9 @@ def createVlanFiles():
     upper = obj.vlan_table.netx["upper"]
     return ref, lower, upper
 
+
 def deploy_new():
+
     obj = VlanHandler()
     """
         This simply creates all the intermediate files and the final
@@ -353,7 +484,7 @@ def deploy_new():
     obj.create_vlan_files()
 
     # Does physical VLAN creation on meraki device by callin the /api/vlan module
-    netid = auto_globals.netid
+    netid = settings["netid"]
     vlans.create_update_vlans(netid)
 
 
@@ -367,25 +498,8 @@ def deploy():
     obj.create_vlan_files()
 
     # Does physical VLAN creation on meraki device by callin the /api/vlan module
-    netid = auto_globals.netid
+    netid = settings["netid"]
     vlans.update_vlans(netid)
-
-def add_entry_to_template(t_new, vlan):
-    vlan_id = int(vlan['Vlan'])
-    o4 = vlan['Subnet'].split('.')
-    o4 = o4[3]
-    o4 = o4.split("/")
-    o4 = int(o4[0])
-    entry = {}
-    entry["id"] = vlan_id
-    entry["networkId"] =  "{{networkid}}"
-    entry["name"] =  vlan['Description']
-    entry["applianceIp"] =  "{{{{vlan[{}]['octets']}}}}.{}".format(vlan_id, o4+1)
-    entry["subnet"] =  "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
-    entry["dnsNameservers"] =  "upstream_dns"
-    entry["fixedIpAssignments"] =  {}
-    entry["reservedIpRanges"] =  []
-    t_new.append(entry)
 
 
 def ENTER_ENV_vlans():
@@ -397,8 +511,8 @@ def ENTER_ENV_vlans():
         l.runlogs_logger.error(" ENTER_ENV_vlans failed")
         assert (0)
 
-
     return None
+
 
 def LEAVE_ENV_vlans():
     pass
@@ -414,24 +528,24 @@ def ENTER_ENV_vlans_add():
         assert (0)
 
     cwd = os.getcwd()
-    src = "{}/../../config/jinja_vlans_template.json".format(cwd)
-    dst = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
+    src = "{}/{}/jinja_vlans_template.json".format(cwd, CONFIG_DIR)
+    dst = "{}/{}/jinja_vlans_template_orig.json".format(cwd, CONFIG_DIR)
     destination = open(dst, 'wb')
     shutil.copyfileobj(open(src, 'rb'), destination)
     destination.close()
 
-    update_vlan_template(   funnel_file="vlans_funnel",
-                            vlans_template_file="jinja_vlans_template",
-                            vlans_template_file_previous="jinja_vlans_template_previous",
-                            vlans_template_file_new="jinja_vlans_template")
+    update_vlan_template(funnel_file="vlans_funnel",
+                         vlans_template_file="jinja_vlans_template",
+                         vlans_template_file_new="jinja_vlans_template")
 
     return vlans_add_list_contents
+
 
 def LEAVE_ENV_vlans_add():
     cwd = os.getcwd()
     try:
-        src = "{}/../../config/jinja_vlans_template_orig.json".format(cwd)
-        dst = "{}/../../config/jinja_vlans_template.json".format(cwd)
+        src = "{}/{}/config/jinja_vlans_template_orig.json".format(cwd, CONFIG_DIR)
+        dst = "{}/{}/config/jinja_vlans_template.json".format(cwd, CONFIG_DIR)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
@@ -455,50 +569,13 @@ def LEAVE_ENV_vlans_delete():
     pass
 
 
-def update_vlan_template(funnel_file="vlans_funnel",
-                         vlans_template_file="jinja_vlans_template",
-                         vlans_template_file_previous="jinja_vlans_template_previous",
-                         vlans_template_file_new = "jinja_vlans_template") :
-
-    vlans_new = json_reader("{}/{}.json".format(CONFIG_DIR, funnel_file))
-    vlans_template_orig = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_template_file))
-
-    t_old = vlans_template_orig
-    t_new = deepcopy(t_old)
-
-    for funnel_vlan in vlans_new:
-        found = False
-        vlan = int(funnel_vlan['Vlan'])
-        # Check with Jas
-        if vlan == 1:
-            continue
-        for item in t_new:
-            if int(vlan) == item["id"]:
-                found = True
-                break
-
-        if not found:
-            add_entry_to_template(t_new, funnel_vlan)
-
-    # vlans_new = json_writer(funnel_new_file)
-    # create a backup for the existing jinja template
-    cwd = os.getcwd()
-    src = "{}/{}.json".format(CONFIG_DIR, vlans_template_file)
-    dst = "{}/{}.json".format(CONFIG_DIR, vlans_template_file_previous)
-    destination = open(dst, 'wb')
-    shutil.copyfileobj(open(src, 'rb'), destination)
-
-    Json.writer(vlans_template_file_new, t_new, path="config")
-
-    tpl = make_pretty(t_new)
-    return t_new
-
 def vlans_delete(netid, vlans_list):
     for vlanid in vlans_list:
         vlans.delete(netid, vlanid)
 
 
+
 if __name__ == "__main__":
     update_vlan_template("../menAndMice/funnel.json",
-                                 "../../config/jinja_vlans_template.json",
-                                 "../runtime/jinja_vlans_template_new.json")
+                         "{}/jinja_vlans_template.json",
+                         "../{}/jinja_vlans_template_new.json".format(CONFIG_DIR, RUNTIME_DIR))

@@ -35,13 +35,12 @@ Output:
 
 def setupSiteToSiteVpn():
     netid = settings["netid"]
-    config.store_number = settings["store-number"]
 
     vlan_handler.createVlanFiles()
-    netx = json.reader(config.netx_file)
+    netx = json.reader(settings["CONFIG"]["netx-file"])
 
     # Retrieves hubnetwork for the right org_name
-    hubnetworksAllOrgs = config.hubnetworks
+    hubnetworksAllOrgs = settings["CONFIG"]["hubnetworks"]
     org_name = settings["org-name"]
 
     hubnetworks = None
@@ -52,7 +51,7 @@ def setupSiteToSiteVpn():
     assert (hubnetworks)
 
     # Generate vpn hubnetworks and vpn-subnets
-    defaultroute = config.defaultroute
+    defaultroute = settings["CONFIG"]["defaultroute"]
 
     upper = "{}/22".format(netx['upper'])
     lower = "{}/22".format(netx['lower'])

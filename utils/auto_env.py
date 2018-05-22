@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import utils.auto_globals as auto_globals
 import utils.auto_logger as l
-from utils.auto_globals import CONFIG_DIR, vlans_add_list
+from utils.auto_globals import CONFIG_DIR, TEMPLATES_DIR
 from utils.auto_config import json_reader, make_pretty
 from copy import deepcopy
 from utils.low_json import Json
@@ -111,7 +111,7 @@ def ENTER_ENV_VLANS(agent):
         shutil.copyfileobj(open(patch_01, 'rb'), destination)
 
         # Vlan patch just for this run
-        patch_02 = "{}/../../templates/{}.csv".format(cwd, vlans_add_list)
+        patch_02 = "{}/{}/{}.csv".format(cwd, TEMPLATES_DIR, vlans_add_list)
         shutil.copyfileobj(open(patch_02, 'rb'), destination)
         destination.close()
         convert_to_json("vlans_funnel", "config",None)

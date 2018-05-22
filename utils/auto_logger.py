@@ -2,8 +2,6 @@ import logging
 import datetime
 import global_vars as gv
 import os
-if not os.path.exists("../../data/logs"):
-    os.makedirs("../../data/logs")
 
 logger = None
 runlogs_logger = None

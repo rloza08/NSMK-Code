@@ -4,7 +4,6 @@ import json
 import utils.auto_logger as l
 import global_vars as gv
 
-
 global clone_id
 clone_id = None
 
@@ -18,10 +17,9 @@ def json_reader(fpath):
         # json_data = json_data.replace("\n","")
         data = json.loads(json_data)
         str = make_pretty(data)
-        l.logger.debug("auto_utils.json_reader:\n{}".format(str))
     except Exception as err:
-        l.logger.error("exception failure fpath:{} {}".format(fpath))
-        l.runlogs_logger.error("exception failure fpath:{} {}".format(fpath))
+        # l.logger.error("exception failure fpath:{} {}".format(fpath))
+        # l.runlogs_logger.error("exception failure fpath:{} {}".format(fpath))
         gv.fake_assert()
     return data
 
@@ -58,28 +56,10 @@ def get_clone_id():
     global clone_id
     return clone_id
 
-config = json_reader("../../config/safeway-config.json")
+def init_config():
+    global api_key
+    api_key = os.environ.get("API_KEY", None)
+    assert(api_key)
+    setup_proxy()
 
-api_key = os.environ.get("API_KEY", None)
-assert(api_key)
-network=config[0]["network"]
-
-firewall=config[0]["firewall"]
-static_route_next_hop=firewall['static_route_next_hop']
-
-dryrun = config[0]["dryrun"]
-dryrun_netx_fake_ip=dryrun["netx_fake_ip"]
-
-setup_proxy()
-
-vlan=config[0]["vlan"]
-vlan_funnel_file=vlan["funnel_file"]
-netx_file=vlan['netx_file']
-device_prefix = vlan["device_prefix"]
-device_postfix = vlan["device_postfix"]
-
-vpn = config[0]["vpn"]
-
-hubnetworks=vpn["hubnetworks"]
-defaultroute=vpn["defaultroute"]
-
+init_config()

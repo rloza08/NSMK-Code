@@ -22,9 +22,9 @@ def deploy(agent):
         settings["netid"] = network["id"]
     return success
 
-
+import copy
 def get_store_lists(agent):
-    settings["orchestration-agent"] =  agent
+    settings["orchestration-agent"] = agent
     org_name = settings["CLI"]["store-lists-org"].split("org-")[1]
     settings["org-name"] = org_name
     auto_globals.set_settings()
@@ -60,10 +60,10 @@ def get_store_lists(agent):
 def bulk_deploy_networks_for_all_orgs(agent):
     org_group = settings["CLI"]["networks-org"]
     store_list = settings["CLI"]["networks-store-list"]
-    serials_list = settings["CLI"]["networks-serials"]
+    serials_list = settings.get("CLI").get("networks-serials")
     l.runlogs_logger.info("deploy networks <starting>")
 
-    org_list = json.reader(org_group,"templates")
+    org_list = json.reader(org_group, "templates")
     orglist = json.make_pretty(org_list)
 
     l.logger.info("org   list: {}".format(orglist))
@@ -75,7 +75,7 @@ def bulk_deploy_networks_for_all_orgs(agent):
         auto_globals.select_org(org_name)
         l.runlogs_logger.info("selected org: {}".format(org_name))
         l.runlogs_logger.info("using clone source: {}".format(settings["CLI"]["networks-clone-source"]))
-        l.runlogs_logger.info("using serials : {}".format(settings["CLI"]["networks-serials"]))
+        l.runlogs_logger.info("using serials : {}".format(settings.get("CLI").get("networks-serials")))
 
         # Now get the netid for the clone_source
         store_name = settings["CLI"]["networks-clone-source"]

@@ -5,10 +5,9 @@ import utils.auto_jinja as auto_jinja
 import api.vlans as vlans
 import utils.auto_config as config
 import utils.low_csv as csv
-import utils.auto_globals as auto_globals
 import shutil
 import os
-from utils.auto_globals import CONFIG_DIR, settings
+from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR, settings
 from utils.auto_config import json_reader, make_pretty
 from copy import deepcopy
 from utils.low_json import Json
@@ -72,7 +71,7 @@ b) vlans_netx.json (obtained by calling /api/item.py)
 
 class VlanTable(object):
     def __init__(self):
-        self.funnel_file = config.vlan_funnel_file
+        self.funnel_file = settings["CONFIG"]["vlan-funnel-file"]
         self.funnelVlanFile = "{}_table".format(self.funnel_file)
 
     """
@@ -237,7 +236,7 @@ class VlanHandler(object):
         }
 
         self.context['networkid']=self.netid
-        fname = "{}_table".format(config.vlan_funnel_file)
+        fname = "{}_table".format(settings["CONFIG"]["vlan-funnel-file"])
         vlans = json.reader(fname)
 
         for key, value in vlans.items():
@@ -400,19 +399,19 @@ def ENTER_ENV_vlans_add():
         vlans_add_list_contents = read_remove_csv_header(csv_fname, csv_fname_append)
 
         # Backup the funnel file
-        src = "{}/../config/vlans_funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel_orig.csv".format(cwd)
+        src = "{}/{}/vlans_funnel.csv".format(cwd, CONFIG_DIR)
+        dst = "{}/{}/vlans_funnel_orig.csv".format(cwd, CONFIG_DIR)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
 
         src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../config/vlans_funnel.csv".format(cwd)
+        dst = "{}/{}/vlans_funnel.csv".format(cwd, CONFIG_DIR)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
 
         # 99x Vlan patch that is always used
-        patch_01 = "{}/../config/vlans_funnel.patch.csv".format(cwd)
+        patch_01 = "{}/{}/vlans_funnel.patch.csv".format(cwd, CONFIG_DIR)
         shutil.copyfileobj(open(patch_01, 'rb'), destination)
 
         # Vlan patch just for this run
@@ -424,8 +423,8 @@ def ENTER_ENV_vlans_add():
         log.logger.error("failed")
         assert (0)
 
-    src = "{}/../config/jinja_vlans_template.json".format(cwd)
-    dst = "{}/../config/jinja_vlans_template_orig.json".format(cwd)
+    src = "{}/{}/jinja_vlans_template.json".format(cwd, CONFIG_DIR)
+    dst = "{}/{}/jinja_vlans_template_orig.json".format(cwd, CONFIG_DIR)
     destination = open(dst, 'wb')
     shutil.copyfileobj(open(src, 'rb'), destination)
     destination.close()
@@ -507,5 +506,5 @@ def vlans_delete(netid, vlans_list):
 
 if __name__ == "__main__":
     update_vlan_template("../menAndMice/funnel.json",
-                                 "../config/jinja_vlans_template.json",
-                                 "../runtime/jinja_vlans_template_new.json")
+                                 "{}/jinja_vlans_template.json".format(CONFIG_DIR),
+                                 "{}/jinja_vlans_template_new.json".format(RUNTIME_DIR))

@@ -4,13 +4,12 @@ import  utils.low_csv as Csv
 from  utils.low_json import Json
 import utils.auto_globals as auto_globals
 from utils.auto_utils import goahead_confirm
-from utils.auto_utils import  show_store_list, show_orglist, show_selected_s2svpnrules, show_selected_l3fwrules
-import utils.auto_utils as utils
+from utils.auto_utils import show_store_list
 import global_vars as gv
 from utils.auto_pmdb import settings
 from api.network import destroy
 
-def perform_bulk_update_firewall(agent, fn_deploy, org_name, fw_rules, store_list):
+def perform_bulk_update_firewall(agent, fn_deploy, fw_rules, store_list):
     fname=store_list
     store_list = Json.reader(fname, "templates")
     """Ensure that the list now has always all the three fields
@@ -134,9 +133,11 @@ def perform_bulk_deploy_networks(agent, fn_deploy, fn_deploy_serials, store_list
 
     store_list = Json.reader(store_list_file, "templates")
     show_store_list(store_list)
-    serials_list_file = settings["CLI"]["networks-serials"]
-    serials_list = Json.reader(serials_list_file, "templates")
-
+    serials_list_file = settings.get("CLI").get("networks-serials")
+    if serials_list_file:
+        serials_list = Json.reader(serials_list_file, "templates")
+    else:
+        serials_list = None
     if not goahead_confirm("stores"):
         return
 
@@ -151,6 +152,12 @@ def perform_bulk_deploy_networks(agent, fn_deploy, fn_deploy_serials, store_list
 
         auto_globals.select_store(store_name)
         assert (auto_globals.load_empty_store(agent, store_name))
+        if gv.use_serials:
+            if serials_list is None:
+                l.logger.error("failed no serials file provided")
+                l.runlogs_logger.error("failed no serials file provided")
+                return
+
         if not fn_deploy(agent):
             l.logger.error("failed to create network : {}".format(store_name))
             l.runlogs_logger.error("failed to create network : {}".format(store_name))

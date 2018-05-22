@@ -7,7 +7,9 @@ from utils.auto_utils import create_org_data_dir
 import utils.auto_utils as utils
 from utils.auto_pmdb import settings, load_settings
 
-CONFIG_DIR = "../config"
+CONFIG_DIR = "../../config"
+RUNTIME_DIR = "../runtime"
+TEMPLATES_DIR = "../../templates"
 
 def make_pretty(my_json):
     return json.dumps(my_json, indent=4, sort_keys=False)
@@ -37,7 +39,7 @@ def json_reader(fpath):
     return data
 
 def get_orgid(org_name):
-    config = json_reader("../../config/safeway-config.json")
+    config = json_reader("{}/safeway-config.json".format(CONFIG_DIR))
     networks = config[0]["network"]
     org_id=None
     for network in networks:
@@ -56,13 +58,13 @@ def select_store(_store_name):
 def set_cli_selections(field=None, value=None):
     if field:
         settings["CLI"][field] = value
-    json_writer("../runtime/cli-selections.json", settings["CLI"])
+    json_writer("{}/cli-selections.json".format(RUNTIME_DIR), settings["CLI"])
 
 
 def set_settings(field=None, value=None):
     if field:
         settings[field] = value
-    json_writer("../config/cli-selections.json", settings)
+    json_writer("{}/cli-selections.json".format(RUNTIME_DIR), settings)
 
 
 def load_org(_orchestration_agent=None, org_name=None):

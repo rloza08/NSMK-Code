@@ -1,9 +1,9 @@
 import sys
 
-log_verbose = False  # Only if error_stop is set
+log_verbose = True  # Only if error_stop is set
 error_stop = False
-force_yes = False
-use_serials = True
+force_yes = True
+use_serials = False
 serial_not_available_revert_clone = True
 
 EOM = lambda : print("_"*48)

@@ -142,3 +142,22 @@ Refactor to not use  csv.
 get funnel should call menAndMice (Python 2.7)
 
 Move config out of code.
+
+
+New NETX
+a to h comes from netx
+
+
+----------------------------------------
+NoN Netx Subnet File ( subnet i to z)
+
+store number,ip subnet/mask,subnet id(M&M)
+1111,1.1.1.0/24,i
+
+=====================================
+
+Promote process described:
+
+Takes the vlans from the vlan-add-list
+Copies into the vlan-template file
+The org clone needs to be updated to contain the newly added vlan number.

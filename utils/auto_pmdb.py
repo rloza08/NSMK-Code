@@ -3,9 +3,9 @@ import json
 # from utils.auto_logger import logger, runlogs_logger
 import global_vars as gv
 import os
-
 settings = {}
 
+RUNTIME_DIR = "../runtime"
 def json_reader(fpath):
     data = None
     cwd = os.getcwd()
@@ -23,7 +23,8 @@ def json_reader(fpath):
 
 def load_settings():
     global settings
-    settings["CLI"] = json_reader("../runtime/cli-selections.json")
+    settings["CLI"] = json_reader("{}/cli-selections.json".format(RUNTIME_DIR))
+
 
 def pmdb_init():
     global settings
@@ -39,3 +40,17 @@ def pmdb_init():
     settings["netid"] = None
     settings["device-name"] = None
     settings["serial"] = None
+    cwd= os.getcwd()
+    config = json_reader("../../config/safeway-config.json")
+    settings["CONFIG"] = dict()
+    settings["CONFIG"]["network"] = config[0]["network"]
+    firewall=config[0]["firewall"]
+    settings["CONFIG"]["static-route-next-hop"]=firewall['static_route_next_hop']
+    vlan=config[0]["vlan"]
+    settings["CONFIG"]["funnel-file"]=vlan["funnel_file"]
+    settings["CONFIG"]["netx-file"]=vlan['netx_file']
+    settings["CONFIG"]["device-prefix"] = vlan["device_prefix"]
+    settings["CONFIG"]["device-postfix"] = vlan["device_postfix"]
+    vpn = config[0]["vpn"]
+    settings["CONFIG"]["hubnetworks"] = vpn["hubnetworks"]
+    settings["CONFIG"]["defaultroute"] = vpn["defaultroute"]

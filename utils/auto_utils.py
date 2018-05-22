@@ -174,8 +174,12 @@ def get_store_path(fname, path, extension):
                                                                fname, extension)
     elif path == "templates":
         fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
-    else:
+    elif path == "config":
+        fName = "{}/../../{}/{}.{}".format(cwd, path, fname, extension)
+    elif path == "runtime":
         fName = "{}/../{}/{}.{}".format(cwd, path, fname, extension)
+    else:
+        fName = "{}/{}/{}.{}".format(cwd, path, fname, extension)
     return fName
 
 def get_org_path(fname, path, extension):
