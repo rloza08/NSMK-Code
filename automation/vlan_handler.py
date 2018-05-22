@@ -101,7 +101,11 @@ class VlanTemplates(object):
         o4 = int(o4[0])
         entry["id"] = deepcopy(vlan_id)
         entry["networkId"] = "{{networkid}}"
-        entry["name"] = vlan['Description']
+        desc = vlan['Description']
+        for ch in [".", "@", "#", "_", "-", '"', "]", "}", ")", "(", "[", "{"]:
+            desc = desc.replace(ch, " ")
+
+        entry["name"] = desc
         entry["applianceIp"] = "{{{{vlan[{}]['octets']}}}}.{}".format(vlan_id, o4 + 1)
         entry["subnet"] = "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
         entry["fixedIpAssignments"] = {}

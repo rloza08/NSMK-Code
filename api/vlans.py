@@ -75,6 +75,7 @@ class Vlans(object):
         applianceIp = vl['applianceIp']
         fixedipassignments = vl['fixedIpAssignments']
         vpnnatsubnet = None
+
         if update_all:
             dnsnameservers = vl['dnsNameservers']
             reservedipranges = vl['reservedIpRanges']
@@ -82,13 +83,6 @@ class Vlans(object):
             dnsnameservers = None
             reservedipranges = None
 
-        performUpdate = (fixedipassignments or \
-                         reservedipranges or \
-                         vpnnatsubnet or \
-                         dnsnameservers) is not None
-
-        if performUpdate is False:
-            return True
         try:
             success, _err = meraki.updatevlan(apikey, networkid, id, name, subnet, applianceIp,
                             fixedipassignments,
