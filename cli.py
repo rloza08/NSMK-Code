@@ -12,7 +12,7 @@ from utils.auto_globals import set_cli_selections
 from utils.auto_pmdb import pmdb_init
 from utils.auto_pmdb import settings
 
-VLANS_ACTIVE = False
+VLANS_ACTIVE = True
 
 
 def lock():
@@ -762,9 +762,9 @@ class CLI(object):
 
     def deploy_vlans_add(self):
         """Runs the store orchestration"""
-        from automation.sites_handler import bulk_update
+        from automation.sites_handler import bulk_update_vlans
         agent = "cli-deploy-vlans-add"
-        bulk_update(agent, vlans_only=True)
+        bulk_update_vlans(agent)
         sys.stdout.flush()
         time.sleep(1)
         EOM()

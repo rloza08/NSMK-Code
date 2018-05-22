@@ -40,7 +40,7 @@ class Vlans(object):
                     l.logger.info("created vlan {}".format(id))
                     l.runlogs_logger.info("created vlan {} netid {}".format(id, networkid))
 
-                    self.update_single_vlan(vlan, netid, update_flag)
+                    self.update_single_vlan(vlan, update_all=True)
                     deploy_count += 1
 
                 except (meraki.EmailFormatError,
@@ -64,7 +64,7 @@ class Vlans(object):
             l.runlogs_logger.info("added a total of {} vlans".format(deploy_count))
 
     @classmethod
-    def update_single_vlan(self, vlan, netid, update_flag=True):
+    def update_single_vlan(self, vlan, update_all=False):
         apikey = config.api_key
         _err = None
         vl = vlan
@@ -74,9 +74,14 @@ class Vlans(object):
         subnet = vl['subnet']
         applianceIp = vl['applianceIp']
         fixedipassignments = vl['fixedIpAssignments']
-        reservedipranges = vl['reservedIpRanges']
         vpnnatsubnet = None
-        dnsnameservers = vl['dnsNameservers']
+        if update_all:
+            dnsnameservers = vl['dnsNameservers']
+            reservedipranges = vl['reservedIpRanges']
+        else:
+            dnsnameservers = None
+            reservedipranges = None
+
         performUpdate = (fixedipassignments or \
                          reservedipranges or \
                          vpnnatsubnet or \
@@ -108,12 +113,12 @@ class Vlans(object):
 
 
     @classmethod
-    def update_vlans_list(self, vlans, netid, update_flag=True):
+    def update_vlans_list(self, vlans):
         apikey = config.api_key
         _err = None
         try:
             for vlan in vlans:
-                self.update_single_vlan(vlan, netid, update_flag)
+                self.update_single_vlan(vlan)
 
         except Exception as err:
             l.logger.error("{}".format(err.args))
@@ -210,7 +215,7 @@ def update_vlans(netid):
     vlans_to_deploy = json.reader(fname)
 
     obj=Vlans()
-    obj.update_vlans_list(vlans_to_deploy, netid)
+    obj.update_vlans_list(vlans_to_deploy)
 
 def delete_vlans(netid, vlan_list):
     obj=Vlans()

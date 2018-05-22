@@ -3,10 +3,7 @@ import utils.auto_json as json
 import utils.auto_logger as l
 import utils.auto_jinja as auto_jinja
 import api.vlans as vlans
-import utils.auto_config as config
 import api.netx as netx
-import utils._csv as Csv
-import utils.auto_globals as auto_globals
 from utils.auto_config import json_reader, make_pretty
 from utils._json import Json
 import shutil
@@ -118,30 +115,33 @@ class VlanTemplates(object):
             return
         entry["dnsNameservers"] = vlan_patch["dnsNameservers"]
         entry["reservedIpRanges"] = []
-        if vlan_patch["reservedIpRanges1-comment"] != "":
+        octets_number = len(vlan_patch["reservedIpRanges1-start"].split("."))
+        if vlan_patch["reservedIpRanges1-comment"] != "" and octets_number == 2:
             item = dict()
             id = vlan_patch["Vlan"]
             item["comment"] = vlan_patch["reservedIpRanges1-comment"]
 
             aux = vlan_patch["reservedIpRanges1-end"].split(".")
-            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
             item["end"] = aux[0].replace("x", tpl_str)
 
             aux = vlan_patch["reservedIpRanges1-start"].split(".")
-            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
             item["start"] = aux[0].replace("x", tpl_str)
 
             entry["reservedIpRanges"].append(deepcopy(item))
-        if vlan_patch["reservedIpRanges2-comment"] != "":
+
+        octets_number = len(vlan_patch["reservedIpRanges2-start"].split("."))
+        if vlan_patch["reservedIpRanges2-comment"] != "" and octets_number == 2:
             item = dict()
             item["comment"] = vlan_patch["reservedIpRanges2-comment"]
 
             aux = vlan_patch["reservedIpRanges2-end"].split(".")
-            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
             item["end"] = aux[0].replace("x", tpl_str)
 
             aux = vlan_patch["reservedIpRanges2-start"].split(".")
-            tpl_str = '{{vlan[{}][\"octets\"]}}.{}'.format(id, aux[1])
+            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
             item["start"] = aux[0].replace("x", tpl_str)
 
             entry["reservedIpRanges"].append(deepcopy(item))

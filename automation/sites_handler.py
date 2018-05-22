@@ -75,8 +75,14 @@ def ENTER_CONTEXT(agent):
 
     return org_group, store_list, vlans_list
 
+def bulk_update_vlans(agent, vlans_only=False):
+    bulk_update(agent, vlans_only=True)
 
 def bulk_update_sites(agent, vlans_only=False):
+    bulk_update(agent)
+
+
+def bulk_update(agent, vlans_only=False):
     l.runlogs_logger.info("bulk update started")
     org_group, store_list, vlans_list = ENTER_CONTEXT(agent)
     org_list = json.reader(org_group, "templates")

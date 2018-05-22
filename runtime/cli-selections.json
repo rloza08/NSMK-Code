@@ -18,6 +18,6 @@
     "vlans-delete-org": "org-AutomationTestOrg_DONOTDELETE",
     "vlans-delete-store-list": "store-list-8501",
     "vlans-delete-list": "vlans-delete-list-v01",
-    "dry-run": false,
+    "dry-run": true,
     "dryrun-next-fake-ip": "10.0.1.10"
 }
