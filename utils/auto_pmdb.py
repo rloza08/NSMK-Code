@@ -3,9 +3,13 @@ import json
 # from utils.auto_logger import logger, runlogs_logger
 import global_vars as gv
 import os
+
 settings = {}
 
 RUNTIME_DIR = "../runtime"
+CONFIG_DIR = "../../config"
+TEMPLATE_DIR = "../../templates"
+
 def json_reader(fpath):
     data = None
     cwd = os.getcwd()
@@ -21,14 +25,14 @@ def json_reader(fpath):
     return data
 
 
-def load_settings():
+def load_cli_settings():
     global settings
     settings["CLI"] = json_reader("{}/cli-selections.json".format(RUNTIME_DIR))
 
 
 def pmdb_init():
     global settings
-    load_settings()
+    load_cli_settings()
     settings["org-name"] = None
     settings["store-name"]= None
     settings["agent"] = None
@@ -40,7 +44,12 @@ def pmdb_init():
     settings["netid"] = None
     settings["device-name"] = None
     settings["serial"] = None
-    cwd= os.getcwd()
+    settings["vlans-add-list"]=None
+    fname = settings["CLI"].get("vlans-add-list")
+    if settings["CLI"].get("vlans-add-list"):
+        aux = json_reader("{}/{}.json".format(CONFIG_DIR, fname))
+        settings["vlans-add-list"] = aux
+
     config = json_reader("../../config/safeway-config.json")
     settings["CONFIG"] = dict()
     settings["CONFIG"]["network"] = config[0]["network"]

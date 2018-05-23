@@ -83,9 +83,10 @@ def show_store_list(store_list):
     l.logger.info("{}\n".format(str))
     l.runlogs_logger.info("{}\n".format(str))
 
-def show_vlans_add_list(vlans_add_list):
+def show_vlans_add_list():
     str = "adding the following vlans:"
     number = 0
+    vlans_add_list = settings["vlans-add-list"]
     for vlan in vlans_add_list:
         number +=1
         str +=("\n{}{} - {} {} {}".format(TABS, number, vlan["Vlan"], vlan["Subnet"], vlan["Description"]))

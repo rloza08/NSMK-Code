@@ -11,6 +11,7 @@ import os
 from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR
 from utils.auto_pmdb import settings
 from copy import deepcopy
+from utils.auto_json import reader, writer
 
 """
 This module contains two classes:
@@ -73,8 +74,13 @@ class VlanTemplates(object):
         return vlans_funnel_base, vlans_patch
 
 
-    def upgrade_funnel(self):
-        vlans_funnel_base, vlans_patch = self.load_funnel_and_patch()
+    def upgrade_funnel(self, vlans_add_flag=False):
+        if vlans_add_flag:
+            vlans_funnel_base = []
+            vlans_patch = settings["vlans-add-list"]
+        else:
+            vlans_funnel_base, vlans_patch = self.load_funnel_and_patch()
+
         vlans_funnel_file = "vlans-funnel"
 
         # Throw away all vlans that don't have a subnet (used only for template generation)
@@ -92,7 +98,7 @@ class VlanTemplates(object):
         vlans_funnel = vlans_funnel_base + entries
         Json.writer(vlans_funnel_file, vlans_funnel, path=RUNTIME_DIR, absolute_path=True)
 
-
+    # Basic fields come from augmented Men and Mice
     def add_basic_fields(self, entry, vlan):
         vlan_id = int(vlan['Vlan'])
         o4 = vlan['Subnet'].split('.')
@@ -102,12 +108,18 @@ class VlanTemplates(object):
         entry["id"] = deepcopy(vlan_id)
         entry["networkId"] = "{{networkid}}"
         desc = vlan['Description']
+        # Cleans up non-supported chars that Meraki does not like
         for ch in [".", "@", "#", "_", "-", '"', "]", "}", ")", "(", "[", "{"]:
             desc = desc.replace(ch, " ")
 
         entry["name"] = desc
         entry["applianceIp"] = "{{{{vlan[{}]['octets']}}}}.{}".format(vlan_id, o4 + 1)
-        entry["subnet"] = "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
+        subnet = vlan["Subnet"]
+        if subnet.find("10.x") >= 0:
+            entry["subnet"] = "{{{{vlan[{}]['subnet']}}}}".format(vlan_id)
+        else:
+            entry["subnet"] = subnet
+
         entry["fixedIpAssignments"] = {}
         entry["reservedIpRanges"] = []
 
@@ -150,14 +162,17 @@ class VlanTemplates(object):
 
             entry["reservedIpRanges"].append(deepcopy(item))
 
-    def build_jinja_template(self):
-        vlans_funnel_file = "vlans-funnel"
-        vlans_patch_file = "vlans-patch"
+    def build_jinja_template(self, vlans_add_flag=False):
+        if vlans_add_flag:
+            vlans_funnel = settings['vlans-add-list']
+            vlans_patch = settings['vlans-add-list']
+        else:
+            vlans_funnel_file = "vlans-funnel"
+            vlans_patch_file = "vlans-patch"
 
-        vlans_funnel = json_reader("{}/{}.json".format(RUNTIME_DIR, vlans_funnel_file))
-        vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
+            vlans_funnel = json_reader("{}/{}.json".format(RUNTIME_DIR, vlans_funnel_file))
+            vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
 
-        # Throw add extra fields from patch where possible
         # Create patch lookup table
         patch_table = {}
         for vlan in vlans_patch:
@@ -181,7 +196,6 @@ class VlanTemplates(object):
         jinja_template = entries
         Json.writer("jinja_vlans_template", jinja_template, path="config")
         tpl = make_pretty(jinja_template)
-        print(tpl)
         return jinja_template
 
 
@@ -189,9 +203,9 @@ class VlanTable(object):
     def __init__(self):
         obj = VlanTemplates()
         # Creates a new full that has been patched
-        obj.upgrade_funnel()
-        # Creates the jinja template from the funnel and patch
-        obj.build_jinja_template()
+        vlans_add_flag = (settings["agent"] == "cli-deploy-vlans-add")
+        obj.upgrade_funnel(vlans_add_flag)
+        obj.build_jinja_template(vlans_add_flag)
 
         self.funnel_file = settings["CONFIG"]["funnel-file"]
 
@@ -530,17 +544,6 @@ def ENTER_ENV_vlans_add():
         l.logger.error(" ENTER_ENV_vlans_add failed")
         l.runlogs_logger.error(" ENTER_ENV_vlans_add failed")
         assert (0)
-
-    cwd = os.getcwd()
-    src = "{}/{}/jinja_vlans_template.json".format(cwd, CONFIG_DIR)
-    dst = "{}/{}/jinja_vlans_template_orig.json".format(cwd, CONFIG_DIR)
-    destination = open(dst, 'wb')
-    shutil.copyfileobj(open(src, 'rb'), destination)
-    destination.close()
-
-    update_vlan_template(funnel_file="vlans_funnel",
-                         vlans_template_file="jinja_vlans_template",
-                         vlans_template_file_new="jinja_vlans_template")
 
     return vlans_add_list_contents
 

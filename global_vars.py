@@ -1,6 +1,6 @@
 import sys
 
-log_verbose = True  # Only if error_stop is set
+log_verbose = False  # Only if error_stop is set
 error_stop = False
 force_yes = True
 use_serials = False
@@ -17,6 +17,7 @@ def fake_assert():
             exit(-1)
     else:
         pass
+
 
 def fake_abort():
     sys.stdout.flush()
