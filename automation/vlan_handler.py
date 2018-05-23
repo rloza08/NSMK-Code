@@ -519,32 +519,9 @@ def deploy():
     vlans.update_vlans(netid)
 
 
-def ENTER_ENV_vlans():
-    try:
-        from automation.men_and_mice_handler import create_funnel_vlans
-        create_funnel_vlans()
-    except:
-        l.logger.error(" ENTER_ENV_vlans failed")
-        l.runlogs_logger.error(" ENTER_ENV_vlans failed")
-        assert (0)
-
-    return None
-
-
-def ENTER_ENV_vlans_delete():
-    from automation.men_and_mice_handler import get_vlans_delete_list
-    vlans_delete_list_contents = get_vlans_delete_list(vlans_delete_list)
-
-    cwd = os.getcwd()
-    from utils._csv import read_csv
-    csv_fname = "{}/../../templates/{}.csv".format(cwd, vlans_delete_list)
-    vlans_delete_list_contents = read_csv(csv_fname)
-    return vlans_delete_list_contents
-
-
-
 def vlans_delete(netid, vlans_list):
-    for vlanid in vlans_list:
+    for vlan in vlans_list:
+        vlanid = vlan["Vlan"]
         vlans.delete(netid, vlanid)
 
 

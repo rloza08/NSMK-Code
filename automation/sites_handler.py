@@ -9,7 +9,6 @@ import utils.low_csv as Json
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from utils.low_json import Json
-from automation.vlan_handler import ENTER_ENV_vlans_delete
 from utils.auto_pmdb import settings
 
 
@@ -49,7 +48,7 @@ def ENTER_CONTEXT(agent):
         show_vlans_add_list()
         vlans_list = settings["vlans-add-list"]
     elif agent == "cli-deploy-vlans-delete":
-        vlans_delete_list_contents = ENTER_ENV_vlans_delete()
+        vlans_delete_list_contents = settings["vlans-delete-list"]
         org_group = settings["CLI"]["vlans-delete-org"]
         store_list = settings["CLI"]["vlans-delete-store-list"]
         from utils.auto_utils import show_vlans_delete_list

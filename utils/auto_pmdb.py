@@ -8,7 +8,7 @@ settings = {}
 
 RUNTIME_DIR = "../runtime"
 CONFIG_DIR = "../../config"
-TEMPLATE_DIR = "../../templates"
+TEMPLATES_DIR = "../../templates"
 
 def json_reader(fpath):
     data = None
@@ -44,12 +44,14 @@ def pmdb_init():
     settings["netid"] = None
     settings["device-name"] = None
     settings["serial"] = None
-    settings["vlans-add-list"]=None
+    settings["vlans-add-list"] = None
     fname = settings["CLI"].get("vlans-add-list")
     if settings["CLI"].get("vlans-add-list"):
-        aux = json_reader("{}/{}.json".format(CONFIG_DIR, fname))
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
         settings["vlans-add-list"] = aux
-
+    if settings["CLI"].get("vlans-delete-list"):
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        settings["vlans-delete-list"] = aux
     config = json_reader("../../config/safeway-config.json")
     settings["CONFIG"] = dict()
     settings["CONFIG"]["network"] = config[0]["network"]
