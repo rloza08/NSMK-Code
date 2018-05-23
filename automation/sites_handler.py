@@ -9,7 +9,7 @@ import utils.low_csv as Json
 import automation.bulk_update as bulk
 import utils.auto_json as json
 from utils.low_json import Json
-from automation.vlan_handler import ENTER_ENV_vlans_delete, LEAVE_ENV_vlans_delete
+from automation.vlan_handler import ENTER_ENV_vlans_delete
 from utils.auto_pmdb import settings
 
 
@@ -39,13 +39,6 @@ def deploy(agent, netid=None, vlans_list=None):
     l.logger.info("success")
 
 
-def LEAVE_CONTEXT(agent):
-    if agent == "cli-deploy-vlans-add":
-        pass
-    elif agent == "cli-deploy-vlans-delete":
-        LEAVE_ENV_vlans_delete()
-
-
 def ENTER_CONTEXT(agent):
     vlans_list = None
 
@@ -70,11 +63,12 @@ def ENTER_CONTEXT(agent):
     from utils.auto_utils import show_store_list
     store_list_json = Json.reader(fname, "templates")
     show_store_list(store_list_json)
-
     return org_group, store_list, vlans_list
+
 
 def bulk_update_vlans(agent, vlans_only=False):
     bulk_update(agent, vlans_only=True)
+
 
 def bulk_update_sites(agent, vlans_only=False):
     bulk_update(agent)
@@ -103,7 +97,7 @@ def bulk_update(agent, vlans_only=False):
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy)
 
     l.runlogs_logger.info("bulk update finished")
-    LEAVE_CONTEXT(agent)
+
 
 
 if __name__ == '__main__':

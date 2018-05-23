@@ -2,7 +2,7 @@ import sys
 
 log_verbose = False  # Only if error_stop is set
 error_stop = False
-force_yes = True
+force_yes = False
 use_serials = False
 serial_not_available_revert_clone = True
 

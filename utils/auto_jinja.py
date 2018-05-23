@@ -3,14 +3,14 @@ import os
 import utils.auto_json as Json
 import utils.auto_logger as l
 from jinja2 import Environment, FileSystemLoader
-import jinja2
 import utils.auto_utils as utils
 import utils.low_csv as csv_json
 import json
 import global_vars as gv
-
+from utils.auto_globals import RUNTIME_DIR
 PATH1 = os.path.dirname(os.path.abspath(__file__))
-PATH2 = os.path.join(PATH1, "..\\..\\config")
+PATH2 = os.path.join(PATH1, RUNTIME_DIR)
+
 TEMPLATE_ENVIRONMENT = Environment(
 	autoescape=False,
 	loader=FileSystemLoader(PATH2),

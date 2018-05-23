@@ -27,12 +27,12 @@ where the it will be picked up by the vlan_handler module.
 def get_and_convert_funnel():
     try:
         cwd = os.getcwd()
-        src = "{}/../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/../{}/vlans-funnel.csv".format(cwd, RUNTIME_DIR)
+        src = "../menAndMice/funnel.csv".format(cwd)
+        dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
         destination = open(dst, 'wb')
         shutil.copyfileobj(open(src, 'rb'), destination)
         destination.close()
-        convert_to_json("vlans-funnel", "runtime", None)
+        convert_to_json("vlans-funnel-base", "runtime", None)
 
     except:
         l.logger.error("failed")

@@ -6,12 +6,12 @@ import api.vlans as vlans
 import api.netx as netx
 from utils.auto_config import json_reader, make_pretty
 from utils._json import Json
-import shutil
+
 import os
-from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR
+from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR, TEMPLATES_DIR
 from utils.auto_pmdb import settings
 from copy import deepcopy
-from utils.auto_json import reader, writer
+
 
 """
 This module contains two classes:
@@ -69,8 +69,8 @@ class VlanTemplates(object):
     def load_funnel_and_patch(self):
         vlans_funnel_base_file = "vlans-funnel-base"
         vlans_patch_file = "vlans-patch"
-        vlans_funnel_base = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_funnel_base_file))
-        vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
+        vlans_funnel_base = json_reader("{}/{}.json".format(RUNTIME_DIR, vlans_funnel_base_file))
+        vlans_patch = json_reader("{}/{}.json".format(TEMPLATES_DIR, vlans_patch_file))
         return vlans_funnel_base, vlans_patch
 
 
@@ -171,7 +171,7 @@ class VlanTemplates(object):
             vlans_patch_file = "vlans-patch"
 
             vlans_funnel = json_reader("{}/{}.json".format(RUNTIME_DIR, vlans_funnel_file))
-            vlans_patch = json_reader("{}/{}.json".format(CONFIG_DIR, vlans_patch_file))
+            vlans_patch = json_reader("{}/{}.json".format(TEMPLATES_DIR, vlans_patch_file))
 
         # Create patch lookup table
         patch_table = {}
@@ -194,8 +194,7 @@ class VlanTemplates(object):
             entries.append(item)
 
         jinja_template = entries
-        Json.writer("jinja_vlans_template", jinja_template, path="config")
-        tpl = make_pretty(jinja_template)
+        Json.writer("jinja_vlans_template", jinja_template, path="runtime")
         return jinja_template
 
 
@@ -532,35 +531,6 @@ def ENTER_ENV_vlans():
     return None
 
 
-def LEAVE_ENV_vlans():
-    pass
-
-
-def ENTER_ENV_vlans_add():
-    try:
-        from automation.men_and_mice_handler import create_funnel_vlans
-        vlans_add_list_contents = create_funnel_vlans(vlans_add_list)
-    except:
-        l.logger.error(" ENTER_ENV_vlans_add failed")
-        l.runlogs_logger.error(" ENTER_ENV_vlans_add failed")
-        assert (0)
-
-    return vlans_add_list_contents
-
-
-def LEAVE_ENV_vlans_add():
-    cwd = os.getcwd()
-    try:
-        src = "{}/{}/config/jinja_vlans_template_orig.json".format(cwd, CONFIG_DIR)
-        dst = "{}/{}/config/jinja_vlans_template.json".format(cwd, CONFIG_DIR)
-        destination = open(dst, 'wb')
-        shutil.copyfileobj(open(src, 'rb'), destination)
-        destination.close()
-    except:
-        l.logger.error("failed")
-        assert (0)
-
-
 def ENTER_ENV_vlans_delete():
     from automation.men_and_mice_handler import get_vlans_delete_list
     vlans_delete_list_contents = get_vlans_delete_list(vlans_delete_list)
@@ -572,9 +542,6 @@ def ENTER_ENV_vlans_delete():
     return vlans_delete_list_contents
 
 
-def LEAVE_ENV_vlans_delete():
-    pass
-
 
 def vlans_delete(netid, vlans_list):
     for vlanid in vlans_list:
@@ -583,6 +550,4 @@ def vlans_delete(netid, vlans_list):
 
 
 if __name__ == "__main__":
-    update_vlan_template("../menAndMice/funnel.json",
-                         "{}/jinja_vlans_template.json",
-                         "../{}/jinja_vlans_template_new.json".format(CONFIG_DIR, RUNTIME_DIR))
+    pass
