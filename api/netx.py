@@ -153,11 +153,13 @@ class Netx(object):
     def get_netx(self, host):
         # Gets the netx info in a more pythonic format
         netx_dense = self.get_netx_dense(host)
-        non_netx_dense = self.get_non_netx_dense(host)
+        # non_netx_dense = self.get_non_netx_dense(host)
         netx_str = self.get_netx_str(netx_dense)
-        non_netx_str = self.get_non_netx_str(non_netx_dense)
+        #non_netx_str = self.get_non_netx_str(non_netx_dense)
         #netx_str_all = {**netx_str, **non_netx_str}
-        return netx_str_all
+        # return netx_str_all
+
+        return netx_str
 
     def get_non_netx_dense(self, host):
         store_number = settings["store-number"]

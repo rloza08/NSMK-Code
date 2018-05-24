@@ -305,8 +305,8 @@ class CLI(object):
         os.chdir("{}".format(self.cwd))
         EOM()
 
-    def match(self, module, request):
-        if module.find(request)==0 and len(module)==len(request):
+    def match(self, param, request):
+        if param == request:
             return True
         return False
 
@@ -625,7 +625,7 @@ class CLI(object):
                 funnel
                 vlan-settings
         """
-        if self.match(module, "test") >= 0:
+        if self.match(param, "test") >= 0:
             self.test_function()
             return
 
@@ -635,19 +635,19 @@ class CLI(object):
 
                 settings
         """
-        if self.match(module, "l3fwrules") >= 0:
+        if self.match(param, "l3fwrules"):
             self.get_l3fwrules()
             return
-        if self.match(module, "funnel") >= 0:
+        if self.match(param, "funnel"):
             self.get_funnel()
             return
-        if self.match(module, "store-lists") >= 0:
+        if self.match(param, "store-lists"):
             success = self.get_store_lists()
             return
-        if self.match(module, "s2svpnrules") >= 0:
+        if self.match(param, "s2svpnrules"):
             self.get_s2svpnrules()
             return
-        if self.match(module, "settings") >= 0:
+        if self.match(module, "settings"):
             if param == "all":
                 self.get_settings_all()
             elif param == "l3fwrules":
@@ -714,9 +714,9 @@ class CLI(object):
                 csv-to-json
                 json-to-csv
         """
-        if self.match(module, "csv-to-json") >= 0:
+        if self.match(param, "csv-to-json"):
             self.convert_csv_to_json(fname)
-        elif self.match(module, "json-to-csv") >= 0:
+        elif self.match(param, "json-to-csv"):
             self.convert_json_to_csv(fname)
         else:
             print("Invalid option.")
@@ -735,19 +735,19 @@ class CLI(object):
         from utils.auto_logger import init_logger
         init_logger()
 
-        if self.match(module, "sites") >= 0:
+        if self.match(module, "sites"):
             self.deploy_sites()
-        elif self.match(module, "vlans-add") >= 0:
+        elif self.match(module, "vlans-add"):
             if VLANS_ACTIVE:
                 self.deploy_vlans_add()
-        elif self.match(module, "vlans-delete") >= 0:
+        elif self.match(module, "vlans-delete"):
             if VLANS_ACTIVE:
                 self.deploy_vlans_delete()
-        elif self.match(module, "networks") >= 0:
+        elif self.match(module, "networks"):
             self.deploy_networks()
-        elif self.match(module, "l3fwrules") >= 0:
+        elif self.match(module, "l3fwrules"):
             self.deploy_l3fwrules()
-        elif self.match(module, "s2svpnrules") >= 0:
+        elif self.match(module, "s2svpnrules"):
             self.deploy_s2svpnrules()
         else:
             print("Invalid option.")
