@@ -51,16 +51,27 @@ def pmdb_init():
         settings["vlans-add-list"] = aux
 
     fname = settings["CLI"].get("vlans-delete-list")
+<<<<<<< Updated upstream
+=======
     if settings["CLI"].get("vlans-delete-list"):
         aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
         settings["vlans-delete-list"] = aux
 
+    fname = settings["CLI"].get("networks")
+>>>>>>> Stashed changes
+    if settings["CLI"].get("vlans-delete-list"):
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        settings["vlans-delete-list"] = aux
+
+<<<<<<< Updated upstream
     fname = settings["CLI"].get("networks-serials")
     if fname:
         aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
         settings["networks-serials"] = aux
     else:
         runlogs_logger.error("networks-serials {}  not found".format(fname))
+=======
+>>>>>>> Stashed changes
 
     config = json_reader("../../config/safeway-config.json")
     settings["CONFIG"] = dict()
