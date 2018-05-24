@@ -604,10 +604,9 @@ class CLI(object):
 
     def test_function(self):
         os.chdir("{}/automation".format(self.cwd))
-        from automation.vlan_handler import upgrade_funnel, build_jinja_template
-        #upgrade_funnel()
-        build_jinja_template()
+        from api.netx import test
         EOM()
+        test()
         print("# funnel file has been upgraded #")
         os.chdir("{}".format(self.cwd))
         EOM()
@@ -621,7 +620,6 @@ class CLI(object):
                 funnel
                 vlan-settings
         """
-        from automation.vlan_handler import upgrade_funnel
         if module.find("test") >= 0:
             self.test_function()
             return

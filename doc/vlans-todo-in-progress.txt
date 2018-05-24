@@ -73,14 +73,172 @@ append to
     "l": "10.Y.Z+3"
 }
 
-==========================================================================
-vlan
-subnet
-comment
-dnsNameservers
-reservedIpRanges1-comment
-reservedIpRanges1-start
-reservedIpRanges1-end
-reservedIpRanges2-comment
-reservedIpRanges2-start
-reservedIpRanges2-end
+================================================================================================================================
+
+
+
+Type here to search
+	Search
+Address Book
+
+Options
+
+Help
+
+Sign out
+	Mail
+Mail
+Calendar
+Contact
+
+Expand Navigation Pane
+Deleted Items (5)
+Drafts [84]
+Inbox (1)
+Junk E-Mail
+Sent Items
+Click to view all folders
+Manage Folders...
+
+ Reply
+ Reply All
+ Forward
+
+Move
+Delete
+
+ Junk
+
+Close
+ 	Previous Item	Next Item	Close
+vlan_non_netx
+Jasvinder Gunsi (Americas)
+Sent:	Wednesday, May 23, 2018 5:10 PM
+To:
+Linus Vidal (Americas); Sushmita Pandey [Sushmita.Pandey@albertsons.com]; Russel Gil Lozano [RusselGil.Lozano@albertsons.com]
+------------------------------------
+
+This is current funnel file in M & M
+
+Filename: Funnelbase.csv
+
+------------------------------------
+
+Vlan,Subnet,Description
+
+4,10.x.a.32/27,Network Management
+
+6,10.x.a.64/27,Extranet Vendors
+
+7,10.x.a.96/27,Pharmacy
+
+8,10.x.a.128/27,Backstage Users
+
+14,10.x.a.248/29,Store Content Engine
+
+16,10.x.b.0/24,Store Wireless
+
+19,10.x.c.0/24,General Store LAN
+
+24,10.x.d.0/24,POS LAN
+
+35,10.x.e.0/27,Digital Signage
+
+40,10.x.e.32/27,Thin Wireless Mgmt
+
+45,10.x.h.192/26,Cisco Wireless Management
+
+60,10.x.h.128/27,Vendor VLAN II (2nd Subnet)
+
+70,10.x.e.64/26,New Pharmacy
+
+75,10.x.e.128/25,Macauthenticated Wireless Clients
+
+79,10.x.g.192/26,VOIP Clients
+
+80,10.x.f.0/24,Secure Wireless
+
+81,10.x.g.160/28,Field Service Wireless
+
+82,10.x.g.176/28,iPad quarantine vlan
+
+85,10.x.h.0/26,Retail Cluster Management VLAN
+
+95,10.x.g.128/27,Printer VLAN
+
+
+
+------------------------------------
+
+Scenario 1: New Vlan 96 added in M&M
+
+------------------------------------
+
+96,10.x.g.224/27,New Vlan 96
+
+
+
+NetX will determine value for "g"
+
+
+
+-----------------------------------------
+
+Scenario 2: New Vlan 97 & 98 added in M&M
+
+-----------------------------------------
+
+97,10.x.i.0/27,New Vlan 97
+
+98,10.x.j.32/27,New Vlan 98
+
+
+
+----------------------------------------
+
+File will determine value of "i" to "z"
+
+Filename: vlans_non_netx.csv
+
+----------------------------------------
+
+Store,FunnelSubnet,ActualSubnet,Summary
+
+1111,10.x.i.0/27,10.11.11.0/27,10.11.11.0/24
+
+1111,10.x.j.0/27,10.11.11.32/27,10.11.11.0/24
+
+1112,10.x.i.0/27,10.22.22.0/27,10.22.22.0/24
+
+1112,10.x.j.0/27,10.22.22.32/27,10.22.22.0/24
+
+
+
+------------------------------------------
+
+
+
+Regards,
+
+Jas
+
+
+
+Jasvinder Gunsi,
+
+Dimension Data Americas,
+
+Email: jasvinder.gunsi@dimensiondata.com
+
+Mobile: 925-577-9123
+
+Web: www.dimensiondata.com
+
+
+
+
+
+
+
+ 	Previous Item	Next Item
+Connected to Microsoft Exchange

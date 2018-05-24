@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-import sys
-import os
-import socket, struct
+import socket
 import utils.auto_json as mkjson
-import utils.auto_logger as l
+import utils.auto_logger as log
 import global_vars as gv
-from utils.auto_pmdb import settings
+from utils.auto_utils import char_range
+from utils.auto_pmdb import settings, pmdb_init
 
 """
 How to generate netx by example
@@ -37,15 +36,59 @@ netx = {
     "e": "10.154.28",
     "f": "10.154.29",
     "g": "10.154.30",
-    "h": "10.154.31"
+    "h": "10.154.31",
+    "i": "10.121.31",
+    "i": "10.77.23"
+    
 }
 
+NEW Structure
+
+append to
+{
+    "upper": "10.218.28.0",
+    "lower": "10.154.28.0",
+    "new-summary": "10.Y.Z.0"
+    "a": "10.218.28",
+    "b": "10.218.29",
+    "c": "10.218.30",
+    "d": "10.218.31",
+    "e": "10.154.28",
+    "f": "10.154.29",
+    "g": "10.154.30",
+    "h": "10.154.31"
+    "i": "10.Y.Z+0"     ---. Y and Z comes from separate file
+    "j": "10.Y.Z+1"
+    "k": "10.Y.Z+2"
+    "l": "10.Y.Z+3"
+}
+
+
+StoreNumber, Subnet
+8951, 10.<Y>.<Z>   e.g.
+8952, 10.<Y>.<Z>
+
+e.g.
+
+StoreNumber, Subnet, id
+8951, i, 10,11.11
+8952, j, 
+
+funnel
+ 10.
+
 """
+from copy import deepcopy
 
 class Netx(object):
-    valid_subnet_list = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    def __init__(self):
+        non_netx_range = list(char_range('i', 'z'))
+        self.valid_netx_subnet_list = ["a", "b", "c", "d", "e", "f", "g", "h"]
+        self.valid_non_netx_subnet_list = non_netx_range
+        self.valid_subnet_list = ["a", "b", "c", "d", "e", "f", "g", "h"] + non_netx_range
+        pass
 
-    @classmethod
+
     def get_addr(self, host):
         try:
             res = socket.gethostbyname(host)
@@ -58,10 +101,7 @@ class Netx(object):
             log.runlogs_logger.error("Cannot reach store/device : {}".format(host))
             gv.fake_assert()
 
-
-
-    @classmethod
-    def get_netx(self, host):
+    def get_netx_dense(self, host):
         netx = {
             "upper": {}, "lower": {},
             "a": {}, "b": {}, "c": {}, "d": {},
@@ -89,6 +129,9 @@ class Netx(object):
         netx["c"][3]=netx["g"][3]=int(ip[2])-1
         netx["d"][3]=netx["h"][3]=int(ip[2])
 
+        return netx
+
+    def get_netx_str(self, netx):
         netx_str = {
             "upper": "0.0.0.0",
             "lower": "0.0.0.0",
@@ -102,18 +145,60 @@ class Netx(object):
 
         netx_to_str = lambda netx, idx : "{}.{}.{}".format(netx[idx][1], netx[idx][2], netx[idx][3])
 
-        for idx in self.valid_subnet_list:
+        for idx in self.valid_netx_subnet_list:
             netx_str[idx] = netx_to_str(netx, idx)
 
         return netx_str
 
+    def get_netx(self, host):
+        # Gets the netx info in a more pythonic format
+        netx_dense = self.get_netx_dense(host)
+        non_netx_dense = self.get_non_netx_dense(host)
+        netx_str = self.get_netx_str(netx_dense)
+        non_netx_str = self.get_non_netx_str(non_netx_dense)
+        #netx_str_all = {**netx_str, **non_netx_str}
+        return netx_str_all
+
+    def get_non_netx_dense(self, host):
+        store_number = settings["store-number"]
+        assert (host == settings["cc{}".format(store_number)])
+        entries = self.valid_non_netx_subnet_list
+        non_netx = dict()
+        # Essentially create the dictionary of dictionaries
+        for entry in entries:
+            non_netx[entry] = {}
+
+        non_netx_map = settings["NETX"]
+
+
+        return non_netx
+
+
+
 def get(host):
     obj = Netx()
-    netx  = obj.get_netx(host)
-    return netx
+    netx_obj = obj.get_netx(host)
+    # non_netx_obj = obj.get_non_netx(host)
+    # print (non_netx_obj)
+    return netx_obj
 
+from utils.auto_globals import load_store, load_org
+def test():
+    _orchestration_agent = "cli-test"
+    org_name = "AutomationTestOrg_DONOTDELETE"
 
-if __name__ == '__main__':
+    load_org(_orchestration_agent, org_name)
+    load_store("agent-secret", "8501")
     netx = get("cc8501")
     str = mkjson.make_pretty((netx))
     print (str)
+
+
+if __name__ == '__main__':
+    pass
+    # settings["org-name"] = "AutomationTestOrg_DONOTDELETE"
+    # load_store("agent-secret", "8501")
+    # pmdb_init()
+    # netx = get("cc8501")
+    # str = mkjson.make_pretty((netx))
+    # print (str)
