@@ -9,8 +9,7 @@ import fire
 import global_vars as gv
 from global_vars import EOM
 from utils.auto_globals import set_cli_selections
-from utils.auto_pmdb import pmdb_init
-from utils.auto_pmdb import settings
+from utils.auto_pmdb import pmdb_init, settings
 
 VLANS_ACTIVE = True
 
@@ -305,6 +304,11 @@ class CLI(object):
         os.chdir("{}".format(self.cwd))
         EOM()
 
+    def match(self, param, request):
+        if param == request:
+            return True
+        return False
+
     def select(self, module, param):
         """
             Modulesdepl
@@ -327,47 +331,47 @@ class CLI(object):
                 s2svpnrules-org
                 s2svpnrules-version
         """
-        if module.find("networks-org") == 0:
+        if self.match(module, "networks-org"):
             self.set_networks_org(org_name=param)
-        elif module.find("networks-serials") == 0:
-            self.set_networks_serials(serials=param)
-        elif module.find("sites-org") == 0:
+        elif self.match(module, "networks-serials"):
+             self.set_networks_serials(serials=param)
+        elif self.match(module, "sites-org"):
             self.set_networks_org(org_name=param)
-        elif module.find("networks-store-list") == 0:
+        elif self.match(module, "networks-store-list"):
             self.set_networks_store_list(store_list=param)
-        elif module.find("networks-clone-source") == 0:
+        elif self.match(module, "networks-clone-source"):
             self.set_networks_clone_source(clone_source=param)
-        elif module.find("sites-store-list") == 0:
+        elif self.match(module, "sites-store-list"):
             self.set_networks_store_list(store_list=param)
-        elif module.find("sites-l3fwrules-version") == 0:
+        elif self.match(module, "sites-l3fwrules-version"):
             self.set_sites_l3fwrules_version(version=param)
-        elif module.find("store-lists-org") == 0:
+        elif self.match(module, "store-lists-org"):
             self.set_store_lists_org(org_name=param)
-        elif module.find("vlans-add-org") == 0:
+        elif self.match(module, "vlans-add-org"):
             self.set_vlans_add_org(org_name=param)
-        elif module.find("vlans-add-store-list") == 0:
+        elif self.match(module, "vlans-add-store-list"):
             self.set_vlans_add_store_list(store_list=param)
-        elif module.find("vlans-add-list") == 0:
+        elif self.match(module, "vlans-add-list"):
             self.set_vlans_add_list(vlans_add_list=param)
-        elif module.find("vlans-delete-org") == 0:
+        elif self.match(module, "vlans-delete-org"):
             self.set_vlans_delete_org(org_name=param)
-        elif module.find("vlans-delete-store-list") == 0:
+        elif self.match(module, "vlans-delete-store-list"):
             self.set_vlans_delete_store_list(store_list=param)
-        elif module.find("vlans-delete-list") == 0:
+        elif self.match(module, "vlans-delete-list"):
             self.set_vlans_delete_list(vlans_delete_list=param)
-        elif module.find("l3fwrules-org") == 0:
+        elif self.match(module, "l3fwrules-org"):
             self.set_l3fwrules_org(org_name=param)
-        elif module.find("l3fwrules-store-list") == 0:
+        elif self.match(module, "l3fwrules-store-list"):
             self.set_l3fwrules_store_list(store_list=param)
-        elif module.find("l3fwrules-version") == 0:
+        elif self.match(module, "l3fwrules-version"):
             self.set_l3fwrules_version(version=param)
-        elif module.find("s2svpnrules-org") == 0:
+        elif self.match(module, "s2svpnrules-org"):
             self.set_s2svpnrules_org(org_name=param)
-        elif module.find("s2svpnrules-version") == 0:
+        elif self.match(module, "s2svpnrules-version"):
             self.set_s2svpnrules_version(version=param)
-        elif module.find("production") == 0:
+        elif self.match(module, "production"):
             self.set_production(mode=param)
-        elif module.find("run") == 0:
+        elif self.match(module, "run"):
             if param == "dry":
                 self.set_run_dry()
             else:
@@ -604,10 +608,9 @@ class CLI(object):
 
     def test_function(self):
         os.chdir("{}/automation".format(self.cwd))
-        from automation.vlan_handler import upgrade_funnel, build_jinja_template
-        #upgrade_funnel()
-        build_jinja_template()
+        from api.netx import test
         EOM()
+        test()
         print("# funnel file has been upgraded #")
         os.chdir("{}".format(self.cwd))
         EOM()
@@ -621,8 +624,7 @@ class CLI(object):
                 funnel
                 vlan-settings
         """
-        from automation.vlan_handler import upgrade_funnel
-        if module.find("test") >= 0:
+        if self.match(param, "test") >= 0:
             self.test_function()
             return
 
@@ -632,19 +634,19 @@ class CLI(object):
 
                 settings
         """
-        if module.find("l3fwrules") >= 0:
+        if self.match(param, "l3fwrules"):
             self.get_l3fwrules()
             return
-        if module.find("funnel") >= 0:
+        if self.match(param, "funnel"):
             self.get_funnel()
             return
-        if module.find("store-lists") >= 0:
+        if self.match(param, "store-lists"):
             success = self.get_store_lists()
             return
-        if module.find("s2svpnrules") >= 0:
+        if self.match(param, "s2svpnrules"):
             self.get_s2svpnrules()
             return
-        if module.find("settings") >= 0:
+        if self.match(module, "settings"):
             if param == "all":
                 self.get_settings_all()
             elif param == "l3fwrules":
@@ -711,9 +713,9 @@ class CLI(object):
                 csv-to-json
                 json-to-csv
         """
-        if module.find("csv-to-json") >= 0:
+        if self.match(module, "csv-to-json"):
             self.convert_csv_to_json(fname)
-        elif module.find("json-to-csv") >= 0:
+        elif self.match(module, "json-to-csv"):
             self.convert_json_to_csv(fname)
         else:
             print("Invalid option.")
@@ -732,19 +734,19 @@ class CLI(object):
         from utils.auto_logger import init_logger
         init_logger()
 
-        if module.find("sites") >= 0:
+        if self.match(module, "sites"):
             self.deploy_sites()
-        elif module.find("vlans-add") >= 0:
+        elif self.match(module, "vlans-add"):
             if VLANS_ACTIVE:
                 self.deploy_vlans_add()
-        elif module.find("vlans-delete") >= 0:
+        elif self.match(module, "vlans-delete"):
             if VLANS_ACTIVE:
                 self.deploy_vlans_delete()
-        elif module.find("networks") >= 0:
+        elif self.match(module, "networks"):
             self.deploy_networks()
-        elif module.find("l3fwrules") >= 0:
+        elif self.match(module, "l3fwrules"):
             self.deploy_l3fwrules()
-        elif module.find("s2svpnrules") >= 0:
+        elif self.match(module, "s2svpnrules"):
             self.deploy_s2svpnrules()
         else:
             print("Invalid option.")
@@ -837,7 +839,6 @@ if __name__ == '__main__':
     # fp = lock()
     cwd = os.getcwd()
     os.chdir("{}/automation".format(cwd))
-
     pmdb_init()  # init db
     os.chdir("{}".format(cwd))
     fire.Fire(CLI)

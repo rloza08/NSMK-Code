@@ -2,6 +2,7 @@
 *.log
 *.json
 *.csv
+/.idea
 /tmp
 /data
 !/runtime/cli_selections.json
