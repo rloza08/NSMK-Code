@@ -178,13 +178,10 @@ class Netx(object):
 def get(host):
     obj = Netx()
     netx_obj = obj.get_netx(host)
-<<<<<<< Updated upstream
     # non_netx_obj = obj.get_non_netx(host)
     # print (non_netx_obj)
-=======
-    non_netx_obj = obj.get_non_netx(host)
-    print (non_netx_obj)
->>>>>>> Stashed changes
+    # non_netx_obj = obj.get_non_netx(host)
+    # print (non_netx_obj)
     return netx_obj
 
 from utils.auto_globals import load_store, load_org
