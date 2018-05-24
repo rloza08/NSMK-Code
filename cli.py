@@ -632,18 +632,28 @@ class CLI(object):
         """
             Modules
 
-                settings
+                settings all
+                settings l3fwrules
+                settings s2svpnrules
+                settings sites
+                settings networks
+                settings vlans-add
+                settings vlans-delete
+                store-lists
+                l3fwrules
+                s2svpnrules
+
         """
-        if self.match(param, "l3fwrules"):
+        if self.match(module, "l3fwrules"):
             self.get_l3fwrules()
             return
-        if self.match(param, "funnel"):
+        if self.match(module, "funnel"):
             self.get_funnel()
             return
-        if self.match(param, "store-lists"):
+        if self.match(module, "store-lists"):
             success = self.get_store_lists()
             return
-        if self.match(param, "s2svpnrules"):
+        if self.match(module, "s2svpnrules"):
             self.get_s2svpnrules()
             return
         if self.match(module, "settings"):
