@@ -1,6 +1,6 @@
 import sys
 
-log_verbose = True  # Only if error_stop is set
+log_verbose = False  # Only if error_stop is set
 error_stop = True
 force_yes = True
 use_serials = False

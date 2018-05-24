@@ -43,15 +43,25 @@ def pmdb_init():
     settings["time-stamp"] = None
     settings["netid"] = None
     settings["device-name"] = None
-    settings["serial"] = None
     settings["vlans-add-list"] = None
+
     fname = settings["CLI"].get("vlans-add-list")
-    if settings["CLI"].get("vlans-add-list"):
+    if fname:
         aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
         settings["vlans-add-list"] = aux
-    if settings["CLI"].get("vlans-delete-list"):
+
+
+    fname = settings["CLI"].get("vlans-delete-list")
+    if fname:
         aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
         settings["vlans-delete-list"] = aux
+
+
+    fname = settings["CLI"].get("networks-serials")
+    if fname:
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        settings["networks-serials"] = aux
+
     config = json_reader("../../config/safeway-config.json")
     settings["CONFIG"] = dict()
     settings["CONFIG"]["network"] = config[0]["network"]
