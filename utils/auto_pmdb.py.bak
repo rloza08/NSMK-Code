@@ -29,7 +29,6 @@ def load_cli_settings():
     global settings
     settings["CLI"] = json_reader("{}/cli-selections.json".format(RUNTIME_DIR))
 
-
 def pmdb_init():
     global settings
     load_cli_settings()

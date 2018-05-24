@@ -2,7 +2,7 @@
     "networks-org": "org-AutomationTestOrg_DONOTDELETE",
     "networks-store-list": "store-list-8501",
     "networks-clone-source": "0_Base_Config_v1",
-    "networks-serials-list": "0_Base_Config_v1",
+    "networks-serials": "networks-serials-TST_1234",
     "sites-org": "org-AutomationTestOrg_DONOTDELETE",
     "sites-store-list": "store-list-8501",
     "sites-l3fwrules-version": "l3fwrules_template_MAR_MX_Org_031318-v5",
