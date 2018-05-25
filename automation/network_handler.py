@@ -9,6 +9,7 @@ from utils.auto_utils import is_valid_store_name
 from utils.low_json import Json
 from utils.auto_pmdb import settings
 from api.devices import deploy_serials
+from utils.auto_pmdb import TEMPLATES_DIR
 
 
 def deploy(agent):
@@ -50,10 +51,9 @@ def get_store_lists(agent):
         stores[group].append(deepcopy(it))
     for group in stores.keys():
         fname = "store-list-{}-{}".format(org_name, group)
-        Json.writer(fname, data=stores[group], path="../templates")
+        Json.writer(fname, data=stores[group], path=TEMPLATES_DIR)
         l.logger.info("created {} with {} stores.".format(fname, len(stores[group])))
         l.runlogs_logger.info("created {} with {} stores.".format(fname, len(stores[group])))
-
     return store_list
 
 
@@ -63,7 +63,7 @@ def bulk_deploy_networks_for_all_orgs(agent):
     serials_list = settings.get("CLI").get("networks-serials")
     l.runlogs_logger.info("deploy networks <starting>")
 
-    org_list = json.reader(org_group, "templates")
+    org_list = json.reader(org_group, TEMPLATES_DIR)
     orglist = json.make_pretty(org_list)
 
     l.logger.info("org   list: {}".format(orglist))
