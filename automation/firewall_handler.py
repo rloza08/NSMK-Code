@@ -282,7 +282,7 @@ def deploy(agent, fw_rules=None):
     netid = settings["netid"]
     store_number = settings["store-number"]
     firewall._set(netid, fw_rules, store_number)
-    l.runlogs_logger.info("l3fwrules deployed")
+    l.logger.info("l3fwrules deployed")
     l.logger.info("successfully deployed netid:{}".format(netid))
 
 def get(agent):
