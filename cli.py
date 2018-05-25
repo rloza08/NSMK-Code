@@ -115,7 +115,7 @@ class CLI(object):
 
     def validate_vlans_add_list(self, vlans_add_list):
         print("# List of valid vlans-add-lists available")
-        vlans_add_lists = find_file_pattern("vlans-add-list-", "csv")
+        vlans_add_lists = find_file_pattern("vlans-add-list-", "json")
         if vlans_add_list not in vlans_add_lists:
             if not (vlans_add_list in valid_queries):
                 print('"{}" is not a valid vlans-add-list, please select a vlans-add-list from above.'.format(
@@ -127,7 +127,7 @@ class CLI(object):
 
     def validate_vlans_delete_list(self, vlans_delete_list):
         print("# List of valid vlans-delete-lists available")
-        vlans_delete_lists = find_file_pattern("vlans-delete-list-", "csv")
+        vlans_delete_lists = find_file_pattern("vlans-delete-list-", "json")
         if vlans_delete_list not in vlans_delete_lists:
             if not (vlans_delete_list in valid_queries):
                 print('"{}" is not a valid vlans-delete-list, please select a vlans-delete-list from above.'.format(
