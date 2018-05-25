@@ -98,7 +98,7 @@ def show_vlans_delete_list(vlans_add_list):
     number = 0
     for vlan in vlans_add_list:
         number +=1
-        str +=("\n{}{} - {}".format(TABS, number, vlan))
+        str +=("\n{}{} - {}".format(TABS, number, vlan["Vlan"]))
     l.logger.info("{}\n".format(str))
     l.runlogs_logger.info("{}\n".format(str))
 

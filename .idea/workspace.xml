@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fa3e734-a70d-4f5d-a65c-c042cb823c51" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/auto_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auto_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-AutomationTestOrg_DONOTDELETE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-AutomationTestOrg_DONOTDELETE.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-Ecert_Org2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-Ecert_Org2.json" afterDir="false" />
@@ -68,43 +68,10 @@
       <file leaf-file-name="vlan_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/automation/vlan_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="118" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="118">
+              <caret line="521" column="9" selection-start-line="521" selection-start-column="4" selection-end-line="521" selection-end-column="16" />
               <folding>
                 <element signature="e#23#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auto_jinja.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/auto_jinja.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auto_pmdb.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/auto_pmdb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auto_globals.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/auto_globals.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cli.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cli.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="129" column="74" selection-start-line="129" selection-start-column="74" selection-end-line="129" selection-end-column="74" />
+            <state relative-caret-position="50">
+              <caret line="125" column="19" lean-forward="true" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -155,8 +122,41 @@
       <file leaf-file-name="cli-selections.json.base" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json.base">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+            <state relative-caret-position="257">
+              <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sites_handler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+              <folding>
+                <element signature="e#23#69#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bulk_update.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/automation/bulk_update.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+              <folding>
+                <element signature="e#23#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auto_utils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/auto_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="100" column="43" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -174,10 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_number</find>
-      <find>dry</find>
-      <find>[&quot;CLI&quot;]</find>
-      <find>assert</find>
       <find>deploy</find>
       <find>load_settings</find>
       <find>ENTER_ENV_vlans</find>
@@ -201,9 +197,13 @@
       <find>selection</find>
       <find>_store_lists</find>
       <find>create</find>
-      <find>templa</find>
       <find>l3fwrules dep</find>
       <find>vlans-add-list</find>
+      <find>&quot;csv&quot;</find>
+      <find>&quot;json&quot;</find>
+      <find>templa</find>
+      <find>delete</find>
+      <find>show</find>
     </findStrings>
     <replaceStrings>
       <replace>runtime/cli-selections</replace>
@@ -245,7 +245,6 @@
         <option value="$PROJECT_DIR$/utils/auto_config.py" />
         <option value="$PROJECT_DIR$/automation/vpn_handler.py" />
         <option value="$PROJECT_DIR$/../config/safeway-config.json" />
-        <option value="$PROJECT_DIR$/utils/auto_utils.py" />
         <option value="$PROJECT_DIR$/../templates/valid_inputs.json" />
         <option value="$PROJECT_DIR$/../config/vlans-add-list-v01.json" />
         <option value="$PROJECT_DIR$/api/vlans.py" />
@@ -265,6 +264,7 @@
         <option value="$PROJECT_DIR$/global_vars.py" />
         <option value="$PROJECT_DIR$/automation/firewall_handler.py" />
         <option value="$PROJECT_DIR$/cli.py" />
+        <option value="$PROJECT_DIR$/utils/auto_utils.py" />
       </list>
     </option>
   </component>
@@ -275,8 +275,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="154" />
-    <option name="y" value="42" />
+    <option name="x" value="11" />
+    <option name="y" value="22" />
     <option name="width" value="1697" />
     <option name="height" value="933" />
   </component>
@@ -652,7 +652,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="154" y="42" width="1697" height="933" extended-state="0" />
+    <frame x="11" y="22" width="1697" height="933" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -660,12 +660,12 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5169811" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5169811" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1734881" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.4605418" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.46037737" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -850,13 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/auto_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runtime/vlans-funnel.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -865,16 +858,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../config/vlans_add_list.csv" />
-    <entry file="file://$PROJECT_DIR$/automation/bulk_update.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="125" column="43" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
-          <folding>
-            <element signature="e#23#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../config/vlans-funnel-base.json" />
     <entry file="file://$PROJECT_DIR$/api/meraki_patch.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -950,16 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#23#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../templates/vlans-add-list-v01.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -978,16 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="172" column="5" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/vlans.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-          <folding>
-            <element signature="e#23#57#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1055,44 +1018,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/automation/vlan_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
-          <folding>
-            <element signature="e#23#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json.base">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/auto_logger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automation/network_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#23#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,10 +1042,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json.base">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="129" column="74" selection-start-line="129" selection-start-column="74" selection-end-line="129" selection-end-column="74" />
+        <state relative-caret-position="50">
+          <caret line="125" column="19" lean-forward="true" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vlans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="185" column="66" lean-forward="true" selection-start-line="185" selection-start-column="66" selection-end-line="185" selection-end-column="66" />
+          <folding>
+            <element signature="e#23#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/network_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/vlan_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="521" column="9" selection-start-line="521" selection-start-column="4" selection-end-line="521" selection-end-column="16" />
+          <folding>
+            <element signature="e#23#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+          <folding>
+            <element signature="e#23#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/bulk_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/auto_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="100" column="43" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
         </state>
       </provider>
     </entry>
