@@ -20,7 +20,7 @@ def deploy_vlans_add(agent, netid=None, vlans_list=None):
     vlan_handler.deploy_new()
 
 
-def deploy(agent, netid=None, vlans_list=None):
+def deploy_sites(agent, netid=None, vlans_list=None):
     l.runlogs_logger.info("vlan setup")
 
     vlan_handler.deploy()
@@ -89,11 +89,11 @@ def bulk_update(agent, vlans_only=False):
         elif agent == "cli-deploy-vlans-add":
             bulk.perform_bulk_update_store(agent, org_name, store_list, deploy_vlans_add)
         else:
-            if agent in ["cli-deploy-sites", "cli-deploy-l3fwrules"]:
+            if agent in ["cli-deploy-sites"]:
                 fw_rules = settings["CLI"]["sites-l3fwrules-version"]
                 l.runlogs_logger.info("selected l3fwrules : {}".format(fw_rules))
 
-            bulk.perform_bulk_update_store(agent, org_name, store_list, deploy)
+            bulk.perform_bulk_update_store(agent, org_name, store_list, deploy_sites)
 
     l.runlogs_logger.info("bulk update finished")
 
