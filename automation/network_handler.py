@@ -28,7 +28,6 @@ def get_store_lists(agent):
     settings["orchestration-agent"] = agent
     org_name = settings["CLI"]["store-lists-org"].split("org-")[1]
     settings["org-name"] = org_name
-    auto_globals.set_settings()
     l.logger.info("creating store lists for org {}".format(org_name))
     l.runlogs_logger.info("creating store lists for org {}".format(org_name))
     org_id = auto_globals.get_orgid(org_name)

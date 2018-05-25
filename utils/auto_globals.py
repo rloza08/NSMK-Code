@@ -62,6 +62,7 @@ def set_cli_selections(field=None, value=None):
 
 
 def set_settings(field=None, value=None):
+    assert(0)
     if field:
         settings[field] = value
     json_writer("{}/cli-selections.json".format(RUNTIME_DIR), settings)
