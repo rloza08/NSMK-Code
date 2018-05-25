@@ -168,7 +168,7 @@ obj_networks=None
 def get_store_netid(store_name):
     global obj_networks
     if obj_networks is None:
-        obj_networks=Networks()
+        obj_networks = Networks()
     netid = obj_networks.get_netid_for_store(store_name)
     return netid
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import socket
 import utils.auto_json as mkjson
-import utils.auto_logger as log
+from utils.auto_logger import runlogs_logger, logger
 import global_vars as gv
 from utils.auto_utils import char_range
 
@@ -96,8 +96,8 @@ class Netx(object):
             from utils.auto_config import dryrun_netx_fake_ip, dryrun
             if dryrun:
                 return settings["dryrun-netx-fake-ip"]
-            log.logger.error("Cannot reach store/device : {}".format(host))
-            log.runlogs_logger.error("Cannot reach store/device : {}".format(host))
+            logger.error("Cannot reach store/device : {}".format(host))
+            runlogs_logger.error("Cannot reach store/device : {}".format(host))
             gv.fake_assert()
 
     def get_netx_dense(self, host):
@@ -151,7 +151,7 @@ class Netx(object):
     def get_netx(self, host):
         # Gets the netx info in a more pythonic format
         netx_dense = self.get_netx_dense(host)
-        # non_netx_dense = self.get_non_netx_dense(host)
+        #non_netx_dense = self.get_non_netx_dense(host)
         netx_str = self.get_netx_str(netx_dense)
         # non_netx_str = self.get_non_netx_str(non_netx_dense)
         # netx_str_all = {**netx_str, **non_netx_str}
@@ -176,17 +176,13 @@ class Netx(object):
 def get(host):
     obj = Netx()
     netx_obj = obj.get_netx(host)
-    # non_netx_obj = obj.get_non_netx(host)
-    # print (non_netx_obj)
-    # non_netx_obj = obj.get_non_netx(host)
-    # print (non_netx_obj)
     return netx_obj
 
 
 from utils.auto_globals import load_store, load_org
-
-
-def test():
+from api.meraki_patch import init_meraki_patch
+def netx_test():
+    init_meraki_patch()
     _orchestration_agent = "cli-test"
     org_name = "AutomationTestOrg_DONOTDELETE"
     load_org(_orchestration_agent, org_name)

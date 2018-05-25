@@ -33,63 +33,59 @@ def load_cli_settings():
 init_pmdb_flag = False
 def pmdb_init():
     global init_pmdb_flag
-    try:
-        global settings
-        load_cli_settings()
-        settings["org-name"] = None
-        settings["store-name"]= None
-        settings["agent"] = None
-        settings["org-id"] = None
-        settings["folder-time-stamp"] = None
-        settings["store-name"] = None
-        settings["store-number"] = None
-        settings["time-stamp"] = None
-        settings["netid"] = None
-        settings["device-name"] = None
-        settings["vlans-add-list"] = None
+    global settings
+    load_cli_settings()
+    settings["org-name"] = None
+    settings["store-name"]= None
+    settings["agent"] = None
+    settings["org-id"] = None
+    settings["folder-time-stamp"] = None
+    settings["store-name"] = None
+    settings["store-number"] = None
+    settings["time-stamp"] = None
+    settings["netid"] = None
+    settings["device-name"] = None
+    settings["vlans-add-list"] = None
 
-        fname = settings["CLI"].get("vlans-add-list")
-        if fname:
-            aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-            settings["vlans-add-list"] = aux
-
-        fname = settings["CLI"].get("vlans-delete-list")
-        if settings["CLI"].get("vlans-delete-list"):
-            aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-            settings["vlans-delete-list"] = aux
-
-
-        fname = settings["CLI"].get("networks-serials")
-        if fname:
-            aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-            settings["networks-serials"] = aux
-        else:
-            print("networks-serials {}  not found".format(fname))
-
-
-        config = json_reader("../../config/safeway-config.json")
-        settings["CONFIG"] = dict()
-        settings["CONFIG"]["network"] = config[0]["network"]
-        firewall=config[0]["firewall"]
-        settings["CONFIG"]["static-route-next-hop"] = firewall['static_route_next_hop']
-        vlan=config[0]["vlan"]
-        settings["CONFIG"]["funnel-file"]=vlan["funnel_file"]
-        settings["CONFIG"]["netx-file"]=vlan['netx_file']
-        settings["CONFIG"]["device-prefix"] = vlan["device_prefix"]
-        settings["CONFIG"]["device-postfix"] = vlan["device_postfix"]
-        vpn = config[0]["vpn"]
-        settings["CONFIG"]["hubnetworks"] = vpn["hubnetworks"]
-        settings["CONFIG"]["defaultroute"] = vpn["defaultroute"]
-
-        # Netx and Non-Netx
-        settings["NON-NETX"] = dict()
-        settings["NON-NETX"]["new_summary"] = None
-        fname = "vlans-non-netx"
+    fname = settings["CLI"].get("vlans-add-list")
+    if fname:
         aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-        settings["NON-NETX"] = aux
+        settings["vlans-add-list"] = aux
 
-    except Exception as err:
-        print ("init_pmdb error, turn on verbose log mode for details")
-        exit(-1)
+    fname = settings["CLI"].get("vlans-delete-list")
+    if settings["CLI"].get("vlans-delete-list"):
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        settings["vlans-delete-list"] = aux
+
+
+    fname = settings["CLI"].get("networks-serials")
+    if fname:
+        aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        settings["networks-serials"] = aux
+    else:
+        print("networks-serials {}  not found".format(fname))
+
+
+    config = json_reader("../../config/safeway-config.json")
+    settings["CONFIG"] = dict()
+    settings["CONFIG"]["network"] = config[0]["network"]
+    firewall=config[0]["firewall"]
+    settings["CONFIG"]["static-route-next-hop"] = firewall['static_route_next_hop']
+    vlan=config[0]["vlan"]
+    settings["CONFIG"]["funnel-file"]=vlan["funnel_file"]
+    settings["CONFIG"]["netx-file"]=vlan['netx_file']
+    settings["CONFIG"]["device-prefix"] = vlan["device_prefix"]
+    settings["CONFIG"]["device-postfix"] = vlan["device_postfix"]
+    vpn = config[0]["vpn"]
+    settings["CONFIG"]["hubnetworks"] = vpn["hubnetworks"]
+    settings["CONFIG"]["defaultroute"] = vpn["defaultroute"]
+
+    # Netx and Non-Netx
+    settings["NON-NETX"] = dict()
+    settings["NON-NETX"]["new_summary"] = None
+    fname = "vlans-non-netx"
+    aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+    settings["NON-NETX"] = aux
+
     init_pmdb_flag = True
 

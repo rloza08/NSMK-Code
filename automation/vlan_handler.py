@@ -131,36 +131,36 @@ class VlanTemplates(object):
             return
         entry["dnsNameservers"] = vlan_patch["dnsNameservers"]
         entry["reservedIpRanges"] = []
-        octets_number = len(vlan_patch["reservedIpRanges1-start"].split("."))
-        if vlan_patch["reservedIpRanges1-comment"] != "" and octets_number == 2:
+        if vlan_patch["reservedIpRanges1-comment"] != "":
             item = dict()
             id = vlan_patch["Vlan"]
             item["comment"] = vlan_patch["reservedIpRanges1-comment"]
 
-            aux = vlan_patch["reservedIpRanges1-end"].split(".")
-            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
-            item["end"] = aux[0].replace("x", tpl_str)
+            aux = "{}".format(vlan_patch["reservedIpRanges1-end"])
+            tpl_str = "{{{{vlan[{}]['octets']}}}}.{}".format(id, aux)
+            item["end"] = tpl_str
 
-            aux = vlan_patch["reservedIpRanges1-start"].split(".")
-            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
-            item["start"] = aux[0].replace("x", tpl_str)
+            aux = "{}".format(vlan_patch["reservedIpRanges1-start"])
+            tpl_str = "{{{{vlan[{}]['octets']}}}}.{}".format(id, aux)
+            item["start"] = tpl_str
 
             entry["reservedIpRanges"].append(deepcopy(item))
 
-        octets_number = len(vlan_patch["reservedIpRanges2-start"].split("."))
-        if vlan_patch["reservedIpRanges2-comment"] != "" and octets_number == 2:
+        if vlan_patch["reservedIpRanges2-comment"] != "":
             item = dict()
+            id = vlan_patch["Vlan"]
             item["comment"] = vlan_patch["reservedIpRanges2-comment"]
 
-            aux = vlan_patch["reservedIpRanges2-end"].split(".")
-            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
-            item["end"] = aux[0].replace("x", tpl_str)
+            aux = "{}".format(vlan_patch["reservedIpRanges2-end"])
+            tpl_str = "{{{{vlan[{}]['octets']}}}}.{}".format(id, aux)
+            item["end"] = tpl_str
 
-            aux = vlan_patch["reservedIpRanges2-start"].split(".")
-            tpl_str = "{{vlan[{}]['octets']}}.{}".format(id, aux[1])
-            item["start"] = aux[0].replace("x", tpl_str)
+            aux = "{}".format(vlan_patch["reservedIpRanges2-start"])
+            tpl_str = "{{{{vlan[{}]['octets']}}}}.{}".format(id, aux)
+            item["start"] = tpl_str
 
             entry["reservedIpRanges"].append(deepcopy(item))
+
 
     def build_jinja_template(self, vlans_add_flag=False):
         if vlans_add_flag:

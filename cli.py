@@ -608,9 +608,11 @@ class CLI(object):
 
     def test_function(self):
         os.chdir("{}/automation".format(self.cwd))
-        from api.netx import test
+        from utils.auto_logger import init_logger
+        init_logger()
+        from api.netx import netx_test
         EOM()
-        test()
+        netx_test()
         print("# funnel file has been upgraded #")
         os.chdir("{}".format(self.cwd))
         EOM()
@@ -624,7 +626,7 @@ class CLI(object):
                 funnel
                 vlan-settings
         """
-        if self.match(param, "test") >= 0:
+        if self.match(module, "test") >= 0:
             self.test_function()
             return
 

@@ -1,277 +1,86 @@
 [
     {
-        "id": 4,
+        "id": 101,
         "networkId": "{{networkid}}",
-        "name": "Network Management",
-        "applianceIp": "{{vlan[4]['octets']}}.33",
-        "subnet": "{{vlan[4]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 6,
-        "networkId": "{{networkid}}",
-        "name": "Extranet Vendors",
-        "applianceIp": "{{vlan[6]['octets']}}.65",
-        "subnet": "{{vlan[6]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 7,
-        "networkId": "{{networkid}}",
-        "name": "Pharmacy",
-        "applianceIp": "{{vlan[7]['octets']}}.97",
-        "subnet": "{{vlan[7]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 8,
-        "networkId": "{{networkid}}",
-        "name": "Backstage Users",
-        "applianceIp": "{{vlan[8]['octets']}}.129",
-        "subnet": "{{vlan[8]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 14,
-        "networkId": "{{networkid}}",
-        "name": "Store Content Engine",
-        "applianceIp": "{{vlan[14]['octets']}}.249",
-        "subnet": "{{vlan[14]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 16,
-        "networkId": "{{networkid}}",
-        "name": "Store Wireless",
-        "applianceIp": "{{vlan[16]['octets']}}.1",
-        "subnet": "{{vlan[16]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 19,
-        "networkId": "{{networkid}}",
-        "name": "General Store LAN",
-        "applianceIp": "{{vlan[19]['octets']}}.1",
-        "subnet": "{{vlan[19]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 24,
-        "networkId": "{{networkid}}",
-        "name": "POS LAN",
-        "applianceIp": "{{vlan[24]['octets']}}.1",
-        "subnet": "{{vlan[24]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 35,
-        "networkId": "{{networkid}}",
-        "name": "Digital Signage",
-        "applianceIp": "{{vlan[35]['octets']}}.1",
-        "subnet": "{{vlan[35]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "172.24.98.22\r, 172.18.0.10"
-    },
-    {
-        "id": 40,
-        "networkId": "{{networkid}}",
-        "name": "Thin Wireless Mgmt",
-        "applianceIp": "{{vlan[40]['octets']}}.33",
-        "subnet": "{{vlan[40]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 45,
-        "networkId": "{{networkid}}",
-        "name": "Cisco Wireless Management",
-        "applianceIp": "{{vlan[45]['octets']}}.193",
-        "subnet": "{{vlan[45]['subnet']}}",
+        "name": "New Vlan 101",
+        "applianceIp": "{{vlan[101]['octets']}}.161",
+        "subnet": "{{vlan[101]['subnet']}}",
         "fixedIpAssignments": {},
         "reservedIpRanges": [
             {
-                "comment": "reserved",
-                "end": "{vlan[45]['octets']}.195",
-                "start": "{vlan[45]['octets']}.193"
-            }
-        ],
-        "dnsNameservers": "172.24.98.22\r,172.18.0.10"
-    },
-    {
-        "id": 60,
-        "networkId": "{{networkid}}",
-        "name": "Vendor VLAN II  2nd Subnet ",
-        "applianceIp": "{{vlan[60]['octets']}}.129",
-        "subnet": "{{vlan[60]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 70,
-        "networkId": "{{networkid}}",
-        "name": "New Pharmacy",
-        "applianceIp": "{{vlan[70]['octets']}}.65",
-        "subnet": "{{vlan[70]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 75,
-        "networkId": "{{networkid}}",
-        "name": "Macauthenticated Wireless Clients",
-        "applianceIp": "{{vlan[75]['octets']}}.129",
-        "subnet": "{{vlan[75]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [
-            {
-                "comment": "reserved",
-                "end": "{vlan[75]['octets']}.192",
-                "start": "{vlan[75]['octets']}.129"
-            }
-        ],
-        "dnsNameservers": "172.24.98.22\r,172.18.0.10"
-    },
-    {
-        "id": 79,
-        "networkId": "{{networkid}}",
-        "name": "VOIP Clients",
-        "applianceIp": "{{vlan[79]['octets']}}.193",
-        "subnet": "{{vlan[79]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [
-            {
-                "comment": "reserved",
-                "end": "{vlan[79]['octets']}.199",
-                "start": "{vlan[79]['octets']}.193"
+                "comment": "Reserved1",
+                "end": "{{vlan[101]['octets']}}.163",
+                "start": "{{vlan[101]['octets']}}.162"
             },
             {
-                "comment": "reserved",
-                "end": "{vlan[79]['octets']}.254",
-                "start": "{vlan[79]['octets']}.251"
+                "comment": "Reserved2",
+                "end": "{{vlan[101]['octets']}}.165",
+                "start": "{{vlan[101]['octets']}}.164"
             }
         ],
-        "dnsNameservers": "172.24.98.22\r,172.18.0.10"
+        "dnsNameservers": "172.24.98.22\n172.18.0.10"
     },
     {
-        "id": 80,
+        "id": 102,
         "networkId": "{{networkid}}",
-        "name": "Secure Wireless",
-        "applianceIp": "{{vlan[80]['octets']}}.1",
-        "subnet": "{{vlan[80]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 81,
-        "networkId": "{{networkid}}",
-        "name": "Field Service Wireless",
-        "applianceIp": "{{vlan[81]['octets']}}.161",
-        "subnet": "{{vlan[81]['subnet']}}",
+        "name": "New Vlan 102",
+        "applianceIp": "{{vlan[102]['octets']}}.1",
+        "subnet": "{{vlan[102]['subnet']}}",
         "fixedIpAssignments": {},
         "reservedIpRanges": [
             {
-                "comment": "reserved",
-                "end": "{vlan[81]['octets']}.164",
-                "start": "{vlan[81]['octets']}.161"
+                "comment": "Reserved1",
+                "end": "{{vlan[102]['octets']}}.3",
+                "start": "{{vlan[102]['octets']}}.2"
+            },
+            {
+                "comment": "Reserved2",
+                "end": "{{vlan[102]['octets']}}.5",
+                "start": "{{vlan[102]['octets']}}.4"
             }
         ],
-        "dnsNameservers": "172.24.98.22\r,172.18.0.10\r"
+        "dnsNameservers": "172.24.98.22\n172.18.0.10"
     },
     {
-        "id": 82,
+        "id": 103,
         "networkId": "{{networkid}}",
-        "name": "iPad quarantine vlan",
-        "applianceIp": "{{vlan[82]['octets']}}.177",
-        "subnet": "{{vlan[82]['subnet']}}",
+        "name": "New Vlan 103",
+        "applianceIp": "{{vlan[103]['octets']}}.65",
+        "subnet": "{{vlan[103]['subnet']}}",
         "fixedIpAssignments": {},
         "reservedIpRanges": [
             {
-                "comment": "reserved",
-                "end": "{vlan[82]['octets']}.179",
-                "start": "{vlan[82]['octets']}.177"
+                "comment": "Reserved1",
+                "end": "{{vlan[103]['octets']}}.67",
+                "start": "{{vlan[103]['octets']}}.66"
+            },
+            {
+                "comment": "Reserved2",
+                "end": "{{vlan[103]['octets']}}.69",
+                "start": "{{vlan[103]['octets']}}.68"
             }
         ],
-        "dnsNameservers": "172.24.98.22\r,172.18.0.10"
+        "dnsNameservers": "172.24.98.22\n172.18.0.10"
     },
     {
-        "id": 85,
+        "id": 104,
         "networkId": "{{networkid}}",
-        "name": "Retail Cluster Management VLAN",
-        "applianceIp": "{{vlan[85]['octets']}}.1",
-        "subnet": "{{vlan[85]['subnet']}}",
+        "name": "New Vlan 104",
+        "applianceIp": "{{vlan[104]['octets']}}.161",
+        "subnet": "{{vlan[104]['subnet']}}",
         "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 95,
-        "networkId": "{{networkid}}",
-        "name": "Printer VLAN",
-        "applianceIp": "{{vlan[95]['octets']}}.129",
-        "subnet": "{{vlan[95]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 992,
-        "networkId": "{{networkid}}",
-        "name": "Digital Signage   I",
-        "applianceIp": "{{vlan[992]['octets']}}.1",
-        "subnet": "192.168.192.0/24",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "google_dns"
-    },
-    {
-        "id": 995,
-        "networkId": "{{networkid}}",
-        "name": "Guest WIFI",
-        "applianceIp": "{{vlan[995]['octets']}}.1",
-        "subnet": "192.168.1.0/24",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "google_dns"
-    },
-    {
-        "id": 996,
-        "networkId": "{{networkid}}",
-        "name": "Cache VPN",
-        "applianceIp": "{{vlan[996]['octets']}}.1",
-        "subnet": "192.168.100.0/24",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "upstream_dns"
-    },
-    {
-        "id": 997,
-        "networkId": "{{networkid}}",
-        "name": "Cache Internet",
-        "applianceIp": "{{vlan[997]['octets']}}.1",
-        "subnet": "192.168.101.0/24",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [],
-        "dnsNameservers": "google_dns"
+        "reservedIpRanges": [
+            {
+                "comment": "Reserved1",
+                "end": "{{vlan[104]['octets']}}.163",
+                "start": "{{vlan[104]['octets']}}.162"
+            },
+            {
+                "comment": "Reserved2",
+                "end": "{{vlan[104]['octets']}}.165",
+                "start": "{{vlan[104]['octets']}}.164"
+            }
+        ],
+        "dnsNameservers": "172.24.98.22\n172.18.0.10"
     }
 ]

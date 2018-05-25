@@ -20,9 +20,10 @@ class Vlans(object):
         vlans_to_deploy = json.reader(fname)
         self.get_vlans(netid)
         vlans_deployed = []
-        for item in self.vlans:
-            id = int(item['id'])
-            vlans_deployed.append(id)
+        if self.vlans:
+            for item in self.vlans:
+                id = int(item['id'])
+                vlans_deployed.append(id)
 
         deploy_count = 0
         for vlan in vlans_to_deploy:
