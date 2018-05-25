@@ -18,6 +18,8 @@ def fake_assert():
     if error_stop:
         assert(0)
     else:
+        if log_verbose:
+            assert(0)
         if auto_pmdb.init_pmdb_flag is False:
             print("init_pmdb error, turn on verbose log mode for details")
             exit(-1)
