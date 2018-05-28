@@ -78,8 +78,6 @@ funnel
  10.
 
 """
-from copy import deepcopy
-
 class Netx(object):
     def __init__(self):
         non_netx_range = list(char_range('i', 'z'))
@@ -216,12 +214,6 @@ class Netx(object):
         # Gets the netx info in a more pythonic format
         self.netx_dense = self.get_netx_dense(host)
         self.nnetx_dense = self.get_nnetx_dense(host)
-
-        # str_n = mkjson.make_pretty((self.netx_dense))
-        # str_nn = mkjson.make_pretty((self.nnetx_dense))
-        # print(str_n)
-        # print(str_nn)
-
         self.netx_str = self.get_netx_str(self.netx_dense)
         self.nnetx_str = self.get_nnetx_str(self.nnetx_dense)
 

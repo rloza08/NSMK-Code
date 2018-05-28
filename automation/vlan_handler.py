@@ -269,7 +269,7 @@ class VlanTable(object):
             subnet = entry["Subnet"].split(".")
             # if there is an x than we need to replace otherwise skip
             if subnet[1] == 'x':
-                if (subnet[2] >= 'a' and subnet[2] <= 'h'):
+                if (subnet[2] >= 'a' and subnet[2] <= 'z'):
                     entry["Subnet"] = subnet[2] + "." + subnet[3]
         json.writer(self.funnelNetxFile, self.funnel)
         l.logger.debug("created {}".format(self.funnelNetxFile))
