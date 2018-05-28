@@ -4,6 +4,7 @@ import utils.auto_json as mkjson
 from utils.auto_logger import runlogs_logger, logger
 import global_vars as gv
 from utils.auto_utils import char_range
+from utils.auto_pmdb import settings
 
 """
 How to generate netx by example
@@ -79,7 +80,6 @@ funnel
 """
 from copy import deepcopy
 
-
 class Netx(object):
     def __init__(self):
         non_netx_range = list(char_range('i', 'z'))
@@ -130,6 +130,54 @@ class Netx(object):
 
         return netx
 
+    def get_nnetx_dense(self, host):
+        store_number = int(settings["store-number"])
+        entries = self.valid_non_netx_subnet_list
+        nnetx = dict()
+        # Essentially create the dictionary of dictionaries
+        for entry in entries:
+            nnetx[entry] = {}
+        nnetx["non-netx-summary"] = None
+
+        nn_map = settings["NON-NETX"]
+
+        nnetx_inputs = nn_map.get(store_number)
+        if nnetx_inputs is None:
+            logger.error("no non_netx_info for store number {}".format(store_number))
+            runlogs_logger.error("no non_netx_info for store number {}".format(store_number))
+            gv.fake_assert()
+
+        # Summary repeasts for all subnets and is only added once
+        nnetx_input = nnetx_inputs[0]
+        summary = nnetx_input["Summary"]
+        octets = summary.split(".")
+        nn = dict()
+        nn["non-netx-summary"] = {}
+        nn["non-netx-summary"][1] = int(octets[0])
+        nn["non-netx-summary"][2] = int(octets[1])
+        nn["non-netx-summary"][3] = int(octets[2])
+        nn["non-netx-summary"][4] = int(octets[3].split("/")[0])
+
+        # Get subnets
+        for nnetx_input in nnetx_inputs:
+            funnel_subnet = nnetx_input["FunnelSubnet"]
+            index = funnel_subnet.split(".")[2]
+            assert(index in self.valid_non_netx_subnet_list)
+
+            # Validate
+            if summary != nnetx_input["Summary"]:
+                logger.error("summary mismatch : {}\n{}", summary, nn_input["Summary"])
+                exit(-1)
+
+            entry = nnetx_input["ActualSubnet"]
+            octets = entry.split(".")
+            nn[index] = dict()
+            nn[index][1] = int(octets[0])
+            nn[index][2] = int(octets[1])
+            nn[index][3] = int(octets[2])
+
+        return nn
+
     def get_netx_str(self, netx):
         netx_str = {
             "upper": "0.0.0.0",
@@ -148,29 +196,37 @@ class Netx(object):
 
         return netx_str
 
+
+    def get_nnetx_str(self, nnetx):
+        nnetx_str = dict()
+
+        it = nnetx["non-netx-summary"]
+        nnetx_str["non-netx-summary"] = "{}.{}.{}.{}".format(it[1], it[2], it[3], it[4])
+
+        nnetx_to_str = lambda nnetx, idx: "{}.{}.{}".format(nnetx[idx][1], nnetx[idx][2], nnetx[idx][3])
+
+        for key in nnetx.keys():
+            if key in self.valid_non_netx_subnet_list :
+                nnetx_str[key] = nnetx_to_str(nnetx, key)
+
+        return nnetx_str
+
+
     def get_netx(self, host):
         # Gets the netx info in a more pythonic format
-        netx_dense = self.get_netx_dense(host)
-        #non_netx_dense = self.get_non_netx_dense(host)
-        netx_str = self.get_netx_str(netx_dense)
-        # non_netx_str = self.get_non_netx_str(non_netx_dense)
-        # netx_str_all = {**netx_str, **non_netx_str}
-        # return netx_str_all
+        self.netx_dense = self.get_netx_dense(host)
+        self.nnetx_dense = self.get_nnetx_dense(host)
 
-        return netx_str
+        # str_n = mkjson.make_pretty((self.netx_dense))
+        # str_nn = mkjson.make_pretty((self.nnetx_dense))
+        # print(str_n)
+        # print(str_nn)
 
-    def get_non_netx_dense(self, host):
-        store_number = settings["store-number"]
-        assert (host == settings["cc{}".format(store_number)])
-        entries = self.valid_non_netx_subnet_list
-        non_netx = dict()
-        # Essentially create the dictionary of dictionaries
-        for entry in entries:
-            non_netx[entry] = {}
+        self.netx_str = self.get_netx_str(self.netx_dense)
+        self.nnetx_str = self.get_nnetx_str(self.nnetx_dense)
 
-        non_netx_map = settings["NETX"]
-
-        return non_netx
+        netx_str_all = {**self.netx_str, **self.nnetx_str}
+        return netx_str_all
 
 
 def get(host):

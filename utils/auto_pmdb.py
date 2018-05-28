@@ -31,6 +31,8 @@ def load_cli_settings():
 
 
 init_pmdb_flag = False
+
+from copy import deepcopy
 def pmdb_init():
     global init_pmdb_flag
     global settings
@@ -82,10 +84,17 @@ def pmdb_init():
 
     # Netx and Non-Netx
     settings["NON-NETX"] = dict()
-    settings["NON-NETX"]["new_summary"] = None
     fname = "vlans-non-netx"
-    aux = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-    settings["NON-NETX"] = aux
+    non_netx_stores = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+    nn_map = {}
+    # Builds list of subnets per store
+    for entry in non_netx_stores:
+        store_number = entry["Store"]
+        if nn_map.get(store_number) is None:
+            nn_map[store_number] = []
+        nn_map[store_number].append(deepcopy(entry))
+
+    settings["NON-NETX"] = nn_map
 
     init_pmdb_flag = True
 

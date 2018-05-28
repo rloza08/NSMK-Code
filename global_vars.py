@@ -1,11 +1,22 @@
 import sys
 import utils.auto_pmdb as auto_pmdb
 
-log_verbose = False  # Only if error_stop is set
-error_stop = False
-force_yes = True
-use_serials = False
-serial_not_available_revert_clone = True
+DEFAULT_STATE = False
+
+if DEFAULT_STATE:
+    log_verbose = False  # Only if error_stop is set
+    error_stop = False
+    force_yes = False
+    use_serials = True
+    serial_not_available_revert_clone = True
+    VLANS_LOCK = True
+else:
+    log_verbose = True  # Only if error_stop is set
+    error_stop = True
+    force_yes = True
+    use_serials = False
+    serial_not_available_revert_clone = True
+    VLANS_LOCK = False
 
 EOM = lambda : print("_"*48)
 

@@ -1,84 +1,42 @@
 [
     {
-        "id": 101,
+        "id": 201,
         "networkId": "{{networkid}}",
-        "name": "New Vlan 101",
-        "applianceIp": "{{vlan[101]['octets']}}.161",
-        "subnet": "{{vlan[101]['subnet']}}",
+        "name": "New Vlan 201",
+        "applianceIp": "{{vlan[201]['octets']}}.1",
+        "subnet": "{{vlan[201]['subnet']}}",
         "fixedIpAssignments": {},
         "reservedIpRanges": [
             {
                 "comment": "Reserved1",
-                "end": "{{vlan[101]['octets']}}.163",
-                "start": "{{vlan[101]['octets']}}.162"
+                "end": "{{vlan[201]['octets']}}.3",
+                "start": "{{vlan[201]['octets']}}.2"
             },
             {
                 "comment": "Reserved2",
-                "end": "{{vlan[101]['octets']}}.165",
-                "start": "{{vlan[101]['octets']}}.164"
+                "end": "{{vlan[201]['octets']}}.5",
+                "start": "{{vlan[201]['octets']}}.4"
             }
         ],
         "dnsNameservers": "172.24.98.22\n172.18.0.10"
     },
     {
-        "id": 102,
+        "id": 202,
         "networkId": "{{networkid}}",
-        "name": "New Vlan 102",
-        "applianceIp": "{{vlan[102]['octets']}}.1",
-        "subnet": "{{vlan[102]['subnet']}}",
+        "name": "New Vlan 202",
+        "applianceIp": "{{vlan[202]['octets']}}.33",
+        "subnet": "{{vlan[202]['subnet']}}",
         "fixedIpAssignments": {},
         "reservedIpRanges": [
             {
                 "comment": "Reserved1",
-                "end": "{{vlan[102]['octets']}}.3",
-                "start": "{{vlan[102]['octets']}}.2"
+                "end": "{{vlan[202]['octets']}}.34",
+                "start": "{{vlan[202]['octets']}}.33"
             },
             {
                 "comment": "Reserved2",
-                "end": "{{vlan[102]['octets']}}.5",
-                "start": "{{vlan[102]['octets']}}.4"
-            }
-        ],
-        "dnsNameservers": "172.24.98.22\n172.18.0.10"
-    },
-    {
-        "id": 103,
-        "networkId": "{{networkid}}",
-        "name": "New Vlan 103",
-        "applianceIp": "{{vlan[103]['octets']}}.65",
-        "subnet": "{{vlan[103]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [
-            {
-                "comment": "Reserved1",
-                "end": "{{vlan[103]['octets']}}.67",
-                "start": "{{vlan[103]['octets']}}.66"
-            },
-            {
-                "comment": "Reserved2",
-                "end": "{{vlan[103]['octets']}}.69",
-                "start": "{{vlan[103]['octets']}}.68"
-            }
-        ],
-        "dnsNameservers": "172.24.98.22\n172.18.0.10"
-    },
-    {
-        "id": 104,
-        "networkId": "{{networkid}}",
-        "name": "New Vlan 104",
-        "applianceIp": "{{vlan[104]['octets']}}.161",
-        "subnet": "{{vlan[104]['subnet']}}",
-        "fixedIpAssignments": {},
-        "reservedIpRanges": [
-            {
-                "comment": "Reserved1",
-                "end": "{{vlan[104]['octets']}}.163",
-                "start": "{{vlan[104]['octets']}}.162"
-            },
-            {
-                "comment": "Reserved2",
-                "end": "{{vlan[104]['octets']}}.165",
-                "start": "{{vlan[104]['octets']}}.164"
+                "end": "{{vlan[202]['octets']}}.36",
+                "start": "{{vlan[202]['octets']}}.35"
             }
         ],
         "dnsNameservers": "172.24.98.22\n172.18.0.10"

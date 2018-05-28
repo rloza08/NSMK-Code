@@ -1,22 +1,12 @@
 [
     {
-        "Vlan": 101,
-        "Subnet": "10.x.a.160/27",
-        "Description": "New Vlan 101"
+        "Vlan": 201,
+        "Subnet": "10.x.i.0/27",
+        "Description": "New Vlan 201"
     },
     {
-        "Vlan": 102,
-        "Subnet": "10.x.g.0/26",
-        "Description": "New Vlan 102"
-    },
-    {
-        "Vlan": 103,
-        "Subnet": "10.x.h.64/26",
-        "Description": "New Vlan 103"
-    },
-    {
-        "Vlan": 104,
-        "Subnet": "10.x.h.160/27",
-        "Description": "New Vlan 104"
+        "Vlan": 202,
+        "Subnet": "10.x.j.32/27",
+        "Description": "New Vlan 202"
     }
 ]

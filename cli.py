@@ -11,8 +11,6 @@ from global_vars import EOM
 from utils.auto_globals import set_cli_selections
 from utils.auto_pmdb import pmdb_init, settings
 
-VLANS_ACTIVE = True
-
 
 def lock():
     cnt = 0
@@ -749,10 +747,10 @@ class CLI(object):
         if self.match(module, "sites"):
             self.deploy_sites()
         elif self.match(module, "vlans-add"):
-            if VLANS_ACTIVE:
+            if gv.VLANS_LOCK is False:
                 self.deploy_vlans_add()
         elif self.match(module, "vlans-delete"):
-            if VLANS_ACTIVE:
+            if gv.VLANS_LOCK is False:
                 self.deploy_vlans_delete()
         elif self.match(module, "networks"):
             self.deploy_networks()
