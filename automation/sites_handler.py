@@ -20,8 +20,8 @@ def deploy_vlans_add(agent, netid=None, vlans_list=None):
     l.runlogs_logger.info("vlan setup")
     vlan_handler.deploy_new()
 
-    # l.runlogs_logger.info("static route setup")
-    # static_route_handler.add(summary_only=True)
+    l.runlogs_logger.info("static route setup")
+    static_route_handler.add(summary_only=True)
 
     l.runlogs_logger.info("s2s vpn setup")
     vpn_handler.setupSiteToSiteVpn()

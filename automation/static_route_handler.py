@@ -51,7 +51,7 @@ def add(summary_only=False):
 
     if nnetx_summary:
         subnet = "{}/22".format(nnetx_summary)   # lower
-        name = "non-netx-summary"
+        name = "non-netx summary subnet"
         static_route.add_static_route(settings["netid"], name, subnet, ip)
 
 if __name__ == "__main__":

@@ -113,7 +113,7 @@ class Vlans(object):
         _err = None
         try:
             for vlan in vlans:
-                self.update_single_vlan(vlan)
+                self.update_single_vlan(vlan, update_all=True)
 
         except Exception as err:
             l.logger.error("{}".format(err.args))

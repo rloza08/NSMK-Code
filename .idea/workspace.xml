@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4fa3e734-a70d-4f5d-a65c-c042cb823c51" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/netx.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/netx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/vpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/vpn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/vlans.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/vlans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation/sites_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/sites_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automation/static_route_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/static_route_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/vpn_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/vpn_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global_vars.py" beforeDir="false" afterPath="$PROJECT_DIR$/global_vars.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/auto_pmdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auto_pmdb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation/vlan_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/vlan_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-AutomationTestOrg_DONOTDELETE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-AutomationTestOrg_DONOTDELETE.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-Ecert_Org2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-Ecert_Org2.json" afterDir="false" />
@@ -25,6 +23,7 @@
       <change beforePath="$PROJECT_DIR$/../templates/Store-List-SHA-2018-03-27.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Store-List-SWY-2018-03-27.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/valid_inputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/valid_inputs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,10 +35,10 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/code$cli_get_settings_vlans_add.coverage" NAME="cli-get-settings-vlans-add Coverage Results" MODIFIED="1527616825203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$update_vlan_template.coverage" NAME="update-vlan-template Coverage Results" MODIFIED="1526943595060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$cli_deploy_sites.coverage" NAME="cli-deploy-sites Coverage Results" MODIFIED="1527615538168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$cli_deploy_sites.coverage" NAME="cli-deploy-sites Coverage Results" MODIFIED="1527621211041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$cli_get_stores_list.coverage" NAME="cli-get-stores-list Coverage Results" MODIFIED="1527268290081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$cli_deploy_vlans_add.coverage" NAME="cli-deploy-vlans-add Coverage Results" MODIFIED="1527618327096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$cli_netx_test.coverage" NAME="cli-netx-test Coverage Results" MODIFIED="1527617593025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$cli_deploy_vlans_add.coverage" NAME="cli-deploy-vlans-add Coverage Results" MODIFIED="1527628410939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$cli_netx_test.coverage" NAME="cli-netx-test Coverage Results" MODIFIED="1527626448524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$cli_get_l3fwrules.coverage" NAME="cli-get-l3fwrules Coverage Results" MODIFIED="1523317216913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$cli_get_funnel.coverage" NAME="cli-get-funnel Coverage Results" MODIFIED="1527111615208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$cli_deploy_networks.coverage" NAME="cli-deploy-networks Coverage Results" MODIFIED="1527111816878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -53,32 +52,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vlans-non-netx.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.json">
+      <file leaf-file-name="jinja_vlans_template.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/jinja_vlans_template.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+            <state relative-caret-position="-318">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="netx.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/netx.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="217" selection-start-line="217" selection-end-line="217" />
-              <folding>
-                <element signature="e#23#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file leaf-file-name="vlans_generated_N_686798943174009110.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../data/cli-deploy-sites/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-12-13-32/vlans_generated_N_686798943174009110.csv">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="vpn_handler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/automation/vpn_handler.py">
+      <file leaf-file-name="vlans_generated_N_686798943174009110.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../data/cli-deploy-sites/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-12-13-32/vlans_generated_N_686798943174009110.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="73" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="-2261">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -86,53 +78,22 @@
       <file leaf-file-name="global_vars.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/global_vars.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="116">
               <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="static_route_handler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/automation/static_route_handler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-            </state>
-          </provider>
+      <file leaf-file-name="vlans-non-netx-base.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx-base.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="sites_handler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
+      <file leaf-file-name="vlans-non-netx.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="24" selection-start-line="22" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="meraki.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/meraki.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="1949" selection-start-line="1949" selection-end-line="1949" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vpn.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/vpn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="44" column="77" selection-start-line="44" selection-start-column="77" selection-end-line="44" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vlans-add-list-routable-non-netx.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="119">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -140,8 +101,35 @@
       <file leaf-file-name="vlans-patch.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../templates/vlans-patch.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2339">
-              <caret line="125" column="37" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="37" />
+            <state relative-caret-position="495">
+              <caret line="213" column="1" selection-start-line="213" selection-start-column="1" selection-end-line="213" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vlans-funnel.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/vlans-funnel.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vlans-add-list-routable-non-netx.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sites_handler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -150,13 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;csv&quot;</find>
-      <find>&quot;json&quot;</find>
-      <find>templa</find>
-      <find>delete</find>
-      <find>show</find>
-      <find>update_single_vlan</find>
-      <find>fake</find>
       <find>excep</find>
       <find>deploy_sites</find>
       <find>test</find>
@@ -171,8 +152,6 @@
       <find>.199</find>
       <find>key</find>
       <find>.</find>
-      <find>201</find>
-      <find>jinja</find>
       <find>vlans_generated</find>
       <find>hop</find>
       <find>sta</find>
@@ -180,6 +159,15 @@
       <find>gv</find>
       <find>summar</find>
       <find>NON-NETX</find>
+      <find>lower</find>
+      <find>75</find>
+      <find>update_all</find>
+      <find>generate</find>
+      <find>replace</find>
+      <find>dnsnameservers</find>
+      <find>jinja</find>
+      <find>\r</find>
+      <find>201</find>
     </findStrings>
     <replaceStrings>
       <replace>runtime/cli-selections</replace>
@@ -191,10 +179,11 @@
       <dir>C:\Users\linusv\work\nsmk-qa\code</dir>
       <dir>C:\Users\linusv\work\nsmk-qa\code\data\cli-deploy-l3fwrules\AutomationTestOrg_DONOTDELETE\0426\2018-04-10-16-25-05\runtime</dir>
       <dir>C:\Users\linusv\work\nsmk-qa\code\data\cli-deploy-l3fwrules</dir>
+      <dir>C:\Users\linusv\work\nsmk-qa\code\automation</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../templates" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -229,23 +218,25 @@
         <option value="$PROJECT_DIR$/automation/firewall_handler.py" />
         <option value="$PROJECT_DIR$/utils/auto_utils.py" />
         <option value="$PROJECT_DIR$/api/network.py" />
-        <option value="$PROJECT_DIR$/api/vlans.py" />
         <option value="$PROJECT_DIR$/../templates/vlans-add-list-routable.json" />
-        <option value="$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json" />
         <option value="$PROJECT_DIR$/runtime/cli-selections.json" />
         <option value="$PROJECT_DIR$/../templates/vlans-patch.json" />
         <option value="$PROJECT_DIR$/utils/auto_jinja.py" />
         <option value="$PROJECT_DIR$/cli.py" />
-        <option value="$PROJECT_DIR$/automation/vlan_handler.py" />
         <option value="$PROJECT_DIR$/utils/auto_pmdb.py" />
-        <option value="$PROJECT_DIR$/automation/static_route_handler.py" />
-        <option value="$PROJECT_DIR$/global_vars.py" />
-        <option value="$PROJECT_DIR$/../templates/vlans-non-netx.csv" />
         <option value="$PROJECT_DIR$/../templates/vlans-non-netx.json" />
         <option value="$PROJECT_DIR$/api/netx.py" />
         <option value="$PROJECT_DIR$/automation/vpn_handler.py" />
-        <option value="$PROJECT_DIR$/automation/sites_handler.py" />
         <option value="$PROJECT_DIR$/api/vpn.py" />
+        <option value="$PROJECT_DIR$/automation/static_route_handler.py" />
+        <option value="$PROJECT_DIR$/api/vlans.py" />
+        <option value="$PROJECT_DIR$/runtime/jinja_vlans_template.json" />
+        <option value="$PROJECT_DIR$/automation/vlan_handler.py" />
+        <option value="$PROJECT_DIR$/global_vars.py" />
+        <option value="$PROJECT_DIR$/../templates/vlans-non-netx.csv" />
+        <option value="$PROJECT_DIR$/../templates/vlans_funnel.csv" />
+        <option value="$PROJECT_DIR$/automation/sites_handler.py" />
+        <option value="$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json" />
       </list>
     </option>
   </component>
@@ -256,8 +247,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="116" />
-    <option name="y" value="42" />
+    <option name="x" value="69" />
+    <option name="y" value="35" />
     <option name="width" value="1697" />
     <option name="height" value="975" />
   </component>
@@ -276,8 +267,7 @@
             </path>
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -658,23 +648,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="116" y="42" width="1697" height="975" extended-state="0" />
+    <frame x="69" y="35" width="1697" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5197133" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5985663" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23396456" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31276727" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30227003" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.63560337" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5818399" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -726,6 +716,16 @@
           <line>66</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/vlans.py</url>
+          <line>203</line>
+          <option name="timeStamp" value="320" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/automation/vlan_handler.py</url>
+          <line>146</line>
+          <option name="timeStamp" value="328" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -737,7 +737,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="320" />
+      <option name="time" value="329" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -765,58 +765,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/utils/auto_logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/cli-selections.json.base">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automation/network_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv1/Lib/site-packages/requests/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="865" selection-start-line="865" selection-end-line="865" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/meraki_patch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#82#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../data/cli-deploy-vlans-add/AutomationTestOrg_DONOTDELETE/8501/2018-05-25-12-19-47/vlans_generated_N_686798943174009059.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../data/cli-deploy-vlans-add/AutomationTestOrg_DONOTDELETE/8501/2018-05-25-12-19-47/vlans-funnel_netx.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -866,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../templates/vlans_funnel.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../data/cli-deploy-vlans-add/AutomationTestOrg_DONOTDELETE/8501/2018-05-28-11-51-43/vlans_generated_N_686798943174009074.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -880,20 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/vlans-funnel.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/jinja_vlans_template.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -928,16 +855,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../data/cli-deploy-vlans-add/AutomationTestOrg_DONOTDELETE/8501/2018-05-28-12-16-35/vlans-funnel_netx.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/vlans.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#23#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1011,16 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/automation/vlan_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="486" selection-start-line="486" selection-end-line="486" />
-          <folding>
-            <element signature="e#23#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/static_route.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1035,72 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_vars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../templates/vlans-patch.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2339">
-          <caret line="125" column="37" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/netx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-          <folding>
-            <element signature="e#23#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automation/static_route_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="24" selection-start-line="22" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/meraki.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="1949" selection-start-line="1949" selection-end-line="1949" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/automation/vpn_handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1110,8 +951,156 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/vpn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="44" column="77" selection-start-line="44" selection-start-column="77" selection-end-line="44" selection-end-column="77" />
+        <state relative-caret-position="84">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menAndMice/getFunnel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1435">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/netx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="211" selection-start-line="211" selection-end-line="211" />
+          <folding>
+            <element signature="e#23#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cli-deploy-vlans-add/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-11-25-28/vlans_generated_N_686798943174009109.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cli-deploy-sites/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-11-36-29/vlans_generated_N_686798943174009110.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="145" column="13" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/low_csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="264" column="69" selection-start-line="264" selection-start-column="69" selection-end-line="264" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/static_route_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/meraki.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="3593" column="63" selection-start-line="3593" selection-start-column="63" selection-end-line="3593" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/vlan_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="130" column="18" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="18" />
+          <folding>
+            <element signature="e#23#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/vlans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#23#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans_funnel.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/vlans-funnel.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/jinja_vlans_template.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-318">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cli-deploy-sites/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-12-13-32/vlans_generated_N_686798943174009110.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cli-deploy-sites/AutomationTestOrg_DONOTDELETE/8501/2018-05-29-12-13-32/vlans_generated_N_686798943174009110.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2261">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx-base.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans-non-netx.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/sites_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans-patch.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="213" column="1" selection-start-line="213" selection-start-column="1" selection-end-line="213" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../templates/vlans-add-list-routable-non-netx.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
