@@ -35,7 +35,8 @@ def add(summary_only=False):
         if vlan['id'] == int(settings["CONFIG"]["static-route-next-hop"]):
             ip = vlan["applianceIp"]
             break
-    #### CHECK WITH JAS FIX ME
+
+    # #### CHECK WITH JAS FIX ME
     if ip is None:
         ip = vlans[0]["applianceIp"]
 

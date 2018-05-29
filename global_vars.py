@@ -10,6 +10,7 @@ if DEFAULT_STATE:
     use_serials = True
     serial_not_available_revert_clone = True
     VLANS_LOCK = True
+    USE_NON_NETX = False
 else:
     log_verbose = True  # Only if error_stop is set
     error_stop = True
@@ -17,6 +18,7 @@ else:
     use_serials = False
     serial_not_available_revert_clone = True
     VLANS_LOCK = False
+    USE_NON_NETX = True
 
 EOM = lambda : print("_"*48)
 

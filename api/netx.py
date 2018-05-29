@@ -5,6 +5,7 @@ from utils.auto_logger import runlogs_logger, logger
 import global_vars as gv
 from utils.auto_utils import char_range
 from utils.auto_pmdb import settings
+from copy import deepcopy
 
 """
 How to generate netx by example
@@ -129,6 +130,10 @@ class Netx(object):
         return netx
 
     def get_nnetx_dense(self, host):
+        nn_map = settings.get("NON-NETX")
+        if nn_map is None:
+            return None
+
         store_number = int(settings["store-number"])
         entries = self.valid_non_netx_subnet_list
         nnetx = dict()
@@ -137,7 +142,6 @@ class Netx(object):
             nnetx[entry] = {}
         nnetx["non-netx-summary"] = None
 
-        nn_map = settings["NON-NETX"]
 
         nnetx_inputs = nn_map.get(store_number)
         if nnetx_inputs is None:
@@ -148,13 +152,8 @@ class Netx(object):
         # Summary repeasts for all subnets and is only added once
         nnetx_input = nnetx_inputs[0]
         summary = nnetx_input["Summary"]
-        octets = summary.split(".")
         nn = dict()
-        nn["non-netx-summary"] = {}
-        nn["non-netx-summary"][1] = int(octets[0])
-        nn["non-netx-summary"][2] = int(octets[1])
-        nn["non-netx-summary"][3] = int(octets[2])
-        nn["non-netx-summary"][4] = int(octets[3].split("/")[0])
+        nn["non-netx-summary"] = deepcopy(summary)
 
         # Get subnets
         for nnetx_input in nnetx_inputs:
@@ -196,10 +195,11 @@ class Netx(object):
 
 
     def get_nnetx_str(self, nnetx):
+        if nnetx is None:
+            return None
         nnetx_str = dict()
 
-        it = nnetx["non-netx-summary"]
-        nnetx_str["non-netx-summary"] = "{}.{}.{}.{}".format(it[1], it[2], it[3], it[4])
+        nnetx_str["non-netx-summary"] = deepcopy(nnetx["non-netx-summary"])
 
         nnetx_to_str = lambda nnetx, idx: "{}.{}.{}".format(nnetx[idx][1], nnetx[idx][2], nnetx[idx][3])
 
@@ -216,6 +216,9 @@ class Netx(object):
         self.nnetx_dense = self.get_nnetx_dense(host)
         self.netx_str = self.get_netx_str(self.netx_dense)
         self.nnetx_str = self.get_nnetx_str(self.nnetx_dense)
+
+        if self.nnetx_dense is None:
+            return self.netx_str
 
         netx_str_all = {**self.netx_str, **self.nnetx_str}
         return netx_str_all

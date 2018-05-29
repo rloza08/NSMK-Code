@@ -43,7 +43,6 @@ class Vpn(object):
 
 
 def updatevpnsettings(networkid, hubnetworks, defaultroute, subnets, usevpn):
-	usevpn = [True, True]
 	obj = Vpn()
 	obj.update_settings(networkid, hubnetworks, defaultroute, subnets, usevpn)
 

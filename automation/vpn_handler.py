@@ -55,15 +55,17 @@ def setupSiteToSiteVpn():
 
     upper = "{}/22".format(netx['upper'])
     lower = "{}/22".format(netx['lower'])
-    nnetx_summary = "{}/22".format(netx['non-netx-summary'])
+    aux = netx.get('non-netx-summary')
+    nnetx_summary = netx.get('non-netx-summary')
     subnets = []
     usevpn = []
     subnets.append(lower)
     usevpn.append(True)  # enable the subnet above
     subnets.append(upper)
     usevpn.append(True)  # enable the subnet above
-    subnets.append(nnetx_summary)
-    usevpn.append(True)  # enable the subnet above
+    if nnetx_summary:
+        subnets.append(nnetx_summary)
+        usevpn.append(True)  # enable the subnet above
 
     # Upload to meraki
     import utils.auto_logger as l

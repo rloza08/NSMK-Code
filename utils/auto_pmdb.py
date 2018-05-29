@@ -83,18 +83,18 @@ def pmdb_init():
     settings["CONFIG"]["defaultroute"] = vpn["defaultroute"]
 
     # Netx and Non-Netx
-    settings["NON-NETX"] = dict()
-    fname = "vlans-non-netx"
-    non_netx_stores = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
-    nn_map = {}
-    # Builds list of subnets per store
-    for entry in non_netx_stores:
-        store_number = entry["Store"]
-        if nn_map.get(store_number) is None:
-            nn_map[store_number] = []
-        nn_map[store_number].append(deepcopy(entry))
-
-    settings["NON-NETX"] = nn_map
+    if gv.USE_NON_NETX:
+        settings["NON-NETX"] = dict()
+        fname = "vlans-non-netx"
+        non_netx_stores = json_reader("{}/{}.json".format(TEMPLATES_DIR, fname))
+        nn_map = {}
+        # Builds list of subnets per store
+        for entry in non_netx_stores:
+            store_number = entry["Store"]
+            if nn_map.get(store_number) is None:
+                nn_map[store_number] = []
+            nn_map[store_number].append(deepcopy(entry))
+        settings["NON-NETX"] = nn_map
 
     init_pmdb_flag = True
 
