@@ -487,7 +487,8 @@ def createVlanFiles():
     ref = obj.create_vlan_files()
     lower = obj.vlan_table.netx["lower"]
     upper = obj.vlan_table.netx["upper"]
-    return ref, lower, upper
+    nnetx_summary = obj.vlan_table.netx.get("non-netx-summary")
+    return ref, lower, upper, nnetx_summary
 
 
 def deploy_new():
@@ -523,7 +524,6 @@ def vlans_delete(netid, vlans_list):
     for vlan in vlans_list:
         vlanid = vlan["Vlan"]
         vlans.delete(netid, vlanid)
-
 
 
 if __name__ == "__main__":

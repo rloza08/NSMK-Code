@@ -774,18 +774,18 @@ class CLI(object):
 
     def deploy_vlans_add(self):
         """Runs the store orchestration"""
-        from automation.sites_handler import bulk_update_vlans
+        from automation.sites_handler import bulk_update_vlans_add
         agent = "cli-deploy-vlans-add"
-        bulk_update_vlans(agent)
+        bulk_update_vlans_add(agent)
         sys.stdout.flush()
         time.sleep(1)
         EOM()
 
     def deploy_vlans_delete(self):
         """Runs the store orchestration"""
-        from automation.sites_handler import bulk_update
+        from automation.sites_handler import bulk_update_vlans_delete
         agent = "cli-deploy-vlans-delete"
-        bulk_update(agent, vlans_only=True)
+        bulk_update_vlans_delete(agent, vlans_only=True)
         sys.stdout.flush()
         time.sleep(1)
         EOM()

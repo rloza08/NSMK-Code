@@ -17,12 +17,18 @@ def deploy_vlans_delete(agent, netid, vlans_list):
 
 
 def deploy_vlans_add(agent, netid=None, vlans_list=None):
+    l.runlogs_logger.info("vlan setup")
     vlan_handler.deploy_new()
+
+    # l.runlogs_logger.info("static route setup")
+    # static_route_handler.add(summary_only=True)
+
+    l.runlogs_logger.info("s2s vpn setup")
+    vpn_handler.setupSiteToSiteVpn()
 
 
 def deploy_sites(agent, netid=None, vlans_list=None):
     l.runlogs_logger.info("vlan setup")
-
     vlan_handler.deploy()
 
     l.runlogs_logger.info("static route setup")
@@ -65,13 +71,14 @@ def ENTER_CONTEXT(agent):
     return org_group, store_list, vlans_list
 
 
-def bulk_update_vlans(agent, vlans_only=False):
+def bulk_update_vlans_add(agent, vlans_only=False):
     bulk_update(agent, vlans_only=True)
 
+def bulk_update_vlans_delete(agent, vlans_only=False):
+    bulk_update(agent)
 
 def bulk_update_sites(agent, vlans_only=False):
     bulk_update(agent)
-
 
 def bulk_update(agent, vlans_only=False):
     l.runlogs_logger.info("bulk update started")
