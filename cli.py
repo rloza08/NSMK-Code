@@ -640,6 +640,7 @@ class CLI(object):
                 settings vlans-add
                 settings vlans-delete
                 store-lists
+                funnel
                 l3fwrules
                 s2svpnrules
 

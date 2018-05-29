@@ -223,7 +223,10 @@ class getFunnel(object):
                 return False
 
 if __name__ == '__main__':
-    print ("gotFunnel")
-    obj = getFunnel()
-    obj.dumpRaw()
-    obj.parseRAW()
+    try:
+        obj = getFunnel()
+        obj.dumpRaw()
+        obj.parseRAW()
+        print ("men and mice backend: got funnel.")
+    except Exception as err:
+        print ("men and mice backend: failed getting funnel.")

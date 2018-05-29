@@ -22,11 +22,14 @@ this function will then copy this into the data directory
 where the it will be picked up by the vlan_handler module.
 
 """
-
+from subprocess import Popen, PIPE
 
 def get_and_convert_funnel():
     try:
         cwd = os.getcwd()
+        p = Popen("{}/../menAndMice/getFunnel.py".format(cwd), shell=True, stdout=PIPE)
+        resp = p.communicate()[0]
+        print (resp)
         src = "../menAndMice/funnel.csv".format(cwd)
         dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
         destination = open(dst, 'wb')

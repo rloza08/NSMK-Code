@@ -38,8 +38,8 @@ class Vlans(object):
                     mxip = vlan['applianceIp']
                     success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet,
                                                   mxip, suppressprint=True)
-                    l.logger.info("created vlan {}".format(id))
-                    l.runlogs_logger.info("created vlan {} netid {}".format(id, networkid))
+                    l.runslogs_logger.info("created vlan {}".format(id))
+                    l.logger.info("created vlan {} netid {}".format(id, networkid))
 
                     self.update_single_vlan(vlan, update_all=True)
                     deploy_count += 1
