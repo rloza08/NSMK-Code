@@ -152,6 +152,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-add-org #\n{}".format(org_name))
         set_cli_selections("vlans-add-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_vlans_add_store_list(self, store_list):
@@ -160,6 +161,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-add-store-list #\n{}".format(store_list))
         set_cli_selections("vlans-add-store-list", store_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_vlans_add_list(self, vlans_add_list):
@@ -168,6 +170,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-add-list #\n{}".format(vlans_add_list))
         set_cli_selections("vlans-add-list", vlans_add_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_vlans_delete_org(self, org_name):
@@ -176,6 +179,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-delete-org #\n{}".format(org_name))
         set_cli_selections("vlans-delete-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_vlans_delete_store_list(self, store_list):
@@ -184,6 +188,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-delete-store-list #\n{}".format(store_list))
         set_cli_selections("vlans-delete-store-list", store_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_vlans_delete_list(self, vlans_delete_list):
@@ -192,6 +197,7 @@ class CLI(object):
             return
         print("\n\n# Selected vlans-delete-list #\n{}".format(vlans_delete_list))
         set_cli_selections("vlans-delete-list", vlans_delete_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_networks_org(self, org_name):
@@ -201,6 +207,7 @@ class CLI(object):
         print("\n\n# Selected networks/sites-org #\n{}".format(org_name))
         set_cli_selections("networks-org", org_name)
         set_cli_selections("sites-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_networks_serials(self, serials):
@@ -209,6 +216,7 @@ class CLI(object):
             return
         print("\n\n# Selected networks-serials #\n{}".format(serials))
         set_cli_selections("networks-serials", serials)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_store_lists_org(self, org_name):
@@ -217,6 +225,7 @@ class CLI(object):
             return
         print("\n\n# Selected store-lists-org #\n{}".format(org_name))
         set_cli_selections("store-lists-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_networks_store_list(self, store_list):
@@ -226,6 +235,7 @@ class CLI(object):
         print("\n\n# Selected networks/sites-store-list #\n{}".format(store_list))
         set_cli_selections("networks-store-list", store_list)
         set_cli_selections("sites-store-list", store_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_networks_clone_source(self, clone_source):
@@ -234,6 +244,7 @@ class CLI(object):
             return
         print("\n\n# Selected networks-clone-source #\n{}".format(clone_source))
         set_cli_selections("networks-clone-source", clone_source)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_l3fwrules_org(self, org_name):
@@ -242,6 +253,7 @@ class CLI(object):
             return
         print("\n\n# selected l3fwrules-org: #\n{}".format(org_name))
         set_cli_selections("l3fwrules-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_l3fwrules_store_list(self, store_list):
@@ -250,6 +262,7 @@ class CLI(object):
             return
         print("\n\n# selected l3fwrules-store-list: #\n{}".format(store_list))
         set_cli_selections("l3fwrules-store-list", store_list)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_sites_l3fwrules_version(self, version):
@@ -258,6 +271,7 @@ class CLI(object):
             return
         print("\n\n# selected deploy-l3fwrules-version: #\n{}".format(version))
         set_cli_selections("sites-l3fwrules-version", version)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_l3fwrules_version(self, version):
@@ -266,6 +280,7 @@ class CLI(object):
             return
         print("\n\n# selected l3fwrules-version: #\n{}".format(version))
         set_cli_selections("l3fwrules-version", version)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_s2svpnrules_org(self, org_name):
@@ -274,6 +289,7 @@ class CLI(object):
             return
         print("\n\n# selected s2svpnrules-org: #\n{}".format(org_name))
         set_cli_selections("s2svpnrules-org", org_name)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_s2svpnrules_version(self, version):
@@ -282,6 +298,7 @@ class CLI(object):
             return
         print("\n\n# selected s2svpnrules-version: #\n{}".format(version))
         set_cli_selections("s2svpnrules-version", version)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def set_run_dry(self):
@@ -394,6 +411,7 @@ class CLI(object):
         bulk_get(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def get_s2svpnrules(self):
@@ -406,6 +424,7 @@ class CLI(object):
         bulk_get(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def get_settings_all(self):
@@ -487,7 +506,6 @@ class CLI(object):
         print("   convert json-to-csv <filename in /appl/nms/xfer")
         EOM()
         print("")
-        os.chdir("{}".format(self.cwd))
 
     def get_settings_sites(self):
         os.chdir("{}/automation".format(self.cwd))
@@ -564,6 +582,7 @@ class CLI(object):
         get_store_lists(agent=agent)
         sys.stdout.flush()
         time.sleep(1)
+        os.chdir("{}".format(self.cwd))
         EOM()
         print("# store lists have been created #")
         return True
@@ -761,7 +780,7 @@ class CLI(object):
             self.deploy_s2svpnrules()
         else:
             print("Invalid option.")
-        os.chdir("{}/automation".format(self.cwd))
+        os.chdir("{}".format(self.cwd))
 
     # Should get config (shows all the gets)
     def deploy_sites(self):
@@ -825,6 +844,7 @@ class CLI(object):
         os.chdir("{}".format(self.cwd))
         sys.stdout.flush()
         time.sleep(1)
+        os.chdir("{}".format(self.cwd))
         EOM()
 
     def doc(self, design=None, automation=None, automation_vlan=None,
@@ -845,6 +865,7 @@ class CLI(object):
         EOM()
 
 
+from utils.auto_utils import delete_runtime_dir
 
 if __name__ == '__main__':
     # fp = lock()
@@ -853,4 +874,5 @@ if __name__ == '__main__':
     pmdb_init()  # init db
     os.chdir("{}".format(cwd))
     fire.Fire(CLI)
+    delete_runtime_dir()
     # unlock(fp)

@@ -58,14 +58,14 @@ def select_store(_store_name):
 def set_cli_selections(field=None, value=None):
     if field:
         settings["CLI"][field] = value
-    json_writer("{}/cli-selections.json".format(RUNTIME_DIR), settings["CLI"])
+    json_writer("{}/cli-selections.json".format(CONFIG_DIR), settings["CLI"])
 
 
 def set_settings(field=None, value=None):
     assert(0)
     if field:
         settings[field] = value
-    json_writer("{}/cli-selections.json".format(RUNTIME_DIR), settings)
+    json_writer("{}/cli-selections.json".format(CONFIG_DIR), settings)
 
 
 def load_org(_orchestration_agent=None, org_name=None):

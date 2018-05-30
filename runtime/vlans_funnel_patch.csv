@@ -1,5 +1,0 @@
-Vlan,Subnet,Description
-992,"192.168.192.0/24","Digital Signage - I"
-995,"192.168.1.0/24","Guest WIFI"
-996,"192.168.100.0/24","Cache VPN"
-997,"192.168.101.0/24","Cache Internet"

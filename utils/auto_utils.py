@@ -275,6 +275,20 @@ def is_valid_serial_number(serial):
             return False
     return True
 
+# to be called from the CLI
+def delete_runtime_dir():
+    print (os.getcwd())
+    folder = './runtime'
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        if file_path.find("vlans-funnel-base") > 0:
+            continue
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
+
 if __name__ == '__main__':
     pmdb_init()
     print (settings)

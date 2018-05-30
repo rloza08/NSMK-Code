@@ -27,7 +27,7 @@ def json_reader(fpath):
 
 def load_cli_settings():
     global settings
-    settings["CLI"] = json_reader("{}/cli-selections.json".format(RUNTIME_DIR))
+    settings["CLI"] = json_reader("{}/cli-selections.json".format(CONFIG_DIR))
 
 
 init_pmdb_flag = False
