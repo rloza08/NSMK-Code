@@ -311,7 +311,7 @@ def do_setup_copy():
     cmd = "{}/../setup/set-default.sh".format(cwd).split()
     try:
         cwd = os.getcwd()
-        p = Popen("{}/../setup/set-default.sh".format(cwd), shell=True, stdout=PIPE, cwd='../setup')
+        p = Popen("{}/../setup/set-default.sh".format(cwd), shell=False, stdout=PIPE, cwd='../setup')
         p.communicate()
     except Exception as err:
         print (err)

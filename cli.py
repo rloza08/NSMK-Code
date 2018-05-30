@@ -241,6 +241,7 @@ class CLI(object):
     def set_default(self):
         os.chdir("{}/automation".format(self.cwd))
         do_setup_copy()
+        print("\n\n# All CLI selections set to default vlues #\n")
         os.chdir("{}".format(self.cwd))
         EOM()
 
