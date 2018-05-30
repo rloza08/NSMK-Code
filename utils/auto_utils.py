@@ -301,6 +301,7 @@ RUNTIME_DIR = "../runtime"
 TEMPLATES_DIR = "../../templates"
 
 from subprocess import Popen, PIPE
+import subprocess
 def do_setup_copy():
     cwd = os.getcwd()
     # src = "../menAndMice/funnel.csv".format(cwd)
@@ -308,10 +309,11 @@ def do_setup_copy():
     # do_copy(src, dst)
     #
     #
-    cmd = "{}/../setup/set-default.sh".format(cwd).split()
+    """Launches 'command' windowless"""
     try:
         cwd = os.getcwd()
-        p = Popen("{}/../setup/set-default.sh".format(cwd), shell=False, stdout=PIPE, cwd='../setup')
+        p = Popen("{}/../setup/set-default.sh".format(cwd),
+                  shell=True, stdout=PIPE, cwd='../setup')
         p.communicate()
     except Exception as err:
         print (err)
