@@ -1,0 +1,26 @@
+[
+  {
+    "Vlan": 201,
+    "Subnet": "10.x.i.0/27",
+    "Description": "New Vlan 201",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 2,
+    "reservedIpRanges1-end": 3,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 4,
+    "reservedIpRanges2-end": 5
+  },
+  {
+    "Vlan": 202,
+    "Subnet": "10.x.j.32/27",
+    "Description": "New Vlan 202",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 33,
+    "reservedIpRanges1-end": 34,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 35,
+    "reservedIpRanges2-end": 36
+  }
+]

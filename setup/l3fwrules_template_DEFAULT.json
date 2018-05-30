@@ -1,0 +1,12 @@
+[
+    {
+        "comment": "413",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "58019",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    }
+]
