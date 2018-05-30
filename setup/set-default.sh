@@ -1,7 +1,7 @@
 #!/bin/bash
 cp cli-selections.json ../../config
-rm cli-selections.json
 cp safeway-config.json ../../config
-rm safeway-config.json
 cp *.json ../../templates
+rm ../../templates/cli-selections.json
+rm ../../templates/safeway-config.json
 echo "default settings have been set."

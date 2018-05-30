@@ -1,0 +1,23 @@
+{
+    "networks-org": "org-AutomationTestOrg_DONOTDELETE",
+    "networks-store-list": "store-list-DEFAULT",
+    "networks-clone-source": "0_Base_Config_v1",
+    "networks-serials": "networks-serials-DEFAULT",
+    "sites-org": "org-AutomationTestOrg_DONOTDELETE",
+    "sites-store-list": "store-list-tst1",
+    "sites-l3fwrules-version": "l3fwrules_template_DEFAULT",
+    "store-lists-org": "org-Firewall_Testing_Org",
+    "l3fwrules-org": "org-AutomationTestOrg_DONOTDELETE",
+    "l3fwrules-store-list": "store-list-DEFAULT",
+    "l3fwrules-version": "l3fwrules_template_DEFAULT",
+    "s2svpnrules-org": "org-AutomationTestOrg_DONOTDELETE",
+    "s2svpnrules-version": "s2svpnrules_DEFAULT",
+    "vlans-add-org": "org-AutomationTestOrg_DONOTDELETE",
+    "vlans-add-store-list": "store-list-DEFAULT",
+    "vlans-add-list": "vlans-add-list-non-routable-DEFAULT",
+    "vlans-delete-org": "org-AutomationTestOrg_DONOTDELETE",
+    "vlans-delete-store-list": "store-list-DEFAULT",
+    "vlans-delete-list": "vlans-delete-list-DEFAULT",
+    "dry-run": false,
+    "dryrun-next-fake-ip": "10.1.1.10"
+}
