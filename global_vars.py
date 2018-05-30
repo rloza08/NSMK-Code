@@ -18,7 +18,7 @@ else:
     use_serials = False
     serial_not_available_revert_clone = True
     VLANS_LOCK = False
-    USE_NON_NETX = True
+    USE_NON_NETX = False
 
 EOM = lambda : print("_"*48)
 

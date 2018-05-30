@@ -277,7 +277,8 @@ def is_valid_serial_number(serial):
 
 # to be called from the CLI
 def delete_runtime_dir():
-    print (os.getcwd())
+    cwd = os.getcwd()
+
     folder = './runtime'
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)

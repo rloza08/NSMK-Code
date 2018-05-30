@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import utils.auto_config as config
 import utils.auto_json as json
-import utils.auto_logger as l
+from utils.auto_logger import runlogs_logger, logger
 from api.meraki_patch import meraki
 import global_vars as gv
 
@@ -38,8 +38,8 @@ class Vlans(object):
                     mxip = vlan['applianceIp']
                     success, str = meraki.addvlan(apikey, networkid, vlanid, name, subnet,
                                                   mxip, suppressprint=True)
-                    l.runslogs_logger.info("created vlan {}".format(id))
-                    l.logger.info("created vlan {} netid {}".format(id, networkid))
+                    runlogs_logger.info("created vlan {}".format(id))
+                    logger.info("created vlan {} netid {}".format(id, networkid))
 
                     self.update_single_vlan(vlan, update_all=True)
                     deploy_count += 1
@@ -47,22 +47,22 @@ class Vlans(object):
                 except (meraki.EmailFormatError,
                         meraki.OrgPermissionError,
                         meraki.ListError) as err:
-                    l.logger.error("Meraki error: {} netid {}".format(err.default, vlanid))
-                    l.runlogs_logger.error("Meraki error: {}".format(err.default))
+                    logger.error("Meraki error: {} netid {}".format(err.default, vlanid))
+                    runlogs_logger.error("Meraki error: {}".format(err.default))
                     exit(-1)
 
 
                 except Exception as err:
-                    l.logger.error("{}".format(err.args))
-                    l.runlogs_logger.error("{}".format(err.args))
+                    logger.error("{}".format(err.args))
+                    runlogs_logger.error("{}".format(err.args))
                     gv.fake_assert()
 
         if deploy_count == 0 :
-            l.logger.info("vlans already exist - no vlans added")
-            l.runlogs_logger.info("vlans already exist - no vlans added")
+            logger.info("vlans already exist - no vlans added")
+            runlogs_logger.info("vlans already exist - no vlans added")
         else:
-            l.logger.info("added a total of {} vlans".format(deploy_count))
-            l.runlogs_logger.info("added a total of {} vlans".format(deploy_count))
+            logger.info("added a total of {} vlans".format(deploy_count))
+            runlogs_logger.info("added a total of {} vlans".format(deploy_count))
 
     @classmethod
     def update_single_vlan(self, vlan, update_all=False):
@@ -94,16 +94,16 @@ class Vlans(object):
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-            l.logger.error("Meraki error: {}".format(err.default))
-            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            logger.error("Meraki error: {}".format(err.default))
+            runlogs_logger.error("Meraki error: {}".format(err.default))
             exit(-1)
 
 
         if not success:
             raise Exception("meraki.updatevlan failed for vlan-id {} : {}".format(id, _err))
 
-        l.logger.info("updated vlan {} name: {}".format(id, name))
-        l.runlogs_logger.info("updated vlan {} name: {}".format(id, name))
+        logger.info("updated vlan {} name: {}".format(id, name))
+        runlogs_logger.info("updated vlan {} name: {}".format(id, name))
         return True
 
 
@@ -116,8 +116,8 @@ class Vlans(object):
                 self.update_single_vlan(vlan, update_all=True)
 
         except Exception as err:
-            l.logger.error("{}".format(err.args))
-            l.runlogs_logger.error("{}".format(err.args))
+            logger.error("{}".format(err.args))
+            runlogs_logger.error("{}".format(err.args))
             gv.fake_assert()
             return False
 
@@ -129,8 +129,8 @@ class Vlans(object):
             for vlanid in vlans:
                 self.delete(netid, vlanid)
         except Exception as err:
-            l.logger.error("{}".format(err.args))
-            l.runlogs_logger.error("{}".format(err.args))
+            logger.error("{}".format(err.args))
+            runlogs_logger.error("{}".format(err.args))
             gv.fake_assert()
             return False
         return True
@@ -141,24 +141,24 @@ class Vlans(object):
         try:
             success, self.vlans = meraki.getvlans(config.api_key, netid)
             if not success:
-                l.logger.error("failed netid:{} {}".format(netid, self.vlans))
-                l.runlogs_logger.error("failed {}".format(self.vlans))
+                logger.error("failed netid:{} {}".format(netid, self.vlans))
+                runlogs_logger.error("failed {}".format(self.vlans))
                 gv.fake_assert()
             fname = "vlans_{}".format(netid)
             #json.writer(fname, self.vlans)
-            l.logger.info("netid:{} {}".format(netid, json.make_pretty(self.vlans)))
+            logger.info("netid:{} {}".format(netid, json.make_pretty(self.vlans)))
 
         except (meraki.EmailFormatError,
                     meraki.OrgPermissionError,
                     meraki.ListError) as err:
-            l.logger.error("Meraki error: {}".format(err.default))
-            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            logger.error("Meraki error: {}".format(err.default))
+            runlogs_logger.error("Meraki error: {}".format(err.default))
             exit(-1)
 
 
         except Exception as err:
-            l.logger.error("exception failure netid:{}".format(netid, self.vlans))
-            l.runlogs_logger.error("exception failure \n{}".format(self.vlans))
+            logger.error("exception failure netid:{}".format(netid, self.vlans))
+            runlogs_logger.error("exception failure \n{}".format(self.vlans))
             gv.fake_assert()
 
     """
@@ -173,24 +173,24 @@ class Vlans(object):
 
             success, self.vlans = meraki.delvlan(config.api_key, netid, vlanid)
             if success:
-                l.logger.info("deleted vlan {}".format(vlanid))
-                l.runlogs_logger.info("deleted vlan {}".format(vlanid))
+                logger.info("deleted vlan {}".format(vlanid))
+                runlogs_logger.info("deleted vlan {}".format(vlanid))
             else:
-                l.logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
-                l.runlogs_logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
+                logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
+                runlogs_logger.info("vlan does not exist vlan {} not deleted".format(vlanid))
                 gv.fake_assert()
-            l.logger.debug("netid:{} vlanid:{}".format(netid, vlanid))
+            logger.debug("netid:{} vlanid:{}".format(netid, vlanid))
 
         except (meraki.EmailFormatError,
                 meraki.OrgPermissionError,
                 meraki.ListError) as err:
-            l.logger.error("Meraki error: {}".format(err.default))
-            l.runlogs_logger.error("Meraki error: {}".format(err.default))
+            logger.error("Meraki error: {}".format(err.default))
+            runlogs_logger.error("Meraki error: {}".format(err.default))
             exit(-1)
 
         except Exception as err:
-            l.logger.error("exception failure netid:{} - vlanid:{}".format(netid, vlanid))
-            l.runlogs_logger.error("exception failure - vlanid {}".format(vlanid))
+            logger.error("exception failure netid:{} - vlanid:{}".format(netid, vlanid))
+            runlogs_logger.error("exception failure - vlanid {}".format(vlanid))
             gv.fake_assert()
 
 

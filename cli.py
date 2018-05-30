@@ -149,6 +149,7 @@ class CLI(object):
     def set_vlans_add_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-add-org #\n{}".format(org_name))
         set_cli_selections("vlans-add-org", org_name)
@@ -158,6 +159,7 @@ class CLI(object):
     def set_vlans_add_store_list(self, store_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-add-store-list #\n{}".format(store_list))
         set_cli_selections("vlans-add-store-list", store_list)
@@ -167,6 +169,7 @@ class CLI(object):
     def set_vlans_add_list(self, vlans_add_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_vlans_add_list(vlans_add_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-add-list #\n{}".format(vlans_add_list))
         set_cli_selections("vlans-add-list", vlans_add_list)
@@ -176,6 +179,7 @@ class CLI(object):
     def set_vlans_delete_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-delete-org #\n{}".format(org_name))
         set_cli_selections("vlans-delete-org", org_name)
@@ -185,6 +189,7 @@ class CLI(object):
     def set_vlans_delete_store_list(self, store_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-delete-store-list #\n{}".format(store_list))
         set_cli_selections("vlans-delete-store-list", store_list)
@@ -194,6 +199,7 @@ class CLI(object):
     def set_vlans_delete_list(self, vlans_delete_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_vlans_delete_list(vlans_delete_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected vlans-delete-list #\n{}".format(vlans_delete_list))
         set_cli_selections("vlans-delete-list", vlans_delete_list)
@@ -203,6 +209,7 @@ class CLI(object):
     def set_networks_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected networks/sites-org #\n{}".format(org_name))
         set_cli_selections("networks-org", org_name)
@@ -213,6 +220,7 @@ class CLI(object):
     def set_networks_serials(self, serials):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_serials(serials) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected networks-serials #\n{}".format(serials))
         set_cli_selections("networks-serials", serials)
@@ -222,6 +230,7 @@ class CLI(object):
     def set_store_lists_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected store-lists-org #\n{}".format(org_name))
         set_cli_selections("store-lists-org", org_name)
@@ -231,6 +240,7 @@ class CLI(object):
     def set_networks_store_list(self, store_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected networks/sites-store-list #\n{}".format(store_list))
         set_cli_selections("networks-store-list", store_list)
@@ -241,6 +251,7 @@ class CLI(object):
     def set_networks_clone_source(self, clone_source):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_clone_source(clone_source) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# Selected networks-clone-source #\n{}".format(clone_source))
         set_cli_selections("networks-clone-source", clone_source)
@@ -250,6 +261,7 @@ class CLI(object):
     def set_l3fwrules_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected l3fwrules-org: #\n{}".format(org_name))
         set_cli_selections("l3fwrules-org", org_name)
@@ -259,6 +271,7 @@ class CLI(object):
     def set_l3fwrules_store_list(self, store_list):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_store_list(store_list) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected l3fwrules-store-list: #\n{}".format(store_list))
         set_cli_selections("l3fwrules-store-list", store_list)
@@ -268,6 +281,7 @@ class CLI(object):
     def set_sites_l3fwrules_version(self, version):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_l3fwrules_version(version) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected deploy-l3fwrules-version: #\n{}".format(version))
         set_cli_selections("sites-l3fwrules-version", version)
@@ -277,6 +291,7 @@ class CLI(object):
     def set_l3fwrules_version(self, version):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_l3fwrules_version(version) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected l3fwrules-version: #\n{}".format(version))
         set_cli_selections("l3fwrules-version", version)
@@ -286,6 +301,7 @@ class CLI(object):
     def set_s2svpnrules_org(self, org_name):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_org_list(org_name) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected s2svpnrules-org: #\n{}".format(org_name))
         set_cli_selections("s2svpnrules-org", org_name)
@@ -295,6 +311,7 @@ class CLI(object):
     def set_s2svpnrules_version(self, version):
         os.chdir("{}/automation".format(self.cwd))
         if self.validate_s2svpnrules_version(version) is False:
+            os.chdir("{}".format(self.cwd))
             return
         print("\n\n# selected s2svpnrules-version: #\n{}".format(version))
         set_cli_selections("s2svpnrules-version", version)
