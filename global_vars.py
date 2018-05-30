@@ -12,8 +12,8 @@ if DEFAULT_STATE:
     VLANS_LOCK = True
     USE_NON_NETX = False
 else:
-    log_verbose = True  # Only if error_stop is set
-    error_stop = True
+    log_verbose = False  # Only if error_stop is set
+    error_stop = False
     force_yes = True
     use_serials = False
     serial_not_available_revert_clone = True

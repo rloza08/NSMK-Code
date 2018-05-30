@@ -10,7 +10,7 @@ import global_vars as gv
 from global_vars import EOM
 from utils.auto_globals import set_cli_selections
 from utils.auto_pmdb import pmdb_init, settings
-
+from utils.auto_utils import do_setup_copy
 
 def lock():
     cnt = 0
@@ -238,10 +238,9 @@ class CLI(object):
         EOM()
 
 
-    def set_defaults(self):
+    def set_default(self):
         os.chdir("{}/automation".format(self.cwd))
-        set_cli_selections("networks-store-list", store_list)
-        set_cli_selections("sites-store-list", store_list)
+        do_setup_copy()
         os.chdir("{}".format(self.cwd))
         EOM()
 
@@ -372,7 +371,7 @@ class CLI(object):
                 l3fwrules-version
                 s2svpnrules-org
                 s2svpnrules-version
-                defaults
+                default
         """
         if self.match(module, "networks-org"):
             self.set_networks_org(org_name=param)
@@ -384,8 +383,8 @@ class CLI(object):
             self.set_networks_store_list(store_list=param)
         elif self.match(module, "networks-clone-source"):
             self.set_networks_clone_source(clone_source=param)
-        elif self.match(module, "defaults"):
-            self.set_defaults()
+        elif self.match(module, "default"):
+            self.set_default()
         elif self.match(module, "sites-store-list"):
             self.set_networks_store_list(store_list=param)
         elif self.match(module, "sites-l3fwrules-version"):
