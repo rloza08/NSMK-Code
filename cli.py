@@ -535,6 +535,7 @@ class CLI(object):
         print("   convert csv-to-json <filename in /appl/nms/xfer")
         print("   convert json-to-csv <filename in /appl/nms/xfer")
         EOM()
+        os.chdir("{}".format(self.cwd))
         print("")
 
     def get_settings_sites(self):

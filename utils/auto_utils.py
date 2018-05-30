@@ -302,11 +302,9 @@ TEMPLATES_DIR = "../../templates"
 
 def copy_utils():
     cwd = os.getcwd()
-
     src = "../menAndMice/funnel.csv".format(cwd)
     dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
     do_copy(src, dst)
-
 
 
 if __name__ == '__main__':
