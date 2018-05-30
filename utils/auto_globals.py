@@ -5,7 +5,7 @@ from utils.auto_logger import logger, runlogs_logger
 import global_vars as gv
 from utils.auto_utils import create_org_data_dir
 import utils.auto_utils as utils
-from utils.auto_pmdb import settings, load_cli_settings
+from utils.auto_pmdb import settings
 
 CONFIG_DIR = "../../config"
 RUNTIME_DIR = "../runtime"

@@ -10,7 +10,7 @@ import automation.bulk_update as bulk
 import utils.auto_json as json
 from utils.low_json import Json
 from utils.auto_pmdb import settings
-
+import global_vars as gv
 
 def deploy_vlans_delete(agent, netid, vlans_list):
     vlan_handler.vlans_delete(netid, vlans_list)
@@ -20,11 +20,12 @@ def deploy_vlans_add(agent, netid=None, vlans_list=None):
     l.runlogs_logger.info("vlan setup")
     vlan_handler.deploy_new()
 
-    l.runlogs_logger.info("static route setup")
-    static_route_handler.add(summary_only=True)
+    if gv.USE_NON_NETX:
+        l.runlogs_logger.info("static route setup")
+        static_route_handler.add(summary_only=True)
 
-    l.runlogs_logger.info("s2s vpn setup")
-    vpn_handler.setupSiteToSiteVpn()
+        l.runlogs_logger.info("s2s vpn setup")
+        vpn_handler.setupSiteToSiteVpn()
 
 
 def deploy_sites(agent, netid=None, vlans_list=None):

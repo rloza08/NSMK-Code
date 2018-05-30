@@ -7,7 +7,6 @@ import api.netx as netx
 from utils.auto_config import json_reader, make_pretty
 from utils._json import Json
 
-import os
 from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR, TEMPLATES_DIR
 from utils.auto_pmdb import settings
 from copy import deepcopy
@@ -336,7 +335,11 @@ class VlanTable(object):
             subnet = entry["Subnet"].split(".")
             netxIndex = subnet[0]
             if netxIndex in self.valid_subnets:
-                subnet[0] = self.netx[netxIndex]
+                aux = self.netx.get(netxIndex)
+                if aux is None:
+                    l.logger.debug(" {}".format(self.funnel_subnet_file))
+
+                subnet[0] = aux
                 elem = entry["Subnet"].split(".")
                 entry["Subnet"] = "{}.{}".format(subnet[0], elem[1])
                 json.writer(self.funnel_subnet_file, self.funnel)

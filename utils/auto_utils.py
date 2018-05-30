@@ -290,6 +290,25 @@ def delete_runtime_dir():
         except Exception as e:
             print(e)
 
+
+def do_copy(src, dst):
+    destination = open(dst, 'wb')
+    shutil.copyfileobj(open(src, 'rb'), destination)
+    destination.close()
+
+CONFIG_DIR = "../../config"
+RUNTIME_DIR = "../runtime"
+TEMPLATES_DIR = "../../templates"
+
+def copy_utils():
+    cwd = os.getcwd()
+
+    src = "../menAndMice/funnel.csv".format(cwd)
+    dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
+    do_copy(src, dst)
+
+
+
 if __name__ == '__main__':
     pmdb_init()
     print (settings)
