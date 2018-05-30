@@ -1,0 +1,3 @@
+Vlan,Subnet,Description,dnsNameservers,reservedIpRanges1-comment,reservedIpRanges1-start,reservedIpRanges1-end,reservedIpRanges2-comment,reservedIpRanges2-start,reservedIpRanges2-end
+1014,192.168.114.0/24,New Vlan 1014,upstream_dns,Reserved,129,178,Reserved,179,190
+1015,192.168.115.0/24,New Vlan 1015,upstream_dns,Reserved,129,178,Reserved,179,190

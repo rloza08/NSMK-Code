@@ -1,0 +1,2 @@
+comment,policy,protocol,srcPort,srcCidr,destPort,destCidr,syslogEnabled
+413,allow,tcp,any,VLAN(24).23,58019,VLAN(70).62,false
