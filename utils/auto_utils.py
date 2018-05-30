@@ -301,14 +301,12 @@ RUNTIME_DIR = "../runtime"
 TEMPLATES_DIR = "../../templates"
 
 from subprocess import Popen, PIPE
-import subprocess
 def do_setup_copy():
     cwd = os.getcwd()
-    # src = "../menAndMice/funnel.csv".format(cwd)
-    # dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
-    # do_copy(src, dst)
-    #
-    #
+    src = "../menAndMice/funnel.csv".format(cwd)
+    dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
+    do_copy(src, dst)
+
     """Launches 'command' windowless"""
     try:
         cwd = os.getcwd()
@@ -317,6 +315,7 @@ def do_setup_copy():
         p.communicate()
     except Exception as err:
         print (err)
+
 if __name__ == '__main__':
     pmdb_init()
     print (settings)
