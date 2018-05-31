@@ -1,5 +1,0 @@
-Vlan,Subnet,Description,dnsNameservers,reservedIpRanges1-comment,reservedIpRanges1-start,reservedIpRanges1-end,reservedIpRanges2-comment,reservedIpRanges2-start,reservedIpRanges2-end
-201,10.x.i.0/27,New Vlan 201,"172.24.98.22
-172.18.0.10",Reserved1,2,3,Reserved2,4,5
-202,10.x.j.32/27,New Vlan 202,"172.24.98.22
-172.18.0.10",Reserved1,33,34,Reserved2,35,36

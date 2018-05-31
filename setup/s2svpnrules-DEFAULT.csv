@@ -1,2 +1,0 @@
-comment,policy,protocol,srcPort,srcCidr,destPort,destCidr,syslogEnabled
-"deny all vlans - 2, 12, 13",deny,any,Any,"127.0.0.0/8,10.14.20.128/29,10.14.24.128/29",Any,"10.220.44.0/22,10.156.44.0/22,10.192.0.0 mask 255.192.0.0,10.128.0.0 mask 255.192.0.0",true
