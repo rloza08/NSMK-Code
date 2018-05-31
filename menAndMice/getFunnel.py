@@ -163,9 +163,10 @@ class mmSoap(client.Client):
 class getFunnel(object):
     def __init__(self):
         try:
-            user = os.environ.get("SOAP_USER", None)
-            password = os.environ.get("SOAP_PWD", None)
-
+            #user = os.environ.get("SOAP_USER", None)
+            user = "opsware1"
+            #password = os.environ.get("SOAP_PWD", None)
+            password = "0psware1!"
             self.cli = mmSoap(proxy="dnstool", server="dnstool",
                               username=user, password=password,
                               namespace="mm", cache=None)

@@ -1,9 +1,10 @@
+
 #!/usr/bin/env python3
 import csv
 import utils.auto_logger as l
 import utils.auto_utils as utils
-from utils.low_json import Json
-from utils.auto_utils import is_valid_serial_number, is_numeric_in_range, is_non_zero_number
+from utils._json import Json
+from utils.auto_utils import is_numeric, is_numeric_in_range, is_non_zero_number
 
 from jsonschema import validate
 import sys
@@ -12,6 +13,7 @@ import global_vars as gv
 def show_error(str):
     l.logger.error(str)
     sys.stdout.flush()
+
 
 class Csv(object):
     def __init__(self):
@@ -218,35 +220,14 @@ class Csv(object):
                     gv.EOM()
                     gv.fake_assert()
 
-        is_firewall = (file_type == "l3fwrules" or file_type == "s2svpnrules")
-        is_networks_serials = (file_type == "networks-serials")
-
+        is_firewall = (file_type=="l3fwrules" or file_type=="s2svpnrules")
         json_data = []
 
         line_count = 0
         with open(fname_csv, encoding="windows-1251", newline='') as csv_file:
             line_count +=1
             entries = csv.DictReader(csv_file, skipinitialspace=True)
-            if is_networks_serials is True:
-                from utils.auto_utils import is_valid_store_name
-                line_count = 0
-                for entry in entries:
-                    line_count +=1
-                    store_name = entry["Network name"]
-                    success, _, _, _ = is_valid_store_name(store_name)
-                    if success is False:
-                        print("invalid Network name {} line number :{}".format(store_name, line_count))
-                        gv.EOM()
-                        gv.fake_assert()
-                    serial = entry["Serial"]
-                    success = is_valid_serial_number(serial)
-                    if success is False:
-                        print("invalid serial number {} line number :{}".format(serial, line_count))
-                        gv.EOM()
-                        gv.fake_assert()
-
-                    json_data.append(entry)
-            elif is_firewall is False:
+            if is_firewall is False:
                 for entry in entries:
                     json_data.append(entry)
             else:
