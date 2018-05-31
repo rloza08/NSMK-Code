@@ -5,7 +5,7 @@ import utils.auto_jinja as auto_jinja
 import api.vlans as vlans
 import api.netx as netx
 from utils.auto_config import json_reader, make_pretty
-from utils._json import Json
+from utils.low_json import Json
 
 from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR, TEMPLATES_DIR
 from utils.auto_pmdb import settings

@@ -3,7 +3,7 @@
 import csv
 import utils.auto_logger as l
 import utils.auto_utils as utils
-from utils._json import Json
+from utils.low_json import Json
 from utils.auto_utils import is_numeric, is_numeric_in_range, is_non_zero_number
 
 from jsonschema import validate
