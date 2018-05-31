@@ -1,0 +1,3082 @@
+[
+    {
+        "comment": "413",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "58019",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "1755",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "22",
+        "destCidr": "VLAN(70).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "2449",
+        "policy": "deny",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(4).*",
+        "destPort": "any",
+        "destCidr": "VLAN(4).15",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "2589",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(6).16",
+        "destPort": "3389",
+        "destCidr": "VLAN(19).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "2699, 2766",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(6).12",
+        "destPort": "139,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3236, 3237",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).7,VLAN(6).19",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(70).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3240, 3241",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).7",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(70).62,VLAN(70).18",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3254",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "22",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3256",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3317, 3318, 3319, 3320",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14",
+        "destPort": "58081,58443",
+        "destCidr": "VLAN(70).19,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3331, 3332, 3415",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).10,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3333, 3334",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "161",
+        "destCidr": "VLAN(24).10,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3339, 3340, 3341, 3342, 3343, 3344",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).25",
+        "destPort": "52072,1433,8310,8311",
+        "destCidr": "VLAN(24).195,VLAN(24).132",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3355, 3403",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).12",
+        "destPort": "139-445",
+        "destCidr": "VLAN(24).9,VLAN(70).34",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3357, 3380, 3462",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).*,VLAN(7).8,VLAN(7).9,VLAN(7).10",
+        "destPort": "any",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3359",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "135-445",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3363, 3364, 3365, 3399, 3400, 3401",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "445,135,136,137,138,139,1433,1434",
+        "destCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126,VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3366, 3367, 3402",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "3000-3300",
+        "destCidr": "VLAN(24).9,VLAN(24).36,VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3371, 3372",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).30",
+        "destPort": "7025",
+        "destCidr": "VLAN(24).11,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3409, 3410, 3411",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).30",
+        "destPort": "38310,38311,38312,38313,38314,38315,38316,38317,38318,38319,38320",
+        "destCidr": "VLAN(70).1,VLAN(70).2,VLAN(70).3,VLAN(70).4,VLAN(70).5,VLAN(70).6,VLAN(70).7,VLAN(70).8,VLAN(70).9,VLAN(70).10,VLAN(70).11,VLAN(70).12,VLAN(70).13,VLAN(70).14,VLAN(70).32,VLAN(70).33,VLAN(70).34,VLAN(70).35,VLAN(70).36,VLAN(70).37,VLAN(70).38,VLAN(70).39,VLAN(70).40,VLAN(70).41,VLAN(70).42,VLAN(70).43,VLAN(70).44,VLAN(70).45,VLAN(70).46,VLAN(70).48,VLAN(70).49,VLAN(70).50,VLAN(70).51,VLAN(70).52,VLAN(70).53,VLAN(70).54",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3413, 3414",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).24,VLAN(7).25,VLAN(7).26,VLAN(7).27,VLAN(7).28,VLAN(7).29,VLAN(7).30",
+        "destPort": "9100,515",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3416",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).*",
+        "destPort": "515",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3418, 3419",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14,VLAN(7).16,VLAN(7).17,VLAN(7).18,VLAN(7).19,VLAN(7).20,VLAN(7).21,VLAN(7).22",
+        "destPort": "38310,38311,38312,38313,38314,38315,38316,38317,38318,38319,38320",
+        "destCidr": "VLAN(70).34",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3438",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).7",
+        "destPort": "7001",
+        "destCidr": "VLAN(24).22",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3439",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).7",
+        "destPort": "38331",
+        "destCidr": "VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3445, 3446",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).7",
+        "destPort": "58081,58443",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3467, 3468",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).24",
+        "destPort": "1500,58888",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3470",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).24",
+        "destPort": "512",
+        "destCidr": "VLAN(95).8",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3558, 3569",
+        "policy": "deny",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(8).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).*",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "3656, 4218, 4219, 4220, 4221, 4222",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*",
+        "destPort": "any",
+        "destCidr": "10.218.192.250/32,VLAN(6).3,VLAN(6).15,VLAN(6).21,VLAN(6).22,VLAN(6).24,VLAN(6).25,VLAN(6).26",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3671, 3684, 4287, 4289, 4299, 4351",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "7003",
+        "destCidr": "VLAN(24).23,VLAN(70).19,VLAN(70).34,VLAN(70).35,VLAN(7).30,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3683, 3686",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "22,58081",
+        "destCidr": "VLAN(70).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3687, 4683, 4684, 4685",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).124,VLAN(24).124,VLAN(24).5,VLAN(24).6",
+        "destPort": "58081",
+        "destCidr": "VLAN(70).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3696, 4104, 4105",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "445",
+        "destCidr": "VLAN(70).*,VLAN(24).157,VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3697",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "445",
+        "destCidr": "VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3703",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*",
+        "destPort": "3389",
+        "destCidr": "VLAN(6).16",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3714, 3715",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).241",
+        "destPort": "any",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3718, 3719, 4352",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "22,7001",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3718, 3719, 4352",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan19 B RITM0184904 RITM0181488 ssolo19 2/15/18 3766, 4588, 4590",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).184,VLAN(19).185,VLAN(19).186,VLAN(19).187,VLAN(19).188,VLAN(19).189,VLAN(19).190,VLAN(19).53,VLAN(19).54,VLAN(19).36,VLAN(19).195",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan19 B RITM0184904 RITM0181488 ssolo19 2/15/18 3767, 4589, 4591",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).184,VLAN(19).185,VLAN(19).186,VLAN(19).187,VLAN(19).188,VLAN(19).189,VLAN(19).190,VLAN(19).53,VLAN(19).54,VLAN(19).36,VLAN(19).195",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3785, 3786, 4236",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).21",
+        "destPort": "9300,9340,161",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3914, 3916",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "any",
+        "destCidr": "VLAN(24).10,VLAN(24).12",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3915, 3917",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "any",
+        "destCidr": "VLAN(24).10,VLAN(24).12",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3918, 3919, 3924",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "139,3461,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3920, 4107",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "21,22",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3921, 4172, 4190, 4191, 4192, 4207, 4527",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8,VLAN(19).33,VLAN(19).51,VLAN(19).30,VLAN(19).194,VLAN(19).14,VLAN(19).34",
+        "destPort": "3389",
+        "destCidr": "VLAN(24).89",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3922, 3923",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "3001,2502",
+        "destCidr": "VLAN(24).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3976, 3977, 3978, 3979",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).46",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).10,VLAN(24).12,VLAN(24).43,VLAN(24).70",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "3980, 3981",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).46",
+        "destPort": "3466,445",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4029, 4030, 4031, 4032, 4406, 4407, 4408, 4409",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).27,VLAN(19).20",
+        "destPort": "139,445,3461,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4033, 4034",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).27",
+        "destPort": "445,9100",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4041, 4042, 4043, 4050, 4051, 4052, 4059, 4060, 4061, 4068, 4069, 4070, 4084, 4085, 4086, 4096, 4097, 4098, 4110, 4111, 4112, 4156, 4157, 4158, 4164, 4165, 4166, 4173, 4174, 4175, 4194, 4195, 4196, 4246, 4247, 4248, 4251, 4252, 4253, 4519, 4520, 4521",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).95,VLAN(19).96,VLAN(19).240,VLAN(19).241,VLAN(19).242,VLAN(19).243,VLAN(19).244,VLAN(19).245,VLAN(19).246,VLAN(19).248,VLAN(19).194,VLAN(19).32,VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30,VLAN(19).14,VLAN(19).82,VLAN(19).81,VLAN(19).34",
+        "destPort": "445,139,3466,135",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "4044, 4045, 4053, 4054, 4062, 4063, 4071, 4072, 4087, 4088, 4099, 4100",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).95,VLAN(19).96,VLAN(19).240,VLAN(19).241,VLAN(19).242,VLAN(19).243,VLAN(19).244,VLAN(19).245,VLAN(19).246,VLAN(19).248,VLAN(19).194,VLAN(19).32",
+        "destPort": "445,139",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4046, 4055, 4064, 4073, 4153",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).95,VLAN(19).96,VLAN(19).240,VLAN(19).241,VLAN(19).242,VLAN(19).243,VLAN(19).244,VLAN(19).245,VLAN(19).246,VLAN(19).248,VLAN(19).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).12",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4047, 4048, 4049, 4056, 4057, 4058, 4065, 4066, 4067, 4074, 4075, 4076, 4089, 4090, 4091, 4101, 4102, 4103, 4115, 4116, 4117, 4161, 4162, 4163, 4169, 4170, 4171, 4178, 4179, 4180, 4199, 4200, 4201, 4209, 4210, 4211, 4242, 4243, 4244",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).95,VLAN(19).96,VLAN(19).240,VLAN(19).241,VLAN(19).242,VLAN(19).243,VLAN(19).244,VLAN(19).245,VLAN(19).246,VLAN(19).248,VLAN(19).194,VLAN(19).32,VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30,VLAN(19).14,VLAN(19).27,VLAN(19).21",
+        "destPort": "22",
+        "destCidr": "VLAN(24).4,VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4092, 4093",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).194",
+        "destPort": "20000",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4094, 4095",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).194",
+        "destPort": "1229",
+        "destCidr": "VLAN(24).59,VLAN(24).60",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4106, 4114, 4160, 4168, 4177, 4198, 4523",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8,VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30,VLAN(19).14,VLAN(19).34",
+        "destPort": "139",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4108, 4109, 4257, 4258, 4259, 4260, 4398, 4399, 4441, 4443, 4525, 4526",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8,VLAN(19).81,VLAN(19).82,VLAN(19).238,VLAN(19).20,VLAN(19).34",
+        "destPort": "22",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4113, 4159, 4167, 4176, 4197, 4395, 4410, 4522",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30,VLAN(19).14,VLAN(19).238,VLAN(19).20,VLAN(19).34",
+        "destPort": "445",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4137, 4138",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).8",
+        "destPort": "80",
+        "destCidr": "VLAN(6).18,VLAN(7).25",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4151, 4152, 4154",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).10,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4184, 4528",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).33,VLAN(19).34",
+        "destPort": "8080",
+        "destCidr": "10.218.192.162/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4234, 4235, 4239, 4240",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).21,VLAN(19).8",
+        "destPort": "515,9100",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4237, 4238",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).21",
+        "destPort": "3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4237, 4238",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).21",
+        "destPort": "135-445",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4249, 4254, 4397, 4439, 4524",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).82,VLAN(19).81,VLAN(19).238,VLAN(19).20,VLAN(19).34",
+        "destPort": "22",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4288, 4290, 4300, 4305",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).64",
+        "destPort": "7003",
+        "destCidr": "VLAN(70).34,VLAN(70).35,VLAN(7).30,VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4291, 4292, 4293, 4294",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79,VLAN(19).64",
+        "destPort": "1023-65535",
+        "destCidr": "VLAN(16).65,VLAN(16).64,VLAN(16).65,VLAN(16).66,VLAN(16).67,VLAN(16).68,VLAN(16).69,VLAN(16).70,VLAN(16).71,VLAN(16).72,VLAN(16).73,VLAN(16).74,VLAN(16).75,VLAN(16).76,VLAN(16).77,VLAN(16).78",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4307, 4310",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "any",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4308",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "135,136,137,138,139",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4311",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).64",
+        "destPort": "any",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4312, 4313",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79,VLAN(19).64",
+        "destPort": "22",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4367",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).200,VLAN(19).201,VLAN(19).202,VLAN(19).203,VLAN(19).204,VLAN(19).205,VLAN(19).206",
+        "destPort": "1025",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4386, 4387, 4392, 4393, 4394",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).238",
+        "destPort": "3464,3466,139,445,3461",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4396, 4411",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).238,VLAN(19).20",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4440, 4442, 4444",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).20",
+        "destPort": "445",
+        "destCidr": "VLAN(24).4,VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4495, 4496",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).35",
+        "destPort": "3464,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4497, 4498",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).35",
+        "destPort": "3464,3466",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4538, 4539, 4540, 4541, 4542, 4543, 4544, 4545, 4546, 4547, 4548, 4549, 4550, 4551, 4552, 4553, 4554, 4555, 4556, 4557, 4558, 4559, 4560, 4561",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).194",
+        "destPort": "5672,15672",
+        "destCidr": "VLAN(24).151,VLAN(24).152,VLAN(24).153,VLAN(24).154,VLAN(24).193,VLAN(24).194,VLAN(24).195,VLAN(24).196,VLAN(24).197,VLAN(24).198,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).120",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4593, 5296, 5300, 5302, 5304, 5306, 5308, 5309, 5311",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).27,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).23,VLAN(24).70,VLAN(24).157,VLAN(24).86,VLAN(24).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4594",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).27",
+        "destPort": "9100",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4604",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "any",
+        "destCidr": "10.218.192.250/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4648",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).33",
+        "destPort": "80",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4719, 4720",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).50",
+        "destPort": "1417",
+        "destCidr": "VLAN(70).62,VLAN(75).53",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4904, 4905, 4906, 4914, 5298",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "80",
+        "destCidr": "VLAN(80).200,VLAN(80).201,VLAN(80).202,VLAN(80).203,VLAN(80).204,VLAN(80).205,VLAN(80).206,VLAN(80).208,VLAN(80).209,VLAN(80).210,VLAN(80).211,VLAN(80).212,VLAN(80).213,VLAN(80).214,VLAN(80).215,VLAN(80).216,VLAN(80).217,VLAN(80).218,VLAN(80).219,VLAN(80).220,VLAN(80).221,VLAN(80).222,VLAN(80).224,VLAN(80).225,VLAN(80).226,VLAN(80).227,VLAN(80).228,VLAN(80).229,VLAN(80).230,VLAN(80).231,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).235,VLAN(80).236,VLAN(80).237,VLAN(80).238,VLAN(85).30,VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4907, 4908, 4909",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "443",
+        "destCidr": "VLAN(80).200,VLAN(80).201,VLAN(80).202,VLAN(80).203,VLAN(80).204,VLAN(80).205,VLAN(80).206,VLAN(80).208,VLAN(80).209,VLAN(80).210,VLAN(80).211,VLAN(80).212,VLAN(80).213,VLAN(80).214,VLAN(80).215,VLAN(80).216,VLAN(80).217,VLAN(80).218,VLAN(80).219,VLAN(80).220,VLAN(80).221,VLAN(80).222,VLAN(80).224,VLAN(80).225,VLAN(80).226,VLAN(80).227,VLAN(80).228,VLAN(80).229,VLAN(80).230,VLAN(80).231,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).235,VLAN(80).236,VLAN(80).237,VLAN(80).238",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "4912",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).10",
+        "destPort": "80",
+        "destCidr": "VLAN(85).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5007, 5141",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "5390,58019",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5015, 5016",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).5,VLAN(24).6",
+        "destPort": "any",
+        "destCidr": "VLAN(19).241",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24 B RITM0184904 RITM0181488 ssolo19 2/15/18 5133",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(19).184,VLAN(19).185,VLAN(19).186,VLAN(19).187,VLAN(19).188,VLAN(19).189,VLAN(19).190,VLAN(19).36,VLAN(19).195",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24 B RITM0184904 RITM0181488 ssolo19 2/15/18 5134",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(19).184,VLAN(19).185,VLAN(19).186,VLAN(19).187,VLAN(19).188,VLAN(19).189,VLAN(19).190,VLAN(19).36,VLAN(19).195",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5171",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).30",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).28",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5215, 5216",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).22,VLAN(24).23",
+        "destPort": "1111",
+        "destCidr": "VLAN(70).61",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5257, 5263",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "6000",
+        "destCidr": "VLAN(16).208,VLAN(16).209,VLAN(16).210,VLAN(16).211,VLAN(16).212,VLAN(16).213,VLAN(16).214,VLAN(16).215,VLAN(16).216,VLAN(16).217,VLAN(16).218,VLAN(16).219,VLAN(16).220,VLAN(16).221,VLAN(16).222,VLAN(16).200,VLAN(16).201,VLAN(16).202,VLAN(16).203,VLAN(16).204,VLAN(16).205,VLAN(16).206",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5264",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "any",
+        "destCidr": "VLAN(16).224,VLAN(16).225,VLAN(16).226,VLAN(16).227,VLAN(16).228,VLAN(16).229,VLAN(16).230,VLAN(16).231,VLAN(16).232,VLAN(16).233,VLAN(16).234,VLAN(16).235,VLAN(16).236,VLAN(16).237,VLAN(16).238",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5267",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "10100",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5268",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "10100",
+        "destCidr": "VLAN(80).64",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5295, 5299, 5301, 5303, 5305, 5307, 5310, 5312",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).23,VLAN(24).70,VLAN(24).157,VLAN(24).86,VLAN(24).*",
+        "destPort": "515",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5313",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "161",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5314",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "135-445",
+        "destCidr": "VLAN(19).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5333",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1778",
+        "destCidr": "VLAN(16).45",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5369, 5370, 5371, 6308",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "22",
+        "destCidr": "VLAN(19).200,VLAN(19).201,VLAN(19).202,VLAN(19).203,VLAN(19).204,VLAN(19).205,VLAN(19).206,VLAN(19).208,VLAN(19).209,VLAN(19).210,VLAN(19).211,VLAN(19).212,VLAN(19).213,VLAN(19).214,VLAN(19).215,VLAN(19).216,VLAN(19).217,VLAN(19).218,VLAN(19).219,VLAN(19).220,VLAN(19).221,VLAN(19).222,VLAN(19).224,VLAN(19).225,VLAN(19).226,VLAN(19).227,VLAN(19).228,VLAN(19).229,VLAN(19).230,VLAN(19).231,VLAN(19).232,VLAN(19).233,VLAN(19).234,VLAN(19).235,VLAN(19).236,VLAN(19).237,VLAN(19).238,VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5372, 5373, 5374, 5801",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "6000",
+        "destCidr": "VLAN(19).200,VLAN(19).201,VLAN(19).202,VLAN(19).203,VLAN(19).204,VLAN(19).205,VLAN(19).206,VLAN(19).208,VLAN(19).209,VLAN(19).210,VLAN(19).211,VLAN(19).212,VLAN(19).213,VLAN(19).214,VLAN(19).215,VLAN(19).216,VLAN(19).217,VLAN(19).218,VLAN(19).219,VLAN(19).220,VLAN(19).221,VLAN(19).222,VLAN(19).224,VLAN(19).225,VLAN(19).226,VLAN(19).227,VLAN(19).228,VLAN(19).229,VLAN(19).230,VLAN(19).231,VLAN(19).232,VLAN(19).233,VLAN(19).234,VLAN(19).235,VLAN(19).236,VLAN(19).237,VLAN(19).238,VLAN(16).224,VLAN(16).225,VLAN(16).226,VLAN(16).227,VLAN(16).228,VLAN(16).229,VLAN(16).230,VLAN(16).231,VLAN(16).232,VLAN(16).233,VLAN(16).234,VLAN(16).235,VLAN(16).236,VLAN(16).237,VLAN(16).238",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5375, 5376, 5377, 5378, 5379, 5380",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "1024,2305",
+        "destCidr": "VLAN(19).200,VLAN(19).201,VLAN(19).202,VLAN(19).203,VLAN(19).204,VLAN(19).205,VLAN(19).206,VLAN(19).208,VLAN(19).209,VLAN(19).210,VLAN(19).211,VLAN(19).212,VLAN(19).213,VLAN(19).214,VLAN(19).215,VLAN(19).216,VLAN(19).217,VLAN(19).218,VLAN(19).219,VLAN(19).220,VLAN(19).221,VLAN(19).222,VLAN(19).224,VLAN(19).225,VLAN(19).226,VLAN(19).227,VLAN(19).228,VLAN(19).229,VLAN(19).230,VLAN(19).231,VLAN(19).232,VLAN(19).233,VLAN(19).234,VLAN(19).235,VLAN(19).236,VLAN(19).237,VLAN(19).238",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5425, 5426, 6313",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "58081",
+        "destCidr": "VLAN(70).19,VLAN(70).62,VLAN(70).61",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5448, 5449, 5450, 5477, 5480, 5481, 5482",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "69",
+        "destCidr": "VLAN(16).45,VLAN(16).46,VLAN(16).48,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94,VLAN(80).45,VLAN(80).46,VLAN(80).48",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5461, 5470, 5471, 5475, 5484",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(16).64,VLAN(16).65,VLAN(16).66,VLAN(16).67,VLAN(16).68,VLAN(16).69,VLAN(16).70,VLAN(16).71,VLAN(16).72,VLAN(16).73,VLAN(16).74,VLAN(16).75,VLAN(16).76,VLAN(16).77,VLAN(16).78,VLAN(16).79,VLAN(16).80,VLAN(16).81,VLAN(16).82,VLAN(16).83,VLAN(16).84,VLAN(16).85,VLAN(16).86,VLAN(16).87,VLAN(16).88,VLAN(16).89,VLAN(16).90,VLAN(16).91,VLAN(16).92,VLAN(16).93,VLAN(16).94,VLAN(16).48,VLAN(16).49,VLAN(16).50,VLAN(16).51,VLAN(16).52,VLAN(16).53,VLAN(16).54,VLAN(16).55,VLAN(16).56,VLAN(16).57,VLAN(16).58,VLAN(16).59,VLAN(16).60,VLAN(16).61,VLAN(16).62,VLAN(80).64,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94,VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5462, 5468, 5469, 5476, 5483",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(16).64,VLAN(16).65,VLAN(16).66,VLAN(16).67,VLAN(16).68,VLAN(16).69,VLAN(16).70,VLAN(16).71,VLAN(16).72,VLAN(16).73,VLAN(16).74,VLAN(16).75,VLAN(16).76,VLAN(16).77,VLAN(16).78,VLAN(16).79,VLAN(16).80,VLAN(16).81,VLAN(16).82,VLAN(16).83,VLAN(16).84,VLAN(16).85,VLAN(16).86,VLAN(16).87,VLAN(16).88,VLAN(16).89,VLAN(16).90,VLAN(16).91,VLAN(16).92,VLAN(16).93,VLAN(16).94,VLAN(16).48,VLAN(16).49,VLAN(16).50,VLAN(16).51,VLAN(16).52,VLAN(16).53,VLAN(16).54,VLAN(16).55,VLAN(16).56,VLAN(16).57,VLAN(16).58,VLAN(16).59,VLAN(16).60,VLAN(16).61,VLAN(16).62,VLAN(80).64,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94,VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5479",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1778",
+        "destCidr": "VLAN(80).45",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5486, 5487, 5488, 5489, 5726, 5727, 5728, 5729, 5730",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "any",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).200,VLAN(80).201,VLAN(80).202,VLAN(80).203,VLAN(80).204,VLAN(80).205,VLAN(80).206,VLAN(80).208,VLAN(80).209,VLAN(80).210,VLAN(80).211,VLAN(80).212,VLAN(80).213,VLAN(80).214,VLAN(80).215,VLAN(80).216,VLAN(80).217,VLAN(80).218,VLAN(80).219,VLAN(80).220,VLAN(80).221,VLAN(80).222,VLAN(16).50,VLAN(16).52,VLAN(16).53,VLAN(16).54,VLAN(16).56,VLAN(16).57,VLAN(16).58,VLAN(16).200,VLAN(16).201,VLAN(16).202,VLAN(16).203,VLAN(16).204,VLAN(16).205,VLAN(16).206,VLAN(16).208,VLAN(16).209,VLAN(16).210,VLAN(16).211,VLAN(16).212,VLAN(16).213,VLAN(16).214,VLAN(16).215,VLAN(16).216,VLAN(16).217,VLAN(16).218,VLAN(16).219,VLAN(16).220,VLAN(16).221,VLAN(16).222,VLAN(80).223,VLAN(80).224,VLAN(80).225,VLAN(80).226,VLAN(80).227,VLAN(80).228,VLAN(80).229,VLAN(80).230,VLAN(80).231,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).235,VLAN(80).236,VLAN(80).237,VLAN(80).238,VLAN(80).239",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5505, 5506",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3466,445",
+        "destCidr": "VLAN(19).46",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5510",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).70",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).16,VLAN(19).17,VLAN(19).18",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5512, 5513",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "9300,9340",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5602",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).132",
+        "destPort": "21",
+        "destCidr": "VLAN(7).25",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5617, 6051, 6052",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "any",
+        "destCidr": "VLAN(19).8",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5693, 5694",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).9",
+        "destPort": "1442",
+        "destCidr": "VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5732, 5733",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).5,VLAN(24).6",
+        "destPort": "8001",
+        "destCidr": "VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5774, 5775, 5776, 5777",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).9,VLAN(24).34,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).68",
+        "destPort": "1010",
+        "destCidr": "VLAN(7).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5847, 5848, 5851",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "18888",
+        "destCidr": "VLAN(7).24,VLAN(24).132,VLAN(70).56",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5849, 5850",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).9,VLAN(24).36",
+        "destPort": "18888",
+        "destCidr": "VLAN(7).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5901, 6054",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).89,VLAN(24).21",
+        "destPort": "139",
+        "destCidr": "VLAN(19).8",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5902, 5903",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).12,VLAN(24).10",
+        "destPort": "any",
+        "destCidr": "VLAN(19).8",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5925, 5926",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "515",
+        "destCidr": "VLAN(7).15,VLAN(7).16,VLAN(7).17,VLAN(7).18",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5927, 6039, 6172, 6703, 6706",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "22",
+        "destCidr": "VLAN(7).*,VLAN(70).*,VLAN(70).62,VLAN(70).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5944",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).31",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).28",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5950",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).33",
+        "destPort": "8080",
+        "destCidr": "10.218.192.162/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5951",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "8630",
+        "destCidr": "10.218.192.162/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5953, 5954, 5955, 5956",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "1025,1026,1027",
+        "destCidr": "VLAN(16).214,VLAN(16).216,VLAN(16).217,VLAN(16).218,VLAN(16).219,VLAN(16).220,VLAN(16).221,VLAN(16).222,VLAN(16).224,VLAN(16).225,VLAN(16).226,VLAN(16).227,VLAN(16).228,VLAN(16).229,VLAN(16).230,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).223",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5957, 5958, 5959, 5960, 5961, 5962, 5963, 5964, 5965, 5966, 5967, 5968, 5969, 5970, 5971",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "20,5120,8080,1025,1026,1240,1241,1242,1243,1244,1245",
+        "destCidr": "VLAN(80).200,VLAN(80).201,VLAN(80).202,VLAN(80).203,VLAN(80).204,VLAN(80).205,VLAN(80).206,VLAN(80).208,VLAN(80).209,VLAN(80).210,VLAN(80).211,VLAN(80).212,VLAN(80).213,VLAN(80).214,VLAN(80).215,VLAN(80).216,VLAN(80).217,VLAN(80).218,VLAN(80).219,VLAN(80).220,VLAN(80).221,VLAN(80).222,VLAN(80).224,VLAN(80).225,VLAN(80).226,VLAN(80).227,VLAN(80).228,VLAN(80).229,VLAN(80).230,VLAN(80).231,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).235,VLAN(80).236,VLAN(80).237,VLAN(80).238,VLAN(80).223",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5985",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4,VLAN(24).5,VLAN(24).6",
+        "destPort": "8001",
+        "destCidr": "VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5986",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).22",
+        "destPort": "22",
+        "destCidr": "VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5987, 5988, 5989",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126",
+        "destPort": "445,135,136,137,138,139,1433,1434",
+        "destCidr": "VLAN(7).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5990, 5991",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).9,VLAN(24).36",
+        "destPort": "3000-3300",
+        "destCidr": "VLAN(7).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5992, 5993, 5994, 5995",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126",
+        "destPort": "445,135,136,137,138,139,1433,1434",
+        "destCidr": "VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "5992, 5993, 5994, 5995",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126",
+        "destPort": "3000-3300",
+        "destCidr": "VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6002",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "any",
+        "destCidr": "VLAN(7).24,VLAN(7).25,VLAN(7).26,VLAN(7).27,VLAN(7).28,VLAN(7).29,VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6003",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "any",
+        "destCidr": "VLAN(7).24,VLAN(7).25,VLAN(7).26,VLAN(7).27,VLAN(7).28,VLAN(7).29,VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6005, 6006, 6007, 6008, 6009, 6010, 6011, 6012",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157,VLAN(24).21",
+        "destPort": "445",
+        "destCidr": "VLAN(19).95,VLAN(19).96,VLAN(19).240,VLAN(19).241,VLAN(19).242,VLAN(19).243,VLAN(19).244,VLAN(19).245,VLAN(19).246,VLAN(19).248",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6035, 6036, 6037, 6038, 6041, 6042, 6043, 6044, 6047, 6048, 6049, 6050",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157,VLAN(24).21",
+        "destPort": "139,445",
+        "destCidr": "VLAN(70).*,VLAN(19).194,VLAN(19).32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6045, 6046",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).5,VLAN(24).6",
+        "destPort": "8090",
+        "destCidr": "VLAN(19).194",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6053, 6057, 6062, 6066, 6070, 6297",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).21",
+        "destPort": "445",
+        "destCidr": "VLAN(19).8,VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30,VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6055, 6056, 6060, 6061, 6064, 6065, 6068, 6069",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "445,139",
+        "destCidr": "VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6058, 6063, 6067, 6071",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).21",
+        "destPort": "139",
+        "destCidr": "VLAN(19).51,VLAN(19).158,VLAN(19).33,VLAN(19).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6087, 6088",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "any",
+        "destCidr": "VLAN(19).79,VLAN(19).64",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6173",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6238, 6239",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "58443",
+        "destCidr": "VLAN(70).19,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6243, 6244, 6246, 6248",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).128,VLAN(24).129,VLAN(24).130,VLAN(24).131",
+        "destPort": "58443",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6245, 6247, 6249, 6254, 6255, 6389",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).129,VLAN(24).130,VLAN(24).131,VLAN(24).5,VLAN(24).6,VLAN(24).128",
+        "destPort": "58081",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6251",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).70",
+        "destPort": "1417",
+        "destCidr": "VLAN(24).50",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6252",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).50",
+        "destPort": "1417",
+        "destCidr": "VLAN(24).70",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6257",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "1025",
+        "destCidr": "VLAN(24).200,VLAN(24).201,VLAN(24).202,VLAN(24).203,VLAN(24).204,VLAN(24).205,VLAN(24).206",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6290, 6291, 6495, 6496",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3466",
+        "destCidr": "VLAN(19).238,VLAN(19).35",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6293, 6294, 6295, 6296",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "139,445,3461,3466",
+        "destCidr": "VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6298",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).21",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6309, 6311",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4,VLAN(24).5",
+        "destPort": "445",
+        "destCidr": "VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6310",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).5",
+        "destPort": "22",
+        "destCidr": "VLAN(19).20",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6314",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "58443",
+        "destCidr": "VLAN(70).61",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6327",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).39",
+        "destPort": "623",
+        "destCidr": "VLAN(85).12",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6328",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).40",
+        "destPort": "623",
+        "destCidr": "VLAN(85).11",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6441, 6625, 6626, 6648",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).33",
+        "destPort": "22",
+        "destCidr": "VLAN(70).62,VLAN(70).*,VLAN(85).*,VLAN(85).15",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6497, 6498",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3466",
+        "destCidr": "VLAN(19).35",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6557, 6558, 6559, 6560",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).5,VLAN(24).6,VLAN(24).155,VLAN(24).156",
+        "destPort": "515",
+        "destCidr": "VLAN(95).18",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6600, 6601, 6602, 6603, 6604, 6605, 6606, 6607, 6608, 6609, 6610, 6611, 6612, 6613, 6614, 6615, 6616, 6617, 6618, 6619, 6620, 6621, 6622, 6623",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).151,VLAN(24).152,VLAN(24).153,VLAN(24).154,VLAN(24).193,VLAN(24).194,VLAN(24).195,VLAN(24).196,VLAN(24).197,VLAN(24).198,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).120",
+        "destPort": "5672,15672",
+        "destCidr": "VLAN(19).194",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6694, 6696",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(19).53,VLAN(19).54",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6695, 6697",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "3464,3465,3466",
+        "destCidr": "VLAN(19).53,VLAN(19).54",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "6763, 6764",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(35).*",
+        "destPort": "22,80",
+        "destCidr": "VLAN(60).3",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7324, 7325",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(60).3",
+        "destPort": "80,22",
+        "destCidr": "VLAN(35).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7390, 7391, 7392, 7393, 7394, 8012, 8096, 8098, 8101",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19",
+        "destPort": "58081",
+        "destCidr": "VLAN(19).79,VLAN(24).124,VLAN(19).124,VLAN(24).5,VLAN(24).6,VLAN(24).23,VLAN(35).5,VLAN(35).6,VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7398, 7399",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(7).7,VLAN(6).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7400, 7531, 8023, 8024",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19,VLAN(70).62,VLAN(6).19,VLAN(7).30",
+        "destPort": "22",
+        "destCidr": "VLAN(19).79",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7412, 7413, 7718, 7719",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19,VLAN(70).61",
+        "destPort": "80",
+        "destCidr": "VLAN(24).39,VLAN(24).40",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7482",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "1417",
+        "destCidr": "VLAN(24).50",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7485, 7486, 7490, 7491, 7518, 7519, 7841, 7842",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "22,111,2049,80",
+        "destCidr": "VLAN(24).39,VLAN(24).40",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7487, 7489, 7492, 7494",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "111,2049",
+        "destCidr": "VLAN(24).39,VLAN(24).40",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7488, 7493",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(75).1",
+        "destPort": "2049",
+        "destCidr": "VLAN(24).39,VLAN(24).40",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7505, 7674, 7675, 7745",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "445",
+        "destCidr": "VLAN(19).8,VLAN(24).21,VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126,VLAN(7).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7506",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "445",
+        "destCidr": "VLAN(19).8",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7512, 7960, 8013",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "5390,22,58081",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7530, 7912",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(19).79,VLAN(7).7",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7553, 8094",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "58019,22",
+        "destCidr": "VLAN(35).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7581",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7635, 7636, 7797",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(24).10,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7637, 7638",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "161",
+        "destCidr": "VLAN(24).10,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7641, 7642, 7643, 7644, 7645, 7646",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).57",
+        "destPort": "52072,1433,8310,8311",
+        "destCidr": "VLAN(24).195,VLAN(24).132",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7661, 7757",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "22",
+        "destCidr": "VLAN(24).23,VLAN(7).29",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7664",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).44",
+        "destPort": "139-445",
+        "destCidr": "VLAN(24).9",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7666, 7667, 7693",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).36,VLAN(70).37,VLAN(70).38,VLAN(70).40,VLAN(70).41,VLAN(70).42,VLAN(70).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7669, 7682",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "135-445",
+        "destCidr": "VLAN(24).157,VLAN(19).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7673",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "139",
+        "destCidr": "VLAN(24).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7676, 7677, 7678",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "135,136,137,138,139,1433,1434",
+        "destCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7676, 7677, 7678",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "3000-3300",
+        "destCidr": "VLAN(24).1,VLAN(24).2,VLAN(24).3,VLAN(24).4,VLAN(24).5,VLAN(24).6,VLAN(24).7,VLAN(24).8,VLAN(24).9,VLAN(24).10,VLAN(24).11,VLAN(24).12,VLAN(24).13,VLAN(24).14,VLAN(24).15,VLAN(24).16,VLAN(24).17,VLAN(24).18,VLAN(24).19,VLAN(24).20,VLAN(24).21,VLAN(24).22,VLAN(24).23,VLAN(24).24,VLAN(24).25,VLAN(24).26,VLAN(24).27,VLAN(24).28,VLAN(24).29,VLAN(24).30,VLAN(24).31,VLAN(24).32,VLAN(24).33,VLAN(24).34,VLAN(24).35,VLAN(24).36,VLAN(24).37,VLAN(24).38,VLAN(24).39,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46,VLAN(24).47,VLAN(24).48,VLAN(24).49,VLAN(24).50,VLAN(24).51,VLAN(24).52,VLAN(24).53,VLAN(24).54,VLAN(24).55,VLAN(24).56,VLAN(24).57,VLAN(24).58,VLAN(24).59,VLAN(24).60,VLAN(24).61,VLAN(24).62,VLAN(24).63,VLAN(24).64,VLAN(24).65,VLAN(24).66,VLAN(24).67,VLAN(24).68,VLAN(24).69,VLAN(24).70,VLAN(24).71,VLAN(24).72,VLAN(24).73,VLAN(24).74,VLAN(24).75,VLAN(24).76,VLAN(24).77,VLAN(24).78,VLAN(24).79,VLAN(24).80,VLAN(24).81,VLAN(24).82,VLAN(24).83,VLAN(24).84,VLAN(24).85,VLAN(24).86,VLAN(24).87,VLAN(24).88,VLAN(24).89,VLAN(24).90,VLAN(24).91,VLAN(24).92,VLAN(24).93,VLAN(24).94,VLAN(24).95,VLAN(24).96,VLAN(24).97,VLAN(24).98,VLAN(24).99,VLAN(24).100,VLAN(24).101,VLAN(24).102,VLAN(24).103,VLAN(24).104,VLAN(24).105,VLAN(24).106,VLAN(24).107,VLAN(24).108,VLAN(24).109,VLAN(24).110,VLAN(24).111,VLAN(24).112,VLAN(24).113,VLAN(24).114,VLAN(24).115,VLAN(24).116,VLAN(24).117,VLAN(24).118,VLAN(24).119,VLAN(24).120,VLAN(24).121,VLAN(24).122,VLAN(24).123,VLAN(24).124,VLAN(24).125,VLAN(24).126",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7679, 7680, 7748",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "3000-3300",
+        "destCidr": "VLAN(24).9,VLAN(24).36,VLAN(7).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7684, 7685",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(7).30",
+        "destPort": "7025",
+        "destCidr": "VLAN(24).11,VLAN(24).40,VLAN(24).41,VLAN(24).42,VLAN(24).43,VLAN(24).44,VLAN(24).45,VLAN(24).46",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7702, 7703",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "1442",
+        "destCidr": "VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7711, 8350",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*,VLAN(70).33",
+        "destPort": "1010",
+        "destCidr": "VLAN(7).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7714",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).1,VLAN(70).2",
+        "destPort": "18888",
+        "destCidr": "VLAN(7).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7729, 7730",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).61",
+        "destPort": "1111",
+        "destCidr": "VLAN(24).22,VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7746, 7747",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "135,136,137,138,139,1433,1434",
+        "destCidr": "VLAN(7).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7761, 7762",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "8001",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7764, 7765, 7766",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).1,VLAN(70).2,VLAN(70).3,VLAN(70).4,VLAN(70).5,VLAN(70).6,VLAN(70).7,VLAN(70).8,VLAN(70).9,VLAN(70).10,VLAN(70).11,VLAN(70).12,VLAN(70).13,VLAN(70).14,VLAN(70).32,VLAN(70).33,VLAN(70).34,VLAN(70).35,VLAN(70).36,VLAN(70).37,VLAN(70).38,VLAN(70).39,VLAN(70).40,VLAN(70).41,VLAN(70).42,VLAN(70).43,VLAN(70).44,VLAN(70).45,VLAN(70).46,VLAN(70).48,VLAN(70).49,VLAN(70).50,VLAN(70).51,VLAN(70).52,VLAN(70).53,VLAN(70).54",
+        "destPort": "38310,38311,38312,38313,38314,38315,38316,38317,38318,38319,38320",
+        "destCidr": "VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7791, 7792, 7793, 7794, 7795, 7796",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).27,VLAN(70).28,VLAN(70).56,VLAN(70).57,VLAN(70).58,VLAN(70).59,VLAN(70).60,VLAN(70).61,VLAN(70).62",
+        "destPort": "9100,515",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7798",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "515",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7800, 7801",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).34",
+        "destPort": "38310,38311,38312,38313,38314,38315,38316,38317,38318,38319,38320",
+        "destCidr": "VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14,VLAN(7).16,VLAN(7).17,VLAN(7).18,VLAN(7).19,VLAN(7).20,VLAN(7).21,VLAN(7).22",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7803",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).31",
+        "destPort": "7003",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7813, 8219, 8220",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "5010,1500,58888",
+        "destCidr": "VLAN(7).24",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7870, 8301, 8302, add ssh RITM0177246 jbuenaventura jgapa00 02/02/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "22,80,111,2049",
+        "destCidr": "VLAN(24).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7880, 7881, 7883, 7885, 8048, 8102, 8119",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "58443",
+        "destCidr": "VLAN(24).128,VLAN(24).129,VLAN(24).130,VLAN(24).131,VLAN(19).79,VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14,VLAN(7).7",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7882, 7884, 7886, 8003, 8008, 8009, 8095, 8097, 8100, 8118, 8260",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "58081",
+        "destCidr": "VLAN(24).129,VLAN(24).130,VLAN(24).131,VLAN(19).79,VLAN(24).5,VLAN(24).6,VLAN(35).5,VLAN(35).6,VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14,VLAN(7).7,VLAN(24).128",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "7913",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).18",
+        "destPort": "58081-58443",
+        "destCidr": "VLAN(7).7",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8001, 8002, 8004, 8005, 8006, 8007, 8010, 8011",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79,VLAN(24).5,VLAN(24).6,VLAN(24).23",
+        "destPort": "58081",
+        "destCidr": "VLAN(70).19,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8021, 8022",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "22",
+        "destCidr": "VLAN(6).19,VLAN(7).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8039, 8040, 8041, 8042",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).79",
+        "destPort": "7003,8000,8001,8002,8003",
+        "destCidr": "VLAN(70).19,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8043, 8044, 8045, 8046",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19,VLAN(70).62",
+        "destPort": "7003,8000,8001,8002,8003",
+        "destCidr": "VLAN(19).79",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8047, 8103",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19",
+        "destPort": "58443",
+        "destCidr": "VLAN(19).79,VLAN(7).1,VLAN(7).2,VLAN(7).3,VLAN(7).4,VLAN(7).5,VLAN(7).6,VLAN(7).7,VLAN(7).8,VLAN(7).9,VLAN(7).10,VLAN(7).11,VLAN(7).12,VLAN(7).13,VLAN(7).14",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8054, 8055",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "22",
+        "destCidr": "VLAN(70).19,VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8056, 8548, 8595",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).19,VLAN(70).33",
+        "destPort": "22",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8110",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "22",
+        "destCidr": "VLAN(60).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8208, 8209",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).61",
+        "destPort": "58081,58443",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8461",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).22",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8462, 8464, 8546, 8547, 8593, 8594",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*,VLAN(70).33",
+        "destPort": "111,2049",
+        "destCidr": "VLAN(24).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8463, 8465",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).*",
+        "destPort": "111,2049",
+        "destCidr": "VLAN(24).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8503, 8504, 8544, 8545, 8550, 8551, 8591, 8592",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "80,22,111,2049",
+        "destCidr": "VLAN(24).39",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8505, 8506, 8552, 8553",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "80",
+        "destCidr": "VLAN(24).40,VLAN(24).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8716, 8718, 8719, 8721, 8722, 8724",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(79).*",
+        "destPort": "5060,2000",
+        "destCidr": "10.218.192.3/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8717, 8720, 8723",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(79).*",
+        "destPort": "5060",
+        "destCidr": "10.218.192.3/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8900, 8901",
+        "policy": "deny",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).*",
+        "destPort": "443",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "8902, 8903, 8904, 8905",
+        "policy": "deny",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64",
+        "destPort": "80",
+        "destCidr": "VLAN(24).5,VLAN(24).6",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 - 8908, 8909, 8914, 8915, 8916, 8917",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).63,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "10100,123",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 - 8908, 8909, 8914, 8915, 8916, 8917",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).63,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 - 8910, 8911, 8912, 8913, 8918, 8919, 8925, 8926",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).63,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "9700,80,10100",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 - 8910, 8911, 8912, 8913, 8918, 8919, 8925, 8926",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).63,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 11/30/17 - 8920, 8921",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).63,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94,VLAN(80).95",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80 CHG0137142 ssolo19 11/30/17 - 8922, 8923, 8944",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94,VLAN(80).63,VLAN(80).95",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8928, 8929, 8930",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).200,VLAN(80).201,VLAN(80).202,VLAN(80).203,VLAN(80).204,VLAN(80).205,VLAN(80).206,VLAN(80).208,VLAN(80).209,VLAN(80).210,VLAN(80).211,VLAN(80).212,VLAN(80).213,VLAN(80).214,VLAN(80).215,VLAN(80).216,VLAN(80).217,VLAN(80).218,VLAN(80).219,VLAN(80).220,VLAN(80).221,VLAN(80).222,VLAN(80).224,VLAN(80).225,VLAN(80).226,VLAN(80).227,VLAN(80).228,VLAN(80).229,VLAN(80).230,VLAN(80).231,VLAN(80).232,VLAN(80).233,VLAN(80).234,VLAN(80).235,VLAN(80).236,VLAN(80).237,VLAN(80).238",
+        "destPort": "1025,1026,1027",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8932, 8933",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).71,VLAN(80).72",
+        "destPort": "8080",
+        "destCidr": "10.218.192.162/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8934, 8935",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).71,VLAN(80).72",
+        "destPort": "123",
+        "destCidr": "10.218.192.162/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8936, 8937",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94",
+        "destPort": "80,443",
+        "destCidr": "VLAN(24).70",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8938",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94",
+        "destPort": "80",
+        "destCidr": "VLAN(24).70",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8939, 8940, 8941, 8942, 8943",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94",
+        "destPort": "1777,1778,1779,1780,1781,1820,2001,5002",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8939, 8940, 8941, 8942, 8943",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94",
+        "destPort": "7200-7226",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8945",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69,VLAN(80).70,VLAN(80).71,VLAN(80).72,VLAN(80).73,VLAN(80).74,VLAN(80).75,VLAN(80).76,VLAN(80).77,VLAN(80).78,VLAN(80).79,VLAN(80).80,VLAN(80).81,VLAN(80).82,VLAN(80).83,VLAN(80).84,VLAN(80).85,VLAN(80).86,VLAN(80).87,VLAN(80).88,VLAN(80).89,VLAN(80).90,VLAN(80).91,VLAN(80).92,VLAN(80).93,VLAN(80).94",
+        "destPort": "7212,7213,7214,7215,7216,7217,7218,7219",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8978, 8979, 8980, 8981, 8982, 8983, 8984, 8985, 8986, 8987, 8988, 8989, 8990, 8991, 8992, 8993, 8994, 8995, 8996, 8997, 9001, 9002, 9003, 9004, 9005, 9006, 9007, 9008, 9009, 9010, 9011, 9012, 9013, 9014, 9015, 9016, 9017, 9018, 9019, 9020, 9021, 9022, 9023, 9024, 9025, 9026, 9027, 9028, 9029, 9030, 9031, 9032, 9033, 9034, 9035, 9036, 9037, 9038, 9039, 9040, 9041, 9042, 9043, 9044, 9045, 9046, 9047, 9048, 9049, 9050, 9051, 9052, 9053, 9054, 9055, 9056",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "80,10100,10110,9700",
+        "destCidr": "VLAN(24).10",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "8998, 8999, 9000",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).55",
+        "destPort": "80,10110,9700",
+        "destCidr": "VLAN(24).10",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9057, 9058, 9059, 9060, 9061, 9062, 9063, 9064, 9065, 9066, 9067, 9068, 9069, 9070, 9071, 9072, 9073, 9074, 9075, 9076, 9080, 9081, 9082, 9083, 9084, 9085, 9086, 9087, 9088, 9089, 9090, 9091, 9092, 9093, 9094, 9095, 9096, 9097, 9098, 9099, 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115, 9116, 9117, 9118, 9119, 9120, 9121, 9122, 9123, 9124, 9125, 9126, 9127, 9128, 9129, 9130, 9131, 9132, 9133, 9134, 9135",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "80,10100,10110,9700",
+        "destCidr": "VLAN(24).10",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9077, 9078, 9079",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).55",
+        "destPort": "80,10110,9700",
+        "destCidr": "VLAN(24).10",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9482",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(85).*",
+        "destPort": "25",
+        "destCidr": "VLAN(85).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9483",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(85).*",
+        "destPort": "161",
+        "destCidr": "VLAN(85).21",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9669, 9670, 9671, 9672",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).5",
+        "destPort": "9705-9750",
+        "destCidr": "VLAN(19).8,VLAN(19).51,VLAN(19).33,VLAN(19).30",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9686, 9689, 9691, 9693, 9696, 9698, 9700, 9703, 9705, 9707, 9710, 9712",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).17,VLAN(95).21",
+        "destPort": "25,636,8014",
+        "destCidr": "VLAN(24).157,VLAN(24).31",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9687, 9688, 9690, 9692, 9694, 9695, 9697, 9699, 9701, 9702, 9704, 9706, 9708, 9709, 9711, 9713",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).17,VLAN(95).21",
+        "destPort": "53,80,135,136,137",
+        "destCidr": "VLAN(24).157,VLAN(24).31",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9687, 9688, 9690, 9692, 9694, 9695, 9697, 9699, 9701, 9702, 9704, 9706, 9708, 9709, 9711, 9713",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).17,VLAN(95).21",
+        "destPort": "9705-9750",
+        "destCidr": "VLAN(24).157,VLAN(24).31",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9734, 9735, 9736",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).18",
+        "destPort": "515",
+        "destCidr": "VLAN(24).5,VLAN(24).155,VLAN(24).156",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9751",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).27",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "9752",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(95).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(19).27",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan80 RITM0152785 CHG0141739 pharvey jgapa00 01/10/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "8090,27015",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan80 RITM0152785 CHG0141739 pharvey jgapa00 01/10/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan80 RITM0152785 CHG0141739 pharvey jgapa00 01/10/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan80 RITM0152785 CHG0141739 pharvey jgapa00 01/10/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1899",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan80 RITM0152785 CHG0141739 pharvey jgapa00 01/10/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181",
+        "destPort": "1777,1899",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "123,10100",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "123,10100",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "80,443,9700,10100",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "80,443,9700,10100",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "30000-40000",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 RITM0164132 MO B naveenraj jgapa00 01/12/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778",
+        "destCidr": "VLAN(80).48,VLAN(80).49,VLAN(80).50,VLAN(80).51,VLAN(80).52,VLAN(80).53,VLAN(80).54,VLAN(80).55,VLAN(80).56,VLAN(80).57,VLAN(80).58,VLAN(80).59,VLAN(80).60,VLAN(80).61,VLAN(80).62,VLAN(80).63,VLAN(80).64,VLAN(80).65,VLAN(80).66,VLAN(80).67,VLAN(80).68,VLAN(80).69",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70,24 v36 NB RITM0157911 mgudi02 jgapa00 01/18/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "22",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70,24 v36 NB RITM0157911 mgudi02 jgapa00 01/18/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "1417,2005",
+        "destCidr": "VLAN(24).50",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "",
+        "policy": "allow",
+        "protocol": "icmp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(4).*,VLAN(7).*,VLAN(8).*,VLAN(6).6,VLAN(19).*,VLAN(40).*,VLAN(45).*,VLAN(70).*,VLAN(80).*,VLAN(81).*,VLAN(95).*,VLAN(79).*,VLAN(85).*,VLAN(35).*",
+        "destPort": "any",
+        "destCidr": "any",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "",
+        "policy": "allow",
+        "protocol": "icmp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(16).*",
+        "destPort": "any",
+        "destCidr": "VLAN(24).1,VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "",
+        "policy": "allow",
+        "protocol": "icmp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "any",
+        "destCidr": "10.0.0.0/8,165.19.0.0/16,167.146.0.0/16,172.146.0.0/16,172.16.0.0/12,192.168.0.0/16",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "",
+        "policy": "allow",
+        "protocol": "icmp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(60).27",
+        "destPort": "any",
+        "destCidr": "217.68.152.66/32,74.125.225.178/32,10.131.91.129/32,74.125.225.180/32,74.125.225.179/32,74.125.225.176/32",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "ECDN",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*,VLAN(70).*",
+        "destPort": "80,443,8080",
+        "destCidr": "VLAN(996).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "ECDN",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*,VLAN(70).*",
+        "destPort": "53",
+        "destCidr": "VLAN(996).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "ECDN",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(996).*",
+        "destPort": "80,443,8080",
+        "destCidr": "VLAN(19).*,VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "ECDN",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(996).*",
+        "destPort": "53",
+        "destCidr": "VLAN(19).*,VLAN(70).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "CHG0135675 ssolo19 11/16/17",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).21,VLAN(19).*",
+        "destPort": "80",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70 v35 B RITM0141888 mgudipati schou12 12/11/2017",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "5390",
+        "destCidr": "VLAN(24).23",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70 v35 B RITM0141888 mgudipati schou12 12/11/2017",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).23",
+        "destPort": "5390",
+        "destCidr": "VLAN(70).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan60+70 B RITM0165439 ssolo19 1/19/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(60).19",
+        "destPort": "22",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan81,95 NB MO RITM0179630 nraj jgapa00 02/09/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(81).*",
+        "destPort": "9100",
+        "destCidr": "VLAN(95).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan70 v37 RITM0169712 mgudipati ssolo19 1/19/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).50",
+        "destPort": "22",
+        "destCidr": "VLAN(70).33",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan70 v37 RITM0169712 mgudipati ssolo19 1/19/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).33",
+        "destPort": "22",
+        "destCidr": "VLAN(24).50",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+19 B RITM0212933 NRAJ000 odeoc00 04/02/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "1025",
+        "destCidr": "VLAN(19).201",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan19+24 B RITM0212933 NRAJ000 odeoc00 04/02/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).201",
+        "destPort": "1025",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan24+vlan70,7,19  v40 B RITM0181546 vsaure schou12 4/7/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).194,VLAN(7).2,VLAN(70).34",
+        "destPort": "1417",
+        "destCidr": "VLAN(24).50",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70,7,19+vlan24 v40 B RITM0181546 vsaure schou12 4/7/2018",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).50",
+        "destPort": "1417",
+        "destCidr": "VLAN(19).194,VLAN(7).2,VLAN(70).34",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70+60 v41 B RITM0225517 cmadr09 odeoc00 04/29/18 18:00",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(70).62",
+        "destPort": "22",
+        "destCidr": "VLAN(60).19",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan70+60 v41 B RITM0225517 cmadr09 odeoc00 04/29/18 18:00",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(60).19",
+        "destPort": "22",
+        "destCidr": "VLAN(70).62",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(24).157",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "udp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).157",
+        "destPort": "1777,1778,1899,1900",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "destPort": "9080,80",
+        "destCidr": "VLAN(24).4",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "9080,80",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan80+vlan24 TBD ssolo19 5/4/13",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).4",
+        "destPort": "8090,27015",
+        "destCidr": "VLAN(80).168,VLAN(80).169,VLAN(80).170,VLAN(80).171,VLAN(80).172,VLAN(80).173,VLAN(80).174,VLAN(80).175,VLAN(80).176,VLAN(80).177,VLAN(80).178,VLAN(80).179,VLAN(80).180,VLAN(80).181,VLAN(80).181",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan19+24 NB RITM0216393 ssolo19 5/4/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(19).*",
+        "destPort": "80",
+        "destCidr": "VLAN(24).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "vlan19+24 NB RITM0216393 ssolo19 5/4/18",
+        "policy": "allow",
+        "protocol": "tcp",
+        "srcPort": "any",
+        "srcCidr": "VLAN(24).*",
+        "destPort": "80",
+        "destCidr": "VLAN(19).*",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "RITM0143084 mteferra ssolo19 11/28/17",
+        "policy": "deny",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "192.168.192.0/24",
+        "destPort": "any",
+        "destCidr": "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16",
+        "syslogEnabled": true
+    },
+    {
+        "comment": "RITM0143084 mteferra ssolo19 11/28/17",
+        "policy": "allow",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "192.168.192.0/24",
+        "destPort": "any",
+        "destCidr": "any",
+        "syslogEnabled": false
+    },
+    {
+        "comment": "v6a ssolo19 5/4/18 8:30",
+        "policy": "deny",
+        "protocol": "any",
+        "srcPort": "any",
+        "srcCidr": "any",
+        "destPort": "any",
+        "destCidr": "any",
+        "syslogEnabled": true
+    }
+]

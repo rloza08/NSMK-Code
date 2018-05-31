@@ -1,0 +1,74 @@
+[
+  {
+    "Vlan": 101,
+    "Subnet": "10.x.a.160/27",
+    "Description": "New Vlan 101",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 162,
+    "reservedIpRanges1-end": 163,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 164,
+    "reservedIpRanges2-end": 165
+  },
+  {
+    "Vlan": 102,
+    "Subnet": "10.x.g.0/26",
+    "Description": "New Vlan 102",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 2,
+    "reservedIpRanges1-end": 3,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 4,
+    "reservedIpRanges2-end": 5
+  },
+  {
+    "Vlan": 103,
+    "Subnet": "10.x.h.64/26",
+    "Description": "New Vlan 103",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 66,
+    "reservedIpRanges1-end": 67,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 68,
+    "reservedIpRanges2-end": 69
+  },
+  {
+    "Vlan": 104,
+    "Subnet": "10.x.h.160/27",
+    "Description": "New Vlan 104",
+    "dnsNameservers": "172.24.98.22\n172.18.0.10",
+    "reservedIpRanges1-comment": "Reserved1",
+    "reservedIpRanges1-start": 162,
+    "reservedIpRanges1-end": 163,
+    "reservedIpRanges2-comment": "Reserved2",
+    "reservedIpRanges2-start": 164,
+    "reservedIpRanges2-end": 165
+  },
+  {
+    "Vlan": "1014",
+    "Subnet": "192.168.114.0/24",
+    "Description": "New Vlan 1014",
+    "dnsNameservers": "upstream_dns",
+    "reservedIpRanges1-comment": "Reserved",
+    "reservedIpRanges1-start": "129",
+    "reservedIpRanges1-end": "178",
+    "reservedIpRanges2-comment": "Reserved",
+    "reservedIpRanges2-start": "179",
+    "reservedIpRanges2-end": "190"
+    },
+    {
+    "Vlan": "1015",
+    "Subnet": "192.168.115.0/24",
+    "Description": "New Vlan 1015",
+    "dnsNameservers": "upstream_dns",
+    "reservedIpRanges1-comment": "Reserved",
+    "reservedIpRanges1-start": "129",
+    "reservedIpRanges1-end": "178",
+    "reservedIpRanges2-comment": "Reserved",
+    "reservedIpRanges2-start": "179",
+    "reservedIpRanges2-end": "190"
+    }
+]
