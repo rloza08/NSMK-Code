@@ -1,7 +1,7 @@
 [
   {
     "l3fwrules": {
-      "fname_pattern": "l3fwrules_template_",
+      "fname_pattern": "l3fwrules_template",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -42,7 +42,7 @@
       }
     },
     "s2svpnrules": {
-      "fname_pattern": "s2svpnrules_",
+      "fname_pattern": "s2svpnrules",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -132,8 +132,8 @@
         }
       }
     },
-    "vlans-template": {
-      "fname_pattern": "vlans-delete-list-",
+    "vlans-patch": {
+      "fname_pattern": "vlans-patch-",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -187,8 +187,28 @@
         }
       }
     },
-    "vlan-template-patch": {
-      "fname_pattern": "vlan-template-patch",
+    "vlans-non-netx": {
+      "fname_pattern": "vlans-non-netx",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "Store": {
+            "type": "string"
+          },
+          "FunnelSubnet": {
+            "type": "string"
+          },
+          "ActualSubnet": {
+            "type": "string"
+          },
+          "Summary": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vlans-patch": {
+      "fname_pattern": "vlans-patch",
       "json_schema": {
         "type": "object",
         "properties": {
