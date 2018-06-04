@@ -80,7 +80,7 @@ class mmSoap(client.Client):
             return getattr(self._client.service,operation)(*args,**kw)
         except suds.WebFault as e:
             if self._session is not None and (self._errInvalidSession in str(e) or self._errNetObjHandler in str(e)):
-                print('Trying to log in again because: ' + str(e))
+                print ('Trying to log in again because: ' + str(e))
                 self.login()
                 kw['session']=self._session
                 return getattr(self._client.service,operation)(*args,**kw)
@@ -89,15 +89,15 @@ class mmSoap(client.Client):
 
     def __checkLogin(self):
         if self._session == None:
-            print("You are not logged in. ")
+            print ("You are not logged in. ")
 
     def login(self,server=None,username=None,password=None):
         if server==None:
             server=self._server
-            print('Server: ' + server)
+            print ('Server: ' + server)
         if username==None:
             username = self._username
-            print('Username: ' + username)
+            print ('Username: ' + username)
         if password==None:
             password = self._password
 
@@ -152,10 +152,10 @@ class mmSoap(client.Client):
         return self._getServices()
 
     def services(self,theFilter=None):
-        print(self._getServices(theFilter))
+        print (self._getServices(theFilter))
 
     def objects(self,theFilter=None):
-        print(self._getObjects(theFilter))
+        print (self._getObjects(theFilter))
 
     def create(self,name):
         return self.factory.create(name)
@@ -170,9 +170,10 @@ class getFunnel(object):
             self.cli = mmSoap(proxy="dnstool", server="dnstool",
                               username=user, password=password,
                               namespace="mm", cache=None)
+            print ("logged into men and mice.")
         except Exception as exception:
-            print('Could not login into men and mice.')
-            print('Details:',exception)
+            print ('Could not login into men and mice.')
+            print ('Details:', exception)
             os._exit(-1)
         self.vlanRaw = "funnel.raw"
         self.vlanCsv = "funnel.csv"
@@ -205,7 +206,7 @@ class getFunnel(object):
                 continue
 
             line = re.sub(r'^\s+|,|"', '', line.rstrip())
-            m = re.match(r"10.x.[a-h]", line)
+            m = re.match(r"10.x.[a-z]", line)
             if m:
                 line = re.sub(r'10.x.', 'net', line.rstrip())
                 line = line.upper()
@@ -228,6 +229,6 @@ if __name__ == '__main__':
         obj = getFunnel()
         obj.dumpRaw()
         obj.parseRAW()
-        print ("men and mice backend: got funnel.")
+        print ("men and mice funnel file has been created.")
     except Exception as err:
         print ("men and mice backend: failed getting funnel.")
