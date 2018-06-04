@@ -27,9 +27,12 @@ from subprocess import Popen, PIPE
 def get_and_convert_funnel():
     try:
         cwd = os.getcwd()
+        # Our base dir is ./automation
+        os.chdir("{}/../menAndMice".format(cwd))
         p = Popen("{}/../menAndMice/getFunnel.py".format(cwd), shell=True, stdout=PIPE)
         resp = p.communicate()[0].decode("utf-8")
         print (resp)
+        os.chdir(cwd)
         src = "../menAndMice/funnel.csv".format(cwd)
         dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
         destination = open(dst, 'wb')
