@@ -658,10 +658,13 @@ class CLI(object):
         os.chdir("{}/automation".format(self.cwd))
         from utils.auto_logger import init_logger
         init_logger()
-        from api.netx import netx_test
+        #from api.netx import netx_test
+        #from api.static_route import  del_route_test
+        from automation.static_route_handler import del_route_test
         EOM()
-        netx_test()
-        print("# funnel file has been upgraded #")
+        #netx_test()
+        del_route_test()
+        print("# TEST END #")
         os.chdir("{}".format(self.cwd))
         EOM()
         print("")

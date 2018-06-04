@@ -14,6 +14,10 @@ import global_vars as gv
 
 def deploy_vlans_delete(agent, netid, vlans_list):
     vlan_handler.vlans_delete(netid, vlans_list)
+    if gv.USE_NON_NETX:
+        l.runlogs_logger.info("static route non netx summary deletion")
+        static_route_handler.del_route(netid, "non-netx summary subnet")
+
 
 
 def deploy_vlans_add(agent, netid=None, vlans_list=None):
