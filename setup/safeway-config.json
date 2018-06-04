@@ -2,7 +2,7 @@
   {
     "network": [
       {
-          "org_name": "AutomationTestOrg_DONOTDELETE",
+          "org_name": "ABS_Automation_Test_Org_donotdelete",
           "org_id" : 686798943174000795,
           "clone_store": "0_Base_Config_v1"
       },
@@ -67,7 +67,7 @@
             ]
           },
           {
-            "org_name": "AutomationTestOrg_DONOTDELETE",
+            "org_name": "ABS_Automation_Test_Org_donotdelete",
             "id": [
               "N_686798943174005998",
               "N_686798943174005999"
