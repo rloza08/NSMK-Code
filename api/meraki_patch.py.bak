@@ -225,6 +225,7 @@ def updatevpnsettings(apikey, networkid, mode='none', subnets=None, usevpn=None,
 def updatemxvpnfwrules(apikey, orgid, vpnrules, syslogDefaultRule=False, suppressprint=False):
     return True, None
 
+
 """
 This are the monkey patch that is called (see call below, when the module is
 imported).
@@ -260,10 +261,14 @@ def set_dry_run():
         meraki.updatevlan = updatevlan
         meraki.getvlans = getvlans
         meraki.delvlan = delvlan
-        meraki.getmxvpnfwrules= getmxvpnfwrules
+        meraki.getmxvpnfwrules = getmxvpnfwrules
         meraki.updatevpnsettings = updatevpnsettings
         meraki.updatemxvpnfwrules = updatemxvpnfwrules
         meraki.getstaticroutes = getstaticroutes
+        meraki.delstaticroute = delstaticroute
+        return True, None
+
+
 """
 
 This is the monkey patch in order to always return true.
