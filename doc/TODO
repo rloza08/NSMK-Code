@@ -26,4 +26,73 @@ The file is a csv that contains following fields
 
 
 1) nsmk-user-vlan
+----------------------------------------
+
+delete vlans enhancements
+
+a) Upgrade vlans-delete-list to
+
+  {
+    "Vlan": 201,
+    "Subnet": "10.x.i.0/27",
+  }
+
+Logic: if i-z remove static route for vlan, lookup the subnet (i in this case
+and look up in the vlans-non-netx for the summary that needs to be deleted.
+
+First make a static route query
+that will return:
+[
+    {
+        "id": "1a81fff3-cdb6-4876-9356-f17b27d6b2f1",
+        "networkId": "N_686798943174009235",
+        "enabled": true,
+        "name": "lower summary subnet",
+        "subnet": "10.171.88.0/22",
+        "gatewayIp": "10.235.91.1",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
+    },
+    {
+        "id": "538c304d-b733-4140-803e-b956572c1d6c",
+        "networkId": "N_686798943174009235",
+        "enabled": true,
+        "name": "upper summary subnet",
+        "subnet": "10.235.88.0/22",
+        "gatewayIp": "10.235.91.1",
+        "fixedIpAssignments": {},
+        "reservedIpRanges": []
+    }
+]
+
+Remove the static route that has exactly the same subnet as returned in the query.
+Use the static route id to delete.
+
+
+Add msg
+
+2018-05-31 16:44:02  INFO deploying TST_1234
+
+2018-05-31 16:44:05  INFO deleted vlan 101
+
+2018-05-31 16:44:06  INFO deleted vlan 102
+
+2018-05-31 16:44:06  INFO deleted vlan 103
+
+2018-05-31 16:44:07  INFO deleted vlan 104
+
+2018-05-31 16:44:08  INFO deleted vlan 201
+
+2018-05-31 16:44:09  INFO deleted vlan 202
+
+2018-05-31 16:44:10  INFO deleted vlan 1014
+
+2018-05-31 16:44:11  INFO deleted vlan 1015
+
+2018-05-31 16:44:11  INFO deleted static route 10.22.22.0/24
+
+2018-05-31 16:44:11  INFO deployed TST_1234
+
+2018-05-31 16:44:11  INFO bulk update finished
+
 

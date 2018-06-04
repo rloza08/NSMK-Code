@@ -83,7 +83,7 @@
       }
     },
     "store-list": {
-      "fname_pattern": "store-list-",
+      "fname_pattern": "store-list",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -94,7 +94,7 @@
       }
     },
     "orgs": {
-      "fname_pattern": "org-",
+      "fname_pattern": "org",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -105,7 +105,7 @@
       }
     },
     "vlans-add-list": {
-      "fname_pattern": "vlans-add-list-",
+      "fname_pattern": "vlans-add-list",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -122,7 +122,7 @@
       }
     },
     "vlans-delete-list": {
-      "fname_pattern": "vlans-delete-list-",
+      "fname_pattern": "vlans-delete-list",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -133,7 +133,7 @@
       }
     },
     "vlans-patch": {
-      "fname_pattern": "vlans-patch-",
+      "fname_pattern": "vlans-patch",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -171,7 +171,7 @@
       }
     },
     "networks-serials": {
-      "fname_pattern": "networks-serials-",
+      "fname_pattern": "networks-serials",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -208,7 +208,7 @@
       }
     },
     "vlans-patch": {
-      "fname_pattern": "vlans-patch",
+      "fname_pattern": "vlans-patch.json",
       "json_schema": {
         "type": "object",
         "properties": {
@@ -246,7 +246,7 @@
       }
     },
     "vlans-add": {
-      "fname_pattern": "vlans-add-list-",
+      "fname_pattern": "vlans-add-list",
       "json_schema": {
         "type": "object",
         "properties": {
