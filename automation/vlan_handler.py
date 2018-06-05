@@ -10,7 +10,7 @@ from utils.low_json import Json
 from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR, TEMPLATES_DIR
 from utils.auto_pmdb import settings
 from copy import deepcopy
-
+import global_vars as gv
 
 """
 This module contains two classes:
@@ -413,22 +413,27 @@ class VlanHandler(object):
         self.context['networkid'] = self.netid
         fname = "{}_table".format(settings["CONFIG"]["funnel-file"])
         vlans = json.reader(fname)
+        try:
 
-        for key, value in vlans.items():
-            vlanId = int(key)
-            subnet = value
-            octets = subnet.split(".")
-            octets = "{}.{}.{}".format(octets[0], octets[1], octets[2])
-            """
-            Sample usage inside the template.
-            (note vlan is only a name to lock the reference with the template,
-            could not be anything)
-                'applianceIp': "{{vlan[19]['octets']}}.1",
-            """
-            self.context["vlan"][vlanId] = {}
-            self.context["vlan"][vlanId]['octets'] = octets
-            self.context["vlan"][vlanId]['subnet'] = subnet
-        l.logger.debug(self.context)
+            for key, value in vlans.items():
+                vlanId = int(key)
+                subnet = value
+                octets = subnet.split(".")
+                octets = "{}.{}.{}".format(octets[0], octets[1], octets[2])
+                """
+                Sample usage inside the template.
+                (note vlan is only a name to lock the reference with the template,
+                could not be anything)
+                    'applianceIp': "{{vlan[19]['octets']}}.1",
+                """
+                self.context["vlan"][vlanId] = {}
+                self.context["vlan"][vlanId]['octets'] = octets
+                self.context["vlan"][vlanId]['subnet'] = subnet
+
+        except Exception as err:
+                l.logger.error("exception failure create context {} (check USE_NON_NETX in globalvars.py) ".format(err))
+                l.runlogs_logger.error("exception failure create context (check USE_NON_NETX in globalvars.py) \n{}".format(err))
+                gv.fake_assert()
 
     """
         From the context created below: 

@@ -1,7 +1,7 @@
 import sys
 import utils.auto_pmdb as auto_pmdb
 
-DEFAULT_STATE = True
+DEFAULT_STATE = False
 
 if DEFAULT_STATE:
     log_verbose = False  # Only if error_stop is set
@@ -18,7 +18,7 @@ else:
     use_serials = False
     serial_not_available_revert_clone = True
     VLANS_LOCK = False
-    USE_NON_NETX = True
+    USE_NON_NETX = False
 
 EOM = lambda : print("_"*48)
 
