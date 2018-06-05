@@ -1,7 +1,7 @@
 import sys
 import utils.auto_pmdb as auto_pmdb
 
-DEFAULT_STATE = False
+DEFAULT_STATE = True
 
 if DEFAULT_STATE:
     log_verbose = False  # Only if error_stop is set
