@@ -69,8 +69,9 @@ def del_route(netid, name):
     #str = mkjson.make_pretty(routes)
     route_id = find_route(routes, name)
     if route_id :
-        print ("Will delete id: {}". format(name, route_id))
         static_route.del_route(netid, route_id)
+        log.logger.info("deleted static-route : {}". format(name, route_id))
+        log.runlogs_logger.info("deleted static-route : {}". format(name, route_id))
 
 
 from utils.auto_globals import load_store, load_org

@@ -11,14 +11,34 @@ import utils.auto_json as json
 from utils.low_json import Json
 from utils.auto_pmdb import settings
 import global_vars as gv
+from api.vlans import get_vlans
+
+def last_non_netx_vlan(agent, netid):
+    non_netx_all = settings["NON-NETX"]
+    store_number = settings["store-number"]
+    non_netx = non_netx_all[int(store_number)]
+    subnets_non_netx = list()
+    for item in non_netx:
+        subnet = item["ActualSubnet"]
+        subnets_non_netx.append(subnet)
+
+    if len(subnets_non_netx) is 0:
+        return True
+    # First get details on all vlans
+    vlans = get_vlans(netid)
+    for vlan in vlans:
+        subnet = vlan['subnet']
+        if subnet in subnets_non_netx:
+            return False
+    return True
+
 
 def deploy_vlans_delete(agent, netid, vlans_list):
     vlan_handler.vlans_delete(netid, vlans_list)
     if gv.USE_NON_NETX:
         l.runlogs_logger.info("static route non netx summary deletion")
-        static_route_handler.del_route(netid, "non-netx summary subnet")
-
-
+        if last_non_netx_vlan(agent, netid):
+            static_route_handler.del_route(netid, "non-netx summary subnet")
 
 def deploy_vlans_add(agent, netid=None, vlans_list=None):
     l.runlogs_logger.info("vlan setup")

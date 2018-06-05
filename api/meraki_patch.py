@@ -215,6 +215,9 @@ def getmxvpnfwrules(apikey, orgid, suppressprint=False):
 def getvlans(apikey, networkid, suppressprint=False):
     return True, None
 
+def getvlandetail(apikey, networkid, vlanid, suppressprint=False):
+    return True, None
+
 def delvlan(apikey, networkid, vlanid, suppressprint=False):
     return True, None
 
@@ -264,6 +267,8 @@ def set_dry_run():
         meraki.updatevpnsettings = updatevpnsettings
         meraki.updatemxvpnfwrules = updatemxvpnfwrules
         meraki.getstaticroutes = getstaticroutes
+        meraki.getvlandetail = getstaticroutes
+
 """
 
 This is the monkey patch in order to always return true.

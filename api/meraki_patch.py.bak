@@ -215,6 +215,9 @@ def getmxvpnfwrules(apikey, orgid, suppressprint=False):
 def getvlans(apikey, networkid, suppressprint=False):
     return True, None
 
+def getvlandetail(apikey, networkid, vlanid, suppressprint=False):
+    return True, None
+
 def delvlan(apikey, networkid, vlanid, suppressprint=False):
     return True, None
 
@@ -224,6 +227,7 @@ def updatevpnsettings(apikey, networkid, mode='none', subnets=None, usevpn=None,
 
 def updatemxvpnfwrules(apikey, orgid, vpnrules, syslogDefaultRule=False, suppressprint=False):
     return True, None
+
 
 
 """
@@ -261,13 +265,11 @@ def set_dry_run():
         meraki.updatevlan = updatevlan
         meraki.getvlans = getvlans
         meraki.delvlan = delvlan
-        meraki.getmxvpnfwrules = getmxvpnfwrules
+        meraki.getmxvpnfwrules= getmxvpnfwrules
         meraki.updatevpnsettings = updatevpnsettings
         meraki.updatemxvpnfwrules = updatemxvpnfwrules
         meraki.getstaticroutes = getstaticroutes
-        meraki.delstaticroute = delstaticroute
-        return True, None
-
+        meraki.getvlandetail = getstaticroutes
 
 """
 

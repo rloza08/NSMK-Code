@@ -161,3 +161,7 @@ Promote process described:
 Takes the vlans from the vlan-add-list
 Copies into the vlan-template file
 The org clone needs to be updated to contain the newly added vlan number.
+
+========================================
+
+Delete

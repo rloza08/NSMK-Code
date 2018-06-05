@@ -5,13 +5,10 @@ from utils.auto_logger import runlogs_logger, logger
 from api.meraki_patch import meraki
 import global_vars as gv
 
-
 class Vlans(object):
-
     """
     Creates and updates VLAN.
     Creates if it does not exist or updates if it is an existing one.
-
     """
 
     @classmethod
