@@ -90,17 +90,17 @@ class StaticRoute(object):
 
 def add_route(netid, name, subnet, ip):
     success, str = StaticRoute.add(netid, name, subnet, ip)
-    assert success
+    gv.fake_assert()
     return str
 
 def get_routes(netid):
     success, static_routes = StaticRoute.get_routes(netid)
-    assert success
+    gv.fake_assert()
     return static_routes
 
 def del_route(netid, route_id):
     success, str = StaticRoute.del_route(netid, route_id)
-    assert success
+    gv.fake_assert()
     return str
 
 if __name__ == '__main__':
