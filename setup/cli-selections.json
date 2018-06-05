@@ -4,7 +4,7 @@
     "networks-clone-source": "0_Base_Config_v1",
     "networks-serials": "networks-serials-DONOTUSE",
     "sites-org": "org-DONOTUSE",
-    "sites-store-list": "store-list-DONOTUSE",
+    "sites-store-list": "store-list-tst1",
     "sites-l3fwrules-version": "l3fwrules_template-DONOTUSE",
     "store-lists-org": "org-DONOTUSE",
     "l3fwrules-org": "org-DONOTUSE",
