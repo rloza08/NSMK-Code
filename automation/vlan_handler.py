@@ -431,8 +431,9 @@ class VlanHandler(object):
                 self.context["vlan"][vlanId]['subnet'] = subnet
 
         except Exception as err:
-                l.logger.error("exception failure create context {} (check USE_NON_NETX in globalvars.py) ".format(err))
-                l.runlogs_logger.error("exception failure create context (check USE_NON_NETX in globalvars.py) \n{}".format(err))
+                l.logger.error("{} exception failure create context (please enable NON_NETX) ".format(err))
+                l.runlogs_logger.error("{}".format(err))
+                l.runlogs_logger.error("possibly NON_NETX not enabled.")
                 gv.fake_assert()
 
     """
