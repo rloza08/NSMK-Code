@@ -48,6 +48,30 @@
         "reservedIpRanges2-end": ""
     },
     {
+        "Vlan": "11",
+        "Subnet": "",
+        "Description": "DONOTUSE",
+        "dnsNameservers": "",
+        "reservedIpRanges1-comment": "",
+        "reservedIpRanges1-start": "",
+        "reservedIpRanges1-end": "",
+        "reservedIpRanges2-comment": "",
+        "reservedIpRanges2-start": "",
+        "reservedIpRanges2-end": ""
+    },
+    {
+        "Vlan": "13",
+        "Subnet": "",
+        "Description": "DONOTUSE",
+        "dnsNameservers": "",
+        "reservedIpRanges1-comment": "",
+        "reservedIpRanges1-start": "",
+        "reservedIpRanges1-end": "",
+        "reservedIpRanges2-comment": "",
+        "reservedIpRanges2-start": "",
+        "reservedIpRanges2-end": ""
+    },
+    {
         "Vlan": "14",
         "Subnet": "",
         "Description": "",
