@@ -41,7 +41,7 @@ def transform_funnel_NETX_to_10_x():
     with open(src, encoding="windows-1251", newline='') as csv_file:
         reader = csv.DictReader(csv_file, skipinitialspace=True,
                                 fieldnames=["Vlan", "Subnet", "Description"])
-
+        entry = True
         for entry in reader:
             if header:
                 header = False

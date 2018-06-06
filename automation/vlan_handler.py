@@ -105,7 +105,7 @@ class VlanTemplates(object):
                 for idx, entry in enumerate(vlans_funnel):
                     if vlan_id == entry["Vlan"]:
                         l.logger.error("removing DONOTUSE vlan {}".format(vlan_id))
-                        l.runlogs_logger.error("removing DONOTUSE vlan {}".format(vlan_id))
+                        #l.runlogs_logger.error("removing DONOTUSE vlan {}".format(vlan_id))
                         del vlans_funnel[idx]
                         break
 
