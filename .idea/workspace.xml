@@ -5,7 +5,6 @@
       <change afterPath="$PROJECT_DIR$/../templates/l3fwrules_template_DEFAULT.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templates/s2svpnrules_DEFAULT.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templates/store-list-DEFAULT.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/men_and_mice.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/men_and_mice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-AutomationTestOrg_DONOTDELETE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-AutomationTestOrg_DONOTDELETE.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-Ecert_Org2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-Ecert_Org2.json" afterDir="false" />
@@ -73,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="men_and_mice.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="men_and_mice.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/men_and_mice.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -81,6 +80,15 @@
               <folding>
                 <element signature="e#23#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vlans-patch.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup/vlans-patch.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -247,9 +255,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="136" />
-    <option name="y" value="288" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="109" />
+    <option name="y" value="60" />
     <option name="width" value="1697" />
     <option name="height" value="949" />
   </component>
@@ -269,16 +277,7 @@
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="setup" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -296,17 +295,17 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../config/vlan-template-master.json" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\linusv\work\nsmk-qa\code\doc" />
-      <recent name="C:\Users\linusv\work\nsmk-qa\code\runtime" />
-      <recent name="C:\Users\linusv\work\nsmk-qa\code\data\logs" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\linusv\work\nsmk-qa\code\setup" />
       <recent name="C:\Users\linusv\work\nsmk-qa\templates" />
       <recent name="C:\Users\linusv\work\nsmk-qa\config" />
       <recent name="C:\Users\linusv\work\nsmk-qa\code" />
       <recent name="C:\Users\linusv\work\nsmk-qa\code\runtime" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\linusv\work\nsmk-qa\code\doc" />
+      <recent name="C:\Users\linusv\work\nsmk-qa\code\runtime" />
+      <recent name="C:\Users\linusv\work\nsmk-qa\code\data\logs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -699,7 +698,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="136" y="288" width="1697" height="949" extended-state="0" />
+    <frame x="109" y="60" width="1697" height="949" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1059,13 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup/vlans-patch.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../config/cli-selections.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1178,6 +1170,13 @@
           <folding>
             <element signature="e#23#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/vlans-patch.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
         </state>
       </provider>
     </entry>
