@@ -6,7 +6,6 @@
       <change afterPath="$PROJECT_DIR$/../templates/s2svpnrules_DEFAULT.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templates/store-list-DEFAULT.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/men_and_mice.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/men_and_mice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automation/vlan_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/automation/vlan_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-AutomationTestOrg_DONOTDELETE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-AutomationTestOrg_DONOTDELETE.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/Org-Ecert_Org2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/org-Ecert_Org2.json" afterDir="false" />
@@ -77,8 +76,11 @@
       <file leaf-file-name="men_and_mice.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/men_and_mice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+            <state relative-caret-position="170">
+              <caret line="102" column="11" lean-forward="true" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+              <folding>
+                <element signature="e#23#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>NON-NETX</find>
       <find>lower</find>
       <find>75</find>
       <find>update_all</find>
@@ -165,6 +166,7 @@
       <find>patch</find>
       <find>log</find>
       <find>DONOT</find>
+      <find>chdri</find>
     </findStrings>
     <replaceStrings>
       <replace>runtime/cli-selections</replace>
@@ -246,8 +248,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="139" />
-    <option name="y" value="66" />
+    <option name="x" value="194" />
+    <option name="y" value="59" />
     <option name="width" value="1697" />
     <option name="height" value="949" />
   </component>
@@ -697,7 +699,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="139" y="66" width="1697" height="949" extended-state="0" />
+    <frame x="194" y="59" width="1697" height="949" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -764,11 +766,6 @@
           <url>file://$PROJECT_DIR$/automation/vpn_handler.py</url>
           <line>66</line>
           <option name="timeStamp" value="319" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/men_and_mice.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="329" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/global_vars.py</url>
@@ -865,6 +862,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="32" selection-start-line="28" selection-end-line="32" />
+          <folding>
+            <element signature="e#23#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,8 +1173,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/men_and_mice.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+        <state relative-caret-position="170">
+          <caret line="102" column="11" lean-forward="true" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+          <folding>
+            <element signature="e#23#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
