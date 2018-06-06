@@ -13,20 +13,8 @@
   },
   {
     "Vlan": 102,
-    "Subnet": "10.x.g.0/26",
-    "Description": "New Vlan 102",
-    "dnsNameservers": "172.24.98.22\n172.18.0.10",
-    "reservedIpRanges1-comment": "Reserved1",
-    "reservedIpRanges1-start": 2,
-    "reservedIpRanges1-end": 3,
-    "reservedIpRanges2-comment": "Reserved2",
-    "reservedIpRanges2-start": 4,
-    "reservedIpRanges2-end": 5
-  },
-  {
-    "Vlan": 103,
     "Subnet": "10.x.h.64/26",
-    "Description": "New Vlan 103",
+    "Description": "New Vlan 102",
     "dnsNameservers": "172.24.98.22\n172.18.0.10",
     "reservedIpRanges1-comment": "Reserved1",
     "reservedIpRanges1-start": 66,
@@ -36,9 +24,9 @@
     "reservedIpRanges2-end": 69
   },
   {
-    "Vlan": 104,
+    "Vlan": 103,
     "Subnet": "10.x.h.160/27",
-    "Description": "New Vlan 104",
+    "Description": "New Vlan 103",
     "dnsNameservers": "172.24.98.22\n172.18.0.10",
     "reservedIpRanges1-comment": "Reserved1",
     "reservedIpRanges1-start": 162,
