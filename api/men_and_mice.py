@@ -47,8 +47,13 @@ def transform_funnel_NETX_to_10_x():
                 continue
             subnet = entry["Subnet"].lower()
             subnet = subnet.replace("net", "10.x.")
+            vlan = entry["Vlan"]
+            description = entry["Description"]
+            print("{} {} {}".format(vlan, subnet, description))
+
             entry["Subnet"] = subnet
             entries.append(entry)
+
     writer("vlans-funnel-base", entries, RUNTIME_DIR)
 
 
