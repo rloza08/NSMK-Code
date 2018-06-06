@@ -5,6 +5,8 @@ import sys
 from utils.auto_csv import convert_to_json
 import utils.auto_logger as l
 from utils.auto_globals import CONFIG_DIR, RUNTIME_DIR
+from utils.auto_json import writer
+
 cwd = os.getcwd()
 path = "{}/..".format(cwd)
 sys.path.insert(0, path)
@@ -23,6 +25,32 @@ where the it will be picked up by the vlan_handler module.
 
 """
 from subprocess import Popen, PIPE
+import csv
+from utils.auto_json import make_pretty
+from utils.low_csv import Csv
+
+def transform_funnel_NETX_to_10_x():
+    src = "../menAndMice/funnel.csv".format(cwd)
+    dst = "{}/vlans-funnel-NETX.csv".format(RUNTIME_DIR)
+    destination = open(dst, 'wb')
+    shutil.copyfileobj(open(src, 'rb'), destination)
+    destination.close()
+
+    src = "{}/vlans-funnel-NETX.csv".format(RUNTIME_DIR)
+    entries = []
+    with open(src, encoding="windows-1251", newline='') as csv_file:
+        reader = csv.DictReader(csv_file, skipinitialspace=True, fieldnames=["Vlan", "Subnet", "Description"])
+        header = True
+        for entry in reader:
+            if header:
+                header = False
+                continue
+            subnet = entry["Subnet"].lower()
+            subnet = subnet.replace("net", "10.x.")
+            entry["Subnet"] = subnet
+            entries.append(entry)
+    writer("vlans-funnel-base", entries, RUNTIME_DIR)
+
 
 def get_and_convert_funnel():
     try:
@@ -33,12 +61,7 @@ def get_and_convert_funnel():
         resp = p.communicate()[0].decode("utf-8")
         print (resp)
         os.chdir(cwd)
-        src = "../menAndMice/funnel.csv".format(cwd)
-        dst = "{}/vlans-funnel-base.csv".format(RUNTIME_DIR)
-        destination = open(dst, 'wb')
-        shutil.copyfileobj(open(src, 'rb'), destination)
-        destination.close()
-        convert_to_json("vlans-funnel-base", "runtime", None)
+        transform_funnel_NETX_to_10_x()
 
     except:
         l.logger.error("failed")
@@ -83,5 +106,7 @@ def convert_funnel_vlans_delete(vlans_delete_list):
 
 
 if __name__ == '__main__':
-    pass
+    cwd = os.getcwd()
+    os.chdir("{}/automation".format(cwd))
+    transform_funnel_NETX_to_10_x()
 
