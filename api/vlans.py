@@ -164,7 +164,7 @@ class Vlans(object):
 
 
     @classmethod
-    def get_vlans_details(self, netid, vlanid):
+    def get_vlan_details(self, netid, vlanid):
         self.vlans = None
         try:
             success, details = meraki.getvlandetail(config.api_key, netid, vlanid)
@@ -224,11 +224,6 @@ class Vlans(object):
             gv.fake_assert()
 
 
-def get(netid):
-    """Gets vlans for a given netid into a json file"""
-    obj=Vlans()
-    obj.get(netid)
-
 def create_update_vlans(netid):
     """Sets vlans from a json file"""
     obj=Vlans()
@@ -255,6 +250,13 @@ def get_vlans(netid):
     obj=Vlans()
     vlans = obj.get_vlans(netid)
     return vlans
+
+def get_vlan(netid, vlanid):
+    """Gets vlans for a given netid into a json file"""
+    obj=Vlans()
+    details = obj.get_vlan_details(netid, vlanid)
+    return details
+
 
 def test_create(netid):
     id=300

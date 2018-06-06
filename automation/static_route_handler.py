@@ -5,6 +5,7 @@ import api.static_route as static_route
 import automation.vlan_handler as vlan_handler
 from utils.auto_pmdb import settings
 import utils.auto_json as mkjson
+from api.vlans import get_vlan
 
 
 def add(summary_only=False):
@@ -30,15 +31,20 @@ def add(summary_only=False):
     # Get the ip from the vlans_generated file
     vlans = json.reader(fname.split(".")[0])
     ip = None
+    pos_lan = int(settings["CONFIG"]["static-route-next-hop"])
     for vlan in vlans:
         ip = None
-        if vlan['id'] == int(settings["CONFIG"]["static-route-next-hop"]):
+        if vlan['id'] == pos_lan:
             ip = vlan["applianceIp"]
             break
 
-    # #### CHECK WITH JAS FIX ME
+    # if the pos lan is not in the list
+    # we have to look it up on Meraki
     if ip is None:
-        ip = vlans[0]["applianceIp"]
+        # First get details on all vlans
+        netid = settings["netid"]
+        vlan_pos = get_vlan(netid, pos_lan)
+        ip = vlan_pos["applianceIp"]
 
     if not summary_only:
         subnet = "{}/22".format(lower)   # lower
