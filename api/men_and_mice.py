@@ -39,8 +39,9 @@ def transform_funnel_NETX_to_10_x():
     src = "{}/vlans-funnel-NETX.csv".format(RUNTIME_DIR)
     entries = []
     with open(src, encoding="windows-1251", newline='') as csv_file:
-        reader = csv.DictReader(csv_file, skipinitialspace=True, fieldnames=["Vlan", "Subnet", "Description"])
-        header = True
+        reader = csv.DictReader(csv_file, skipinitialspace=True,
+                                fieldnames=["Vlan", "Subnet", "Description"])
+
         for entry in reader:
             if header:
                 header = False
@@ -48,8 +49,13 @@ def transform_funnel_NETX_to_10_x():
             subnet = entry["Subnet"].lower()
             subnet = subnet.replace("net", "10.x.")
             entry["Subnet"] = subnet
+            str = make_pretty(entry)
+            vlan = entry["Vlan"]
+            description = entry["Description"]
+            print("{} {} {}".format(vlan, subnet, description))
             entries.append(entry)
     writer("vlans-funnel-base", entries, RUNTIME_DIR)
+
 
 
 def get_and_convert_funnel():
