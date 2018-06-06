@@ -94,7 +94,21 @@ class VlanTemplates(object):
             item = deepcopy(entry)
             entries.append(item)
 
+        # Patch and add vlans
         vlans_funnel = vlans_funnel_base + entries
+
+        # Delete DONOTUSE Vlans
+        for vlan in vlans_patch:
+            if vlan["Description"] == "DONOTUSE":
+                vlan_id = vlan["Vlan"]
+                l.logger.info("found DONOTUUSE vlan in patch: {}".format(vlan_id))
+                for idx, entry in enumerate(vlans_funnel):
+                    if vlan_id == entry["Vlan"]:
+                        l.logger.error("removing DONOTUSE vlan {}".format(vlan_id))
+                        l.runlogs_logger.error("removing DONOTUSE vlan {}".format(vlan_id))
+                        del vlans_funnel[idx]
+                        break
+
         Json.writer(vlans_funnel_file, vlans_funnel, path=RUNTIME_DIR, absolute_path=True)
 
     # Basic fields come from augmented Men and Mice
