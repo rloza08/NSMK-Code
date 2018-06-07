@@ -168,6 +168,18 @@
         "reservedIpRanges2-end": ""
     },
     {
+        "Vlan": "65",
+        "Subnet": "",
+        "Description": "DONOTUSE",
+        "dnsNameservers": "upstream_dns",
+        "reservedIpRanges1-comment": "",
+        "reservedIpRanges1-start": "",
+        "reservedIpRanges1-end": "",
+        "reservedIpRanges2-comment": "",
+        "reservedIpRanges2-start": "",
+        "reservedIpRanges2-end": ""
+    },
+    {
         "Vlan": "70",
         "Subnet": "",
         "Description": "",
@@ -243,6 +255,18 @@
         "Vlan": "85",
         "Subnet": "",
         "Description": "",
+        "dnsNameservers": "upstream_dns",
+        "reservedIpRanges1-comment": "",
+        "reservedIpRanges1-start": "",
+        "reservedIpRanges1-end": "",
+        "reservedIpRanges2-comment": "",
+        "reservedIpRanges2-start": "",
+        "reservedIpRanges2-end": ""
+    },
+    {
+        "Vlan": "90",
+        "Subnet": "",
+        "Description": "DONOTUSE",
         "dnsNameservers": "upstream_dns",
         "reservedIpRanges1-comment": "",
         "reservedIpRanges1-start": "",
