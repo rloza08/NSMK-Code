@@ -1,0 +1,21 @@
+4,NETA.32/27,Network Management
+6,NETA.64/27,Extranet Vendors
+7,NETA.96/27,Pharmacy
+8,NETA.128/27,Backstage Users
+13,NETA.192/29,External L3 ASA / Router
+14,NETA.248/29,Store Content Engine
+16,NETB.0/24,Store Wireless
+19,NETC.0/24,General Store LAN
+24,NETD.0/24,POS LAN
+35,NETE.0/27,Digital Signage Legacy Stores
+40,NETE.32/27,Thin Wireless Mgmt
+45,NETH.192/26,Cisco Wireless Management
+60,NETH.128/27,Vendor VLAN II 
+70,NETE.64/26,New Pharmacy
+75,NETE.128/25,Macauthenticated Wireless Clients
+79,NETG.192/26,VOIP Clients
+80,NETF.0/24,Secure Wireless
+81,NETG.160/28,Field Service Wireless
+82,NETG.176/28,iPad quarantine vlan
+85,NETH.0/26,Retail Cluster Management 
+95,NETG.128/27,Printer VLAN
