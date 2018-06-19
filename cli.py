@@ -486,8 +486,8 @@ class CLI(object):
         print("   get store-lists")
         print("   get l3fwrules")
         print("   get s2svpnrules")
-        print("   convert csv-to-json <filename in /appl/nms/xfer")
-        print("   convert json-to-csv <filename in /appl/nms/xfer")
+        print("   convert csv-to-json <filename in /appl/nsmk/xfer")
+        print("   convert json-to-csv <filename in /appl/nsmk/xfer")
         EOM()
         print("")
         os.chdir("{}".format(self.cwd))
@@ -679,9 +679,9 @@ class CLI(object):
         os.chdir("{}/automation".format(self.cwd))
         from utils.auto_csv import convert_to_json_and_validate
         if os.name == 'nt':
-            input_path = output_path = "c:\\nms\\xfer"
+            input_path = output_path = "c:\\nsmk\\xfer"
         else:
-            input_path = "/appl/nms/xfer/"
+            input_path = "/appl/nsmk/xfer/"
             output_path = input_path
         convert_to_json_and_validate(fname, input_path, output_path)
         os.chdir("{}".format(self.cwd))
@@ -698,9 +698,9 @@ class CLI(object):
         os.chdir("{}/automation".format(self.cwd))
         from utils.auto_csv import convert_to_csv_and_validate
         if os.name == 'nt':
-            input_path = output_path = "c:\\nms\\xfer"
+            input_path = output_path = "c:\\nsmk\\xfer"
         else:
-            input_path = "/appl/nms/xfer/"
+            input_path = "/appl/nsmk/xfer/"
             output_path = input_path
         convert_to_csv_and_validate(fname, input_path, output_path)
         os.chdir("{}".format(self.cwd))
